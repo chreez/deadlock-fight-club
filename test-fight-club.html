@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Fight Club</title>
+</head>
+<body>
+    <h1>Testing Fight Club Generator</h1>
+    <button onclick="testGeneration()">Test Generation</button>
+    <div id="output"></div>
+
+    <script>
+        // Hero pool - 32 heroes
+        const HEROES = [
+            "Abrams", "Bebop", "Dynamo", "Kelvin", "Mo & Krill", "Viscous", "Warden",
+            "Calico", "Grey Talon", "Haze", "Holliday", "Infernus", "Lash", "Mirage",
+            "Seven", "Shiv", "Sinclair", "Vindicta", "Wraith", "Yamato", "Vyper",
+            "Billy", "Paige", "Victor", "Drifter", "Ivy", "Lady Geist", "McGinnis",
+            "Paradox", "Pocket", "Mina", "The Doorman"
+        ];
+
+        // Test minimal items
+        const ITEMS = [
+            { name: "Basic Magazine", category: "weapon", tier: 1, cost: 500 },
+            { name: "Extra Health", category: "vitality", tier: 1, cost: 500 },
+            { name: "Extra Spirit", category: "spirit", tier: 1, cost: 500 },
+            { name: "Active Reload", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Battle Vest", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Cold Front", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Tesla Bullets", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Metal Skin", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Silence Wave", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Glass Cannon", category: "weapon", tier: 4, cost: 6200 },
+            { name: "Colossus", category: "vitality", tier: 4, cost: 6200 },
+            { name: "Curse", category: "spirit", tier: 4, cost: 6200 }
+        ];
+
+        const FAIR_ITEM_COMBOS = [
+            { tiers: [1, 1, 1, 1], total: 2000 },
+            { tiers: [1, 1, 2, 3], total: 5250 },
+            { tiers: [2, 2, 2, 3], total: 6750 }
+        ];
+
+        function getRandomElement(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+
+        function testGeneration() {
+            const output = document.getElementById('output');
+            
+            try {
+                // Test hero selection
+                const hero1 = getRandomElement(HEROES);
+                const hero2 = getRandomElement(HEROES);
+                
+                // Test combo selection
+                const combo = getRandomElement(FAIR_ITEM_COMBOS);
+                const selectedItems = [];
+                
+                // Test item selection
+                for (const tier of combo.tiers) {
+                    const tierItems = ITEMS.filter(item => 
+                        item.tier === tier && 
+                        !selectedItems.some(selected => selected.name === item.name)
+                    );
+                    
+                    if (tierItems.length > 0) {
+                        selectedItems.push(getRandomElement(tierItems));
+                    } else {
+                        output.innerHTML += `<p style="color:red">No items available for tier ${tier}</p>`;
+                    }
+                }
+                
+                output.innerHTML = `
+                    <h2>Success!</h2>
+                    <p>Heroes: ${hero1} vs ${hero2}</p>
+                    <p>Items: ${selectedItems.map(i => i.name).join(', ')}</p>
+                    <p>Total: ${combo.total} souls</p>
+                    <p>Items selected: ${selectedItems.length}/4</p>
+                `;
+                
+            } catch (error) {
+                output.innerHTML = `<p style="color:red">Error: ${error.message}</p>`;
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+</html>

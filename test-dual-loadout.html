@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Dual Loadout</title>
+</head>
+<body>
+    <h1>Testing Dual Loadout Generation</h1>
+    <button onclick="runTests()">Run Tests</button>
+    <div id="results"></div>
+
+    <script>
+        // Simplified test data
+        const ITEMS = [
+            // Tier 1 items
+            { name: "Basic Magazine", category: "weapon", tier: 1, cost: 500 },
+            { name: "Extra Health", category: "vitality", tier: 1, cost: 500 },
+            { name: "Extra Spirit", category: "spirit", tier: 1, cost: 500 },
+            { name: "Extra Ammo", category: "weapon", tier: 1, cost: 500 },
+            { name: "Sprint Boots", category: "vitality", tier: 1, cost: 500 },
+            { name: "Mystic Burst", category: "spirit", tier: 1, cost: 500 },
+            // Tier 2 items
+            { name: "Active Reload", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Battle Vest", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Cold Front", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Fleetfoot", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Bullet Armor", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Decay", category: "spirit", tier: 2, cost: 1250 },
+            // Tier 3 items
+            { name: "Tesla Bullets", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Metal Skin", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Silence Wave", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Point Blank", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Fortitude", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Knockdown", category: "spirit", tier: 3, cost: 3000 }
+        ];
+
+        const FAIR_COMBOS = [
+            { tiers: [1, 1, 1, 1], total: 2000 },
+            { tiers: [1, 1, 2, 2], total: 3500 },
+            { tiers: [1, 2, 2, 3], total: 6000 },
+            { tiers: [2, 2, 3, 3], total: 8500 }
+        ];
+
+        function getRandomElement(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+
+        function selectFairItems() {
+            const combo = getRandomElement(FAIR_COMBOS);
+            
+            // Generate Player 1's items
+            const player1Items = [];
+            for (const tier of combo.tiers) {
+                const tierItems = ITEMS.filter(item => 
+                    item.tier === tier && 
+                    !player1Items.some(selected => selected.name === item.name)
+                );
+                
+                if (tierItems.length > 0) {
+                    player1Items.push(getRandomElement(tierItems));
+                }
+            }
+            
+            // Generate Player 2's items
+            const player2Items = [];
+            for (const tier of combo.tiers) {
+                const tierItems = ITEMS.filter(item => 
+                    item.tier === tier && 
+                    !player2Items.some(selected => selected.name === item.name) &&
+                    !player1Items.some(selected => selected.name === item.name)
+                );
+                
+                if (tierItems.length > 0) {
+                    player2Items.push(getRandomElement(tierItems));
+                } else {
+                    // Fallback if we run out of unique items
+                    const fallbackItems = ITEMS.filter(item => 
+                        item.tier === tier && 
+                        !player2Items.some(selected => selected.name === item.name)
+                    );
+                    if (fallbackItems.length > 0) {
+                        player2Items.push(getRandomElement(fallbackItems));
+                    }
+                }
+            }
+            
+            return { 
+                player1Items: player1Items, 
+                player2Items: player2Items, 
+                totalCost: combo.total 
+            };
+        }
+
+        function runTests() {
+            const results = document.getElementById('results');
+            let html = '<h2>Test Results:</h2>';
+            let allTestsPassed = true;
+            
+            // Run 10 test generations
+            for (let i = 0; i < 10; i++) {
+                const { player1Items, player2Items, totalCost } = selectFairItems();
+                
+                // Calculate actual costs
+                const p1Cost = player1Items.reduce((sum, item) => sum + item.cost, 0);
+                const p2Cost = player2Items.reduce((sum, item) => sum + item.cost, 0);
+                
+                // Check if costs match
+                const costsMatch = p1Cost === p2Cost && p1Cost === totalCost;
+                
+                html += `
+                    <div style="margin: 10px; padding: 10px; border: 1px solid ${costsMatch ? 'green' : 'red'};">
+                        <h3>Test ${i + 1}: ${costsMatch ? '✅ PASS' : '❌ FAIL'}</h3>
+                        <p><b>Player 1:</b> ${player1Items.map(i => i.name).join(', ')}</p>
+                        <p>Cost: ${p1Cost} souls</p>
+                        <p><b>Player 2:</b> ${player2Items.map(i => i.name).join(', ')}</p>
+                        <p>Cost: ${p2Cost} souls</p>
+                        <p><b>Expected Total:</b> ${totalCost} souls</p>
+                        ${!costsMatch ? `<p style="color:red">ERROR: Costs don't match!</p>` : ''}
+                    </div>
+                `;
+                
+                if (!costsMatch) allTestsPassed = false;
+            }
+            
+            html = `<h2 style="color: ${allTestsPassed ? 'green' : 'red'}">
+                ${allTestsPassed ? '✅ All tests passed!' : '❌ Some tests failed!'}
+            </h2>` + html;
+            
+            results.innerHTML = html;
+        }
+    </script>
+</body>
+</html>

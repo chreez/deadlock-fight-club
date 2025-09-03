@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deadlock Fight Club Generator</title>
+    <style>
+        :root {
+            --bg-dark: #0a0a0b;
+            --bg-secondary: #1a1a1f;
+            --accent-orange: #ff8c42;
+            --accent-purple: #7c4dff;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --weapon-color: #ff8c00;
+            --vitality-color: #4caf50;
+            --spirit-color: #9c27b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .header-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .header-section.compact {
+            flex-direction: row;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 10px;
+        }
+        
+        .header-section.compact h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0;
+        }
+
+        .generate-button {
+            background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-purple) 100%);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 140, 66, 0.3);
+            margin: 0 auto;
+            display: block;
+        }
+        
+        .header-section.compact .generate-button {
+            padding: 12px 30px;
+            font-size: 1rem;
+        }
+
+        .generate-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 140, 66, 0.4);
+        }
+
+        .generate-button:active {
+            transform: translateY(0);
+        }
+
+        .match-display {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .players-container {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .player-section {
+            flex: 1;
+            max-width: 500px;
+            min-width: 300px;
+        }
+
+        .hero-card {
+            text-align: center;
+            animation: slideIn 0.5s ease;
+            margin-bottom: 20px;
+        }
+
+        .hero-placeholder {
+            
+            height: 200px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-placeholder img {
+            width: 200px;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-placeholder:hover {
+            border-color: var(--accent-orange);
+            box-shadow: 0 0 20px rgba(255, 140, 66, 0.3);
+        }
+
+        .hero-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .player-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .player-1 .player-label {
+            color: var(--accent-orange);
+        }
+
+        .player-2 .player-label {
+            color: var(--accent-purple);
+        }
+
+        .vs-divider {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulse 2s infinite;
+            align-self: center;
+            padding-top: 100px;
+        }
+
+        .items-section {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            padding: 10px 0;
+        }
+        
+        .section-title.player-1-title {
+            color: var(--accent-orange);
+        }
+        
+        .section-title.player-2-title {
+            color: var(--accent-purple);
+        }
+
+        .items-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .item-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .item-card:hover {
+            transform: translateX(5px);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .item-card.weapon {
+            border-color: var(--weapon-color);
+        }
+
+        .item-card.vitality {
+            border-color: var(--vitality-color);
+        }
+
+        .item-card.spirit {
+            border-color: var(--spirit-color);
+        }
+
+        .item-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .item-icon {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3));
+        }
+
+        .item-name {
+            font-weight: 500;
+        }
+
+        .tier-badge {
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .tier-1 { background: #666; }
+        .tier-2 { background: #4a9eff; }
+        .tier-3 { background: #9c4aff; }
+        .tier-4 { background: #ff4a4a; }
+
+        .cost-badge {
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .total-cost {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #ffd700;
+            font-weight: bold;
+            padding: 10px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .copy-section {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .copy-text {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .copy-button {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
+            border: 1px solid #4caf50;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .copy-button:hover {
+            background: rgba(76, 175, 80, 0.3);
+            transform: scale(1.05);
+        }
+
+        .copy-button.copied {
+            background: rgba(76, 175, 80, 0.5);
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            .generate-button { font-size: 1rem; padding: 12px 30px; }
+            .header-section.compact {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .header-section.compact h1 {
+                font-size: 1.5rem;
+            }
+            .players-container { 
+                flex-direction: column; 
+                gap: 30px;
+                align-items: center;
+            }
+            .player-section { max-width: 100%; }
+            .vs-divider { 
+                font-size: 2rem; 
+                padding-top: 0;
+                margin: 20px 0;
+            }
+            .hero-placeholder { width: 150px; height: 150px; }
+            .hero-name { font-size: 1.1rem; }
+            .items-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-placeholder { width: 120px; height: 120px; }
+            .match-display { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-section" id="headerSection">
+            <h1>DEADLOCK FIGHT CLUB</h1>
+            
+            <button class="generate-button" onclick="generateFightClubMatch()">
+                GENERATE FIGHT CLUB MATCH
+            </button>
+        </div>
+
+        <div id="matchDisplay" style="display: none;"></div>
+    </div>
+
+    <script>
+        // Hero pool - 32 heroes with asset mappings
+        const HEROES = [
+            { name: "Abrams", asset: "abrams.png" },
+            { name: "Bebop", asset: "bebop.png" },
+            { name: "Dynamo", asset: "dynamo.png" },
+            { name: "Kelvin", asset: "kelvin.png" },
+            { name: "Mo & Krill", asset: "mo-and-krill.png" },
+            { name: "Viscous", asset: "viscous.png" },
+            { name: "Warden", asset: "warden.png" },
+            { name: "Calico", asset: "calico.png" },
+            { name: "Grey Talon", asset: "grey-talon.png" },
+            { name: "Haze", asset: "haze.png" },
+            { name: "Holliday", asset: "holliday.png" },
+            { name: "Infernus", asset: "infernus.png" },
+            { name: "Lash", asset: "lash.png" },
+            { name: "Mirage", asset: "mirage.png" },
+            { name: "Seven", asset: "seven.png" },
+            { name: "Shiv", asset: "shiv.png" },
+            { name: "Sinclair", asset: "sinclair.png" },
+            { name: "Vindicta", asset: "vindicta.png" },
+            { name: "Wraith", asset: "wraith.png" },
+            { name: "Yamato", asset: "yamato.png" },
+            { name: "Vyper", asset: "vyper.png" },
+            { name: "Billy", asset: "generic.png" },
+            { name: "Paige", asset: "generic.png" },
+            { name: "Victor", asset: "generic.png" },
+            { name: "Drifter", asset: "generic.png" },
+            { name: "Ivy", asset: "ivy.png" },
+            { name: "Lady Geist", asset: "lady-geist.png" },
+            { name: "McGinnis", asset: "mcginnis.png" },
+            { name: "Paradox", asset: "paradox.png" },
+            { name: "Pocket", asset: "pocket.png" },
+            { name: "Mina", asset: "generic.png" },
+            { name: "The Doorman", asset: "generic.png" }
+        ];
+
+        // Complete item database - 132 items
+        const ITEMS = [
+            // Weapon Items (42)
+            // Tier 1
+            { name: "Basic Magazine", category: "weapon", tier: 1, cost: 500 },
+            { name: "Burst Fire", category: "weapon", tier: 1, cost: 500 },
+            { name: "Close Quarters", category: "weapon", tier: 1, cost: 500 },
+            { name: "Extra Ammo", category: "weapon", tier: 1, cost: 500 },
+            { name: "Headshot Booster", category: "weapon", tier: 1, cost: 500 },
+            { name: "High-Velocity Mag", category: "weapon", tier: 1, cost: 500 },
+            { name: "Monster Rounds", category: "weapon", tier: 1, cost: 500 },
+            { name: "Swift Striker", category: "weapon", tier: 1, cost: 500 },
+            // Tier 2
+            { name: "Active Reload", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Berserker", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Fleetfoot", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Heroic Aura", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Kinetic Dash", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Long Range", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Melee Charge", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Mystic Shot", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Restorative Shot", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Slowing Bullets", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Split Shot", category: "weapon", tier: 2, cost: 1250 },
+            // Tier 3
+            { name: "Alchemical Fire", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Blood Tribute", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Burst Fire (T3)", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Escalating Resilience", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Hunter's Aura", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Intensifying Magazine", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Point Blank", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Pristine Emblem", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Sharpshooter", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Tesla Bullets", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Titanic Magazine", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Toxic Bullets", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Warp Stone", category: "weapon", tier: 3, cost: 3000 },
+            // Tier 4
+            { name: "Capacitor", category: "weapon", tier: 4, cost: 6200 },
+            { name: "Crippling Headshot", category: "weapon", tier: 4, cost: 6200 },
+            { name: "Frenzy", category: "weapon", tier: 4, cost: 6200 },
+            { name: "Glass Cannon", category: "weapon", tier: 4, cost: 6200 },
+            { name: "Lucky Shot", category: "weapon", tier: 4, cost: 6200 },
+            { name: "Ricochet", category: "weapon", tier: 4, cost: 6200 },
+            { name: "Shadow Weave", category: "weapon", tier: 4, cost: 6200 },
+            { name: "Silencer", category: "weapon", tier: 4, cost: 6200 },
+            { name: "Siphon Bullets", category: "weapon", tier: 4, cost: 6200 },
+            { name: "Spiritual Overflow", category: "weapon", tier: 4, cost: 6200 },
+
+            // Vitality Items (50)
+            // Tier 1
+            { name: "Enduring Spirit", category: "vitality", tier: 1, cost: 500 },
+            { name: "Extra Health", category: "vitality", tier: 1, cost: 500 },
+            { name: "Extra Regen", category: "vitality", tier: 1, cost: 500 },
+            { name: "Extra Stamina", category: "vitality", tier: 1, cost: 500 },
+            { name: "Healing Rite", category: "vitality", tier: 1, cost: 500 },
+            { name: "Melee Lifesteal", category: "vitality", tier: 1, cost: 500 },
+            { name: "Sprint Boots", category: "vitality", tier: 1, cost: 500 },
+            // Tier 2
+            { name: "Battle Vest", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Bullet Armor", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Bullet Lifesteal", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Combat Barrier", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Debuff Reducer", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Enchanter's Barrier", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Enduring Speed", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Guardian Ward", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Healbane", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Healing Booster", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Reactive Barrier", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Restorative Locket", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Return Fire", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Spirit Armor", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Spirit Lifesteal", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Spirit Shielding", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Trophy Collector", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Weapon Shielding", category: "vitality", tier: 2, cost: 1250 },
+            // Tier 3
+            { name: "Bullet Resilience", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Debuff Remover", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Fortitude", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Fury Trance", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Healing Nova", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Improved Bullet Armor", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Improved Spirit Armor", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Lifestrike", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Majestic Leap", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Metal Skin", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Rescue Beam", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Spirit Resilience", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Superior Stamina", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Veil Walker", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Warp Stone (V)", category: "vitality", tier: 3, cost: 3000 },
+            // Tier 4
+            { name: "Cheat Death", category: "vitality", tier: 4, cost: 6200 },
+            { name: "Colossus", category: "vitality", tier: 4, cost: 6200 },
+            { name: "Divine Barrier", category: "vitality", tier: 4, cost: 6200 },
+            { name: "Inhibitor", category: "vitality", tier: 4, cost: 6200 },
+            { name: "Leech", category: "vitality", tier: 4, cost: 6200 },
+            { name: "Phantom Strike", category: "vitality", tier: 4, cost: 6200 },
+            { name: "Plated Armor", category: "vitality", tier: 4, cost: 6200 },
+            { name: "Soul Rebirth", category: "vitality", tier: 4, cost: 6200 },
+            { name: "Unstoppable", category: "vitality", tier: 4, cost: 6200 },
+            { name: "Vampiric Burst", category: "vitality", tier: 4, cost: 6200 },
+
+            // Spirit Items (40)
+            // Tier 1
+            { name: "Ammo Scavenger", category: "spirit", tier: 1, cost: 500 },
+            { name: "Extra Charge", category: "spirit", tier: 1, cost: 500 },
+            { name: "Extra Spirit", category: "spirit", tier: 1, cost: 500 },
+            { name: "Mystic Burst", category: "spirit", tier: 1, cost: 500 },
+            { name: "Mystic Expansion", category: "spirit", tier: 1, cost: 500 },
+            { name: "Mystic Reach", category: "spirit", tier: 1, cost: 500 },
+            { name: "Rusted Barrel", category: "spirit", tier: 1, cost: 500 },
+            { name: "Spirit Strike", category: "spirit", tier: 1, cost: 500 },
+            // Tier 2
+            { name: "Bullet Resist Shredder", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Cold Front", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Compress Cooldown", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Decay", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Duration Extender", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Improved Spirit", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Mystic Vulnerability", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Quicksilver Reload", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Slowing Hex", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Spirit Sap", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Suppressor", category: "spirit", tier: 2, cost: 1250 },
+            // Tier 3
+            { name: "Disarming Hex", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Greater Expansion", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Improved Burst", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Improved Reach", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Knockdown", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Mystic Slow", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Rapid Recharge", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Silence Wave", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Spirit Snatch", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Superior Cooldown", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Superior Duration", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Surge of Power", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Torment Pulse", category: "spirit", tier: 3, cost: 3000 },
+            // Tier 4
+            { name: "Arctic Blast", category: "spirit", tier: 4, cost: 6200 },
+            { name: "Boundless Spirit", category: "spirit", tier: 4, cost: 6200 },
+            { name: "Curse", category: "spirit", tier: 4, cost: 6200 },
+            { name: "Echo Shard", category: "spirit", tier: 4, cost: 6200 },
+            { name: "Escalating Exposure", category: "spirit", tier: 4, cost: 6200 },
+            { name: "Ethereal Shift", category: "spirit", tier: 4, cost: 6200 },
+            { name: "Magic Carpet", category: "spirit", tier: 4, cost: 6200 },
+            { name: "Refresher", category: "spirit", tier: 4, cost: 6200 }
+        ];
+
+        // Predefined fair item combinations (all total exactly the same souls)
+        const FAIR_ITEM_COMBOS = [
+            { tiers: [1, 1, 2, 3], total: 5250 }, // 500 + 500 + 1250 + 3000 = 5250
+            { tiers: [1, 2, 2, 2], total: 4500 }, // 500 + 1250 + 1250 + 1250 = 4500
+            { tiers: [1, 1, 1, 3], total: 4500 }, // 500 + 500 + 500 + 3000 = 4500
+            { tiers: [2, 2, 3, 3], total: 8500 }, // 1250 + 1250 + 3000 + 3000 = 8500
+            { tiers: [1, 1, 1, 4], total: 7700 }, // 500 + 500 + 500 + 6200 = 7700
+            { tiers: [1, 2, 3, 4], total: 10950 }, // 500 + 1250 + 3000 + 6200 = 10950
+            { tiers: [2, 2, 2, 3], total: 6750 }, // 1250 + 1250 + 1250 + 3000 = 6750
+            { tiers: [1, 1, 2, 2], total: 3500 }, // 500 + 500 + 1250 + 1250 = 3500
+            { tiers: [1, 1, 1, 1], total: 2000 }, // 500 + 500 + 500 + 500 = 2000
+            { tiers: [3, 3, 3, 3], total: 12000 } // 3000 + 3000 + 3000 + 3000 = 12000
+        ];
+
+        function getRandomElement(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+
+        function shuffle(array) {
+            const result = [...array];
+            for (let i = result.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [result[i], result[j]] = [result[j], result[i]];
+            }
+            return result;
+        }
+
+        // Helper function to convert item name to asset path
+        function getItemAssetPath(itemName, category) {
+            const baseName = itemName.toLowerCase()
+                .replace(/[()]/g, '') // Remove parentheses
+                .replace(/\s+/g, '-') // Replace spaces with hyphens
+                .replace(/&/g, 'and') // Replace & with 'and'
+                .replace(/'/g, ''); // Remove apostrophes
+            
+            return `assets/items/${category}/${baseName}.png`;
+        }
+
+        function selectFairItems() {
+            // Pick a fair combination
+            const combo = getRandomElement(FAIR_ITEM_COMBOS);
+            
+            // Generate Player 1's items
+            const player1Items = [];
+            for (const tier of combo.tiers) {
+                const tierItems = ITEMS.filter(item => 
+                    item.tier === tier && 
+                    !player1Items.some(selected => selected.name === item.name)
+                );
+                
+                if (tierItems.length > 0) {
+                    player1Items.push(getRandomElement(tierItems));
+                }
+            }
+            
+            // Generate Player 2's items (same tiers, different items)
+            const player2Items = [];
+            for (const tier of combo.tiers) {
+                const tierItems = ITEMS.filter(item => 
+                    item.tier === tier && 
+                    !player2Items.some(selected => selected.name === item.name) &&
+                    !player1Items.some(selected => selected.name === item.name) // Avoid duplicates with player 1
+                );
+                
+                if (tierItems.length > 0) {
+                    player2Items.push(getRandomElement(tierItems));
+                } else {
+                    // If we run out of unique items, allow overlap
+                    const fallbackItems = ITEMS.filter(item => 
+                        item.tier === tier && 
+                        !player2Items.some(selected => selected.name === item.name)
+                    );
+                    if (fallbackItems.length > 0) {
+                        player2Items.push(getRandomElement(fallbackItems));
+                    }
+                }
+            }
+            
+            return { 
+                player1Items: player1Items, 
+                player2Items: player2Items, 
+                totalCost: combo.total 
+            };
+        }
+
+        function generateFightClubMatch() {
+            // Add compact class to header when match is generated
+            document.getElementById('headerSection').classList.add('compact');
+            
+            // Select 2 random heroes (mirrors allowed)
+            const hero1 = getRandomElement(HEROES);
+            const hero2 = getRandomElement(HEROES);
+            
+            // Select fair items for both players
+            const { player1Items, player2Items, totalCost } = selectFairItems();
+            
+            // Build HTML
+            let html = `
+                <div class="match-display">
+                    <div class="players-container">
+                        <div class="player-section player-1">
+                            <div class="hero-card">
+                                <div class="player-label">PLAYER 1</div>
+                                <div class="hero-placeholder">
+                                    <img src="assets/heroes/${hero1.asset}" alt="${hero1.name}" onerror="this.style.display='none'">
+                                </div>
+                                <div class="hero-name">${hero1.name}</div>
+                            </div>
+                            
+                            <div class="items-section">
+                                <div class="section-title player-1-title">Loadout</div>
+                                <div class="items-grid">
+            `;
+            
+            // Add Player 1 items
+            player1Items.forEach(item => {
+                const itemAssetPath = getItemAssetPath(item.name, item.category);
+                html += `
+                    <div class="item-card ${item.category}">
+                        <div class="item-info">
+                            <img src="${itemAssetPath}" alt="${item.name}" class="item-icon" onerror="this.style.display='none'">
+                            <span class="item-name">${item.name}</span>
+                            <span class="tier-badge tier-${item.tier}">T${item.tier}</span>
+                        </div>
+                        <span class="cost-badge">${item.cost.toLocaleString()}s</span>
+                    </div>
+                `;
+            });
+            
+            html += `
+                                </div>
+                                <div class="total-cost">Total: ${totalCost.toLocaleString()} souls</div>
+                            </div>
+                        </div>
+                        
+                        <div class="vs-divider">VS</div>
+                        
+                        <div class="player-section player-2">
+                            <div class="hero-card">
+                                <div class="player-label">PLAYER 2</div>
+                                <div class="hero-placeholder">
+                                    <img src="assets/heroes/${hero2.asset}" alt="${hero2.name}" onerror="this.style.display='none'">
+                                </div>
+                                <div class="hero-name">${hero2.name}</div>
+                            </div>
+                            
+                            <div class="items-section">
+                                <div class="section-title player-2-title">Loadout</div>
+                                <div class="items-grid">
+            `;
+            
+            // Add Player 2 items
+            player2Items.forEach(item => {
+                const itemAssetPath = getItemAssetPath(item.name, item.category);
+                html += `
+                    <div class="item-card ${item.category}">
+                        <div class="item-info">
+                            <img src="${itemAssetPath}" alt="${item.name}" class="item-icon" onerror="this.style.display='none'">
+                            <span class="item-name">${item.name}</span>
+                            <span class="tier-badge tier-${item.tier}">T${item.tier}</span>
+                        </div>
+                        <span class="cost-badge">${item.cost.toLocaleString()}s</span>
+                    </div>
+                `;
+            });
+            
+            html += `
+                                </div>
+                                <div class="total-cost">Total: ${totalCost.toLocaleString()} souls</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="copy-section">
+                        <div class="copy-text" id="copyText">FIGHT CLUB MATCH
+Player 1: ${hero1.name}
+Items: ${player1Items.map(i => `${i.name} (${i.cost}s)`).join(', ')}
+
+Player 2: ${hero2.name}
+Items: ${player2Items.map(i => `${i.name} (${i.cost}s)`).join(', ')}
+
+Total Cost per Player: ${totalCost.toLocaleString()} souls</div>
+                        <button class="copy-button" onclick="copyToClipboard()">COPY TO CLIPBOARD</button>
+                    </div>
+                </div>
+            `;
+            
+            const display = document.getElementById('matchDisplay');
+            display.innerHTML = html;
+            display.style.display = 'block';
+        }
+
+        function copyToClipboard() {
+            const text = document.getElementById('copyText').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const button = document.querySelector('.copy-button');
+                button.textContent = 'COPIED!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = 'COPY TO CLIPBOARD';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+
+        // Log verification
+        console.log(`Fight Club Mode Loaded - Heroes: ${HEROES.length}, Items: ${ITEMS.length}`);
+    </script>
+</body>
+</html>

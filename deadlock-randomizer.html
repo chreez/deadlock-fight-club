@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deadlock Game Randomizer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            color: #61dafb;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .card h2 {
+            color: #61dafb;
+            margin-top: 0;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            min-height: 50px;
+        }
+        .hero-item {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 12px;
+            background: rgba(97, 218, 251, 0.2);
+            border-radius: 5px;
+            border: 1px solid #61dafb;
+        }
+        .item-list {
+            margin-top: 10px;
+        }
+        .item-category {
+            margin: 10px 0;
+        }
+        .item-category h4 {
+            color: #ffd700;
+            margin: 5px 0;
+        }
+        .item {
+            display: inline-block;
+            margin: 3px;
+            padding: 5px 10px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        .tier-1 { border-left: 3px solid #888; }
+        .tier-2 { border-left: 3px solid #4a9eff; }
+        .tier-3 { border-left: 3px solid #9c4aff; }
+        .tier-4 { border-left: 3px solid #ff4a4a; }
+        
+        /* Enhanced item styling with category colors */
+        .weapon-item {
+            background: rgba(255, 140, 0, 0.2);
+            border-color: #ff8c00;
+            color: #ffa500;
+        }
+        .vitality-item {
+            background: rgba(0, 255, 0, 0.15);
+            border-color: #00ff00;
+            color: #90ee90;
+        }
+        .spirit-item {
+            background: rgba(138, 43, 226, 0.2);
+            border-color: #8a2be2;
+            color: #da70d6;
+        }
+        
+        /* Game mode selector */
+        .mode-selector {
+            margin: 10px 0;
+        }
+        select {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        select:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        /* Tier indicators */
+        .tier-badge {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 11px;
+            margin-left: 5px;
+            font-weight: bold;
+        }
+        .tier-1-badge { background: #888; color: #fff; }
+        .tier-2-badge { background: #4a9eff; color: #fff; }
+        .tier-3-badge { background: #9c4aff; color: #fff; }
+        .tier-4-badge { background: #ff4a4a; color: #fff; }
+        
+        /* Cost indicator */
+        .cost-badge {
+            display: inline-block;
+            padding: 2px 6px;
+            background: rgba(255, 215, 0, 0.3);
+            color: #ffd700;
+            border-radius: 3px;
+            font-size: 11px;
+            margin-left: 5px;
+        }
+        
+        /* Match display */
+        .match-display {
+            display: grid;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .match-item {
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+        .match-item:hover {
+            transform: translateX(5px);
+        }
+        .item-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Deadlock Game Randomizer</h1>
+    
+    <div class="container">
+        <div class="card">
+            <h2>Hero Selector</h2>
+            <button onclick="displayRandomHero()">Get Random Hero</button>
+            <button onclick="displayRandomTeam()">Random Team (6v6)</button>
+            <div id="heroResult" class="result"></div>
+        </div>
+        
+        <div class="card">
+            <h2>Match Item Randomizer</h2>
+            <div class="mode-selector">
+                <label for="gameMode">Game Mode: </label>
+                <select id="gameMode">
+                    <option value="all-random">All Random</option>
+                    <option value="balanced">Balanced</option>
+                    <option value="budget">Budget (Tier 1-2)</option>
+                    <option value="late-game">Late Game (Tier 3-4)</option>
+                    <option value="chaos">Chaos Mode</option>
+                </select>
+            </div>
+            <button onclick="generateMatch()">Generate Match Items</button>
+            <button onclick="displayRandomBuild()">Generate Full Build</button>
+            <button onclick="displayBalancedBuild()">Balanced Build</button>
+            <div id="itemResult" class="result"></div>
+        </div>
+        
+        <div class="card">
+            <h2>Team Composition</h2>
+            <button onclick="displayBalancedTeam()">Balanced Team</button>
+            <button onclick="displayRandomDraft()">Draft Mode (No Duplicates)</button>
+            <div id="teamResult" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // GAME DATA STRUCTURES
+        // ==========================================
+
+        // Hero data with all 32 specified heroes
+        const HEROES = [
+            // Tanks
+            { name: "Abrams", role: "tank", difficulty: "easy", attributes: { health: 9, damage: 6, mobility: 5 } },
+            { name: "Bebop", role: "tank", difficulty: "medium", attributes: { health: 8, damage: 7, mobility: 6 } },
+            { name: "Dynamo", role: "tank", difficulty: "medium", attributes: { health: 8, damage: 5, mobility: 7 } },
+            { name: "Kelvin", role: "tank", difficulty: "hard", attributes: { health: 9, damage: 5, mobility: 6 } },
+            { name: "Mo & Krill", role: "tank", difficulty: "medium", attributes: { health: 8, damage: 7, mobility: 5 } },
+            { name: "Viscous", role: "tank", difficulty: "medium", attributes: { health: 8, damage: 6, mobility: 7 } },
+            { name: "Warden", role: "tank", difficulty: "hard", attributes: { health: 9, damage: 6, mobility: 4 } },
+            
+            // Damage Dealers
+            { name: "Calico", role: "damage", difficulty: "medium", attributes: { health: 5, damage: 9, mobility: 7 } },
+            { name: "Grey Talon", role: "damage", difficulty: "easy", attributes: { health: 5, damage: 9, mobility: 6 } },
+            { name: "Haze", role: "damage", difficulty: "medium", attributes: { health: 4, damage: 10, mobility: 8 } },
+            { name: "Holliday", role: "damage", difficulty: "easy", attributes: { health: 5, damage: 9, mobility: 6 } },
+            { name: "Infernus", role: "damage", difficulty: "easy", attributes: { health: 6, damage: 8, mobility: 6 } },
+            { name: "Lash", role: "damage", difficulty: "hard", attributes: { health: 5, damage: 8, mobility: 9 } },
+            { name: "Mirage", role: "damage", difficulty: "hard", attributes: { health: 4, damage: 9, mobility: 8 } },
+            { name: "Seven", role: "damage", difficulty: "medium", attributes: { health: 6, damage: 8, mobility: 5 } },
+            { name: "Shiv", role: "damage", difficulty: "medium", attributes: { health: 5, damage: 9, mobility: 8 } },
+            { name: "Sinclair", role: "damage", difficulty: "medium", attributes: { health: 5, damage: 9, mobility: 7 } },
+            { name: "Vindicta", role: "damage", difficulty: "hard", attributes: { health: 4, damage: 10, mobility: 7 } },
+            { name: "Wraith", role: "damage", difficulty: "medium", attributes: { health: 5, damage: 8, mobility: 9 } },
+            { name: "Yamato", role: "damage", difficulty: "hard", attributes: { health: 6, damage: 9, mobility: 8 } },
+            { name: "Vyper", role: "damage", difficulty: "hard", attributes: { health: 5, damage: 9, mobility: 8 } },
+            { name: "Billy", role: "damage", difficulty: "medium", attributes: { health: 6, damage: 8, mobility: 6 } },
+            { name: "Paige", role: "damage", difficulty: "medium", attributes: { health: 5, damage: 9, mobility: 7 } },
+            { name: "Victor", role: "damage", difficulty: "hard", attributes: { health: 5, damage: 10, mobility: 6 } },
+            { name: "Drifter", role: "damage", difficulty: "hard", attributes: { health: 4, damage: 9, mobility: 9 } },
+            
+            // Support
+            { name: "Ivy", role: "support", difficulty: "medium", attributes: { health: 6, damage: 5, mobility: 7 } },
+            { name: "Lady Geist", role: "support", difficulty: "hard", attributes: { health: 5, damage: 7, mobility: 6 } },
+            { name: "McGinnis", role: "support", difficulty: "easy", attributes: { health: 6, damage: 6, mobility: 5 } },
+            { name: "Paradox", role: "support", difficulty: "hard", attributes: { health: 5, damage: 7, mobility: 8 } },
+            { name: "Pocket", role: "support", difficulty: "hard", attributes: { health: 5, damage: 6, mobility: 9 } },
+            { name: "Mina", role: "support", difficulty: "medium", attributes: { health: 6, damage: 5, mobility: 7 } },
+            { name: "The Doorman", role: "support", difficulty: "hard", attributes: { health: 7, damage: 6, mobility: 5 } }
+        ];
+
+        // Complete Weapon Items Database (42 items)
+        const WEAPON_ITEMS = [
+            // Tier 1 (500 souls) - 8 items
+            { name: "Basic Magazine", category: "weapon", tier: 1, cost: 500 },
+            { name: "Burst Fire", category: "weapon", tier: 1, cost: 500 },
+            { name: "Close Quarters", category: "weapon", tier: 1, cost: 500 },
+            { name: "Extra Ammo", category: "weapon", tier: 1, cost: 500 },
+            { name: "Headshot Booster", category: "weapon", tier: 1, cost: 500 },
+            { name: "High-Velocity Mag", category: "weapon", tier: 1, cost: 500 },
+            { name: "Monster Rounds", category: "weapon", tier: 1, cost: 500 },
+            { name: "Swift Striker", category: "weapon", tier: 1, cost: 500 },
+            
+            // Tier 2 (1250 souls) - 11 items
+            { name: "Active Reload", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Berserker", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Fleetfoot", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Heroic Aura", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Kinetic Dash", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Long Range", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Melee Charge", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Mystic Shot", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Restorative Shot", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Slowing Bullets", category: "weapon", tier: 2, cost: 1250 },
+            { name: "Split Shot", category: "weapon", tier: 2, cost: 1250 },
+            
+            // Tier 3 (3000 souls) - 13 items
+            { name: "Alchemical Fire", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Blood Tribute", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Burst Fire", category: "weapon", tier: 3, cost: 3000 }, // T3 version
+            { name: "Escalating Resilience", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Hunter's Aura", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Intensifying Magazine", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Point Blank", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Pristine Emblem", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Sharpshooter", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Tesla Bullets", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Titanic Magazine", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Toxic Bullets", category: "weapon", tier: 3, cost: 3000 },
+            { name: "Warp Stone", category: "weapon", tier: 3, cost: 3000 },
+            
+            // Tier 4 (6200+ souls) - 10 items
+            { name: "Capacitor", category: "weapon", tier: 4, cost: 6200 },
+            { name: "Crippling Headshot", category: "weapon", tier: 4, cost: 6200 },
+            { name: "Frenzy", category: "weapon", tier: 4, cost: 6200 },
+            { name: "Glass Cannon", category: "weapon", tier: 4, cost: 6200 },
+            { name: "Lucky Shot", category: "weapon", tier: 4, cost: 6200 },
+            { name: "Ricochet", category: "weapon", tier: 4, cost: 6200 },
+            { name: "Shadow Weave", category: "weapon", tier: 4, cost: 6200 },
+            { name: "Silencer", category: "weapon", tier: 4, cost: 6200 },
+            { name: "Siphon Bullets", category: "weapon", tier: 4, cost: 6200 },
+            { name: "Spiritual Overflow", category: "weapon", tier: 4, cost: 6200 }
+        ];
+
+        // Complete Vitality Items Database (50 items)
+        const VITALITY_ITEMS = [
+            // Tier 1 (500 souls) - 7 items
+            { name: "Enduring Spirit", category: "vitality", tier: 1, cost: 500 },
+            { name: "Extra Health", category: "vitality", tier: 1, cost: 500 },
+            { name: "Extra Regen", category: "vitality", tier: 1, cost: 500 },
+            { name: "Extra Stamina", category: "vitality", tier: 1, cost: 500 },
+            { name: "Healing Rite", category: "vitality", tier: 1, cost: 500 },
+            { name: "Melee Lifesteal", category: "vitality", tier: 1, cost: 500 },
+            { name: "Sprint Boots", category: "vitality", tier: 1, cost: 500 },
+            
+            // Tier 2 (1250 souls) - 18 items
+            { name: "Battle Vest", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Bullet Armor", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Bullet Lifesteal", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Combat Barrier", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Debuff Reducer", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Enchanter's Barrier", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Enduring Speed", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Guardian Ward", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Healbane", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Healing Booster", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Reactive Barrier", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Restorative Locket", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Return Fire", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Spirit Armor", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Spirit Lifesteal", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Spirit Shielding", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Trophy Collector", category: "vitality", tier: 2, cost: 1250 },
+            { name: "Weapon Shielding", category: "vitality", tier: 2, cost: 1250 },
+            
+            // Tier 3 (3000 souls) - 15 items
+            { name: "Bullet Resilience", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Debuff Remover", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Fortitude", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Fury Trance", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Healing Nova", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Improved Bullet Armor", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Improved Spirit Armor", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Lifestrike", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Majestic Leap", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Metal Skin", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Rescue Beam", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Spirit Resilience", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Superior Stamina", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Veil Walker", category: "vitality", tier: 3, cost: 3000 },
+            { name: "Warp Stone", category: "vitality", tier: 3, cost: 3000 }, // Vitality version
+            
+            // Tier 4 (6200+ souls) - 10 items
+            { name: "Cheat Death", category: "vitality", tier: 4, cost: 6200 },
+            { name: "Colossus", category: "vitality", tier: 4, cost: 6200 },
+            { name: "Divine Barrier", category: "vitality", tier: 4, cost: 6200 },
+            { name: "Inhibitor", category: "vitality", tier: 4, cost: 6200 },
+            { name: "Leech", category: "vitality", tier: 4, cost: 6200 },
+            { name: "Phantom Strike", category: "vitality", tier: 4, cost: 6200 },
+            { name: "Plated Armor", category: "vitality", tier: 4, cost: 6200 },
+            { name: "Soul Rebirth", category: "vitality", tier: 4, cost: 6200 },
+            { name: "Unstoppable", category: "vitality", tier: 4, cost: 6200 },
+            { name: "Vampiric Burst", category: "vitality", tier: 4, cost: 6200 }
+        ];
+
+        // Complete Spirit Items Database (40 items)
+        const SPIRIT_ITEMS = [
+            // Tier 1 (500 souls) - 8 items
+            { name: "Ammo Scavenger", category: "spirit", tier: 1, cost: 500 },
+            { name: "Extra Charge", category: "spirit", tier: 1, cost: 500 },
+            { name: "Extra Spirit", category: "spirit", tier: 1, cost: 500 },
+            { name: "Mystic Burst", category: "spirit", tier: 1, cost: 500 },
+            { name: "Mystic Expansion", category: "spirit", tier: 1, cost: 500 },
+            { name: "Mystic Reach", category: "spirit", tier: 1, cost: 500 },
+            { name: "Rusted Barrel", category: "spirit", tier: 1, cost: 500 },
+            { name: "Spirit Strike", category: "spirit", tier: 1, cost: 500 },
+            
+            // Tier 2 (1250 souls) - 11 items
+            { name: "Bullet Resist Shredder", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Cold Front", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Compress Cooldown", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Decay", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Duration Extender", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Improved Spirit", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Mystic Vulnerability", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Quicksilver Reload", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Slowing Hex", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Spirit Sap", category: "spirit", tier: 2, cost: 1250 },
+            { name: "Suppressor", category: "spirit", tier: 2, cost: 1250 },
+            
+            // Tier 3 (3000 souls) - 13 items
+            { name: "Disarming Hex", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Greater Expansion", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Improved Burst", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Improved Reach", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Knockdown", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Mystic Slow", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Rapid Recharge", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Silence Wave", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Spirit Snatch", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Superior Cooldown", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Superior Duration", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Surge of Power", category: "spirit", tier: 3, cost: 3000 },
+            { name: "Torment Pulse", category: "spirit", tier: 3, cost: 3000 },
+            
+            // Tier 4 (6200+ souls) - 8 items
+            { name: "Arctic Blast", category: "spirit", tier: 4, cost: 6200 },
+            { name: "Boundless Spirit", category: "spirit", tier: 4, cost: 6200 },
+            { name: "Curse", category: "spirit", tier: 4, cost: 6200 },
+            { name: "Echo Shard", category: "spirit", tier: 4, cost: 6200 },
+            { name: "Escalating Exposure", category: "spirit", tier: 4, cost: 6200 },
+            { name: "Ethereal Shift", category: "spirit", tier: 4, cost: 6200 },
+            { name: "Magic Carpet", category: "spirit", tier: 4, cost: 6200 },
+            { name: "Refresher", category: "spirit", tier: 4, cost: 6200 }
+        ];
+
+        // Combine all items for easier access
+        const ALL_ITEMS = [...WEAPON_ITEMS, ...VITALITY_ITEMS, ...SPIRIT_ITEMS];
+
+        // ==========================================
+        // RANDOMIZATION ALGORITHMS
+        // ==========================================
+
+        /**
+         * Core weighted random selection using cumulative distribution
+         * @param {Array} items - Array of objects with optional weight property
+         * @param {Function} weightFn - Function to calculate weight for each item
+         * @returns {Object} Selected item
+         */
+        function weightedRandomSelect(items, weightFn = (item) => item.weight || 1) {
+            if (!items || items.length === 0) {
+                throw new Error("Cannot select from empty array");
+            }
+            
+            const weights = items.map(weightFn);
+            const totalWeight = weights.reduce((sum, w) => sum + w, 0);
+            
+            if (totalWeight <= 0) {
+                // Fallback to uniform distribution if weights are invalid
+                return items[Math.floor(Math.random() * items.length)];
+            }
+            
+            const random = Math.random() * totalWeight;
+            let cumulative = 0;
+            
+            for (let i = 0; i < items.length; i++) {
+                cumulative += weights[i];
+                if (random < cumulative) {
+                    return items[i];
+                }
+            }
+            
+            return items[items.length - 1]; // Fallback
+        }
+
+        /**
+         * Fisher-Yates shuffle for truly random permutation
+         * @param {Array} array - Array to shuffle
+         * @returns {Array} New shuffled array
+         */
+        function shuffle(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        /**
+         * Select random hero with optional filters
+         * @param {Object} options - Selection options
+         * @returns {Object} Selected hero
+         */
+        function getRandomHero(options = {}) {
+            const { role, difficulty, exclude = [] } = options;
+            
+            let pool = HEROES.filter(hero => !exclude.includes(hero.name));
+            
+            if (role) {
+                pool = pool.filter(hero => hero.role === role);
+            }
+            
+            if (difficulty) {
+                pool = pool.filter(hero => hero.difficulty === difficulty);
+            }
+            
+            if (pool.length === 0) {
+                throw new Error("No heroes match the specified criteria");
+            }
+            
+            return pool[Math.floor(Math.random() * pool.length)];
+        }
+
+        /**
+         * Select multiple unique heroes
+         * @param {Number} count - Number of heroes to select
+         * @param {Object} options - Selection options
+         * @returns {Array} Array of selected heroes
+         */
+        function getRandomHeroes(count, options = {}) {
+            const { allowDuplicates = false } = options;
+            
+            if (!allowDuplicates && count > HEROES.length) {
+                throw new Error(`Cannot select ${count} unique heroes from pool of ${HEROES.length}`);
+            }
+            
+            if (allowDuplicates) {
+                return Array.from({ length: count }, () => getRandomHero(options));
+            }
+            
+            const selected = [];
+            const exclude = [...(options.exclude || [])];
+            
+            for (let i = 0; i < count; i++) {
+                const hero = getRandomHero({ ...options, exclude });
+                selected.push(hero);
+                exclude.push(hero.name);
+            }
+            
+            return selected;
+        }
+
+        /**
+         * Generate a balanced team composition
+         * @param {Number} teamSize - Size of the team
+         * @returns {Array} Array of heroes forming a balanced team
+         */
+        function generateBalancedTeam(teamSize = 6) {
+            const composition = {
+                tank: Math.max(1, Math.floor(teamSize * 0.25)),
+                damage: Math.ceil(teamSize * 0.5),
+                support: Math.floor(teamSize * 0.25)
+            };
+            
+            // Adjust if numbers don't add up
+            const total = composition.tank + composition.damage + composition.support;
+            if (total < teamSize) {
+                composition.damage += teamSize - total;
+            }
+            
+            const team = [];
+            const exclude = [];
+            
+            for (const [role, count] of Object.entries(composition)) {
+                for (let i = 0; i < count; i++) {
+                    const hero = getRandomHero({ role, exclude });
+                    team.push(hero);
+                    exclude.push(hero.name);
+                }
+            }
+            
+            return shuffle(team); // Shuffle to mix roles
+        }
+
+        /**
+         * Generate random item build with budget constraints
+         * @param {Number} budget - Total soul budget
+         * @param {Object} options - Build options
+         * @returns {Object} Item build with categories
+         */
+        function generateRandomBuild(budget = 20000, options = {}) {
+            const { 
+                weaponRatio = 0.33,
+                vitalityRatio = 0.33,
+                spiritRatio = 0.34,
+                maxItemsPerCategory = 4
+            } = options;
+            
+            const build = {
+                weapon: [],
+                vitality: [],
+                spirit: [],
+                totalCost: 0
+            };
+            
+            // Calculate budget per category
+            const budgets = {
+                weapon: Math.floor(budget * weaponRatio),
+                vitality: Math.floor(budget * vitalityRatio),
+                spirit: Math.floor(budget * spiritRatio)
+            };
+            
+            // Helper function to fill category
+            const fillCategory = (items, categoryBudget, maxItems) => {
+                const selected = [];
+                let remaining = categoryBudget;
+                let attempts = 0;
+                const maxAttempts = 50;
+                
+                while (selected.length < maxItems && remaining > 0 && attempts < maxAttempts) {
+                    attempts++;
+                    
+                    // Filter affordable items not already selected
+                    const affordable = items.filter(item => 
+                        item.cost <= remaining && 
+                        !selected.some(s => s.name === item.name)
+                    );
+                    
+                    if (affordable.length === 0) break;
+                    
+                    // Weight by tier (higher tier = more weight if we can afford it)
+                    const item = weightedRandomSelect(affordable, (item) => {
+                        const tierWeight = item.tier * item.tier; // Exponential weight
+                        const costEfficiency = item.cost / remaining; // Prefer items that use budget efficiently
+                        return tierWeight * costEfficiency;
+                    });
+                    
+                    selected.push(item);
+                    remaining -= item.cost;
+                }
+                
+                return { items: selected, spent: categoryBudget - remaining };
+            };
+            
+            // Fill each category
+            const weaponResult = fillCategory(WEAPON_ITEMS, budgets.weapon, maxItemsPerCategory);
+            build.weapon = weaponResult.items;
+            
+            const vitalityResult = fillCategory(VITALITY_ITEMS, budgets.vitality, maxItemsPerCategory);
+            build.vitality = vitalityResult.items;
+            
+            const spiritResult = fillCategory(SPIRIT_ITEMS, budgets.spirit, maxItemsPerCategory);
+            build.spirit = spiritResult.items;
+            
+            build.totalCost = weaponResult.spent + vitalityResult.spent + spiritResult.spent;
+            
+            return build;
+        }
+
+        /**
+         * Generate a balanced item build based on hero role
+         * @param {String} heroRole - Role of the hero
+         * @param {Number} budget - Total soul budget
+         * @returns {Object} Balanced item build
+         */
+        function generateBalancedBuild(heroRole = null, budget = 20000) {
+            const ratios = {
+                tank: { weaponRatio: 0.2, vitalityRatio: 0.6, spiritRatio: 0.2 },
+                damage: { weaponRatio: 0.6, vitalityRatio: 0.2, spiritRatio: 0.2 },
+                support: { weaponRatio: 0.2, vitalityRatio: 0.3, spiritRatio: 0.5 }
+            };
+            
+            const buildRatios = heroRole && ratios[heroRole] 
+                ? ratios[heroRole] 
+                : { weaponRatio: 0.33, vitalityRatio: 0.33, spiritRatio: 0.34 };
+            
+            return generateRandomBuild(budget, buildRatios);
+        }
+
+        /**
+         * Generate random match items based on selected game mode
+         * @param {String} mode - Game mode for item selection
+         * @returns {Array} Array of 4 selected items
+         */
+        function generateMatchItems(mode = 'all-random') {
+            let itemPool = [...ALL_ITEMS];
+            let selectedItems = [];
+            
+            switch(mode) {
+                case 'all-random':
+                    // Any 4 random items from entire pool
+                    selectedItems = shuffle(itemPool).slice(0, 4);
+                    break;
+                    
+                case 'balanced':
+                    // 1-2 items from each category
+                    const categories = ['weapon', 'vitality', 'spirit'];
+                    const distribution = shuffle([1, 1, 2]); // Random distribution that sums to 4
+                    
+                    categories.forEach((cat, idx) => {
+                        const categoryItems = itemPool.filter(i => i.category === cat);
+                        const count = distribution[idx];
+                        const selected = shuffle(categoryItems).slice(0, count);
+                        selectedItems.push(...selected);
+                    });
+                    
+                    // Add one more random item from any category
+                    const remainingPool = itemPool.filter(i => 
+                        !selectedItems.some(s => s.name === i.name)
+                    );
+                    selectedItems.push(shuffle(remainingPool)[0]);
+                    selectedItems = shuffle(selectedItems).slice(0, 4);
+                    break;
+                    
+                case 'budget':
+                    // Only tier 1-2 items
+                    itemPool = itemPool.filter(i => i.tier <= 2);
+                    selectedItems = shuffle(itemPool).slice(0, 4);
+                    break;
+                    
+                case 'late-game':
+                    // Only tier 3-4 items
+                    itemPool = itemPool.filter(i => i.tier >= 3);
+                    selectedItems = shuffle(itemPool).slice(0, 4);
+                    break;
+                    
+                case 'chaos':
+                    // Weighted random favoring extremes (tier 1 and 4)
+                    const weightFn = (item) => {
+                        if (item.tier === 1 || item.tier === 4) return 3;
+                        if (item.tier === 2 || item.tier === 3) return 1;
+                        return 1;
+                    };
+                    
+                    for (let i = 0; i < 4; i++) {
+                        const available = itemPool.filter(item => 
+                            !selectedItems.some(s => s.name === item.name)
+                        );
+                        if (available.length === 0) break;
+                        
+                        const selected = weightedRandomSelect(available, weightFn);
+                        selectedItems.push(selected);
+                    }
+                    break;
+                    
+                default:
+                    selectedItems = shuffle(itemPool).slice(0, 4);
+            }
+            
+            return selectedItems;
+        }
+
+        /**
+         * Display match items with enhanced visuals
+         */
+        function generateMatch() {
+            const modeSelect = document.getElementById('gameMode');
+            const mode = modeSelect.value;
+            const items = generateMatchItems(mode);
+            
+            let html = `<h3>Match Items - ${modeSelect.options[modeSelect.selectedIndex].text}</h3>`;
+            html += '<div class="match-display">';
+            
+            items.forEach(item => {
+                const categoryClass = `${item.category}-item`;
+                const tierClass = `tier-${item.tier}`;
+                
+                html += `
+                    <div class="match-item ${categoryClass} ${tierClass}">
+                        <div class="item-info">
+                            <span class="item-name">${item.name}</span>
+                            <span class="tier-badge tier-${item.tier}-badge">T${item.tier}</span>
+                        </div>
+                        <span class="cost-badge">${item.cost} souls</span>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            
+            // Calculate total cost
+            const totalCost = items.reduce((sum, item) => sum + item.cost, 0);
+            html += `<p style="text-align: center; margin-top: 15px; color: #ffd700;">Total Cost: ${totalCost} souls</p>`;
+            
+            document.getElementById('itemResult').innerHTML = html;
+        }
+
+        // ==========================================
+        // DISPLAY FUNCTIONS
+        // ==========================================
+
+        function displayRandomHero() {
+            const hero = getRandomHero();
+            document.getElementById('heroResult').innerHTML = `
+                <div class="hero-item">
+                    <strong>${hero.name}</strong><br>
+                    Role: ${hero.role}<br>
+                    Difficulty: ${hero.difficulty}
+                </div>
+            `;
+        }
+
+        function displayRandomTeam() {
+            const team1 = getRandomHeroes(6, { allowDuplicates: true });
+            const team2 = getRandomHeroes(6, { allowDuplicates: true });
+            
+            let html = '<h3>Team 1:</h3>';
+            team1.forEach(hero => {
+                html += `<div class="hero-item">${hero.name} (${hero.role})</div>`;
+            });
+            
+            html += '<h3>Team 2:</h3>';
+            team2.forEach(hero => {
+                html += `<div class="hero-item">${hero.name} (${hero.role})</div>`;
+            });
+            
+            document.getElementById('heroResult').innerHTML = html;
+        }
+
+        function displayRandomBuild() {
+            const build = generateRandomBuild(25000);
+            let html = `<h3>Random Build (${build.totalCost} souls)</h3>`;
+            
+            if (build.weapon.length > 0) {
+                html += '<div class="item-category"><h4>Weapon Items:</h4>';
+                build.weapon.forEach(item => {
+                    html += `<div class="item tier-${item.tier}">${item.name} (${item.cost})</div>`;
+                });
+                html += '</div>';
+            }
+            
+            if (build.vitality.length > 0) {
+                html += '<div class="item-category"><h4>Vitality Items:</h4>';
+                build.vitality.forEach(item => {
+                    html += `<div class="item tier-${item.tier}">${item.name} (${item.cost})</div>`;
+                });
+                html += '</div>';
+            }
+            
+            if (build.spirit.length > 0) {
+                html += '<div class="item-category"><h4>Spirit Items:</h4>';
+                build.spirit.forEach(item => {
+                    html += `<div class="item tier-${item.tier}">${item.name} (${item.cost})</div>`;
+                });
+                html += '</div>';
+            }
+            
+            document.getElementById('itemResult').innerHTML = html;
+        }
+
+        function displayBalancedBuild() {
+            const hero = getRandomHero();
+            const build = generateBalancedBuild(hero.role, 25000);
+            
+            let html = `<h3>Balanced Build for ${hero.name} (${hero.role})</h3>`;
+            html += `<p>Total Cost: ${build.totalCost} souls</p>`;
+            
+            if (build.weapon.length > 0) {
+                html += '<div class="item-category"><h4>Weapon Items:</h4>';
+                build.weapon.forEach(item => {
+                    html += `<div class="item tier-${item.tier}">${item.name} (${item.cost})</div>`;
+                });
+                html += '</div>';
+            }
+            
+            if (build.vitality.length > 0) {
+                html += '<div class="item-category"><h4>Vitality Items:</h4>';
+                build.vitality.forEach(item => {
+                    html += `<div class="item tier-${item.tier}">${item.name} (${item.cost})</div>`;
+                });
+                html += '</div>';
+            }
+            
+            if (build.spirit.length > 0) {
+                html += '<div class="item-category"><h4>Spirit Items:</h4>';
+                build.spirit.forEach(item => {
+                    html += `<div class="item tier-${item.tier}">${item.name} (${item.cost})</div>`;
+                });
+                html += '</div>';
+            }
+            
+            document.getElementById('itemResult').innerHTML = html;
+        }
+
+        function displayBalancedTeam() {
+            const team = generateBalancedTeam(6);
+            let html = '<h3>Balanced Team Composition:</h3>';
+            
+            const roleGroups = { tank: [], damage: [], support: [] };
+            team.forEach(hero => {
+                roleGroups[hero.role].push(hero);
+            });
+            
+            for (const [role, heroes] of Object.entries(roleGroups)) {
+                if (heroes.length > 0) {
+                    html += `<h4>${role.charAt(0).toUpperCase() + role.slice(1)}s:</h4>`;
+                    heroes.forEach(hero => {
+                        html += `<div class="hero-item">${hero.name}</div>`;
+                    });
+                }
+            }
+            
+            document.getElementById('teamResult').innerHTML = html;
+        }
+
+        function displayRandomDraft() {
+            const allHeroes = getRandomHeroes(12, { allowDuplicates: false });
+            const team1 = allHeroes.slice(0, 6);
+            const team2 = allHeroes.slice(6, 12);
+            
+            let html = '<h3>Draft Mode (No Duplicates):</h3>';
+            html += '<h4>Team 1:</h4>';
+            team1.forEach(hero => {
+                html += `<div class="hero-item">${hero.name} (${hero.role})</div>`;
+            });
+            
+            html += '<h4>Team 2:</h4>';
+            team2.forEach(hero => {
+                html += `<div class="hero-item">${hero.name} (${hero.role})</div>`;
+            });
+            
+            document.getElementById('teamResult').innerHTML = html;
+        }
+
+        // ==========================================
+        // EXPORT FOR EXTERNAL USE
+        // ==========================================
+        
+        // Make core data and functions available globally
+        window.DeadlockRandomizer = {
+            // Data
+            HEROES,
+            WEAPON_ITEMS,
+            VITALITY_ITEMS,
+            SPIRIT_ITEMS,
+            ALL_ITEMS,
+            
+            // Core functions
+            getRandomHero,
+            getRandomHeroes,
+            generateBalancedTeam,
+            generateRandomBuild,
+            generateBalancedBuild,
+            generateMatchItems,
+            weightedRandomSelect,
+            shuffle,
+            
+            // Utility functions
+            getHeroesByRole: (role) => HEROES.filter(h => h.role === role),
+            getHeroesByDifficulty: (difficulty) => HEROES.filter(h => h.difficulty === difficulty),
+            getItemsByTier: (tier) => ALL_ITEMS.filter(i => i.tier === tier),
+            getItemsByCategory: (category) => ALL_ITEMS.filter(i => i.category === category),
+            getItemCount: () => ({
+                total: ALL_ITEMS.length,
+                weapon: WEAPON_ITEMS.length,
+                vitality: VITALITY_ITEMS.length,
+                spirit: SPIRIT_ITEMS.length
+            })
+        };
+        
+        // Verify item counts
+        console.log('Deadlock Randomizer loaded!');
+        console.log(`Total items: ${ALL_ITEMS.length} (Expected: 132)`);
+        console.log(`Weapon items: ${WEAPON_ITEMS.length} (Expected: 42)`);
+        console.log(`Vitality items: ${VITALITY_ITEMS.length} (Expected: 50)`);
+        console.log(`Spirit items: ${SPIRIT_ITEMS.length} (Expected: 40)`);
+        console.log('Access via window.DeadlockRandomizer');
+    </script>
+</body>
+</html>
