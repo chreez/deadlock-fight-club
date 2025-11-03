@@ -111,10 +111,10 @@ Let me tell you about Bebop. He's the best character in Deadlock because of his 
    - OG meta tags (for Discord previews)
    - CSS variables matching existing theme
    - Mobile responsiveness (@media queries)
-   - Back link to main site
+   - Back link to main site (`<a href="index.html" class="back-link">← Back to Fight Club</a>`)
 
 2. **Match existing patterns:**
-   - Border radius: 8-12px
+   - Border radius: **4px** (updated standard as of 2025-11-03)
    - Padding: 20px for containers
    - Transitions: `all 0.3s ease`
    - Hover effects: slight lift + shadow
@@ -125,6 +125,10 @@ Let me tell you about Bebop. He's the best character in Deadlock because of his 
    - Desktop (> 1200px)
    - Discord embed preview
    - Dark mode (default is dark)
+
+4. **Use the Blog Post Template:**
+   - See `.claude/blog-post-template.md` for complete structure
+   - Follow checklist before publishing
 
 ---
 

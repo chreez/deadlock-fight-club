@@ -160,9 +160,48 @@
 | 2025-11-02 | Project inception | ✅ | Fight club randomizer |
 | 2025-11-02 | YouTube guide system | ✅ | Counter items guide + 3 variants |
 | 2025-11-02 | Bebop flavor constraint | ✅ | Documented as hard requirement |
+| 2025-11-03 | Production polish | ✅ | Footer navigation, back links, 4px border radius standard |
+| 2025-11-03 | YouTube embed fix | ✅ | Replaced blocked iframe with styled link |
+| 2025-11-03 | TL;DR callout | ✅ | Added cheatsheet reference in main guide |
+| 2025-11-03 | Documentation sprint | ✅ | Blog post template + standards + steering rules |
+
+---
+
+## 2025-11-03 - DOCUMENTATION SPRINT
+
+**Intent:** Codify patterns from first blog post to ensure future consistency
+
+**Problem Solved:** First blog post (counter guide) was successful, but patterns were implicit. Need explicit documentation for future blog posts and eventual multi-blog refactor.
+
+**Deliverables:**
+1. `.claude/blog-post-template.md` - Complete HTML template with all required elements
+2. `.claude/blog-post-standards.md` - Quick reference steering rules for content creation
+3. Updated `.claude/content-guidelines.md` - Corrected border radius to 4px standard
+
+**Key Standards Documented:**
+- ✅ Meta tag requirements (Primary, OpenGraph, Twitter)
+- ✅ CSS variable usage (no hardcoded colors)
+- ✅ Border radius standard (4px everywhere)
+- ✅ Bebop bias placement and phrasing rules
+- ✅ Back link requirement for all blog posts
+- ✅ Mobile responsiveness breakpoints
+- ✅ Pre-publish checklist
+- ✅ Content structure patterns (from counter-guide.html)
+- ✅ TL;DR callout pattern for companion cheatsheets
+
+**Future Refactor Notes:**
+- Current: Single blog posts at root (`/counter-guide.html`)
+- Future: Multi-blog system with `/blog/` directory, index page, metadata JSON, tags, RSS
+
+**Reference Files for Future Blog Posts:**
+- Primary: `counter-guide.html` (default structure to match)
+- Supporting: `counter-cheatsheet.html` (companion quick reference)
+- Templates: `.claude/blog-post-template.md`
+- Standards: `.claude/blog-post-standards.md`
+- Guidelines: `.claude/content-guidelines.md`
 
 ---
 
 **Document Owner:** chreez (Bebop Main)
-**Last Updated:** 2025-11-02 19:15:00
+**Last Updated:** 2025-11-03
 **Status:** Active Development
