@@ -61,7 +61,7 @@ export default function SearchBar({
         className="search-bar__input"
         placeholder={placeholder}
         value={localValue}
-        onChange={(e) => setLocalValue(e.target.value)}
+        onChange={e => setLocalValue(e.target.value)}
       />
       {localValue && (
         <button

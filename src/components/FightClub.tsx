@@ -28,7 +28,7 @@ export default function FightClub() {
     const player2Items: Item[] = [];
 
     let i = 0;
-    combo.tiers.forEach((tier) => {
+    combo.tiers.forEach(tier => {
       while (i < shuffledItems.length && shuffledItems[i].tier !== tier) {
         i++;
       }
@@ -38,7 +38,7 @@ export default function FightClub() {
       }
     });
 
-    combo.tiers.forEach((tier) => {
+    combo.tiers.forEach(tier => {
       while (i < shuffledItems.length && shuffledItems[i].tier !== tier) {
         i++;
       }
@@ -75,10 +75,10 @@ export default function FightClub() {
 
     const text = `FIGHT CLUB MATCH
 Player 1: ${matchData.hero1.name}
-Items: ${matchData.player1Items.map((i) => `${i.name} (${i.cost}s)`).join(', ')}
+Items: ${matchData.player1Items.map(i => `${i.name} (${i.cost}s)`).join(', ')}
 
 Player 2: ${matchData.hero2.name}
-Items: ${matchData.player2Items.map((i) => `${i.name} (${i.cost}s)`).join(', ')}
+Items: ${matchData.player2Items.map(i => `${i.name} (${i.cost}s)`).join(', ')}
 
 Total Cost per Player: ${matchData.totalCost.toLocaleString()} souls`;
 

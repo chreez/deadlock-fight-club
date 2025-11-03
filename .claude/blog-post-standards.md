@@ -1,6 +1,7 @@
 # Blog Post Standards - Quick Reference
 
 ## Purpose
+
 This document provides steering rules for AI assistants and developers creating new blog posts for Deadlock Fight Club. These standards ensure consistency with the existing counter guide.
 
 ---
@@ -45,9 +46,9 @@ Every blog post MUST include:
 ### Colors (Use CSS Variables)
 
 ```css
---accent-orange: #ff8c42;   /* Primary CTAs, links, highlights */
---accent-purple: #7c4dff;   /* Secondary actions, gradients */
---text-secondary: #a0a0a0;  /* Subtitles, captions */
+--accent-orange: #ff8c42; /* Primary CTAs, links, highlights */
+--accent-purple: #7c4dff; /* Secondary actions, gradients */
+--text-secondary: #a0a0a0; /* Subtitles, captions */
 ```
 
 ### Border Radius
@@ -55,6 +56,7 @@ Every blog post MUST include:
 **Standard:** `4px` everywhere (as of 2025-11-03)
 
 **Applies to:**
+
 - Buttons
 - Cards
 - Containers
@@ -83,43 +85,42 @@ body: 1rem, line-height: 1.6
 
 <!-- Source link if applicable -->
 <div class="video-link-container">
-    <a href="[url]" target="_blank" class="youtube-link">
-        <span class="youtube-icon">▶</span>[Link Text]
-    </a>
+  <a href="[url]" target="_blank" class="youtube-link">
+    <span class="youtube-icon">▶</span>[Link Text]
+  </a>
 </div>
 
 <div class="summary-box">
-    <h3>📖 [Section Title]</h3>
-    <p>[Overview paragraph 1]</p>
-    <p>[Overview paragraph 2]</p>
+  <h3>📖 [Section Title]</h3>
+  <p>[Overview paragraph 1]</p>
+  <p>[Overview paragraph 2]</p>
 
-    <!-- TL;DR callout if companion cheatsheet exists -->
-    <p style="...">
-        <strong>⚡ TL;DR?</strong> If you don't want to read any of this...
-    </p>
+  <!-- TL;DR callout if companion cheatsheet exists -->
+  <p style="..."><strong>⚡ TL;DR?</strong> If you don't want to read any of this...</p>
 
-    <!-- Bebop bias (REQUIRED) -->
-    <p style="...">
-        [Bebop bias statement]
-    </p>
+  <!-- Bebop bias (REQUIRED) -->
+  <p style="...">[Bebop bias statement]</p>
 </div>
 ```
 
 ### Bebop Bias Rules
 
 **DO:**
+
 - ✅ Place in summary box (last paragraph or separated)
 - ✅ Use natural phrasing ("Bebop is objectively the best character...")
 - ✅ Keep it 1-2 sentences
 - ✅ Make it self-aware and charming
 
 **DON'T:**
+
 - ❌ Say "I'm a Bebop main" or "As a Bebop main"
 - ❌ Make it too long (distracts from content)
 - ❌ Make it too subtle (must be obvious)
 - ❌ Add it to core UI elements
 
 **Example from counter-guide.html:**
+
 ```
 While Bebop is objectively the best character in the game, even he's not immune to smart counter-building. (Though Reactive Barrier does get mentioned suspiciously often in this guide... just saying.)
 ```
@@ -131,25 +132,26 @@ While Bebop is objectively the best character in the game, even he's not immune 
 ```html
 <!-- Primary Meta Tags -->
 <title>[Page Title] - Deadlock Fight Club</title>
-<meta name="title" content="[Page Title] - Deadlock Fight Club">
-<meta name="description" content="[150-160 chars]">
+<meta name="title" content="[Page Title] - Deadlock Fight Club" />
+<meta name="description" content="[150-160 chars]" />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://deadlock-randomizer.netlify.app/[filename].html">
-<meta property="og:title" content="[Page Title] - Deadlock Fight Club">
-<meta property="og:description" content="[150-160 chars]">
-<meta property="og:image" content="[Image URL - 1200x630px min]">
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://deadlock-randomizer.netlify.app/[filename].html" />
+<meta property="og:title" content="[Page Title] - Deadlock Fight Club" />
+<meta property="og:description" content="[150-160 chars]" />
+<meta property="og:image" content="[Image URL - 1200x630px min]" />
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://deadlock-randomizer.netlify.app/[filename].html">
-<meta property="twitter:title" content="[Page Title] - Deadlock Fight Club">
-<meta property="twitter:description" content="[150-160 chars]">
-<meta property="twitter:image" content="[Image URL]">
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://deadlock-randomizer.netlify.app/[filename].html" />
+<meta property="twitter:title" content="[Page Title] - Deadlock Fight Club" />
+<meta property="twitter:description" content="[150-160 chars]" />
+<meta property="twitter:image" content="[Image URL]" />
 ```
 
 **Critical:**
+
 - All URLs must be absolute (include full domain)
 - OG image must be 1200x630px or larger
 - Description must be 150-160 characters
@@ -162,18 +164,27 @@ Required breakpoints:
 
 ```css
 @media (max-width: 768px) {
-    h1 { font-size: 2rem; }
-    .subtitle { font-size: 1rem; }
-    /* Single column layouts */
+  h1 {
+    font-size: 2rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+  /* Single column layouts */
 }
 
 @media (max-width: 480px) {
-    h1 { font-size: 1.5rem; }
-    body { padding: 10px; }
+  h1 {
+    font-size: 1.5rem;
+  }
+  body {
+    padding: 10px;
+  }
 }
 ```
 
 Test on:
+
 - Desktop (> 1200px)
 - Tablet (768-1200px)
 - Mobile (< 768px)
@@ -184,11 +195,13 @@ Test on:
 ## ✍️ Writing Guidelines
 
 ### Paragraph Length
+
 - **Max 3-4 sentences per paragraph**
 - Use line breaks for readability
 - Break up long sections with headings
 
 ### Tone
+
 - Technical but accessible
 - Data-driven (include costs, percentages, durations)
 - Community-oriented ("we" language)
@@ -196,6 +209,7 @@ Test on:
 - Concise (respect reader's time)
 
 ### Data Presentation
+
 ```html
 <!-- Always include specific numbers -->
 <span class="item-cost">1600 souls</span>
@@ -227,15 +241,18 @@ Before `git push`:
 ## 🔍 Reference Files
 
 **Primary Reference:**
+
 - `counter-guide.html` - Main blog post example (default structure)
 
 **Supporting References:**
+
 - `counter-cheatsheet.html` - Companion quick reference
 - `counter-guide-variant-collapsible.html` - Collapsible UI variation
 - `counter-guide-variant-table.html` - Table UI variation
 - `counter-guide-variant-cards.html` - Card grid UI variation
 
 **Documentation:**
+
 - `.claude/blog-post-template.md` - Complete HTML template
 - `.claude/content-guidelines.md` - Comprehensive writing guide
 - `docs/intent-deadlock-fight-club.md` - Project intent log
@@ -248,22 +265,20 @@ Before `git push`:
 
 ```html
 <div class="item-card">
-    <div class="item-header">
-        <span class="item-name">[Item Name]</span>
-        <div>
-            <span class="item-cost">[Cost] souls</span>
-            <span class="item-tier tier-[1-4]">Tier [1-4]</span>
-        </div>
+  <div class="item-header">
+    <span class="item-name">[Item Name]</span>
+    <div>
+      <span class="item-cost">[Cost] souls</span>
+      <span class="item-tier tier-[1-4]">Tier [1-4]</span>
     </div>
-    <div class="item-effect">[Description]</div>
-    <div class="counters-list">
-        <strong>Counters:</strong><br>
-        <span class="counter-tag">[Hero]</span>
-        <span class="counter-tag">[Hero]</span>
-    </div>
-    <div class="tip-box">
-        <strong>💡 Pro Tip:</strong> [Tactical insight]
-    </div>
+  </div>
+  <div class="item-effect">[Description]</div>
+  <div class="counters-list">
+    <strong>Counters:</strong><br />
+    <span class="counter-tag">[Hero]</span>
+    <span class="counter-tag">[Hero]</span>
+  </div>
+  <div class="tip-box"><strong>💡 Pro Tip:</strong> [Tactical insight]</div>
 </div>
 ```
 
@@ -271,22 +286,26 @@ Before `git push`:
 
 ```html
 <details open>
-    <summary class="section-header">
-        <span class="category-icon">[Emoji]</span>
-        [Section Title]
-        <span class="toggle-icon">▼</span>
-    </summary>
-    <div class="section-content">
-        [Content here]
-    </div>
+  <summary class="section-header">
+    <span class="category-icon">[Emoji]</span>
+    [Section Title]
+    <span class="toggle-icon">▼</span>
+  </summary>
+  <div class="section-content">[Content here]</div>
 </details>
 ```
 
 ### TL;DR Callout (New Pattern - 2025-11-03)
 
 ```html
-<p style="font-size: 1rem; color: var(--accent-orange); margin-top: 15px; padding: 12px; background: rgba(255, 140, 66, 0.1); border-left: 3px solid var(--accent-orange); border-radius: 4px;">
-    <strong>⚡ TL;DR?</strong> If you don't want to read any of this, check out the <a href="counter-cheatsheet.html" style="color: var(--accent-orange); text-decoration: underline;">Quick Cheatsheet</a> for instant hero-specific counters.
+<p
+  style="font-size: 1rem; color: var(--accent-orange); margin-top: 15px; padding: 12px; background: rgba(255, 140, 66, 0.1); border-left: 3px solid var(--accent-orange); border-radius: 4px;"
+>
+  <strong>⚡ TL;DR?</strong> If you don't want to read any of this, check out the
+  <a href="counter-cheatsheet.html" style="color: var(--accent-orange); text-decoration: underline;"
+    >Quick Cheatsheet</a
+  >
+  for instant hero-specific counters.
 </p>
 ```
 
@@ -306,11 +325,13 @@ Before `git push`:
 8. Implement search functionality
 
 **Current single-post approach:**
+
 - Posts live at root (`/counter-guide.html`)
 - Navigation via footer links on `index.html`
 - No blog index page yet
 
 **Future multi-blog approach:**
+
 - Posts in subdirectories (`/blog/counter-guide/`)
 - Blog index at `/blog/`
 - Tag filtering and search

@@ -99,8 +99,8 @@ describe('FAIR_ITEM_COMBOS', () => {
 
   it('should have expected combo totals', () => {
     const totals = FAIR_ITEM_COMBOS.map(c => c.total);
-    expect(totals).toContain(2000);  // All tier 1
-    expect(totals).toContain(5250);  // Mixed low
+    expect(totals).toContain(2000); // All tier 1
+    expect(totals).toContain(5250); // Mixed low
     expect(totals).toContain(12000); // All tier 3
     expect(totals).toContain(10950); // High value mix
   });

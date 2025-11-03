@@ -22,10 +22,10 @@
   --spirit-color: #9c27b0;
 
   /* Tier colors */
-  --tier1-color: #4caf50;   /* Green */
-  --tier2-color: #2196f3;   /* Blue */
-  --tier3-color: #9c27b0;   /* Purple */
-  --tier4-color: #ff9800;   /* Orange */
+  --tier1-color: #4caf50; /* Green */
+  --tier2-color: #2196f3; /* Blue */
+  --tier3-color: #9c27b0; /* Purple */
+  --tier4-color: #ff9800; /* Orange */
 
   /* Border radius standard */
   --border-radius: 4px;

@@ -7,11 +7,7 @@ export interface HeaderProps {
   backHref?: string;
 }
 
-export default function Header({
-  title,
-  showBackLink = false,
-  backHref = '/',
-}: HeaderProps) {
+export default function Header({ title, showBackLink = false, backHref = '/' }: HeaderProps) {
   return (
     <header className="header">
       <div className="header__container">

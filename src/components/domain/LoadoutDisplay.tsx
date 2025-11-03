@@ -9,18 +9,17 @@ export interface LoadoutDisplayProps {
   title?: string;
 }
 
-export default function LoadoutDisplay({
-  items,
-  totalCost,
-  title,
-}: LoadoutDisplayProps) {
+export default function LoadoutDisplay({ items, totalCost, title }: LoadoutDisplayProps) {
   const calculatedCost = totalCost ?? items.reduce((sum, item) => sum + item.cost, 0);
 
   // Count tier distribution
-  const tierDistribution = items.reduce((acc, item) => {
-    acc[item.tier] = (acc[item.tier] || 0) + 1;
-    return acc;
-  }, {} as Record<number, number>);
+  const tierDistribution = items.reduce(
+    (acc, item) => {
+      acc[item.tier] = (acc[item.tier] || 0) + 1;
+      return acc;
+    },
+    {} as Record<number, number>
+  );
 
   return (
     <div className="loadout-display">
@@ -38,7 +37,7 @@ export default function LoadoutDisplay({
         <div className="loadout-display__stat">
           <span className="loadout-display__stat-label">Tier Distribution:</span>
           <span className="loadout-display__stat-value">
-            {[1, 2, 3, 4].map((tier) => (
+            {[1, 2, 3, 4].map(tier => (
               <span key={tier} className="loadout-display__tier-count">
                 T{tier}: {tierDistribution[tier] || 0}
               </span>

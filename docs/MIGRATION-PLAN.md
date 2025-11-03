@@ -3,6 +3,7 @@
 ## Project Overview
 
 Migrating the Deadlock Fight Club website from static HTML to Astro + React for:
+
 - Component-based architecture with reusable UI elements
 - Type-safe development with TypeScript
 - Consistent design system and quality standards
@@ -14,6 +15,7 @@ Migrating the Deadlock Fight Club website from static HTML to Astro + React for:
 ### ✅ Completed Phases
 
 #### Phase 1: Foundation (Commit 028daa1)
+
 - ✅ Deleted 8 unused HTML files (variants, tests, legacy)
 - ✅ Deleted unused shell scripts
 - ✅ Initialized Astro v5.15.3 with React 19 + TypeScript (strict mode)
@@ -23,6 +25,7 @@ Migrating the Deadlock Fight Club website from static HTML to Astro + React for:
 - ✅ Updated .gitignore for node_modules, dist, .astro
 
 #### Phase 2: Data Layer (Commit 7370d0d)
+
 - ✅ Created TypeScript data types (Hero, Item, CounterItem, etc.)
 - ✅ Extracted 32 heroes to src/data/heroes.ts
 - ✅ Extracted 132 items to src/data/items.ts
@@ -32,6 +35,7 @@ Migrating the Deadlock Fight Club website from static HTML to Astro + React for:
 - ✅ Created asset path utilities (getHeroPortrait, getItemIcon, getAbilityIcon)
 
 #### Phase 3: Design System (Commit 17e95a6)
+
 - ✅ Created CSS design tokens in src/styles/tokens.css
   - Colors: backgrounds, accents, text, categories, tiers
   - Spacing: xs, sm, md, lg, xl
@@ -165,6 +169,7 @@ Components to create:
 **React Component:** `src/components/FightClub.tsx` (client:load)
 
 Features to implement:
+
 - Hero selection grid (2 heroes)
 - Item loadout generator (6 items each)
 - Fair combo selection dropdown
@@ -173,12 +178,14 @@ Features to implement:
 - Responsive layout (stacked on mobile)
 
 **Data Integration:**
+
 - Import HEROES from src/data/heroes.ts
 - Import ITEMS, FAIR_ITEM_COMBOS from src/data/items.ts
 - Use shuffle() from src/utils/random.ts
 - Use getHeroPortrait(), getItemIcon() from src/utils/assets.ts
 
 **Styling:**
+
 - Use global styles and tokens
 - Gradient background
 - Card-based layout with shadows
@@ -193,6 +200,7 @@ Features to implement:
 **File:** `src/pages/counter-guide.astro`
 
 Features to implement:
+
 - Hero counter sections (24 heroes)
 - Accordion-style or card-based layout
 - Hero portraits in section headers
@@ -202,11 +210,13 @@ Features to implement:
 - Table of contents navigation
 
 **Data Integration:**
+
 - Import HERO_COUNTERS from src/data/counterData.ts
 - Import HEROES from src/data/heroes.ts
 - Use getHeroPortrait(), getItemIcon() from src/utils/assets.ts
 
 **Asset Integration:**
+
 - Hero portraits in headers
 - Item icons in counter lists
 - Ability icons where relevant
@@ -220,6 +230,7 @@ Features to implement:
 **File:** `src/pages/counter-cheatsheet.astro`
 
 Features to implement:
+
 - Searchable hero grid
 - Quick lookup cards
 - Hero portraits
@@ -229,11 +240,13 @@ Features to implement:
 - Mobile-optimized layout
 
 **Data Integration:**
+
 - Import HERO_COUNTERS from src/data/counterData.ts
 - Limit to top 3 counters per hero
 - Use getHeroPortrait(), getItemIcon() from src/utils/assets.ts
 
 **Asset Integration:**
+
 - Hero portraits in grid
 - Item icons for top counters
 
@@ -248,6 +261,7 @@ Features to implement:
 **File:** `docs/guides/content-guidelines.md` (update existing)
 
 Additions needed:
+
 - Asset integration rules
   - When to use hero portraits
   - When to use item icons
@@ -271,6 +285,7 @@ Additions needed:
 **File:** `docs/guides/component-guidelines.md` (new)
 
 Content:
+
 - Component structure standards
 - Props interface patterns
 - TypeScript typing best practices
@@ -288,6 +303,7 @@ Content:
 **File:** `docs/guides/component-catalog.md` (new)
 
 Content:
+
 - Complete list of all components
 - Props documentation for each
 - Usage examples
@@ -306,6 +322,7 @@ Content:
 **File:** `netlify.toml` (update/create)
 
 Required settings:
+
 ```toml
 [build]
   command = "npm run build"
@@ -320,6 +337,7 @@ Required settings:
 **File:** `.gitignore` (verify)
 
 Ensure these are ignored:
+
 - node_modules/
 - dist/
 - .astro/
@@ -363,6 +381,7 @@ Ensure these are ignored:
    npm run build
    npm run preview
    ```
+
    - Verify dist/ directory structure
    - Test preview on localhost
    - Check for console errors
@@ -375,6 +394,7 @@ Ensure these are ignored:
 ## Quick Reference
 
 ### File Structure
+
 ```
 deadlock-fight-club/
 ├── src/
@@ -409,6 +429,7 @@ deadlock-fight-club/
 ```
 
 ### Commands
+
 ```bash
 npm run dev      # Development server (localhost:4321)
 npm run build    # Production build to dist/
@@ -416,11 +437,13 @@ npm run preview  # Preview production build
 ```
 
 ### Completed Commits
+
 1. `028daa1` - Foundation: Astro + React + Netlify, cleanup
 2. `7370d0d` - Data layer: Heroes, items, counters, utilities
 3. `17e95a6` - Design system: Tokens, global styles, theme
 
 ### Next Commits (Planned)
+
 4. Core component library
 5. Domain component library
 6. Layout component library
@@ -436,6 +459,7 @@ npm run preview  # Preview production build
 ## Notes
 
 ### Why Astro was chosen:
+
 - Best for content-heavy static sites
 - Ships zero JavaScript by default (partial hydration)
 - Perfect for hybrid approach (static guides + interactive Fight Club)
@@ -443,12 +467,14 @@ npm run preview  # Preview production build
 - Can use React only where needed
 
 ### Migration strategy:
+
 - Keep old HTML in archive/ for reference
 - Build new Astro versions in parallel
 - Deploy with route swapping one at a time
 - Maintain both until fully tested
 
 ### Known Issues:
+
 - Default index.astro shows "Astro" heading (expected, not migrated yet)
 - Build succeeds but pages need to be created
 - Dev server works at http://localhost:4321

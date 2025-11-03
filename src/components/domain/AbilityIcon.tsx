@@ -8,11 +8,7 @@ export interface AbilityIconProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export default function AbilityIcon({
-  heroName,
-  abilityName,
-  size = 'md',
-}: AbilityIconProps) {
+export default function AbilityIcon({ heroName, abilityName, size = 'md' }: AbilityIconProps) {
   const [imageError, setImageError] = useState(false);
   const iconPath = getAbilityIcon(heroName, abilityName);
 

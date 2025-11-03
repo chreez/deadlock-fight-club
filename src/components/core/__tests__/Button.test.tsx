@@ -47,7 +47,11 @@ describe('Button component', () => {
   it('should not call onClick when disabled', async () => {
     const handleClick = vi.fn();
     const user = userEvent.setup();
-    render(<Button onClick={handleClick} disabled>Disabled</Button>);
+    render(
+      <Button onClick={handleClick} disabled>
+        Disabled
+      </Button>
+    );
 
     const button = screen.getByRole('button');
     await user.click(button);
@@ -73,11 +77,7 @@ describe('Button component', () => {
   });
 
   it('should render both icon and content', () => {
-    render(
-      <Button icon={<span data-testid="icon">⚡</span>}>
-        Content Text
-      </Button>
-    );
+    render(<Button icon={<span data-testid="icon">⚡</span>}>Content Text</Button>);
 
     expect(screen.getByTestId('icon')).toBeInTheDocument();
     expect(screen.getByText(/content text/i)).toBeInTheDocument();

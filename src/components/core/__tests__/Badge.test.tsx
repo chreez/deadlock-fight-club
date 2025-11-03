@@ -80,9 +80,7 @@ describe('Badge component', () => {
 
   describe('custom colors', () => {
     it('should use custom color when provided', () => {
-      const { container } = render(
-        <Badge type="tier" value={1} color="#ff0000" />
-      );
+      const { container } = render(<Badge type="tier" value={1} color="#ff0000" />);
       const badge = container.querySelector('.badge');
       expect(badge).toHaveStyle({ '--badge-color': '#ff0000' });
     });

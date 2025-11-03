@@ -15,7 +15,7 @@ export default function FooterNav({ currentPage }: FooterNavProps) {
   return (
     <nav className="footer-nav">
       <div className="footer-nav__container">
-        {links.map((link) => (
+        {links.map(link => (
           <a
             key={link.id}
             href={link.href}

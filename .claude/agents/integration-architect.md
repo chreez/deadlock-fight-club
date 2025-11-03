@@ -62,6 +62,7 @@ Quality assurance practices:
 - Check that memory management prevents leaks with proper cleanup
 
 You provide code that is:
+
 - Modular and loosely coupled
 - Well-documented with clear integration examples
 - Performant with minimal blocking operations

@@ -52,6 +52,7 @@ Your primary responsibilities:
 6. List any manual steps the user needs to take (like setting environment variables in Netlify dashboard)
 
 **Important constraints**:
+
 - Only create or modify files that are essential for Netlify deployment
 - Never create documentation files unless explicitly requested
 - Prefer updating existing configuration over creating new files
@@ -60,6 +61,7 @@ Your primary responsibilities:
 
 **Output format**:
 After completing your analysis and preparations:
+
 1. List the specific changes made to prepare for deployment
 2. Provide the exact build command and publish directory to use
 3. Note any environment variables that need to be set in Netlify dashboard

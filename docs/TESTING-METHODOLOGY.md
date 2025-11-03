@@ -3,12 +3,14 @@
 ## Automated Testing Commands
 
 ### 1. Build Verification
+
 ```bash
 npm run build
 # Success criteria: Build completes without errors, all pages prerendered
 ```
 
 ### 2. Dev Server Health Check
+
 ```bash
 curl -s http://localhost:4323/ | grep -q "fight-club" && echo "✓ Homepage loads" || echo "✗ Homepage broken"
 curl -s http://localhost:4323/guides | grep -q "Deadlock Guides" && echo "✓ Guides page loads" || echo "✗ Guides broken"
@@ -17,6 +19,7 @@ curl -s http://localhost:4323/counter-cheatsheet | grep -q "Counter Cheatsheet" 
 ```
 
 ### 3. Asset Verification
+
 ```bash
 # Check if assets exist
 ls public/assets/heroes/*.png | wc -l  # Should show ~29 hero portraits
@@ -27,12 +30,14 @@ curl -s http://localhost:4323/ | grep -o '/assets/heroes/[^"]*' | head -5
 ```
 
 ### 4. React Component Hydration Check
+
 ```bash
 # Verify astro-islands are present (React components loading)
 curl -s http://localhost:4323/ | grep -c "astro-island"  # Should be > 0
 ```
 
 ### 5. Production Build Size Check
+
 ```bash
 npm run build && du -sh dist/  # Should be reasonable size
 ```
@@ -40,6 +45,7 @@ npm run build && du -sh dist/  # Should be reasonable size
 ## Manual Testing Checklist
 
 ### Homepage (Fight Club Generator)
+
 - [ ] Page loads without errors
 - [ ] "Generate Fight Club Match" button appears
 - [ ] Clicking button generates 2 random heroes
@@ -54,6 +60,7 @@ npm run build && du -sh dist/  # Should be reasonable size
 - [ ] Mobile responsive (test at 375px width)
 
 ### Guides Page
+
 - [ ] Page loads without errors
 - [ ] Shows 2 guide cards (Counter Guide, Cheatsheet)
 - [ ] Cards have hover effects
@@ -63,6 +70,7 @@ npm run build && du -sh dist/  # Should be reasonable size
 - [ ] Mobile responsive
 
 ### Counter Guide Page
+
 - [ ] Page loads without errors
 - [ ] Guide overview TipBox displays
 - [ ] Passive items section visible
@@ -75,6 +83,7 @@ npm run build && du -sh dist/  # Should be reasonable size
 - [ ] Mobile responsive
 
 ### Counter Cheatsheet Page
+
 - [ ] Page loads without errors
 - [ ] Search bar appears
 - [ ] Shows "Showing all X heroes" text
@@ -86,6 +95,7 @@ npm run build && du -sh dist/  # Should be reasonable size
 - [ ] Mobile responsive
 
 ### Cross-Page Testing
+
 - [ ] Navigation between all pages works
 - [ ] Site header appears on all pages
 - [ ] Site header logo links to /
@@ -96,6 +106,7 @@ npm run build && du -sh dist/  # Should be reasonable size
 - [ ] No console errors
 
 ### Performance Testing
+
 - [ ] Lighthouse score > 90 (Performance)
 - [ ] Lighthouse score > 90 (Accessibility)
 - [ ] Lighthouse score > 90 (Best Practices)
@@ -104,6 +115,7 @@ npm run build && du -sh dist/  # Should be reasonable size
 - [ ] Time to Interactive < 3.0s
 
 ### Browser Compatibility
+
 - [ ] Chrome/Edge (latest)
 - [ ] Firefox (latest)
 - [ ] Safari (latest)
@@ -170,11 +182,13 @@ Save as `test.sh`, make executable with `chmod +x test.sh`, then run with `./tes
 ## Continuous Testing
 
 Before each commit:
+
 ```bash
 npm run build  # Verify build works
 ```
 
 Before each push to production:
+
 ```bash
 ./test.sh  # Run full automated test suite
 # Then manually test in browser
@@ -183,24 +197,29 @@ Before each push to production:
 ## Common Issues and Solutions
 
 ### Issue: Assets not loading
+
 **Check:** Are assets in `public/assets/`?
 **Solution:** Verify paths in `src/utils/assets.ts` match actual file structure
 
 ### Issue: React components not interactive
+
 **Check:** Are components using `client:load` directive?
 **Solution:** Add `client:load` to component in `.astro` files
 
 ### Issue: Build succeeds but pages broken
+
 **Check:** Run dev server and check browser console
 **Solution:** Fix TypeScript errors or React component issues
 
 ### Issue: Styling not applying
+
 **Check:** Are CSS imports present in components?
 **Solution:** Import CSS files in component files
 
 ## Success Criteria
 
 ✅ **Production Ready When:**
+
 - All automated tests pass
 - All manual checklist items checked
 - Lighthouse scores > 90 across the board

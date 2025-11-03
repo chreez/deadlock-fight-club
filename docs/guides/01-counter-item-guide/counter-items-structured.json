@@ -98,7 +98,14 @@
       "tier": null,
       "category": "Active (Parry)",
       "effect": "Transforms your parry to protect you from the damaging effects of enemy abilities and items. Time the parry just before an ability reaches you",
-      "counters": ["Bebop (Hook, Bomb, Uppercut)", "Lash (Slam)", "Grey Talon (Ult)", "Holiday (Lasso)", "Paige (Ult)", "Calico (Bombs)"],
+      "counters": [
+        "Bebop (Hook, Bomb, Uppercut)",
+        "Lash (Slam)",
+        "Grey Talon (Ult)",
+        "Holiday (Lasso)",
+        "Paige (Ult)",
+        "Calico (Bombs)"
+      ],
       "tips": "One of the few items that can be bought every game on any hero. Note: Counterspelling Bebop's bomb puts it on cooldown but he still gains a stack",
       "useCase": "Almost every ability in the game becomes useless against someone who has mastered counterspell"
     },
@@ -118,7 +125,13 @@
       "tier": null,
       "category": "Active",
       "effect": "Drops an anvil on someone's head, knocking them down and stunning them. Prevents and cancels many ultimates",
-      "counters": ["Bebop (Ult)", "Moe (Ult)", "Flying characters", "Big animation ultimates", "Moe and Krill (when burrowing)"],
+      "counters": [
+        "Bebop (Ult)",
+        "Moe (Ult)",
+        "Flying characters",
+        "Big animation ultimates",
+        "Moe and Krill (when burrowing)"
+      ],
       "tips": "Absolute menace against flying characters or anyone mid-animation. Hit Moe and Krill with knockdown when they're constantly burrowing",
       "useCase": "Cancel ultimates and punish flying heroes"
     },
@@ -210,7 +223,17 @@
       "tier": 2,
       "category": "Anti-Heal",
       "effect": "Spirit damage applies 35% healing reduction. Heals you for 275 on kills",
-      "counters": ["Victor", "Shiv", "Billy", "Yamato", "Abrams", "Calico", "Kelvin", "Mirage", "Lady Geist"],
+      "counters": [
+        "Victor",
+        "Shiv",
+        "Billy",
+        "Yamato",
+        "Abrams",
+        "Calico",
+        "Kelvin",
+        "Mirage",
+        "Lady Geist"
+      ],
       "tips": "Fantastic early game option good on all heroes. Game-changing when struggling in lane against constant healing",
       "useCase": "Must-buy against lifesteal-heavy heroes"
     },

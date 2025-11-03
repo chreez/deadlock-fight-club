@@ -20,7 +20,7 @@ export default function HeroCard({ hero, onClick, selected = false }: HeroCardPr
       tabIndex={onClick ? 0 : undefined}
       onKeyDown={
         onClick
-          ? (e) => {
+          ? e => {
               if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 onClick();

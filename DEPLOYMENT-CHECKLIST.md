@@ -3,13 +3,15 @@
 ## Pre-Deployment Preparation ✅
 
 ### Files Prepared:
+
 - ✅ **index.html** - Main application file with SEO optimization
 - ✅ **deadlock-randomizer.html** - Alternative version (redirects to main)
 - ✅ **netlify.toml** - Netlify configuration with redirects and headers
-- ✅ **_headers** - Additional security and caching headers
+- ✅ **\_headers** - Additional security and caching headers
 - ✅ **DEPLOYMENT-CHECKLIST.md** - This checklist
 
 ### SEO & Meta Tags:
+
 - ✅ Added comprehensive meta description
 - ✅ Added Open Graph tags for social sharing
 - ✅ Added Twitter card metadata
@@ -18,6 +20,7 @@
 - ✅ Added favicon references (files need to be created separately)
 
 ### Performance & Security:
+
 - ✅ All assets are inline (CSS/JS) - no external dependencies
 - ✅ Security headers configured
 - ✅ Caching strategies implemented
@@ -27,12 +30,14 @@
 ## Deployment Options
 
 ### Option 1: Netlify Drag & Drop (Easiest)
+
 1. Open [Netlify](https://netlify.app)
 2. Drag the `/Users/chris/deadlock` folder to the deployment area
 3. Wait for deployment to complete
 4. Note the generated URL (will be something like `https://wonderful-name-123456.netlify.app`)
 
 ### Option 2: Netlify CLI
+
 ```bash
 # Install Netlify CLI (if not already installed)
 npm install -g netlify-cli
@@ -48,6 +53,7 @@ netlify deploy --prod --dir .
 ```
 
 ### Option 3: Git Integration (Recommended for updates)
+
 1. Initialize git repository:
    ```bash
    cd /Users/chris/deadlock
@@ -62,6 +68,7 @@ netlify deploy --prod --dir .
 ## Post-Deployment Tasks
 
 ### Required Actions:
+
 - [ ] **Test the live site** - Ensure all functionality works
 - [ ] **Update URLs** - If the final domain differs from `deadlock-randomizer.netlify.app`:
   - Update meta tags in `index.html` (og:url, twitter:url, etc.)
@@ -73,6 +80,7 @@ netlify deploy --prod --dir .
   - Update all meta tag URLs to use custom domain
 
 ### Optional Enhancements:
+
 - [ ] **Create favicon files**:
   - `/favicon.svg` (vector icon)
   - `/favicon.png` (fallback icon)
@@ -88,6 +96,7 @@ netlify deploy --prod --dir .
 ## Testing Checklist
 
 After deployment, verify:
+
 - [ ] **Hero Randomizer** works correctly
 - [ ] **Item Build Generator** functions properly
 - [ ] **Custom Game Mode** settings apply correctly
@@ -107,6 +116,7 @@ After deployment, verify:
 ## Key Features Verified
 
 The site includes:
+
 - ✅ Comprehensive hero database with roles and attributes
 - ✅ Advanced item build generation with budget constraints
 - ✅ Custom game mode configuration
@@ -126,12 +136,14 @@ The site includes:
 ## Troubleshooting
 
 **If deployment fails:**
+
 1. Check netlify.toml syntax
 2. Ensure all file paths are correct
 3. Verify no missing files referenced
 4. Check Netlify build logs for specific errors
 
 **If features don't work:**
+
 1. Check browser console for JavaScript errors
 2. Verify all inline scripts are properly formatted
 3. Test in different browsers

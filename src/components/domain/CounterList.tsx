@@ -11,14 +11,17 @@ export interface CounterListProps {
 
 export default function CounterList({ counters, heroName }: CounterListProps) {
   // Group counters by category
-  const groupedCounters = counters.reduce((acc, counter) => {
-    const category = counter.category;
-    if (!acc[category]) {
-      acc[category] = [];
-    }
-    acc[category].push(counter);
-    return acc;
-  }, {} as Record<string, CounterItem[]>);
+  const groupedCounters = counters.reduce(
+    (acc, counter) => {
+      const category = counter.category;
+      if (!acc[category]) {
+        acc[category] = [];
+      }
+      acc[category].push(counter);
+      return acc;
+    },
+    {} as Record<string, CounterItem[]>
+  );
 
   const categoryOrder = ['weapon', 'vitality', 'spirit'];
   const sortedCategories = Object.keys(groupedCounters).sort((a, b) => {
@@ -30,7 +33,7 @@ export default function CounterList({ counters, heroName }: CounterListProps) {
   return (
     <div className="counter-list">
       <h3 className="counter-list__title">Counter Items for {heroName}</h3>
-      {sortedCategories.map((category) => (
+      {sortedCategories.map(category => (
         <div key={category} className="counter-list__category">
           <h4 className="counter-list__category-title">
             <Badge type="category" value={category} />

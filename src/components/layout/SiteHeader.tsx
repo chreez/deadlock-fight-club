@@ -9,8 +9,12 @@ export default function SiteHeader() {
           <span className="site-header__logo-text">Deadlock Fight Club</span>
         </a>
         <nav className="site-header__nav">
-          <a href="/" className="site-header__nav-link">Fight Club</a>
-          <a href="/guides" className="site-header__nav-link">Guides</a>
+          <a href="/" className="site-header__nav-link">
+            Fight Club
+          </a>
+          <a href="/guides" className="site-header__nav-link">
+            Guides
+          </a>
         </nav>
       </div>
     </header>

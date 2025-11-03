@@ -78,8 +78,8 @@ test.describe('Counter Guide Page', () => {
     await page.waitForTimeout(200);
 
     // Should be able to scroll (body has padding-bottom)
-    const bodyPadding = await page.evaluate(() =>
-      window.getComputedStyle(document.body).paddingBottom
+    const bodyPadding = await page.evaluate(
+      () => window.getComputedStyle(document.body).paddingBottom
     );
     expect(bodyPadding).toBe('80px');
   });

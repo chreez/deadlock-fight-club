@@ -14,7 +14,7 @@ export default function CounterCheatsheet() {
   const filteredHeroes = useMemo(() => {
     if (!searchTerm) return heroes;
     const term = searchTerm.toLowerCase();
-    return heroes.filter((hero) => hero.toLowerCase().includes(term));
+    return heroes.filter(hero => hero.toLowerCase().includes(term));
   }, [searchTerm, heroes]);
 
   return (
@@ -47,7 +47,7 @@ export default function CounterCheatsheet() {
               <p>No heroes found matching "{searchTerm}"</p>
             </div>
           ) : (
-            filteredHeroes.map((heroName) => (
+            filteredHeroes.map(heroName => (
               <div key={heroName} className="counter-cheatsheet__hero">
                 <CounterList counters={HERO_COUNTERS[heroName]} heroName={heroName} />
               </div>

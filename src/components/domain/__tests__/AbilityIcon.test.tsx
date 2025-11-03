@@ -21,16 +21,12 @@ describe('AbilityIcon component', () => {
   });
 
   it('should apply sm size when specified', () => {
-    const { container } = render(
-      <AbilityIcon heroName="Bebop" abilityName="Hook" size="sm" />
-    );
+    const { container } = render(<AbilityIcon heroName="Bebop" abilityName="Hook" size="sm" />);
     expect(container.querySelector('.ability-icon--sm')).toBeInTheDocument();
   });
 
   it('should apply lg size when specified', () => {
-    const { container } = render(
-      <AbilityIcon heroName="Bebop" abilityName="Hook" size="lg" />
-    );
+    const { container } = render(<AbilityIcon heroName="Bebop" abilityName="Hook" size="lg" />);
     expect(container.querySelector('.ability-icon--lg')).toBeInTheDocument();
   });
 
