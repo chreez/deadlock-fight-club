@@ -48,7 +48,74 @@ Migrating the Deadlock Fight Club website from static HTML to Astro + React for:
   - Helper functions: getTierColor, getCategoryColor
   - Breakpoints: mobile (480px), tablet (768px), desktop (1200px)
 
-**Progress: ~40% complete (3/8 major phases)**
+#### Phase 4: Layout Component Library (Commit 3f927f2b)
+
+- ✅ Created Container.tsx - Responsive container with max-width
+- ✅ Created Grid.tsx - CSS Grid layout with responsive breakpoints
+- ✅ Created TipBox.tsx - Info/warning/success boxes with colored accents
+- ✅ Created Accordion.tsx - Collapsible sections with smooth animation
+- ✅ Created Section.tsx - Page sections with heading and spacing
+
+#### Phase 5: Domain Component Library (Commit 5893ff0a)
+
+- ✅ Created HeroCard.tsx - Hero portraits with selection states
+- ✅ Created ItemCard.tsx - Item icons with tier/cost/category badges
+- ✅ Created AbilityIcon.tsx - Ability icons with tooltips
+- ✅ Created CounterList.tsx - Counter item lists grouped by category
+- ✅ Created LoadoutDisplay.tsx - Item grids with total cost
+
+#### Phase 6: Page Migrations (Commits f12e87d7, cf3f7b88, 8bb33c68)
+
+- ✅ Migrated Fight Club to Astro with React generator
+- ✅ Migrated Counter Guide with asset integration
+- ✅ Migrated Counter Cheatsheet with searchable hero grid
+- ✅ Created Guides homepage listing all guides
+
+#### Phase 7: Guide Publishing Workflow (Commit [CURRENT])
+
+**New Feature: Draft/Review/Published Status System**
+
+Created a reproducible workflow for transforming YouTube transcript articles into production-ready Astro guide pages:
+
+**Files Created:**
+
+- `.claude/guide-workflow.md` - Complete workflow documentation
+- `src/pages/midgame-guide.astro` - First guide using new workflow
+- Updated `src/pages/guides.astro` - Status-based filtering
+
+**Workflow Features:**
+
+1. **Status-based visibility:**
+   - `draft` - Hidden in production, visible in dev with banner
+   - `review` - Visible everywhere with review banner + inline comments
+   - `published` - Fully visible, no banners
+
+2. **TL;DR sections:**
+   - Guide Overview TipBox at top with quick jump link
+   - Quick Reference section at bottom (2-min condensed version)
+   - Full guide typically 8-10 min, Quick Reference 2-5 min
+
+3. **Inline review comments:**
+   - `[REVIEW: comment]` tags in article.md
+   - Renders as `📝` markers in review mode
+   - Stripped from published pages
+
+4. **Pipeline:**
+   ```
+   YouTube Video → Transcript → article.md → *-guide.astro → /[name]-guide
+   ```
+
+**Guide Standards:**
+
+- Max 3-4 sentences per paragraph
+- Include specific numbers (costs, percentages, timings)
+- Use Section components with semantic IDs for deep linking
+- TipBox variants for success/warning/info callouts
+- Source attribution footer with video link
+
+**See:** `.claude/guide-workflow.md` for complete documentation
+
+**Progress: ~70% complete (7/8 major phases)**
 
 ---
 

@@ -13,6 +13,7 @@ const guides = [
     url: '/counter-guide',
     category: 'Strategy',
     readTime: '10 min read',
+    status: 'published',
   },
   {
     title: 'Counter Items Cheatsheet',
@@ -21,8 +22,25 @@ const guides = [
     url: '/counter-cheatsheet',
     category: 'Reference',
     readTime: '2 min lookup',
+    status: 'published',
+  },
+  {
+    title: "What the Hell is Deadlock's Midgame?",
+    description:
+      "A complete beginner's guide to surviving the transition from lane phase to MOBA-style macro gameplay.",
+    url: '/midgame-guide',
+    category: 'Strategy',
+    readTime: '8 min read',
+    status: 'draft', // draft | review | published
   },
 ];
+
+// Filter guides based on environment and status
+// In production: only show published guides
+// In dev: show all guides (draft shows with badge)
+const visibleGuides = import.meta.env.PROD
+  ? guides.filter((g) => g.status === 'published')
+  : guides;
 ---
 
 <!doctype html>
@@ -59,7 +77,7 @@ const guides = [
             style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-lg);"
           >
             {
-              guides.map(guide => (
+              visibleGuides.map(guide => (
                 <a href={guide.url} style="text-decoration: none; color: inherit; display: block;">
                   <article style="background: var(--bg-secondary); padding: var(--spacing-lg); border-radius: var(--border-radius-lg); border: 2px solid var(--bg-secondary); transition: all var(--transition-default); height: 100%; display: flex; flex-direction: column; gap: var(--spacing-md);">
                     <div style="display: flex; justify-content: space-between; align-items: center;">

@@ -1,0 +1,628 @@
+---
+import SiteHeader from '../components/layout/SiteHeader';
+import Container from '../components/layout/Container';
+import Section from '../components/layout/Section';
+import TipBox from '../components/layout/TipBox';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// Article metadata (from article.md frontmatter)
+const metadata = {
+  title: "What the Hell is Deadlock's Midgame?",
+  subtitle:
+    "A complete beginner's guide to surviving the transition from lane phase to MOBA-style macro gameplay",
+  status: 'draft', // draft | review | published
+  videoUrl: 'https://youtu.be/k9R1xNCqJ5Y',
+  videoId: 'k9R1xNCqJ5Y',
+  channel: 'BigBenDL',
+  publishDate: '2024-10-08', // Fixed year from article.md
+  duration: '12:03',
+  readTime: '8 min read',
+};
+
+// Check if page should be visible (hide drafts in production)
+const isDraft = metadata.status === 'draft';
+const isReview = metadata.status === 'review';
+const isProduction = import.meta.env.PROD;
+
+// Hide draft pages in production
+if (isDraft && isProduction) {
+  return Astro.redirect('/guides');
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>{metadata.title} - Deadlock Fight Club</title>
+    <meta name="description" content={metadata.subtitle} />
+    <meta property="og:title" content={`${metadata.title} - Deadlock Fight Club`} />
+    <meta property="og:description" content={metadata.subtitle} />
+    <meta property="og:type" content="article" />
+  </head>
+  <body>
+    <SiteHeader client:load />
+    <main>
+      <Container maxWidth="md">
+        <!-- Draft/Review Banner -->
+        {
+          (isDraft || isReview) && (
+            <div
+              style={`
+            background: ${isDraft ? 'rgba(255, 140, 66, 0.1)' : 'rgba(124, 77, 255, 0.1)'};
+            border: 2px solid ${isDraft ? 'var(--accent-orange)' : 'var(--accent-purple)'};
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+          `}
+            >
+              <strong
+                style={`color: ${isDraft ? 'var(--accent-orange)' : 'var(--accent-purple)'};`}
+              >
+                {isDraft ? '🚧 DRAFT MODE' : '📝 UNDER REVIEW'}
+              </strong>
+              <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: var(--spacing-xs);">
+                {isDraft
+                  ? 'This page is in draft mode and hidden in production builds.'
+                  : 'This page is under review. Look for 📝 markers for review comments.'}
+              </p>
+            </div>
+          )
+        }
+
+        <!-- Header -->
+        <Section>
+          <div style="text-align: center; margin-bottom: var(--spacing-xl);">
+            <h1
+              style="font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-purple) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 0 0 var(--spacing-md);"
+            >
+              {metadata.title}
+            </h1>
+            <p
+              style="color: var(--text-secondary); font-size: 1.1rem; max-width: 700px; margin: 0 auto var(--spacing-md);"
+            >
+              {metadata.subtitle}
+            </p>
+            <div
+              style="display: flex; justify-content: center; gap: var(--spacing-md); flex-wrap: wrap; font-size: 0.9rem; color: var(--text-secondary);"
+            >
+              <span>By {metadata.channel}</span>
+              <span>•</span>
+              <span>{metadata.readTime}</span>
+              <span>•</span>
+              <a
+                href={metadata.videoUrl}
+                target="_blank"
+                rel="noopener"
+                style="color: var(--accent-orange); text-decoration: none;"
+              >
+                🎥 Watch Original Video
+              </a>
+            </div>
+          </div>
+
+          <!-- TL;DR / Overview -->
+          <TipBox title="📖 Guide Overview" variant="info">
+            <p>
+              If you've played Deadlock for even a couple of hours, that moment has come to you.
+              You're in lane phase, things are making sense. You trade kills, you push creeps, and
+              you try to get that tower at the end. Then, suddenly, some towers start to fall,
+              objectives appear all around the map, and the team scatters out of your lane.
+            </p>
+            <p style="margin-top: 1rem;">
+              <strong>Deadlock is sneaky.</strong> It's a hero shooter with some extra rules. But once
+              towers fall, Deadlock reveals its true identity: <strong
+                >It's a MOBA wearing a hero shooter's jacket.</strong
+              >
+            </p>
+            <p
+              style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1);"
+            >
+              <strong>⚡ TL;DR?</strong> Jump to the <a
+                href="#quick-reference"
+                style="color: var(--accent-orange); text-decoration: underline;">Quick Reference</a
+              > for the 6 core principles you need to master.
+            </p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+              <strong>Read time:</strong> Full guide is {metadata.readTime} • Quick Reference is 2 min
+            </p>
+          </TipBox>
+        </Section>
+
+        <!-- Wave Management and Macro -->
+        <Section id="wave-management" title="🌊 Wave Management and Macro">
+          <p>
+            Here's the thing: <strong>ignoring wave is the fastest way to lose the game.</strong>
+            As people chase kills in the jungle and fights over urn, walkers fall while nobody's looking.
+            And regardless of rank, bad macro is bad gameplay. It isn't the most glamorous job, but somebody's
+            gotta do it.
+          </p>
+
+          <div
+            style="margin-top: var(--spacing-lg); background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--border-radius-lg); border-left: 3px solid var(--accent-orange);"
+          >
+            <h3 style="color: var(--accent-orange); margin: 0 0 var(--spacing-sm);">
+              What is Macro?
+            </h3>
+            <p style="margin: 0;">
+              <strong>It's everything beyond the immediate duel.</strong> It's how our objectives are
+              standing, how our lanes are pushed, and how our rotations are done on time to ensure that
+              those walkers don't take some extra creep damage.
+            </p>
+            <p
+              style="margin-top: var(--spacing-sm); font-size: 0.9rem; color: var(--text-secondary); font-style: italic;"
+            >
+              "Macro is also communicating when you can't cover lane. If you see creeps crashing
+              your side lane walker while you're on the other side in the middle of the jungle, call
+              it out."
+            </p>
+          </div>
+
+          <TipBox variant="success" title="💡 Pro Tip" style="margin-top: var(--spacing-md);">
+            The lower your rank, the more likely it is that your teammates are suffering from tunnel
+            vision and ignoring the vital objective. Be the one who calls it out.
+          </TipBox>
+        </Section>
+
+        <!-- Walker Stats -->
+        <Section id="walkers" title="🏰 Walker Stats and Why They Matter">
+          <p>
+            We've been talking about objectives and walkers, but what the hell are they? Here are
+            some walker stats to help you know exactly why they're so important:
+          </p>
+
+          <div
+            style="margin-top: var(--spacing-lg); display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-md);"
+          >
+            <div
+              style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--border-radius-lg);"
+            >
+              <div style="color: var(--accent-orange); font-size: 2rem; font-weight: 700;">
+                5,800 HP
+              </div>
+              <div style="color: var(--text-secondary); margin-top: var(--spacing-xs);">
+                Side Lane Walkers
+              </div>
+            </div>
+            <div
+              style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--border-radius-lg);"
+            >
+              <div style="color: var(--accent-purple); font-size: 2rem; font-weight: 700;">
+                9,000+ HP
+              </div>
+              <div style="color: var(--text-secondary); margin-top: var(--spacing-xs);">
+                Blue Lane Walker
+              </div>
+            </div>
+            <div
+              style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--border-radius-lg);"
+            >
+              <div style="color: var(--accent-orange); font-size: 2rem; font-weight: 700;">15%</div>
+              <div style="color: var(--text-secondary); margin-top: var(--spacing-xs);">
+                Spirit & Bullet Resist Aura
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="margin-top: var(--spacing-lg); background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--border-radius-lg);"
+          >
+            <h3 style="color: var(--accent-orange); margin: 0 0 var(--spacing-sm);">
+              Why Do Walkers Matter?
+            </h3>
+            <p style="margin: 0;">
+              <strong>Because they change the economy of the entire game.</strong>
+            </p>
+            <ul style="margin-top: var(--spacing-sm); padding-left: 1.5rem;">
+              <li>One walker down = one extra item slot</li>
+              <li>Three walkers down = two extra item slots</li>
+            </ul>
+            <p style="margin-top: var(--spacing-sm);">
+              This is both an economic and power advantage over the opposing team and can ensure
+              that the next fight you take is one where your team is heavily bolstered in
+              comparison.
+            </p>
+          </div>
+
+          <TipBox
+            variant="warning"
+            title="⚠️ Critical Timing"
+            style="margin-top: var(--spacing-md);"
+          >
+            <strong>Wasting time poking walkers pre-minute 16 is bait.</strong> The walker resistances
+            are too high at this point, and your team starts to bleed tempo. The real move is to shove
+            the wave, steal their jungle, and wait for that more opportune time to strike.
+          </TipBox>
+        </Section>
+
+        <!-- 5-Minute Combat Cycle -->
+        <Section id="combat-cycle" title="⏱️ The 5-Minute Combat Cycle">
+          <p>
+            Every <strong>5 minutes</strong> in Deadlock, urn and bridge buffs respawn. Think of these
+            like timers in your head, the metronome of mid game. Teams naturally gravitate to these spawns,
+            more so bridge buffs than urn. However, they are the catalyst for many a team fight.
+          </p>
+
+          <div
+            style="margin-top: var(--spacing-lg); background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--border-radius-lg); border-left: 3px solid var(--accent-purple);"
+          >
+            <h3 style="color: var(--accent-purple); margin: 0 0 var(--spacing-sm);">
+              It's Not About Taking Objectives—It's About Timing
+            </h3>
+            <p style="margin: 0;">
+              The key in these objective and win mechanics is not simply just taking them when they
+              spawn, but rather <strong>taking them at the most opportune time.</strong> If you treat
+              every 5-minute mark as a checkpoint in the game, it more easily organizes your play.
+            </p>
+          </div>
+
+          <div
+            style="margin-top: var(--spacing-lg); background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--border-radius-lg);"
+          >
+            <h3 style="color: var(--accent-orange); margin: 0 0 var(--spacing-sm);">
+              The Optimal Cycle
+            </h3>
+            <p style="margin: 0;">
+              Between minutes <strong>10 and 14:30</strong>, you should really be farming and trying
+              to get your next power spike. Then, as soon as that bridge buff comes online or that
+              urn finally drops with your newly acquired item, you can take that fight.
+            </p>
+            <p
+              style="margin-top: var(--spacing-md); padding: var(--spacing-md); background: rgba(255, 140, 66, 0.1); border-radius: var(--border-radius); border-left: 3px solid var(--accent-orange);"
+            >
+              <strong>⚠️ The worst thing you can do:</strong> Still scrambling for camps and boxes and
+              sitting on over 2,000 in souls. This is where so many teams lose: they show up late to
+              the fight without their power spike and are surprised when they get rolled.
+            </p>
+          </div>
+
+          <TipBox variant="success" title="💡 Remember" style="margin-top: var(--spacing-md);">
+            <strong>The urn doesn't win you the fight, the preparation does.</strong> The urn is merely
+            the catalyst to get it going.
+          </TipBox>
+        </Section>
+
+        <!-- Power Spikes -->
+        <Section id="power-spikes" title="⚡ Power Spikes and Power Ramping">
+          <p>
+            Let's dig into that preparation and learn some new terms: <strong>power ramping</strong>
+            and
+            <strong>power spikes.</strong>
+          </p>
+
+          <div
+            style="margin-top: var(--spacing-lg); background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--border-radius-lg);"
+          >
+            <h3 style="color: var(--accent-orange); margin: 0 0 var(--spacing-sm);">
+              What is a Power Spike?
+            </h3>
+            <p style="margin: 0;">
+              A power spike is when your character goes from "eh" to "oh god, kill it now." It can
+              be an item like Tesla Bullets for Wraith or Ivy, or maybe even an upgraded ability
+              like tier 3 on Kelvin's Ice Beam.
+            </p>
+            <p style="margin-top: var(--spacing-sm);">
+              The key is there are points in the game where you yourself are markedly stronger than
+              you were before. And in relation to the rest of the lobby, you probably have a higher
+              total power cap than others at that exact moment.
+            </p>
+          </div>
+
+          <div
+            style="margin-top: var(--spacing-md); background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--border-radius-lg);"
+          >
+            <h3 style="color: var(--accent-purple); margin: 0 0 var(--spacing-sm);">
+              Spikes Don't Last Forever
+            </h3>
+            <p style="margin: 0;">
+              However, these spikes don't last forever. Using Tesla Bullets or hitting that tier 3
+              is very nice and can get you through that next fight. However, relying on it for more
+              than
+              <strong>2 or 3 minutes</strong> can seriously start to see some diminishing returns.
+            </p>
+            <p style="margin-top: var(--spacing-sm); color: var(--accent-orange);">
+              <strong>Those couple minutes in between are your window</strong>, and are exactly when
+              you should be taking either those urn fights or pushing an objective. If you simply
+              wait on it, your spike is wasted.
+            </p>
+          </div>
+
+          <TipBox variant="info" title="🎯 Syncing Spikes" style="margin-top: var(--spacing-md);">
+            Power spikes with that 5-minute combat cycle is so essential. If you and 2 or 3 other of
+            your teammates all have just bought and are ready for a fight along with the urn
+            dropping, then you and your team are cooking up something sweet.
+          </TipBox>
+        </Section>
+
+        <!-- Farm Priority -->
+        <Section id="farm-priority" title="🌾 Farm Priority and Soul Denial">
+          <p>
+            With all this talk of power spikes and power ramping, it begs the question: how do I hit
+            my spikes on time? <strong>Farming.</strong>
+          </p>
+
+          <div
+            style="margin-top: var(--spacing-lg); background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--border-radius-lg);"
+          >
+            <h3 style="color: var(--accent-orange); margin: 0 0 var(--spacing-md);">
+              Farm Priority Hierarchy
+            </h3>
+            <ol
+              style="margin: 0; padding-left: 1.5rem; display: flex; flex-direction: column; gap: var(--spacing-sm);"
+            >
+              <li>
+                <strong style="color: var(--accent-orange);">Center sacrifices</strong> - Should be focused
+                above all, primarily due to the buffs they can give you at a jackpot hit. This will give
+                you
+                <strong>4 boons</strong> that you typically get from a golden statue and is a fantastic
+                way to continually ramp your passive stats.
+              </li>
+              <li>
+                <strong style="color: var(--accent-purple);">Jungle creeps</strong> - After center sacrifices,
+                we move on to jungle creeps.
+              </li>
+            </ol>
+          </div>
+
+          <p style="margin-top: var(--spacing-lg);">
+            Think of this as your farm hierarchy. When you're pushing the wave and get it up to
+            walker, instead of poking that walker at those early minutes, rotate into their jungle
+            and start to steal their resources.
+          </p>
+
+          <div
+            style="margin-top: var(--spacing-lg); background: rgba(124, 77, 255, 0.1); padding: var(--spacing-md); border-radius: var(--border-radius-lg); border-left: 3px solid var(--accent-purple);"
+          >
+            <h3 style="color: var(--accent-purple); margin: 0 0 var(--spacing-sm);">
+              Macro Soul Denial
+            </h3>
+            <p style="margin: 0;">
+              This is <strong>macro soul denial.</strong> In lane phase, you can deny by shooting the
+              little soul that comes out of the creep. In mid game, you can deny by choking out entire
+              soul camps.
+            </p>
+            <p style="margin-top: var(--spacing-sm);">
+              This creates a widened differential between their total possible soul allocation as
+              well as your total possible soul allocation. If your team farms efficiently and
+              invades smartly, this leads to quicker buys and better buys for that next urn, bridge
+              buff, or mid boss fight.
+            </p>
+            <p style="margin-top: var(--spacing-sm); color: var(--accent-orange);">
+              <strong>And the beauty of this denial is that it snowballs.</strong> The more you and your
+              team are able to smartly steal, the larger the differential gets, the harder it will be
+              for them to push you out of their own jungle.
+            </p>
+          </div>
+
+          <TipBox
+            variant="warning"
+            title="⚠️ Always Ask Yourself"
+            style="margin-top: var(--spacing-md);"
+          >
+            Whenever you're not fighting or rotating, ask yourself: <strong
+              >what's the highest value farm I could be taking right now?</strong
+            > If the answer is boxes in your own jungle, well, you're probably leaving a whole lot of
+            soul on the table.
+          </TipBox>
+        </Section>
+
+        <!-- Map Awareness -->
+        <Section id="map-awareness" title="🗺️ Map Awareness and Intuition">
+          <p>
+            Because the map is free info. You can see where enemies are, primarily <strong
+              >where they aren't</strong
+            >, and if a wave is pushing too far into one of your lanes. And from all this info, you
+            start to predict and intuit what the next move might be.
+          </p>
+
+          <div
+            style="margin-top: var(--spacing-lg); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-md);"
+          >
+            <div
+              style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--border-radius-lg); border: 2px solid rgba(76, 175, 80, 0.3);"
+            >
+              <div style="color: #4caf50; font-weight: 700; margin-bottom: var(--spacing-sm);">
+                ✅ Safe Push Scenario
+              </div>
+              <p style="margin: 0; font-size: 0.9rem;">
+                You're in far left lane. You see 3-4 enemies on the mid and right side of map.
+                <strong>You can safely shove the lane</strong> due to heavy allocation of enemy team
+                members on the other side.
+              </p>
+            </div>
+            <div
+              style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--border-radius-lg); border: 2px solid rgba(244, 67, 54, 0.3);"
+            >
+              <div style="color: #f44336; font-weight: 700; margin-bottom: var(--spacing-sm);">
+                ❌ Danger Zone
+              </div>
+              <p style="margin: 0; font-size: 0.9rem;">
+                <strong
+                  >If you see no one on the enemy team, this is a much more dangerous state to be
+                  in.</strong
+                >
+                Pushing the lane is more than likely going to result in you getting ganked.
+              </p>
+            </div>
+          </div>
+
+          <div
+            style="margin-top: var(--spacing-lg); background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--border-radius-lg);"
+          >
+            <h3 style="color: var(--accent-purple); margin: 0 0 var(--spacing-sm);">
+              Building Intuition: Pattern Recognition
+            </h3>
+            <p style="margin: 0;">
+              <strong>Intuition is simply practiced pattern recognition.</strong> And the only way to
+              build up that, well, play more games.
+            </p>
+            <p style="margin-top: var(--spacing-sm);">
+              The more you watch the map and the more you start playing, the more you'll be able to
+              predict what the enemy team is likely concocting:
+            </p>
+            <ul style="margin-top: var(--spacing-sm); padding-left: 1.5rem;">
+              <li>What's their win condition right now?</li>
+              <li>Where do they need to be in order to get the best advantage?</li>
+              <li>What are possibly their next buys?</li>
+            </ul>
+          </div>
+
+          <TipBox variant="success" title="💡 Key Insight" style="margin-top: var(--spacing-md);">
+            Take all of this info and let it affect your gameplay, trying to <strong
+              >counter buy, counter rotate, and even counter push.</strong
+            > That's the thought process that turns raw awareness into anticipation and perfect execution.
+            <p
+              style="margin-top: var(--spacing-sm); color: var(--accent-orange); font-size: 1.1rem;"
+            >
+              <strong>Deadlock rewards the predictors, not the reactors.</strong>
+            </p>
+          </TipBox>
+        </Section>
+
+        <!-- Quick Reference -->
+        <Section id="quick-reference" title="⚡ Quick Reference: The Six Principles">
+          <p style="margin-bottom: var(--spacing-lg);">
+            Mid game is the pivot point of the match. It's when the facade of the hero shooter
+            finally falls and the MOBA comes out. No longer is the game only worried about your
+            lane, but rather all three at the same time.
+          </p>
+
+          <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-md);"
+          >
+            <div
+              style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--border-radius-lg); border-left: 3px solid var(--accent-orange);"
+            >
+              <div
+                style="color: var(--accent-orange); font-weight: 700; margin-bottom: var(--spacing-xs);"
+              >
+                1. Respect Lane Pressure
+              </div>
+              <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">
+                Wave management is not optional. Ignoring wave is the fastest way to lose.
+              </p>
+            </div>
+
+            <div
+              style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--border-radius-lg); border-left: 3px solid var(--accent-purple);"
+            >
+              <div
+                style="color: var(--accent-purple); font-weight: 700; margin-bottom: var(--spacing-xs);"
+              >
+                2. Protect and Punish Walkers
+              </div>
+              <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">
+                They change the entire economy. One walker = one extra item slot.
+              </p>
+            </div>
+
+            <div
+              style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--border-radius-lg); border-left: 3px solid var(--accent-orange);"
+            >
+              <div
+                style="color: var(--accent-orange); font-weight: 700; margin-bottom: var(--spacing-xs);"
+              >
+                3. Align with the 5-Minute Cycle
+              </div>
+              <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">
+                Use it as your metronome. Farm minutes 10-14:30, fight at urn/bridge spawns.
+              </p>
+            </div>
+
+            <div
+              style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--border-radius-lg); border-left: 3px solid var(--accent-purple);"
+            >
+              <div
+                style="color: var(--accent-purple); font-weight: 700; margin-bottom: var(--spacing-xs);"
+              >
+                4. Hit Your Power Spikes on Time
+              </div>
+              <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">
+                Farm efficiently. Power spikes only last 2-3 minutes. Use them or lose them.
+              </p>
+            </div>
+
+            <div
+              style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--border-radius-lg); border-left: 3px solid var(--accent-orange);"
+            >
+              <div
+                style="color: var(--accent-orange); font-weight: 700; margin-bottom: var(--spacing-xs);"
+              >
+                5. Farm and Deny Efficiently
+              </div>
+              <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">
+                Center sacrifices > Jungle camps. Macro soul denial snowballs advantages.
+              </p>
+            </div>
+
+            <div
+              style="background: var(--bg-secondary); padding: var(--spacing-md); border-radius: var(--border-radius-lg); border-left: 3px solid var(--accent-purple);"
+            >
+              <div
+                style="color: var(--accent-purple); font-weight: 700; margin-bottom: var(--spacing-xs);"
+              >
+                6. Train Your Map Sense
+              </div>
+              <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary);">
+                Prediction > Reaction. Deadlock rewards the predictors, not the reactors.
+              </p>
+            </div>
+          </div>
+
+          <div
+            style="margin-top: var(--spacing-xl); text-align: center; padding: var(--spacing-lg); background: linear-gradient(135deg, rgba(255, 140, 66, 0.1) 0%, rgba(124, 77, 255, 0.1) 100%); border-radius: var(--border-radius-lg);"
+          >
+            <p style="font-size: 1.2rem; color: var(--text-primary); margin: 0;">
+              So the next time you hear those towers fall and you ask yourself,<br />
+              <strong style="color: var(--accent-orange);"
+                >"What the hell is Deadlock's mid game?"</strong
+              >
+            </p>
+            <p
+              style="font-size: 1.3rem; color: var(--accent-purple); margin-top: var(--spacing-md); font-weight: 700;"
+            >
+              You'll have your answer.
+            </p>
+          </div>
+        </Section>
+
+        <!-- Source Attribution -->
+        <Section>
+          <div
+            style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: var(--spacing-lg); text-align: center;"
+          >
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">
+              Content based on <strong>"{metadata.title}"</strong> by {metadata.channel}
+            </p>
+            <p
+              style="color: var(--text-secondary); font-size: 0.9rem; margin-top: var(--spacing-xs);"
+            >
+              <a
+                href={metadata.videoUrl}
+                target="_blank"
+                rel="noopener"
+                style="color: var(--accent-orange); text-decoration: none;"
+              >
+                🎥 Watch the full video ({metadata.duration})
+              </a>
+            </p>
+          </div>
+        </Section>
+      </Container>
+    </main>
+
+    <style>
+      /* Review comment markers (only show in review status) */
+      .review-comment {
+        display: inline-block;
+        margin-left: 4px;
+        cursor: help;
+        font-size: 0.9rem;
+      }
+    </style>
+  </body>
+</html>
