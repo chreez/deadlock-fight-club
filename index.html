@@ -74,6 +74,29 @@
             margin-bottom: 0;
         }
 
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-orange);
+            border-color: var(--accent-orange);
+            background: rgba(255, 140, 66, 0.1);
+        }
+
         .generate-button {
             background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-purple) 100%);
             color: white;
@@ -445,7 +468,12 @@
     <div class="container">
         <div class="header-section" id="headerSection">
             <h1>DEADLOCK FIGHT CLUB</h1>
-            
+
+            <div class="nav-links">
+                <a href="counter-cheatsheet.html" class="nav-link">📋 Counter Cheatsheet</a>
+                <a href="counter-guide.html" class="nav-link">📖 Full Guide</a>
+            </div>
+
             <button class="generate-button" onclick="generateFightClubMatch()">
                 GENERATE FIGHT CLUB MATCH
             </button>
