@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Deadlock Counter Items Guide - Card View</title>
+    <meta property="og:title" content="Deadlock Counter Items Guide - Counter Every Hero">
+    <meta property="og:description" content="Complete guide to countering every hero in Deadlock with smart item builds.">
+    <meta property="og:image" content="https://i.ytimg.com/vi/Kdm-3hhR9SA/maxresdefault.jpg">
+    <style>
+        :root {
+            --bg-dark: #0a0a0b;
+            --bg-secondary: #1a1a1f;
+            --accent-orange: #ff8c42;
+            --accent-purple: #7c4dff;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --tier1-color: #4caf50;
+            --tier2-color: #2196f3;
+            --tier3-color: #9c27b0;
+            --tier4-color: #ff9800;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .variant-badge {
+            display: inline-block;
+            background: var(--accent-purple);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .category-header {
+            font-size: 1.8rem;
+            color: var(--accent-orange);
+            margin: 40px 0 20px 0;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-orange);
+            padding-bottom: 10px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .item-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .item-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-orange), var(--accent-purple));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .item-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-orange);
+            box-shadow: 0 8px 25px rgba(255, 140, 66, 0.3);
+        }
+
+        .item-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+
+        .item-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        .card-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: flex-end;
+        }
+
+        .cost-badge {
+            background: var(--accent-orange);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 16px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .tier-badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .tier-1 { background: var(--tier1-color); }
+        .tier-2 { background: var(--tier2-color); }
+        .tier-3 { background: var(--tier3-color); }
+        .tier-4 { background: var(--tier4-color); }
+
+        .effect-text {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .counters-section {
+            margin: 15px 0;
+        }
+
+        .counters-label {
+            color: var(--accent-orange);
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .counter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .counter-tag {
+            background: rgba(255, 140, 66, 0.15);
+            color: var(--accent-orange);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 140, 66, 0.3);
+        }
+
+        .tip-section {
+            background: rgba(124, 77, 255, 0.1);
+            border-left: 3px solid var(--accent-purple);
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .tip-icon {
+            color: var(--accent-purple);
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .category-icon {
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-header {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .card-badges {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="variant-badge">VARIATION 3: Quick Reference Cards</span>
+
+        <h1>Counter Items Guide</h1>
+        <p class="subtitle">Visual card reference for countering heroes in Deadlock</p>
+
+        <!-- Passive Items -->
+        <h2 class="category-header"><span class="category-icon">🛡️</span>Passive Items</h2>
+        <div class="cards-grid">
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Reactive Barrier</div>
+                    <div class="card-badges">
+                        <span class="cost-badge">1600</span>
+                        <span class="tier-badge tier-2">Tier 2</span>
+                    </div>
+                </div>
+                <div class="effect-text">Automatically activates on any CC, creating a protective barrier</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">Bebop (Hook)</span>
+                        <span class="counter-tag">Abrams</span>
+                        <span class="counter-tag">Doorman</span>
+                    </div>
+                </div>
+                <div class="tip-section">
+                    <span class="tip-icon">💡</span>No-brainer buy early vs CC-heavy teams
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Debuff Reducer</div>
+                </div>
+                <div class="effect-text">Reduces duration of stuns, slows, and CC ultimates</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">Abrams</span>
+                        <span class="counter-tag">Holiday</span>
+                        <span class="counter-tag">Moe</span>
+                    </div>
+                </div>
+                <div class="tip-section">
+                    <span class="tip-icon">💡</span>Builds into Debuff Remover (active)
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Spirit Shielding</div>
+                    <div class="card-badges">
+                        <span class="cost-badge">1600</span>
+                        <span class="tier-badge tier-2">Tier 2</span>
+                    </div>
+                </div>
+                <div class="effect-text">Heavily increases survivability against spirit damage</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">Double Spirit Lanes</span>
+                        <span class="counter-tag">Spirit Comps</span>
+                    </div>
+                </div>
+                <div class="tip-section">
+                    <span class="tip-icon">💡</span>Best early game pickup vs spirit heroes
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Spellbreaker</div>
+                    <div class="card-badges">
+                        <span class="cost-badge">6400</span>
+                        <span class="tier-badge tier-4">Tier 4</span>
+                    </div>
+                </div>
+                <div class="effect-text">Insane spirit resist + debuff resist</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">Grey Talon</span>
+                        <span class="counter-tag">Vindicta</span>
+                    </div>
+                </div>
+                <div class="tip-section">
+                    <span class="tip-icon">💡</span>Best spirit resist in the game - makes Grey Talon useless!
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Items -->
+        <h2 class="category-header"><span class="category-icon">⚡</span>Active Items</h2>
+        <div class="cards-grid">
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Counterspell</div>
+                </div>
+                <div class="effect-text">Parry to negate damaging effects of enemy abilities and items</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">Bebop</span>
+                        <span class="counter-tag">Lash</span>
+                        <span class="counter-tag">Grey Talon</span>
+                        <span class="counter-tag">Holiday</span>
+                        <span class="counter-tag">Calico</span>
+                    </div>
+                </div>
+                <div class="tip-section">
+                    <span class="tip-icon">💡</span>Buy every game! WARNING: Bebop still gains stack if you counterspell bomb
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Rebuttal</div>
+                    <div class="card-badges">
+                        <span class="cost-badge">800</span>
+                        <span class="tier-badge tier-1">Tier 1</span>
+                    </div>
+                </div>
+                <div class="effect-text">Successful parry = heal + return damage + 30% bonus damage for 6s</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">Viscous</span>
+                        <span class="counter-tag">Any Hero</span>
+                    </div>
+                </div>
+                <div class="tip-section">
+                    <span class="tip-icon">💡</span>Land one parry and they're as good as dead
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Knockdown</div>
+                </div>
+                <div class="effect-text">Drop anvil to stun and cancel ultimates</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">Bebop (Ult)</span>
+                        <span class="counter-tag">Moe (Ult)</span>
+                        <span class="counter-tag">Flying Heroes</span>
+                    </div>
+                </div>
+                <div class="tip-section">
+                    <span class="tip-icon">💡</span>Hit burrowing Moe & Krill to secure kills
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Slowing Hex</div>
+                </div>
+                <div class="effect-text">Massive slow + silence movement abilities for 3+ seconds</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">Mirage</span>
+                        <span class="counter-tag">Abrams</span>
+                        <span class="counter-tag">Ivy</span>
+                    </div>
+                </div>
+                <div class="tip-section">
+                    <span class="tip-icon">💡</span>Alternative: Warpstone for escaping
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Silence Glyph</div>
+                </div>
+                <div class="effect-text">Projectile that suppresses everyone in its path</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">Calico</span>
+                        <span class="counter-tag">Lady Geist</span>
+                        <span class="counter-tag">Yamato</span>
+                    </div>
+                </div>
+                <div class="tip-section">
+                    <span class="tip-icon">💡</span>Hilarious when Geist tries low HP ult swap!
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Curse</div>
+                </div>
+                <div class="effect-text">Silence + disarm + prevent items + interrupt channels</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">Fed Enemies</span>
+                        <span class="counter-tag">Dynamo</span>
+                    </div>
+                </div>
+                <div class="tip-section">
+                    <span class="tip-icon">💡</span>Best item against fed carries
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Debuff Remover</div>
+                </div>
+                <div class="effect-text">Purge all non-ultimate debuffs instantly</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">Multi-Debuff Teams</span>
+                        <span class="counter-tag">Slowing Hex</span>
+                        <span class="counter-tag">Knockdown</span>
+                    </div>
+                </div>
+                <div class="tip-section">
+                    <span class="tip-icon">💡</span>Makes annoying actives irrelevant
+                </div>
+            </div>
+        </div>
+
+        <!-- Anti-Heal Items -->
+        <h2 class="category-header"><span class="category-icon">💉</span>Anti-Heal Items</h2>
+        <div class="cards-grid">
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Heelsbane</div>
+                    <div class="card-badges">
+                        <span class="cost-badge">1600</span>
+                        <span class="tier-badge tier-2">Tier 2</span>
+                    </div>
+                </div>
+                <div class="effect-text">35% healing reduction on spirit damage + heal 275 on kills</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">Victor</span>
+                        <span class="counter-tag">Shiv</span>
+                        <span class="counter-tag">Yamato</span>
+                        <span class="counter-tag">Abrams</span>
+                    </div>
+                </div>
+                <div class="tip-section">
+                    <span class="tip-icon">💡</span>Fantastic early game anti-heal, good on all heroes
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Toxic Bullet</div>
+                    <div class="card-badges">
+                        <span class="cost-badge">3200</span>
+                    </div>
+                </div>
+                <div class="effect-text">Bleed damage (% max HP) + 30% healing reduction</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">Moe & Krill</span>
+                        <span class="counter-tag">Tanks</span>
+                    </div>
+                </div>
+                <div class="tip-section">
+                    <span class="tip-icon">💡</span>Great vs beefy heroes due to % max HP damage
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Inhibitor</div>
+                    <div class="card-badges">
+                        <span class="cost-badge">6400</span>
+                        <span class="tier-badge tier-4">Tier 4</span>
+                    </div>
+                </div>
+                <div class="effect-text">35% heal reduction + 35% damage reduction</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">High Damage + Heal</span>
+                    </div>
+                </div>
+                <div class="tip-section">
+                    <span class="tip-icon">💡</span>Dual-purpose shutdown
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Spirit Burn</div>
+                    <div class="card-badges">
+                        <span class="tier-badge tier-4">Tier 4</span>
+                    </div>
+                </div>
+                <div class="effect-text">Massive spirit damage + 70% healing reduction</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">Mirage</span>
+                        <span class="counter-tag">Spirit Builders</span>
+                    </div>
+                </div>
+                <div class="tip-section">
+                    <span class="tip-icon">💡</span>Highest heal reduction in game (70%!)
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Crippling Headshot</div>
+                    <div class="card-badges">
+                        <span class="tier-badge tier-4">Tier 4</span>
+                    </div>
+                </div>
+                <div class="effect-text">Headshot = -18% resists for 12s + 30% heal reduction</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">Fed Victor</span>
+                        <span class="counter-tag">Weapon Builds</span>
+                    </div>
+                </div>
+                <div class="tip-section">
+                    <span class="tip-icon">💡</span>Go-to for shutting down fed Victor
+                </div>
+            </div>
+        </div>
+
+        <!-- Bonus Items -->
+        <h2 class="category-header"><span class="category-icon">🎁</span>Bonus Items</h2>
+        <div class="cards-grid">
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Enduring Speed</div>
+                </div>
+                <div class="effect-text">Movement speed + 30% slow resist</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">Kelvin</span>
+                        <span class="counter-tag">Slows</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Capacitor</div>
+                </div>
+                <div class="effect-text">Remove non-ultimate buffs</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">Seven</span>
+                        <span class="counter-tag">Paige</span>
+                        <span class="counter-tag">Viscous</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Divine Barrier</div>
+                </div>
+                <div class="effect-text">Team debuff cleanse that works on ultimates</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">Drifter</span>
+                        <span class="counter-tag">Pocket</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Suppressor</div>
+                </div>
+                <div class="effect-text">Reduces fire rate by 30%</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">Wraith</span>
+                        <span class="counter-tag">Haze</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="item-name">Metal Skin</div>
+                </div>
+                <div class="effect-text">5 seconds of complete bullet immunity</div>
+                <div class="counters-section">
+                    <div class="counters-label">Counters:</div>
+                    <div class="counter-tags">
+                        <span class="counter-tag">Gun Teams</span>
+                    </div>
+                </div>
+                <div class="tip-section">
+                    <span class="tip-icon">💡</span>Upgraded from Return Fire
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
