@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container--sm {
+  max-width: 640px;
+}
+
+.container--md {
+  max-width: 960px;
+}
+
+.container--lg {
+  max-width: var(--container-max-width);
+}
+
+.container--full {
+  max-width: 100%;
+}
+
+.container--padded {
+  padding: 0 var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+  .container--padded {
+    padding: 0 var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .container--padded {
+    padding: 0 var(--spacing-sm);
+  }
+}
