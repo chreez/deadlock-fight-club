@@ -1,3 +1,13 @@
 unprocessed-assets/
 unprocessed-icons/
 .DS_STORE
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.astro/
+
+# Local Netlify folder
+.netlify/

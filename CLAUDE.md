@@ -1,0 +1,2 @@
+- Always add .claude directory to context window for claude code sessions for the cwd
+- Create logical commits between each step please
