@@ -1,0 +1,42 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Deadlock Fight Club" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=e6]:
+        - link "Fight Club" [ref=e7] [cursor=pointer]:
+          - /url: /
+        - link "Guides" [ref=e8] [cursor=pointer]:
+          - /url: /guides
+  - main [ref=e9]:
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - heading "Deadlock Guides" [level=1] [ref=e14]
+        - paragraph [ref=e15]: Strategy guides, counter-building references, and advanced tactics for Deadlock
+      - generic [ref=e16]:
+        - link [ref=e17] [cursor=pointer]:
+          - /url: /counter-guide
+          - article [ref=e18]:
+            - generic [ref=e19]:
+              - generic [ref=e20]: Strategy
+              - generic [ref=e21]: 10 min read
+            - heading "Complete Counter Items Guide" [level=2] [ref=e22]
+            - paragraph [ref=e23]: Learn which items counter multiple heroes and entire team compositions at once. Build smarter, not harder.
+            - generic [ref=e25]:
+              - text: Read guide
+              - img [ref=e26]
+        - link [ref=e28] [cursor=pointer]:
+          - /url: /counter-cheatsheet
+          - article [ref=e29]:
+            - generic [ref=e30]:
+              - generic [ref=e31]: Reference
+              - generic [ref=e32]: 2 min lookup
+            - heading "Counter Items Cheatsheet" [level=2] [ref=e33]
+            - paragraph [ref=e34]: Quick hero-by-hero counter lookup. Search any hero to see recommended counter items instantly.
+            - generic [ref=e36]:
+              - text: Read guide
+              - img [ref=e37]
+```

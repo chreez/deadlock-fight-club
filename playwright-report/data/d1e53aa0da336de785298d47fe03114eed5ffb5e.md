@@ -1,0 +1,677 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Deadlock Fight Club" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=e6]:
+        - link "Fight Club" [ref=e7] [cursor=pointer]:
+          - /url: /
+        - link "Guides" [ref=e8] [cursor=pointer]:
+          - /url: /guides
+  - main [ref=e9]:
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - heading "Deadlock Counter Cheatsheet" [level=1] [ref=e14]
+        - paragraph [ref=e15]: Quick hero-based counter lookup. Search for any hero to see recommended counter items.
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - img
+          - textbox "Search heroes..." [active] [ref=e18]: NonExistentHero123
+        - generic [ref=e19]: Showing all 26 heroes
+      - generic [ref=e20]:
+        - generic [ref=e22]:
+          - heading "Counter Items for Abrams" [level=3] [ref=e23]
+          - generic [ref=e24]:
+            - heading "Passive" [level=4] [ref=e25]:
+              - generic [ref=e26]: Passive
+            - generic [ref=e27]:
+              - generic [ref=e28]:
+                - generic [ref=e29]:
+                  - img "Reactive Barrier" [ref=e30]
+                  - generic [ref=e31]:
+                    - generic [ref=e32]: Reactive Barrier
+                    - generic [ref=e33]: $1600
+                - generic [ref=e35]:
+                  - strong [ref=e36]: "Effect:"
+                  - text: Auto-barrier on CC (Shoulder Charge)
+              - generic [ref=e37]:
+                - generic [ref=e38]:
+                  - img "Debuff Reducer" [ref=e39]
+                  - generic [ref=e40]:
+                    - generic [ref=e41]: Debuff Reducer
+                    - generic [ref=e42]: $1250
+                - generic [ref=e44]:
+                  - strong [ref=e45]: "Effect:"
+                  - text: Reduces stun duration
+          - generic [ref=e46]:
+            - heading "Active" [level=4] [ref=e47]:
+              - generic [ref=e48]: Active
+            - generic [ref=e50]:
+              - generic [ref=e51]:
+                - img "Slowing Hex" [ref=e52]
+                - generic [ref=e53]:
+                  - generic [ref=e54]: Slowing Hex
+                  - generic [ref=e55]: $1250
+              - generic [ref=e57]:
+                - strong [ref=e58]: "Effect:"
+                - text: Stop his chase
+          - generic [ref=e59]:
+            - heading "Anti-Heal" [level=4] [ref=e60]:
+              - generic [ref=e61]: Anti-Heal
+            - generic [ref=e63]:
+              - generic [ref=e64]:
+                - img "Healbane" [ref=e65]
+                - generic [ref=e66]:
+                  - generic [ref=e67]: Healbane
+                  - generic [ref=e68]: $1250
+              - generic [ref=e70]:
+                - strong [ref=e71]: "Effect:"
+                - text: 35% heal reduction
+        - generic [ref=e73]:
+          - heading "Counter Items for Bebop" [level=3] [ref=e74]
+          - generic [ref=e75]:
+            - heading "Passive" [level=4] [ref=e76]:
+              - generic [ref=e77]: Passive
+            - generic [ref=e79]:
+              - generic [ref=e80]:
+                - img "Reactive Barrier" [ref=e81]
+                - generic [ref=e82]:
+                  - generic [ref=e83]: Reactive Barrier
+                  - generic [ref=e84]: $1600
+              - generic [ref=e86]:
+                - strong [ref=e87]: "Effect:"
+                - text: Auto-barrier on Hook
+          - generic [ref=e88]:
+            - heading "Active" [level=4] [ref=e89]:
+              - generic [ref=e90]: Active
+            - generic [ref=e91]:
+              - generic [ref=e92]:
+                - generic [ref=e93]:
+                  - img "Counterspell" [ref=e94]
+                  - generic [ref=e95]:
+                    - generic [ref=e96]: Counterspell
+                    - generic [ref=e97]: $3000
+                - generic [ref=e99]:
+                  - strong [ref=e100]: "Effect:"
+                  - text: Parry Hook, Bomb, Uppercut
+              - generic [ref=e101]:
+                - generic [ref=e102]:
+                  - img "Knockdown" [ref=e103]
+                  - generic [ref=e104]:
+                    - generic [ref=e105]: Knockdown
+                    - generic [ref=e106]: $3000
+                - generic [ref=e108]:
+                  - strong [ref=e109]: "Effect:"
+                  - text: Cancel his ultimate
+        - generic [ref=e111]:
+          - heading "Counter Items for Billy" [level=3] [ref=e112]
+          - generic [ref=e113]:
+            - heading "Anti-Heal" [level=4] [ref=e114]:
+              - generic [ref=e115]: Anti-Heal
+            - generic [ref=e116]:
+              - generic [ref=e117]:
+                - generic [ref=e118]:
+                  - img "Healbane" [ref=e119]
+                  - generic [ref=e120]:
+                    - generic [ref=e121]: Healbane
+                    - generic [ref=e122]: $1250
+                - generic [ref=e124]:
+                  - strong [ref=e125]: "Effect:"
+                  - text: 35% heal reduction
+              - generic [ref=e126]:
+                - generic [ref=e127]:
+                  - img "Toxic Bullets" [ref=e128]
+                  - generic [ref=e129]:
+                    - generic [ref=e130]: Toxic Bullets
+                    - generic [ref=e131]: $3000
+                - generic [ref=e133]:
+                  - strong [ref=e134]: "Effect:"
+                  - text: Bleed + 30% heal reduction
+        - generic [ref=e136]:
+          - heading "Counter Items for Calico" [level=3] [ref=e137]
+          - generic [ref=e138]:
+            - heading "Active" [level=4] [ref=e139]:
+              - generic [ref=e140]: Active
+            - generic [ref=e141]:
+              - generic [ref=e142]:
+                - generic [ref=e143]:
+                  - img "Counterspell" [ref=e144]
+                  - generic [ref=e145]:
+                    - generic [ref=e146]: Counterspell
+                    - generic [ref=e147]: $3000
+                - generic [ref=e149]:
+                  - strong [ref=e150]: "Effect:"
+                  - text: Parry bombs
+              - generic [ref=e151]:
+                - generic [ref=e152]:
+                  - img "Silence Wave" [ref=e153]
+                  - generic [ref=e154]:
+                    - generic [ref=e155]: Silence Wave
+                    - generic [ref=e156]: $3000
+                - generic [ref=e158]:
+                  - strong [ref=e159]: "Effect:"
+                  - text: Suppress abilities
+          - generic [ref=e160]:
+            - heading "Anti-Heal" [level=4] [ref=e161]:
+              - generic [ref=e162]: Anti-Heal
+            - generic [ref=e164]:
+              - generic [ref=e165]:
+                - img "Healbane" [ref=e166]
+                - generic [ref=e167]:
+                  - generic [ref=e168]: Healbane
+                  - generic [ref=e169]: $1250
+              - generic [ref=e171]:
+                - strong [ref=e172]: "Effect:"
+                - text: 35% heal reduction
+        - generic [ref=e174]:
+          - heading "Counter Items for Drifter" [level=3] [ref=e175]
+          - generic [ref=e176]:
+            - heading "Bonus" [level=4] [ref=e177]:
+              - generic [ref=e178]: Bonus
+            - generic [ref=e180]:
+              - generic [ref=e181]:
+                - img "Divine Barrier" [ref=e182]
+                - generic [ref=e183]:
+                  - generic [ref=e184]: Divine Barrier
+                  - generic [ref=e185]: $6200
+              - generic [ref=e187]:
+                - strong [ref=e188]: "Effect:"
+                - text: Cleanse ultimate
+        - generic [ref=e190]:
+          - heading "Counter Items for Dynamo" [level=3] [ref=e191]
+          - generic [ref=e192]:
+            - heading "Active" [level=4] [ref=e193]:
+              - generic [ref=e194]: Active
+            - generic [ref=e195]:
+              - generic [ref=e196]:
+                - generic [ref=e197]:
+                  - img "Curse" [ref=e198]
+                  - generic [ref=e199]:
+                    - generic [ref=e200]: Curse
+                    - generic [ref=e201]: $6200
+                - generic [ref=e203]:
+                  - strong [ref=e204]: "Effect:"
+                  - text: Interrupt his ultimate
+              - generic [ref=e205]:
+                - generic [ref=e206]:
+                  - img "Knockdown" [ref=e207]
+                  - generic [ref=e208]:
+                    - generic [ref=e209]: Knockdown
+                    - generic [ref=e210]: $3000
+                - generic [ref=e212]:
+                  - strong [ref=e213]: "Effect:"
+                  - text: Cancel ultimate
+        - generic [ref=e215]:
+          - heading "Counter Items for Grey Talon" [level=3] [ref=e216]
+          - generic [ref=e217]:
+            - heading "Passive" [level=4] [ref=e218]:
+              - generic [ref=e219]: Passive
+            - generic [ref=e221]:
+              - generic [ref=e222]:
+                - img "Improved Spirit Armor" [ref=e223]
+                - generic [ref=e224]:
+                  - generic [ref=e225]: Improved Spirit Armor
+                  - generic [ref=e226]: $3000
+              - generic [ref=e228]:
+                - strong [ref=e229]: "Effect:"
+                - text: Best spirit resist - makes him useless
+          - generic [ref=e230]:
+            - heading "Active" [level=4] [ref=e231]:
+              - generic [ref=e232]: Active
+            - generic [ref=e234]:
+              - generic [ref=e235]:
+                - img "Counterspell" [ref=e236]
+                - generic [ref=e237]:
+                  - generic [ref=e238]: Counterspell
+                  - generic [ref=e239]: $3000
+              - generic [ref=e241]:
+                - strong [ref=e242]: "Effect:"
+                - text: Parry ultimate
+        - generic [ref=e244]:
+          - heading "Counter Items for Haze" [level=3] [ref=e245]
+          - generic [ref=e246]:
+            - heading "Bonus" [level=4] [ref=e247]:
+              - generic [ref=e248]: Bonus
+            - generic [ref=e249]:
+              - generic [ref=e250]:
+                - generic [ref=e251]:
+                  - img "Suppressor" [ref=e252]
+                  - generic [ref=e253]:
+                    - generic [ref=e254]: Suppressor
+                    - generic [ref=e255]: $1250
+                - generic [ref=e257]:
+                  - strong [ref=e258]: "Effect:"
+                  - text: "-30% fire rate"
+              - generic [ref=e259]:
+                - generic [ref=e260]:
+                  - img "Return Fire" [ref=e261]
+                  - generic [ref=e262]:
+                    - generic [ref=e263]: Return Fire
+                    - generic [ref=e264]: $1250
+                - generic [ref=e266]:
+                  - strong [ref=e267]: "Effect:"
+                  - text: Reflect bullets
+              - generic [ref=e268]:
+                - generic [ref=e269]:
+                  - img "Metal Skin" [ref=e270]
+                  - generic [ref=e271]:
+                    - generic [ref=e272]: Metal Skin
+                    - generic [ref=e273]: $3000
+                - generic [ref=e275]:
+                  - strong [ref=e276]: "Effect:"
+                  - text: 5s bullet immunity
+          - generic [ref=e277]:
+            - heading "Passive" [level=4] [ref=e278]:
+              - generic [ref=e279]: Passive
+            - generic [ref=e281]:
+              - generic [ref=e282]:
+                - img "Improved Bullet Armor" [ref=e283]
+                - generic [ref=e284]:
+                  - generic [ref=e285]: Improved Bullet Armor
+                  - generic [ref=e286]: $3000
+              - generic [ref=e288]:
+                - strong [ref=e289]: "Effect:"
+                - text: Bullet resist + fire rate
+        - generic [ref=e291]:
+          - heading "Counter Items for Holliday" [level=3] [ref=e292]
+          - generic [ref=e293]:
+            - heading "Passive" [level=4] [ref=e294]:
+              - generic [ref=e295]: Passive
+            - generic [ref=e297]:
+              - generic [ref=e298]:
+                - img "Debuff Reducer" [ref=e299]
+                - generic [ref=e300]:
+                  - generic [ref=e301]: Debuff Reducer
+                  - generic [ref=e302]: $1250
+              - generic [ref=e304]:
+                - strong [ref=e305]: "Effect:"
+                - text: Reduces Lasso duration
+          - generic [ref=e306]:
+            - heading "Active" [level=4] [ref=e307]:
+              - generic [ref=e308]: Active
+            - generic [ref=e310]:
+              - generic [ref=e311]:
+                - img "Counterspell" [ref=e312]
+                - generic [ref=e313]:
+                  - generic [ref=e314]: Counterspell
+                  - generic [ref=e315]: $3000
+              - generic [ref=e317]:
+                - strong [ref=e318]: "Effect:"
+                - text: Parry Lasso
+        - generic [ref=e320]:
+          - heading "Counter Items for Infernus" [level=3] [ref=e321]
+          - generic [ref=e322]:
+            - heading "Passive" [level=4] [ref=e323]:
+              - generic [ref=e324]: Passive
+            - generic [ref=e326]:
+              - generic [ref=e327]:
+                - img "Plated Armor" [ref=e328]
+                - generic [ref=e329]:
+                  - generic [ref=e330]: Plated Armor
+                  - generic [ref=e331]: $6200
+              - generic [ref=e333]:
+                - strong [ref=e334]: "Effect:"
+                - text: Deflects burn build-up
+        - generic [ref=e336]:
+          - heading "Counter Items for Ivy" [level=3] [ref=e337]
+          - generic [ref=e338]:
+            - heading "Active" [level=4] [ref=e339]:
+              - generic [ref=e340]: Active
+            - generic [ref=e342]:
+              - generic [ref=e343]:
+                - img "Slowing Hex" [ref=e344]
+                - generic [ref=e345]:
+                  - generic [ref=e346]: Slowing Hex
+                  - generic [ref=e347]: $1250
+              - generic [ref=e349]:
+                - strong [ref=e350]: "Effect:"
+                - text: Stop ultimate
+        - generic [ref=e352]:
+          - heading "Counter Items for Kelvin" [level=3] [ref=e353]
+          - generic [ref=e354]:
+            - heading "Bonus" [level=4] [ref=e355]:
+              - generic [ref=e356]: Bonus
+            - generic [ref=e358]:
+              - generic [ref=e359]:
+                - img "Enduring Speed" [ref=e360]
+                - generic [ref=e361]:
+                  - generic [ref=e362]: Enduring Speed
+                  - generic [ref=e363]: $1250
+              - generic [ref=e365]:
+                - strong [ref=e366]: "Effect:"
+                - text: 30% slow resist
+          - generic [ref=e367]:
+            - heading "Anti-Heal" [level=4] [ref=e368]:
+              - generic [ref=e369]: Anti-Heal
+            - generic [ref=e371]:
+              - generic [ref=e372]:
+                - img "Healbane" [ref=e373]
+                - generic [ref=e374]:
+                  - generic [ref=e375]: Healbane
+                  - generic [ref=e376]: $1250
+              - generic [ref=e378]:
+                - strong [ref=e379]: "Effect:"
+                - text: 35% heal reduction
+        - generic [ref=e381]:
+          - heading "Counter Items for Lady Geist" [level=3] [ref=e382]
+          - generic [ref=e383]:
+            - heading "Active" [level=4] [ref=e384]:
+              - generic [ref=e385]: Active
+            - generic [ref=e387]:
+              - generic [ref=e388]:
+                - img "Silence Wave" [ref=e389]
+                - generic [ref=e390]:
+                  - generic [ref=e391]: Silence Wave
+                  - generic [ref=e392]: $3000
+              - generic [ref=e394]:
+                - strong [ref=e395]: "Effect:"
+                - text: Suppress low HP ultimate
+          - generic [ref=e396]:
+            - heading "Anti-Heal" [level=4] [ref=e397]:
+              - generic [ref=e398]: Anti-Heal
+            - generic [ref=e400]:
+              - generic [ref=e401]:
+                - img "Healbane" [ref=e402]
+                - generic [ref=e403]:
+                  - generic [ref=e404]: Healbane
+                  - generic [ref=e405]: $1250
+              - generic [ref=e407]:
+                - strong [ref=e408]: "Effect:"
+                - text: 35% heal reduction
+        - generic [ref=e410]:
+          - heading "Counter Items for Lash" [level=3] [ref=e411]
+          - generic [ref=e412]:
+            - heading "Active" [level=4] [ref=e413]:
+              - generic [ref=e414]: Active
+            - generic [ref=e416]:
+              - generic [ref=e417]:
+                - img "Counterspell" [ref=e418]
+                - generic [ref=e419]:
+                  - generic [ref=e420]: Counterspell
+                  - generic [ref=e421]: $3000
+              - generic [ref=e423]:
+                - strong [ref=e424]: "Effect:"
+                - text: Parry Slam
+        - generic [ref=e426]:
+          - heading "Counter Items for Mirage" [level=3] [ref=e427]
+          - generic [ref=e428]:
+            - heading "Active" [level=4] [ref=e429]:
+              - generic [ref=e430]: Active
+            - generic [ref=e432]:
+              - generic [ref=e433]:
+                - img "Slowing Hex" [ref=e434]
+                - generic [ref=e435]:
+                  - generic [ref=e436]: Slowing Hex
+                  - generic [ref=e437]: $1250
+              - generic [ref=e439]:
+                - strong [ref=e440]: "Effect:"
+                - text: Stop bat escape
+          - generic [ref=e441]:
+            - heading "Anti-Heal" [level=4] [ref=e442]:
+              - generic [ref=e443]: Anti-Heal
+            - generic [ref=e444]:
+              - generic [ref=e445]:
+                - generic [ref=e446]:
+                  - img "Decay" [ref=e447]
+                  - generic [ref=e448]:
+                    - generic [ref=e449]: Decay
+                    - generic [ref=e450]: $1250
+                - generic [ref=e452]:
+                  - strong [ref=e453]: "Effect:"
+                  - text: 70% heal reduction + massive damage
+              - generic [ref=e454]:
+                - generic [ref=e455]:
+                  - img "Healbane" [ref=e456]
+                  - generic [ref=e457]:
+                    - generic [ref=e458]: Healbane
+                    - generic [ref=e459]: $1250
+                - generic [ref=e461]:
+                  - strong [ref=e462]: "Effect:"
+                  - text: 35% heal reduction
+        - generic [ref=e464]:
+          - heading "Counter Items for Mo & Krill" [level=3] [ref=e465]
+          - generic [ref=e466]:
+            - heading "Passive" [level=4] [ref=e467]:
+              - generic [ref=e468]: Passive
+            - generic [ref=e470]:
+              - generic [ref=e471]:
+                - img "Debuff Reducer" [ref=e472]
+                - generic [ref=e473]:
+                  - generic [ref=e474]: Debuff Reducer
+                  - generic [ref=e475]: $1250
+              - generic [ref=e477]:
+                - strong [ref=e478]: "Effect:"
+                - text: Reduces ultimate duration
+          - generic [ref=e479]:
+            - heading "Active" [level=4] [ref=e480]:
+              - generic [ref=e481]: Active
+            - generic [ref=e483]:
+              - generic [ref=e484]:
+                - img "Knockdown" [ref=e485]
+                - generic [ref=e486]:
+                  - generic [ref=e487]: Knockdown
+                  - generic [ref=e488]: $3000
+              - generic [ref=e490]:
+                - strong [ref=e491]: "Effect:"
+                - text: Cancel ultimate + stop burrowing
+          - generic [ref=e492]:
+            - heading "Anti-Heal" [level=4] [ref=e493]:
+              - generic [ref=e494]: Anti-Heal
+            - generic [ref=e496]:
+              - generic [ref=e497]:
+                - img "Toxic Bullets" [ref=e498]
+                - generic [ref=e499]:
+                  - generic [ref=e500]: Toxic Bullets
+                  - generic [ref=e501]: $3000
+              - generic [ref=e503]:
+                - strong [ref=e504]: "Effect:"
+                - text: "% max HP bleed damage"
+        - generic [ref=e506]:
+          - heading "Counter Items for Paige" [level=3] [ref=e507]
+          - generic [ref=e508]:
+            - heading "Active" [level=4] [ref=e509]:
+              - generic [ref=e510]: Active
+            - generic [ref=e512]:
+              - generic [ref=e513]:
+                - img "Counterspell" [ref=e514]
+                - generic [ref=e515]:
+                  - generic [ref=e516]: Counterspell
+                  - generic [ref=e517]: $3000
+              - generic [ref=e519]:
+                - strong [ref=e520]: "Effect:"
+                - text: Parry ultimate
+          - generic [ref=e521]:
+            - heading "Bonus" [level=4] [ref=e522]:
+              - generic [ref=e523]: Bonus
+            - generic [ref=e525]:
+              - generic [ref=e526]:
+                - img "Capacitor" [ref=e527]
+                - generic [ref=e528]:
+                  - generic [ref=e529]: Capacitor
+                  - generic [ref=e530]: $6200
+              - generic [ref=e532]:
+                - strong [ref=e533]: "Effect:"
+                - text: Remove shields
+        - generic [ref=e535]:
+          - heading "Counter Items for Pocket" [level=3] [ref=e536]
+          - generic [ref=e537]:
+            - heading "Bonus" [level=4] [ref=e538]:
+              - generic [ref=e539]: Bonus
+            - generic [ref=e541]:
+              - generic [ref=e542]:
+                - img "Divine Barrier" [ref=e543]
+                - generic [ref=e544]:
+                  - generic [ref=e545]: Divine Barrier
+                  - generic [ref=e546]: $6200
+              - generic [ref=e548]:
+                - strong [ref=e549]: "Effect:"
+                - text: Cleanse ultimate
+        - generic [ref=e551]:
+          - heading "Counter Items for Seven" [level=3] [ref=e552]
+          - generic [ref=e553]:
+            - heading "Bonus" [level=4] [ref=e554]:
+              - generic [ref=e555]: Bonus
+            - generic [ref=e557]:
+              - generic [ref=e558]:
+                - img "Capacitor" [ref=e559]
+                - generic [ref=e560]:
+                  - generic [ref=e561]: Capacitor
+                  - generic [ref=e562]: $6200
+              - generic [ref=e564]:
+                - strong [ref=e565]: "Effect:"
+                - text: Remove Power Surge buff
+        - generic [ref=e567]:
+          - heading "Counter Items for Shiv" [level=3] [ref=e568]
+          - generic [ref=e569]:
+            - heading "Anti-Heal" [level=4] [ref=e570]:
+              - generic [ref=e571]: Anti-Heal
+            - generic [ref=e572]:
+              - generic [ref=e573]:
+                - generic [ref=e574]:
+                  - img "Healbane" [ref=e575]
+                  - generic [ref=e576]:
+                    - generic [ref=e577]: Healbane
+                    - generic [ref=e578]: $1250
+                - generic [ref=e580]:
+                  - strong [ref=e581]: "Effect:"
+                  - text: 35% heal reduction
+              - generic [ref=e582]:
+                - generic [ref=e583]:
+                  - img "Toxic Bullets" [ref=e584]
+                  - generic [ref=e585]:
+                    - generic [ref=e586]: Toxic Bullets
+                    - generic [ref=e587]: $3000
+                - generic [ref=e589]:
+                  - strong [ref=e590]: "Effect:"
+                  - text: Bleed + 30% heal reduction
+        - generic [ref=e592]:
+          - heading "Counter Items for The Doorman" [level=3] [ref=e593]
+          - generic [ref=e594]:
+            - heading "Passive" [level=4] [ref=e595]:
+              - generic [ref=e596]: Passive
+            - generic [ref=e598]:
+              - generic [ref=e599]:
+                - img "Reactive Barrier" [ref=e600]
+                - generic [ref=e601]:
+                  - generic [ref=e602]: Reactive Barrier
+                  - generic [ref=e603]: $1600
+              - generic [ref=e605]:
+                - strong [ref=e606]: "Effect:"
+                - text: Auto-barrier on Cart Combo
+        - generic [ref=e608]:
+          - heading "Counter Items for Victor" [level=3] [ref=e609]
+          - generic [ref=e610]:
+            - heading "Anti-Heal" [level=4] [ref=e611]:
+              - generic [ref=e612]: Anti-Heal
+            - generic [ref=e613]:
+              - generic [ref=e614]:
+                - generic [ref=e615]:
+                  - img "Healbane" [ref=e616]
+                  - generic [ref=e617]:
+                    - generic [ref=e618]: Healbane
+                    - generic [ref=e619]: $1250
+                - generic [ref=e621]:
+                  - strong [ref=e622]: "Effect:"
+                  - text: 35% heal reduction (early)
+              - generic [ref=e623]:
+                - generic [ref=e624]:
+                  - img "Crippling Headshot" [ref=e625]
+                  - generic [ref=e626]:
+                    - generic [ref=e627]: Crippling Headshot
+                    - generic [ref=e628]: $6200
+                - generic [ref=e630]:
+                  - strong [ref=e631]: "Effect:"
+                  - text: "-18% resists + 30% heal reduction"
+              - generic [ref=e632]:
+                - generic [ref=e633]:
+                  - img "Inhibitor" [ref=e634]
+                  - generic [ref=e635]:
+                    - generic [ref=e636]: Inhibitor
+                    - generic [ref=e637]: $6200
+                - generic [ref=e639]:
+                  - strong [ref=e640]: "Effect:"
+                  - text: 35% heal reduction + 35% damage reduction
+        - generic [ref=e642]:
+          - heading "Counter Items for Vindicta" [level=3] [ref=e643]
+          - generic [ref=e644]:
+            - heading "Passive" [level=4] [ref=e645]:
+              - generic [ref=e646]: Passive
+            - generic [ref=e648]:
+              - generic [ref=e649]:
+                - img "Improved Spirit Armor" [ref=e650]
+                - generic [ref=e651]:
+                  - generic [ref=e652]: Improved Spirit Armor
+                  - generic [ref=e653]: $3000
+              - generic [ref=e655]:
+                - strong [ref=e656]: "Effect:"
+                - text: Protection against snipes
+        - generic [ref=e658]:
+          - heading "Counter Items for Viscous" [level=3] [ref=e659]
+          - generic [ref=e660]:
+            - heading "Active" [level=4] [ref=e661]:
+              - generic [ref=e662]: Active
+            - generic [ref=e664]:
+              - generic [ref=e665]:
+                - img "Reactive Barrier" [ref=e666]
+                - generic [ref=e667]:
+                  - generic [ref=e668]: Reactive Barrier
+                  - generic [ref=e669]: $1250
+              - generic [ref=e671]:
+                - strong [ref=e672]: "Effect:"
+                - text: Parry Puddle Punch and return damage
+          - generic [ref=e673]:
+            - heading "Bonus" [level=4] [ref=e674]:
+              - generic [ref=e675]: Bonus
+            - generic [ref=e677]:
+              - generic [ref=e678]:
+                - img "Capacitor" [ref=e679]
+                - generic [ref=e680]:
+                  - generic [ref=e681]: Capacitor
+                  - generic [ref=e682]: $6200
+              - generic [ref=e684]:
+                - strong [ref=e685]: "Effect:"
+                - text: Remove cube buffs
+        - generic [ref=e687]:
+          - heading "Counter Items for Wraith" [level=3] [ref=e688]
+          - generic [ref=e689]:
+            - heading "Bonus" [level=4] [ref=e690]:
+              - generic [ref=e691]: Bonus
+            - generic [ref=e693]:
+              - generic [ref=e694]:
+                - img "Suppressor" [ref=e695]
+                - generic [ref=e696]:
+                  - generic [ref=e697]: Suppressor
+                  - generic [ref=e698]: $1250
+              - generic [ref=e700]:
+                - strong [ref=e701]: "Effect:"
+                - text: "-30% fire rate"
+        - generic [ref=e703]:
+          - heading "Counter Items for Yamato" [level=3] [ref=e704]
+          - generic [ref=e705]:
+            - heading "Active" [level=4] [ref=e706]:
+              - generic [ref=e707]: Active
+            - generic [ref=e709]:
+              - generic [ref=e710]:
+                - img "Silence Wave" [ref=e711]
+                - generic [ref=e712]:
+                  - generic [ref=e713]: Silence Wave
+                  - generic [ref=e714]: $3000
+              - generic [ref=e716]:
+                - strong [ref=e717]: "Effect:"
+                - text: Suppress low HP ultimate
+          - generic [ref=e718]:
+            - heading "Anti-Heal" [level=4] [ref=e719]:
+              - generic [ref=e720]: Anti-Heal
+            - generic [ref=e722]:
+              - generic [ref=e723]:
+                - img "Healbane" [ref=e724]
+                - generic [ref=e725]:
+                  - generic [ref=e726]: Healbane
+                  - generic [ref=e727]: $1250
+              - generic [ref=e729]:
+                - strong [ref=e730]: "Effect:"
+                - text: 35% heal reduction
+```

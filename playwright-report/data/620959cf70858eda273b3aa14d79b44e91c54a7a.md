@@ -1,0 +1,112 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Deadlock Fight Club" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=e6]:
+        - link "Fight Club" [ref=e7] [cursor=pointer]:
+          - /url: /
+        - link "Guides" [ref=e8] [cursor=pointer]:
+          - /url: /guides
+  - main [ref=e9]:
+    - generic [ref=e10]:
+      - generic [ref=e13]:
+        - img [ref=e15]
+        - generic [ref=e17]:
+          - generic [ref=e18]: Guide Overview
+          - generic [ref=e19]:
+            - paragraph [ref=e20]: "Most Deadlock guides focus on countering heroes individually. This guide is different: learn to build smarter by using items that counter multiple heroes and entire team compositions at once."
+            - paragraph [ref=e21]: Instead of memorizing individual matchups, understand which items give you the most value against the majority of teams you face.
+            - paragraph [ref=e22]:
+              - strong [ref=e23]: TL;DR?
+              - text: Check out the
+              - link "Quick Cheatsheet" [ref=e24] [cursor=pointer]:
+                - /url: /counter-cheatsheet
+              - text: for instant hero-specific counters.
+      - generic [ref=e25]:
+        - heading "🛡️ Passive Items" [level=2] [ref=e26]
+        - generic [ref=e27]:
+          - paragraph [ref=e28]: Passive items are silent lifesavers that do the work for you. If you're often dying to chain CC or setups you can't react to, these are your best choice.
+          - generic [ref=e29]:
+            - generic [ref=e30]:
+              - heading "Reactive Barrier" [level=3] [ref=e31]
+              - paragraph [ref=e32]:
+                - strong [ref=e33]: "Cost:"
+                - text: 1600 souls |
+                - strong [ref=e34]: "Tier:"
+                - text: "2"
+              - paragraph [ref=e35]: Automatically activates when hit by any form of crowd control, creating a barrier.
+              - paragraph [ref=e36]:
+                - strong [ref=e37]: "Counters:"
+                - text: Bebop (Hook), Abrams (Shoulder Charge), Doorman (Cart Combo)
+              - generic [ref=e38]:
+                - img [ref=e40]
+                - generic [ref=e43]:
+                  - generic [ref=e44]: Pro Tip
+                  - generic [ref=e45]: No-brainer to buy as early as laning phase into teams with lots of CC. Insanely good against heroes that rely on locking you down.
+            - generic [ref=e46]:
+              - heading "Debuff Reducer" [level=3] [ref=e47]
+              - paragraph [ref=e48]: Reduces the duration of stuns, slows, and even ultimates that apply CC effects.
+              - paragraph [ref=e49]:
+                - strong [ref=e50]: "Counters:"
+                - text: Abrams (Stun), Holiday (Lasso), Moe (Ultimate)
+              - generic [ref=e51]:
+                - img [ref=e53]
+                - generic [ref=e56]:
+                  - generic [ref=e57]: Pro Tip
+                  - generic [ref=e58]: Perfect if you're tired of being stunlocked. Builds into Debuff Remover, a fantastic active item.
+      - generic [ref=e59]:
+        - heading "⚡ Active Items" [level=2] [ref=e60]
+        - generic [ref=e61]:
+          - paragraph [ref=e62]: Active items require you to press a button, but they're worth it. These can completely neutralize dangerous abilities or save your life in critical moments.
+          - generic [ref=e63]:
+            - generic [ref=e64]:
+              - heading "Slowing Hex" [level=3] [ref=e65]
+              - paragraph [ref=e66]:
+                - strong [ref=e67]: "Cost:"
+                - text: 1600 souls |
+                - strong [ref=e68]: "Tier:"
+                - text: "2"
+              - paragraph [ref=e69]: Disarms and slows the target, preventing them from shooting or using abilities.
+              - paragraph [ref=e70]:
+                - strong [ref=e71]: "Counters:"
+                - text: Abrams, Lash, Wraith, Pocket
+            - generic [ref=e72]:
+              - heading "Debuff Remover" [level=3] [ref=e73]
+              - paragraph [ref=e74]:
+                - strong [ref=e75]: "Cost:"
+                - text: 3500 souls |
+                - strong [ref=e76]: "Tier:"
+                - text: "3"
+              - paragraph [ref=e77]: Removes all debuffs and provides temporary debuff immunity.
+              - paragraph [ref=e78]:
+                - strong [ref=e79]: "Counters:"
+                - text: All CC-heavy heroes, especially combo-dependent characters
+      - generic [ref=e80]:
+        - heading "💉 Anti-Heal Items" [level=2] [ref=e81]
+        - generic [ref=e82]:
+          - paragraph [ref=e83]: Anti-heal items are essential against heroes with high sustain or healing abilities.
+          - generic [ref=e85]:
+            - heading "Healbane" [level=3] [ref=e86]
+            - paragraph [ref=e87]:
+              - strong [ref=e88]: "Cost:"
+              - text: 1600 souls |
+              - strong [ref=e89]: "Tier:"
+              - text: "2"
+            - paragraph [ref=e90]: Applies 35% heal reduction to targets you damage.
+            - paragraph [ref=e91]:
+              - strong [ref=e92]: "Counters:"
+              - text: Abrams, McGinnis, Wraith, any hero with lifesteal builds
+      - generic [ref=e93]:
+        - img [ref=e95]
+        - generic [ref=e97]:
+          - generic [ref=e98]: Need Quick Reference?
+          - paragraph [ref=e100]:
+            - text: For a searchable hero-by-hero counter lookup, check out the
+            - link "Counter Cheatsheet" [ref=e101] [cursor=pointer]:
+              - /url: /counter-cheatsheet
+            - text: .
+```
