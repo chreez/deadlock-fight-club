@@ -1,0 +1,350 @@
+{
+  "videoMetadata": {
+    "title": "The BEST Items To Counter EVERY Hero In Deadlock",
+    "url": "https://youtu.be/Kdm-3hhR9SA",
+    "thumbnail": "https://i.ytimg.com/vi/Kdm-3hhR9SA/maxresdefault.jpg",
+    "embedUrl": "https://www.youtube.com/embed/Kdm-3hhR9SA"
+  },
+  "summary": {
+    "intro": "Most Deadlock guides focus on countering heroes individually, but this approach teaches you to build smarter by using items that counter multiple heroes and entire team compositions at once. Instead of memorizing single matchups, you'll learn which items give the most value against the majority of teams you face.",
+    "sections": ["Passive Items", "Active Items", "Anti-Heal Items", "Bonus Items"]
+  },
+  "passiveItems": [
+    {
+      "name": "Reactive Barrier",
+      "cost": 1600,
+      "tier": 2,
+      "category": "Passive",
+      "effect": "Automatically activates when you get hit by any form of crowd control, creating a barrier",
+      "counters": ["Bebop (Hook)", "Abrams (Shoulder Charge)", "Doorman (Cart Combo)"],
+      "tips": "No-brainer to buy as early as the laning phase into teams with lots of CC",
+      "useCase": "Insanely good against heroes that rely on locking you down before finishing the job"
+    },
+    {
+      "name": "Debuff Reducer",
+      "cost": null,
+      "tier": null,
+      "category": "Passive",
+      "effect": "Reduces the duration of stuns, slows and even ultimates that apply CC effects",
+      "counters": ["Abrams (Stun)", "Holiday (Lasso)", "Moe (Ultimate)"],
+      "tips": "Builds into Debuff Remover, a fantastic active",
+      "useCase": "Perfect if you're tired of being stunlocked or stuck in crowd control each fight"
+    },
+    {
+      "name": "Spirit Shielding",
+      "cost": 1600,
+      "tier": 2,
+      "category": "Passive",
+      "effect": "Heavily increases your survivability against spirit damage",
+      "counters": ["Double spirit lanes"],
+      "tips": "One of the best early game pickups if you're dealing with lots of spirit heroes",
+      "useCase": "Great value into double spirit lanes"
+    },
+    {
+      "name": "Spirit Resilience",
+      "cost": null,
+      "tier": null,
+      "category": "Passive",
+      "effect": "Stat-based passive that fine-tunes your defense based on what the enemy team's running",
+      "counters": ["Spirit-heavy team compositions"],
+      "tips": "Not an early game item. Buy it once you have the core items needed to deal damage. Press Tab and see if majority of enemy team has spirit damage",
+      "useCase": "Fine-tune your defense based on enemy team composition"
+    },
+    {
+      "name": "Bullet Resilience",
+      "cost": null,
+      "tier": null,
+      "category": "Passive",
+      "effect": "Stat-based passive that fine-tunes your defense against weapon damage. Also good into melee heroes (bullet resist translates to melee resist 1:1)",
+      "counters": ["Weapon damage teams", "Melee heroes"],
+      "tips": "Worse than Spirit Resilience because Armor-Piercing Rounds exist (50% chance to ignore bullet resist). No equivalent for spirit. Consider Battle Vest (cheaper, adds fire rate) or Plated Armor (double price but deflects bullets and on-hit effects)",
+      "useCase": "Good against weapon-heavy teams and melee heroes like Infernus"
+    },
+    {
+      "name": "Battle Vest",
+      "cost": null,
+      "tier": null,
+      "category": "Passive",
+      "effect": "Offers bullet resistance and fire rate",
+      "counters": ["Weapon damage"],
+      "tips": "Good for heroes that build on damage like Haze",
+      "useCase": "Cheaper alternative to Plated Armor"
+    },
+    {
+      "name": "Plated Armor",
+      "cost": null,
+      "tier": null,
+      "category": "Passive",
+      "effect": "Can deflect bullets and on-hit effects",
+      "counters": ["Infernus (burn build-up)", "On-hit effect heroes"],
+      "tips": "Double the price of Battle Vest but the difference is very noticeable",
+      "useCase": "Useful against heroes who try to build up on-hit effects"
+    },
+    {
+      "name": "Spellbreaker",
+      "cost": 6400,
+      "tier": 4,
+      "category": "Passive",
+      "effect": "Provides insane spirit resist and debuff resist",
+      "counters": ["Grey Talon", "Vindicta (snipes)"],
+      "tips": "Best spirit resist option in the game. Can make heroes like Grey Talon useless",
+      "useCase": "Whenever you need spirit resist, this is the best option"
+    }
+  ],
+  "activeItems": [
+    {
+      "name": "Counterspell",
+      "cost": null,
+      "tier": null,
+      "category": "Active (Parry)",
+      "effect": "Transforms your parry to protect you from the damaging effects of enemy abilities and items. Time the parry just before an ability reaches you",
+      "counters": ["Bebop (Hook, Bomb, Uppercut)", "Lash (Slam)", "Grey Talon (Ult)", "Holiday (Lasso)", "Paige (Ult)", "Calico (Bombs)"],
+      "tips": "One of the few items that can be bought every game on any hero. Note: Counterspelling Bebop's bomb puts it on cooldown but he still gains a stack",
+      "useCase": "Almost every ability in the game becomes useless against someone who has mastered counterspell"
+    },
+    {
+      "name": "Rebuttal",
+      "cost": 800,
+      "tier": 1,
+      "category": "Active (Parry)",
+      "effect": "On a successful parry against an enemy hero, you heal, return the damage, and temporarily gain 30% bonus damage for 6 seconds",
+      "counters": ["Viscous (Puddle Punch)"],
+      "tips": "Whenever you land one parry, they're as good as dead. You can also parry Puddle Punch from Viscous",
+      "useCase": "Turn successful parries into kill opportunities"
+    },
+    {
+      "name": "Knockdown",
+      "cost": null,
+      "tier": null,
+      "category": "Active",
+      "effect": "Drops an anvil on someone's head, knocking them down and stunning them. Prevents and cancels many ultimates",
+      "counters": ["Bebop (Ult)", "Moe (Ult)", "Flying characters", "Big animation ultimates", "Moe and Krill (when burrowing)"],
+      "tips": "Absolute menace against flying characters or anyone mid-animation. Hit Moe and Krill with knockdown when they're constantly burrowing",
+      "useCase": "Cancel ultimates and punish flying heroes"
+    },
+    {
+      "name": "Slowing Hex",
+      "cost": null,
+      "tier": null,
+      "category": "Active",
+      "effect": "Massively reduces enemy movement and silences their movement-based abilities and items for over 3 seconds",
+      "counters": ["Mirage (escaping with bats)", "Abrams (chasing)", "Ivy (ulting)"],
+      "tips": "You're going to have impact with this item almost every game. Getting slowed is infuriating and makes you an easy pick. Alternative: Warpstone for escaping (teleport + bullet resist)",
+      "useCase": "Prevent escapes and shut down mobility heroes"
+    },
+    {
+      "name": "Warpstone",
+      "cost": null,
+      "tier": null,
+      "category": "Active",
+      "effect": "Quickly teleport in any direction and gain some bullet resist",
+      "counters": ["Chasers"],
+      "tips": "Great option when your goal is escaping",
+      "useCase": "Escape tool alternative to Slowing Hex"
+    },
+    {
+      "name": "Disarming Hex",
+      "cost": null,
+      "tier": null,
+      "category": "Active",
+      "effect": "Disarms your target for 4 seconds and reduces their bullet resist",
+      "counters": ["Weapon-heavy teams", "Gun damage builds"],
+      "tips": "Use it to help with escaping or killing enemies",
+      "useCase": "Lifesaver that turns fights in your favor when enemy team is mostly weapon builds"
+    },
+    {
+      "name": "Silence Glyph",
+      "cost": null,
+      "tier": null,
+      "category": "Active",
+      "effect": "Launches a projectile forward, suppressing everyone in its path",
+      "counters": ["Calico", "Lady Geist (low HP ult)", "Yamato (low HP ult)"],
+      "tips": "Recommended against heroes relying on abilities. Especially effective against Lady Geist and Yamato who use ults at low health",
+      "useCase": "Shut down ability-dependent heroes"
+    },
+    {
+      "name": "Mystic Reach",
+      "cost": null,
+      "tier": null,
+      "category": "Active",
+      "effect": "Point-and-click silence option. Passively increases fire rate by 16%. 30% of all damage dealt during silence gets applied when silence wears off",
+      "counters": ["Ability-reliant heroes"],
+      "tips": "Fantastic point-and-click option to silence heroes",
+      "useCase": "Alternative silence with bonus fire rate"
+    },
+    {
+      "name": "Unstoppable",
+      "cost": null,
+      "tier": null,
+      "category": "Active",
+      "effect": "Automatic cancel spell that lasts for 5.5 seconds, deflecting all CC",
+      "counters": ["CC-heavy teams"],
+      "tips": "Basically an automatic cancel spell",
+      "useCase": "Become immune to crowd control"
+    },
+    {
+      "name": "Curse",
+      "cost": null,
+      "tier": null,
+      "category": "Active",
+      "effect": "Silence, disarm and prevent item usage. Also interrupts channeled abilities",
+      "counters": ["Fed enemies", "Dynamo (ulting)"],
+      "tips": "Best item to buy against fed people. Can cancel Dynamo's ult on a team",
+      "useCase": "Shut down fed carries completely"
+    },
+    {
+      "name": "Debuff Remover",
+      "cost": null,
+      "tier": null,
+      "category": "Active",
+      "effect": "Purges all non-ultimate negative effects that apply to you",
+      "counters": ["Multiple debuff teams", "Slowing Hex", "Knockdown"],
+      "tips": "Upgraded from Debuff Reducer. Priority buy against teams with multiple debuffs. Makes annoying actives like Slowing Hex and Knockdown irrelevant",
+      "useCase": "Cleanse yourself from debuffs"
+    }
+  ],
+  "antiHealItems": [
+    {
+      "name": "Heelsbane",
+      "cost": 1600,
+      "tier": 2,
+      "category": "Anti-Heal",
+      "effect": "Spirit damage applies 35% healing reduction. Heals you for 275 on kills",
+      "counters": ["Victor", "Shiv", "Billy", "Yamato", "Abrams", "Calico", "Kelvin", "Mirage", "Lady Geist"],
+      "tips": "Fantastic early game option good on all heroes. Game-changing when struggling in lane against constant healing",
+      "useCase": "Must-buy against lifesteal-heavy heroes"
+    },
+    {
+      "name": "Toxic Bullet",
+      "cost": 3200,
+      "tier": null,
+      "category": "Anti-Heal",
+      "effect": "Deals bleed damage (percentage of max health over time) and applies 30% healing reduction",
+      "counters": ["Moe and Krill", "Beefy heroes"],
+      "tips": "1600 more souls than Heelsbane but 5% less healing reduction. The bleed deals max health damage, making it great into beefy heroes like Tank Busters",
+      "useCase": "Anti-heal with % max health damage for tanks"
+    },
+    {
+      "name": "Inhibitor",
+      "cost": 6400,
+      "tier": 4,
+      "category": "Anti-Heal",
+      "effect": "35% healing reduction (same as Heelsbane) + reduces target's outgoing damage by 35%",
+      "counters": ["High damage + healing heroes"],
+      "tips": "Big tier 4 item. Fantastic when an enemy hero is pumping damage while healing",
+      "useCase": "Dual-purpose: reduce healing and damage output"
+    },
+    {
+      "name": "Spirit Burn",
+      "cost": null,
+      "tier": 4,
+      "category": "Anti-Heal",
+      "effect": "Deals significant spirit damage with a burn that has 70% healing reduction",
+      "counters": ["Mirage (spirit build)", "Spirit-building heroes"],
+      "tips": "Double the Heelsbane healing reduction with insane damage. Value every game against spirit-building heroes",
+      "useCase": "Highest healing reduction in game + massive spirit damage"
+    },
+    {
+      "name": "Crippling Headshot",
+      "cost": null,
+      "tier": 4,
+      "category": "Anti-Heal",
+      "effect": "On headshot: reduces target's bullet resist and spirit resist by 18% for 12 seconds. Applies 30% healing reduction",
+      "counters": ["Victor (fed)", "Weapon builds"],
+      "tips": "Go-to for shutting down a fed Victor",
+      "useCase": "Weapon-build counter with anti-heal"
+    }
+  ],
+  "bonusItems": [
+    {
+      "name": "Point Blank",
+      "cost": null,
+      "tier": null,
+      "category": "Bonus",
+      "effect": "Point-and-click active that deals bleed damage based on target's current health. 40% healing reduction for 10 seconds",
+      "counters": ["High HP targets"],
+      "tips": "Deals bleed damage based on current health",
+      "useCase": "Burst anti-heal with current HP damage"
+    },
+    {
+      "name": "Enduring Speed",
+      "cost": null,
+      "tier": null,
+      "category": "Bonus",
+      "effect": "Offers movement speed and 30% slow resist",
+      "counters": ["Kelvin", "Slow-heavy heroes"],
+      "tips": "Cheap item",
+      "useCase": "Counter slows and maintain mobility"
+    },
+    {
+      "name": "Close Quarters",
+      "cost": null,
+      "tier": null,
+      "category": "Bonus",
+      "effect": "Offers 20% melee resist and 20% weapon damage in close range",
+      "counters": ["Melee lanes"],
+      "tips": "Cheap item",
+      "useCase": "Survive and trade in melee matchups"
+    },
+    {
+      "name": "Capacitor",
+      "cost": null,
+      "tier": null,
+      "category": "Bonus",
+      "effect": "Remove non-ultimate buffs",
+      "counters": ["Seven (power surge)", "Paige (shields)", "Viscous (cubes)"],
+      "tips": "Can zap away buffs",
+      "useCase": "Dispel enemy buffs"
+    },
+    {
+      "name": "Divine Barrier",
+      "cost": null,
+      "tier": null,
+      "category": "Bonus",
+      "effect": "Upgraded Debuff Remover that can be used on teammates. Can cleanse ultimates",
+      "counters": ["Drifter (ult)", "Pocket (ult)"],
+      "tips": "Can cleanse even ultimates",
+      "useCase": "Support item for saving teammates from ults"
+    },
+    {
+      "name": "Suppressor",
+      "cost": null,
+      "tier": null,
+      "category": "Bonus",
+      "effect": "Reduces fire rate by 30%",
+      "counters": ["Wraith", "Haze", "Fire rate carries"],
+      "tips": "Direct counter to weapon carries that rely on fire rate",
+      "useCase": "Shut down fire rate-dependent heroes"
+    },
+    {
+      "name": "Return Fire",
+      "cost": null,
+      "tier": null,
+      "category": "Bonus",
+      "effect": "Has chance of firing bullets back to the attacker. Upgrades into Metal Skin",
+      "counters": ["Haze", "Gun-heavy heroes"],
+      "tips": "Upgrades into Metal Skin (makes you immune to bullets for 5 seconds)",
+      "useCase": "Reflect damage and upgrade path to bullet immunity"
+    },
+    {
+      "name": "Metal Skin",
+      "cost": null,
+      "tier": null,
+      "category": "Bonus",
+      "effect": "Active making you immune to bullets for 5 seconds",
+      "counters": ["Gun-heavy teams"],
+      "tips": "Upgraded from Return Fire",
+      "useCase": "Complete bullet immunity window"
+    },
+    {
+      "name": "Rescue Beam",
+      "cost": null,
+      "tier": null,
+      "category": "Bonus",
+      "effect": "Useful for saving teammates from many things",
+      "counters": ["Various threats"],
+      "tips": "For support builds",
+      "useCase": "Support utility for saving allies"
+    }
+  ]
+}
