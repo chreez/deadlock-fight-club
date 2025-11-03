@@ -1,5 +1,6 @@
 import React from 'react';
 import type { CounterItem } from '../../data/types';
+import { ITEMS } from '../../data/items';
 import { getItemIcon } from '../../utils/assets';
 import Badge from '../core/Badge';
 import './CounterList.css';
@@ -39,32 +40,38 @@ export default function CounterList({ counters, heroName }: CounterListProps) {
             <Badge type="category" value={category} />
           </h4>
           <div className="counter-list__items">
-            {groupedCounters[category].map((counter, index) => (
-              <div key={index} className="counter-item">
-                <div className="counter-item__header">
-                  <img
-                    src={getItemIcon(counter.name, category as 'weapon' | 'vitality' | 'spirit')}
-                    alt={counter.name}
-                    className="counter-item__icon"
-                    loading="lazy"
-                  />
-                  <div className="counter-item__info">
-                    <div className="counter-item__name">{counter.name}</div>
-                    <Badge type="cost" value={counter.cost} />
-                  </div>
-                </div>
-                <div className="counter-item__details">
-                  <div className="counter-item__effect">
-                    <strong>Effect:</strong> {counter.effect}
-                  </div>
-                  {counter.reason && (
-                    <div className="counter-item__reason">
-                      <strong>Why:</strong> {counter.reason}
+            {groupedCounters[category].map((counter, index) => {
+              // Find the actual item from ITEMS to get its real category
+              const item = ITEMS.find(i => i.name === counter.name);
+              const itemCategory = item ? item.category : 'weapon';
+
+              return (
+                <div key={index} className="counter-item">
+                  <div className="counter-item__header">
+                    <img
+                      src={getItemIcon(counter.name, itemCategory)}
+                      alt={counter.name}
+                      className="counter-item__icon"
+                      loading="lazy"
+                    />
+                    <div className="counter-item__info">
+                      <div className="counter-item__name">{counter.name}</div>
+                      <Badge type="cost" value={counter.cost} />
                     </div>
-                  )}
+                  </div>
+                  <div className="counter-item__details">
+                    <div className="counter-item__effect">
+                      <strong>Effect:</strong> {counter.effect}
+                    </div>
+                    {counter.reason && (
+                      <div className="counter-item__reason">
+                        <strong>Why:</strong> {counter.reason}
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       ))}

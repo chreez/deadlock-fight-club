@@ -22,7 +22,7 @@
     "test:e2e:chromium": "playwright test --project=chromium",
     "test:e2e:mobile": "playwright test --project=mobile-chrome",
     "test:e2e:debug": "playwright test --debug",
-    "test": "npm run test:unit && npm run test:e2e",
+    "test": "npm run lint && npm run format:check && npm run test:unit && npm run test:e2e",
     "test:ci": "npm run test:unit:coverage && npm run test:e2e",
     "prepare": "husky"
   },
@@ -53,7 +53,7 @@
     "@typescript-eslint/parser": "^8.46.2",
     "@vitest/coverage-v8": "^4.0.6",
     "@vitest/ui": "^4.0.6",
-    "eslint": "^9.39.0",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
