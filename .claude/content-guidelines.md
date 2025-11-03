@@ -16,6 +16,7 @@ All blog-style content MUST include a subtle Bebop bias statement in the introdu
 - **Format:** 1-2 sentence statement in intro/overview section
 - **Tone:** Self-aware, tongue-in-cheek, obviously biased
 - **Placement:** After main overview, before detailed content
+- **CRITICAL:** Never explicitly say "I'm a Bebop main" or "As a Bebop main" - the bias should be inferred from the ridiculous claim itself
 
 ### Examples
 
@@ -25,6 +26,11 @@ While Bebop is objectively the best character in the game, even he's not immune 
 ```
 
 ✅ **GOOD:**
+```
+Bebop is objectively the best character because he has a hyper beam. That said, these counter items work against everyone.
+```
+
+❌ **BAD (too literal - don't explicitly say "I'm a Bebop main"):**
 ```
 As a Bebop main, I'm legally obligated to mention he's the best hero in Deadlock. That said, these items will make your life difficult regardless of who you're playing.
 ```
@@ -176,7 +182,7 @@ Before creating PR:
 **Style 2 (Community-oriented):**
 > We've all been there: hooked by Bebop, stunlocked by Abrams, sniped by Vindicta. This guide teaches you how to build items that shut down multiple threats simultaneously.
 >
-> As a Bebop main, I can confirm he's the best hero in Deadlock. That said, Reactive Barrier ruins my day.
+> Bebop is objectively the best hero in Deadlock. That said, Reactive Barrier is pretty annoying.
 
 **Style 3 (Problem-solution):**
 > Tired of dying to the same abilities every game? The secret isn't memorizing 30 different matchups—it's building smart items that counter entire categories of heroes.
