@@ -5,7 +5,7 @@ import '../styles/global.css';
 import '../styles/components.css';
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -17,8 +17,13 @@ import '../styles/components.css';
       content="Fast hero-based counter lookup. Type any hero name to see all counter items instantly."
     />
     <meta property="og:title" content="Deadlock Counter Cheatsheet - Quick Hero Lookup" />
-    <meta property="og:description" content="Fast hero-based counter lookup. Type any hero name to see all counter items instantly." />
-    <script is:inline>window.__DEFINES__ = {};</script>
+    <meta
+      property="og:description"
+      content="Fast hero-based counter lookup. Type any hero name to see all counter items instantly."
+    />
+    <script is:inline>
+      window.__DEFINES__ = {};
+    </script>
   </head>
   <body>
     <SiteHeader client:load />

@@ -27,7 +27,7 @@ describe('HERO_COUNTERS data', () => {
   });
 
   it('should have valid counter item structure', () => {
-    Object.entries(HERO_COUNTERS).forEach(([heroName, counters]) => {
+    Object.entries(HERO_COUNTERS).forEach(([_heroName, counters]) => {
       counters.forEach(counter => {
         expect(counter).toHaveProperty('name');
         expect(counter).toHaveProperty('cost');

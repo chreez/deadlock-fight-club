@@ -45,9 +45,6 @@ test.describe('Fight Club Generator', () => {
     await page.getByRole('button', { name: /generate fight club match/i }).click();
     await page.waitForTimeout(500);
 
-    // Get first hero name
-    const firstHero = await page.locator('.hero-card__name').first().textContent();
-
     // Click randomize
     await page.getByRole('button', { name: /randomize match/i }).click();
     await page.waitForTimeout(500);

@@ -48,9 +48,6 @@ test.describe('Guides Homepage', () => {
 
     const firstCard = page.locator('article').first();
 
-    // Get initial border color
-    const initialBorder = await firstCard.evaluate(el => window.getComputedStyle(el).borderColor);
-
     // Hover over card
     await firstCard.hover();
     await page.waitForTimeout(100);

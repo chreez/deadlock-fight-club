@@ -24,21 +24,21 @@ describe('FooterNav component', () => {
   });
 
   it('should highlight Fight Club when current page is fight-club', () => {
-    const { container } = render(<FooterNav currentPage="fight-club" />);
+    render(<FooterNav currentPage="fight-club" />);
     const fightClubLink = screen.getByText('Fight Club');
 
     expect(fightClubLink).toHaveClass('footer-nav__link--active');
   });
 
   it('should highlight Counter Guide when current page is counter-guide', () => {
-    const { container } = render(<FooterNav currentPage="counter-guide" />);
+    render(<FooterNav currentPage="counter-guide" />);
     const counterGuideLink = screen.getByText('Counter Guide');
 
     expect(counterGuideLink).toHaveClass('footer-nav__link--active');
   });
 
   it('should highlight Counter Cheatsheet when current page is counter-cheatsheet', () => {
-    const { container } = render(<FooterNav currentPage="counter-cheatsheet" />);
+    render(<FooterNav currentPage="counter-cheatsheet" />);
     const counterCheatsheetLink = screen.getByText('Counter Cheatsheet');
 
     expect(counterCheatsheetLink).toHaveClass('footer-nav__link--active');

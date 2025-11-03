@@ -377,6 +377,7 @@ Ensure these are ignored:
    - Test on slow 3G connection
 
 4. **Production Build**
+
    ```bash
    npm run build
    npm run preview
