@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Primary Meta Tags -->
+    <title>Deadlock Counter Items Guide - Counter Every Hero</title>
+    <meta name="title" content="Deadlock Counter Items Guide - Counter Every Hero">
+    <meta name="description" content="Complete guide to countering every hero in Deadlock with smart item builds. Learn which items counter multiple heroes and entire team compositions at once.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://deadlock-randomizer.netlify.app/counter-guide.html">
+    <meta property="og:title" content="Deadlock Counter Items Guide - Counter Every Hero">
+    <meta property="og:description" content="Complete guide to countering every hero in Deadlock with smart item builds. Learn which items counter multiple heroes and entire team compositions at once.">
+    <meta property="og:image" content="https://i.ytimg.com/vi/Kdm-3hhR9SA/maxresdefault.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://deadlock-randomizer.netlify.app/counter-guide.html">
+    <meta property="twitter:title" content="Deadlock Counter Items Guide - Counter Every Hero">
+    <meta property="twitter:description" content="Complete guide to countering every hero in Deadlock with smart item builds. Learn which items counter multiple heroes and entire team compositions at once.">
+    <meta property="twitter:image" content="https://i.ytimg.com/vi/Kdm-3hhR9SA/maxresdefault.jpg">
+
+    <style>
+        :root {
+            --bg-dark: #0a0a0b;
+            --bg-secondary: #1a1a1f;
+            --accent-orange: #ff8c42;
+            --accent-purple: #7c4dff;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --weapon-color: #ff8c00;
+            --vitality-color: #4caf50;
+            --spirit-color: #9c27b0;
+            --tier1-color: #4caf50;
+            --tier2-color: #2196f3;
+            --tier3-color: #9c27b0;
+            --tier4-color: #ff9800;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent-orange);
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-purple);
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--accent-orange);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--accent-orange);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--accent-purple);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            margin: 30px 0;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .summary-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 4px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .summary-box p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .category-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 4px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .item-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 4px solid var(--accent-orange);
+            transition: all 0.3s ease;
+        }
+
+        .item-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .item-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .item-cost {
+            background: var(--accent-orange);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .item-tier {
+            background: var(--accent-purple);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .tier-1 { background: var(--tier1-color); }
+        .tier-2 { background: var(--tier2-color); }
+        .tier-3 { background: var(--tier3-color); }
+        .tier-4 { background: var(--tier4-color); }
+
+        .item-effect {
+            color: var(--text-secondary);
+            margin: 10px 0;
+            font-style: italic;
+        }
+
+        .counters-list {
+            margin: 12px 0;
+        }
+
+        .counters-list strong {
+            color: var(--accent-orange);
+        }
+
+        .counter-tag {
+            display: inline-block;
+            background: rgba(255, 140, 66, 0.2);
+            color: var(--accent-orange);
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin: 4px;
+            font-size: 0.9rem;
+        }
+
+        .tip-box {
+            background: rgba(124, 77, 255, 0.1);
+            border-left: 3px solid var(--accent-purple);
+            padding: 12px;
+            margin-top: 12px;
+            border-radius: 4px;
+        }
+
+        .tip-box strong {
+            color: var(--accent-purple);
+        }
+
+        .cheatsheet-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .cheatsheet-table th {
+            background: var(--accent-orange);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .cheatsheet-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cheatsheet-table tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .item-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Fight Club</a>
+
+        <h1>The BEST Items To Counter EVERY Hero</h1>
+        <p class="subtitle">Build smarter by countering multiple heroes and entire team compositions at once</p>
+
+        <div class="video-container">
+            <iframe
+                src="https://www.youtube.com/embed/Kdm-3hhR9SA"
+                title="The BEST Items To Counter EVERY Hero In Deadlock"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="summary-box">
+            <h3>📖 Guide Overview</h3>
+            <p>Most Deadlock guides focus on countering heroes individually, breaking down matchups one by one. This approach is different: you'll learn to build smarter by using items that counter multiple heroes and entire team compositions at once.</p>
+            <p>Instead of memorizing what beats a single matchup, you'll understand which items give you the most value against the majority of teams you face. By the end of this guide, you won't just be surviving each hero—you'll be countering them all at once.</p>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); font-style: italic; margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">While Bebop is objectively the best character in the game, even he's not immune to smart counter-building. (Though Reactive Barrier does get mentioned suspiciously often in this guide... just saying.)</p>
+        </div>
+
+        <h2>🛡️ Passive Items</h2>
+        <div class="category-section">
+            <p>Passive items are silent lifesavers that do the work for you. If you're often dying to chain CC or setups you can't react to, these are your best choice.</p>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Reactive Barrier</span>
+                    <div>
+                        <span class="item-cost">1600 souls</span>
+                        <span class="item-tier tier-2">Tier 2</span>
+                    </div>
+                </div>
+                <div class="item-effect">Automatically activates when you get hit by any form of crowd control, creating a barrier</div>
+                <div class="counters-list">
+                    <strong>Counters:</strong><br>
+                    <span class="counter-tag">Bebop (Hook)</span>
+                    <span class="counter-tag">Abrams (Shoulder Charge)</span>
+                    <span class="counter-tag">Doorman (Cart Combo)</span>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> No-brainer to buy as early as the laning phase into teams with lots of CC. Insanely good against heroes that rely on locking you down before finishing the job.
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Debuff Reducer</span>
+                </div>
+                <div class="item-effect">Reduces the duration of stuns, slows and even ultimates that apply CC effects</div>
+                <div class="counters-list">
+                    <strong>Counters:</strong><br>
+                    <span class="counter-tag">Abrams (Stun)</span>
+                    <span class="counter-tag">Holiday (Lasso)</span>
+                    <span class="counter-tag">Moe (Ultimate)</span>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Perfect if you're tired of being stunlocked or stuck in crowd control each fight. Builds into Debuff Remover, a fantastic active item.
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Spirit Shielding</span>
+                    <div>
+                        <span class="item-cost">1600 souls</span>
+                        <span class="item-tier tier-2">Tier 2</span>
+                    </div>
+                </div>
+                <div class="item-effect">Heavily increases your survivability against spirit damage</div>
+                <div class="counters-list">
+                    <strong>Counters:</strong><br>
+                    <span class="counter-tag">Double Spirit Lanes</span>
+                    <span class="counter-tag">Spirit-Heavy Comps</span>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> One of the best early game pickups if you're dealing with lots of spirit heroes.
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Spirit Resilience & Bullet Resilience</span>
+                </div>
+                <div class="item-effect">Stat-based passives that let you fine-tune your defense based on what the enemy team is running</div>
+                <div class="counters-list">
+                    <strong>Counters:</strong><br>
+                    <span class="counter-tag">Spirit/Weapon Heavy Teams</span>
+                    <span class="counter-tag">Melee Heroes (Bullet Resist)</span>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Not early game items. Buy once you have core damage items. Press Tab and see if the majority of enemy team has spirit or weapon damage, then buy accordingly. Note: Bullet Resilience is weaker than Spirit Resilience because Armor-Piercing Rounds can counter it (50% chance to ignore bullet resist). Consider Battle Vest (cheaper + fire rate) or Plated Armor (deflects bullets and on-hit effects).
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Spellbreaker</span>
+                    <div>
+                        <span class="item-cost">6400 souls</span>
+                        <span class="item-tier tier-4">Tier 4</span>
+                    </div>
+                </div>
+                <div class="item-effect">Provides insane spirit resist and debuff resist</div>
+                <div class="counters-list">
+                    <strong>Counters:</strong><br>
+                    <span class="counter-tag">Grey Talon</span>
+                    <span class="counter-tag">Vindicta (Snipes)</span>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Best spirit resist option in the game. So effective it can make heroes like Grey Talon useless.
+                </div>
+            </div>
+        </div>
+
+        <h2>⚡ Active Items</h2>
+        <div class="category-section">
+            <p>While passive items keep you alive, active items turn fights in your favor. Parry-related items are included here since they require button presses.</p>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Counterspell</span>
+                    <div>
+                        <span class="item-tier">Parry Active</span>
+                    </div>
+                </div>
+                <div class="item-effect">Transforms your parry to protect you from damaging effects of enemy abilities and items. Time the parry just before an ability reaches you.</div>
+                <div class="counters-list">
+                    <strong>Counters:</strong><br>
+                    <span class="counter-tag">Bebop (Hook, Bomb, Uppercut)</span>
+                    <span class="counter-tag">Lash (Slam)</span>
+                    <span class="counter-tag">Grey Talon (Ult)</span>
+                    <span class="counter-tag">Holiday (Lasso)</span>
+                    <span class="counter-tag">Paige (Ult)</span>
+                    <span class="counter-tag">Calico (Bombs)</span>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Almost every ability in the game becomes useless against someone who has mastered counterspell. One of the few items that can be bought every game on any hero. WARNING: Counterspelling Bebop's bomb puts it on cooldown but he still gains a stack!
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Rebuttal</span>
+                    <div>
+                        <span class="item-cost">800 souls</span>
+                        <span class="item-tier tier-1">Tier 1</span>
+                    </div>
+                </div>
+                <div class="item-effect">On successful parry: heal, return damage, and gain 30% bonus damage for 6 seconds</div>
+                <div class="counters-list">
+                    <strong>Counters:</strong><br>
+                    <span class="counter-tag">Viscous (Puddle Punch)</span>
+                    <span class="counter-tag">Any Hero</span>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Whenever you land one parry, they're as good as dead. Can parry Puddle Punch from Viscous and return damage.
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Knockdown</span>
+                </div>
+                <div class="item-effect">Drops an anvil on someone's head, knocking them down and stunning them. Prevents and cancels many ultimates.</div>
+                <div class="counters-list">
+                    <strong>Counters:</strong><br>
+                    <span class="counter-tag">Bebop (Ult)</span>
+                    <span class="counter-tag">Moe (Ult)</span>
+                    <span class="counter-tag">Flying Characters</span>
+                    <span class="counter-tag">Moe & Krill (Burrowing)</span>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Absolute menace against flying characters or anyone mid-animation. Hit Moe and Krill with knockdown when they're constantly burrowing to secure kills.
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Slowing Hex</span>
+                </div>
+                <div class="item-effect">Massively reduces enemy movement and silences movement-based abilities and items for 3+ seconds</div>
+                <div class="counters-list">
+                    <strong>Counters:</strong><br>
+                    <span class="counter-tag">Mirage (Bats Escape)</span>
+                    <span class="counter-tag">Abrams (Chase)</span>
+                    <span class="counter-tag">Ivy (Ult)</span>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> You'll have impact with this item almost every game. Getting slowed is infuriating and makes you an easy pick. Alternative: Warpstone for escaping (teleport + bullet resist).
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Disarming Hex</span>
+                </div>
+                <div class="item-effect">Disarms target for 4 seconds and reduces their bullet resist</div>
+                <div class="counters-list">
+                    <strong>Counters:</strong><br>
+                    <span class="counter-tag">Weapon-Heavy Teams</span>
+                    <span class="counter-tag">Gun Damage Builds</span>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Lifesaver that turns fights in your favor when enemy team is mostly weapon builds. Use for escaping or killing.
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Silence Glyph</span>
+                </div>
+                <div class="item-effect">Launches a projectile forward, suppressing everyone in its path</div>
+                <div class="counters-list">
+                    <strong>Counters:</strong><br>
+                    <span class="counter-tag">Calico</span>
+                    <span class="counter-tag">Lady Geist (Low HP Ult)</span>
+                    <span class="counter-tag">Yamato (Low HP Ult)</span>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Especially effective against Lady Geist and Yamato who use ults when reaching low health. Watch them scramble in panic!
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Unstoppable & Curse</span>
+                </div>
+                <div class="item-effect">Unstoppable: deflects all CC for 5.5 seconds | Curse: silence, disarm, prevent item usage, and interrupt abilities</div>
+                <div class="counters-list">
+                    <strong>Counters:</strong><br>
+                    <span class="counter-tag">CC-Heavy Teams</span>
+                    <span class="counter-tag">Fed Enemies</span>
+                    <span class="counter-tag">Dynamo (Ult)</span>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Curse is the best item to buy against fed people. Can cancel Dynamo's team ult.
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Debuff Remover</span>
+                </div>
+                <div class="item-effect">Purges all non-ultimate negative effects that apply to you</div>
+                <div class="counters-list">
+                    <strong>Counters:</strong><br>
+                    <span class="counter-tag">Multiple Debuff Teams</span>
+                    <span class="counter-tag">Slowing Hex</span>
+                    <span class="counter-tag">Knockdown</span>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Priority buy against teams with multiple debuffs. Makes annoying actives like Slowing Hex and Knockdown irrelevant. Upgraded from Debuff Reducer.
+                </div>
+            </div>
+        </div>
+
+        <h2>💉 Anti-Heal Items</h2>
+        <div class="category-section">
+            <p>Some heroes have so much lifesteal that anti-heal items are almost required. Essential against: Victor, Shiv, Billy, Yamato, Abrams, Calico, Kelvin, Mirage, and Lady Geist.</p>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Heelsbane</span>
+                    <div>
+                        <span class="item-cost">1600 souls</span>
+                        <span class="item-tier tier-2">Tier 2</span>
+                    </div>
+                </div>
+                <div class="item-effect">Spirit damage applies 35% healing reduction. Heals you for 275 on kills.</div>
+                <div class="counters-list">
+                    <strong>Counters:</strong><br>
+                    <span class="counter-tag">Victor</span>
+                    <span class="counter-tag">Shiv</span>
+                    <span class="counter-tag">Billy</span>
+                    <span class="counter-tag">Yamato</span>
+                    <span class="counter-tag">Abrams</span>
+                    <span class="counter-tag">Calico</span>
+                    <span class="counter-tag">Kelvin</span>
+                    <span class="counter-tag">Mirage</span>
+                    <span class="counter-tag">Lady Geist</span>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Fantastic early game option good on all heroes. Game-changing when struggling in lane against constant healing. Not only are you more likely to get kills, but you heal straight back up.
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Toxic Bullet</span>
+                    <div>
+                        <span class="item-cost">3200 souls</span>
+                    </div>
+                </div>
+                <div class="item-effect">Deals bleed damage (% of max health over time) and applies 30% healing reduction</div>
+                <div class="counters-list">
+                    <strong>Counters:</strong><br>
+                    <span class="counter-tag">Moe & Krill</span>
+                    <span class="counter-tag">Beefy Heroes</span>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> 1600 more souls than Heelsbane with 5% less healing reduction, BUT the bleed deals % max health damage making it great into tanks.
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Inhibitor</span>
+                    <div>
+                        <span class="item-cost">6400 souls</span>
+                        <span class="item-tier tier-4">Tier 4</span>
+                    </div>
+                </div>
+                <div class="item-effect">35% healing reduction + reduces target's outgoing damage by 35%</div>
+                <div class="counters-list">
+                    <strong>Counters:</strong><br>
+                    <span class="counter-tag">High Damage + Healing Heroes</span>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Fantastic when an enemy hero is pumping damage while healing. Dual-purpose shutdown.
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Spirit Burn</span>
+                    <div>
+                        <span class="item-tier tier-4">Tier 4</span>
+                    </div>
+                </div>
+                <div class="item-effect">Deals significant spirit damage with burn that has 70% healing reduction</div>
+                <div class="counters-list">
+                    <strong>Counters:</strong><br>
+                    <span class="counter-tag">Mirage (Spirit Build)</span>
+                    <span class="counter-tag">Spirit-Building Heroes</span>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Double the Heelsbane healing reduction (70%!) with insane damage. Value every game against spirit-building heroes.
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Crippling Headshot</span>
+                    <div>
+                        <span class="item-tier tier-4">Tier 4</span>
+                    </div>
+                </div>
+                <div class="item-effect">On headshot: reduces target's bullet/spirit resist by 18% for 12 seconds. Applies 30% healing reduction.</div>
+                <div class="counters-list">
+                    <strong>Counters:</strong><br>
+                    <span class="counter-tag">Victor (Fed)</span>
+                    <span class="counter-tag">Weapon Builds</span>
+                </div>
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Go-to for shutting down a fed Victor. Shreds resistances while applying anti-heal.
+                </div>
+            </div>
+        </div>
+
+        <h2>🎁 Bonus Items Worth Mentioning</h2>
+        <div class="category-section">
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Enduring Speed</span>
+                </div>
+                <div class="item-effect">Movement speed + 30% slow resist</div>
+                <div class="counters-list"><strong>Counters:</strong> <span class="counter-tag">Kelvin</span> <span class="counter-tag">Slow-Heavy Heroes</span></div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Close Quarters</span>
+                </div>
+                <div class="item-effect">20% melee resist + 20% weapon damage in close range</div>
+                <div class="counters-list"><strong>Counters:</strong> <span class="counter-tag">Melee Lanes</span></div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Capacitor</span>
+                </div>
+                <div class="item-effect">Remove non-ultimate buffs</div>
+                <div class="counters-list"><strong>Counters:</strong> <span class="counter-tag">Seven (Power Surge)</span> <span class="counter-tag">Paige (Shields)</span> <span class="counter-tag">Viscous (Cubes)</span></div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Divine Barrier</span>
+                </div>
+                <div class="item-effect">Upgraded Debuff Remover for teammates. Can cleanse ultimates.</div>
+                <div class="counters-list"><strong>Counters:</strong> <span class="counter-tag">Drifter (Ult)</span> <span class="counter-tag">Pocket (Ult)</span></div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Suppressor</span>
+                </div>
+                <div class="item-effect">Reduces fire rate by 30%</div>
+                <div class="counters-list"><strong>Counters:</strong> <span class="counter-tag">Wraith</span> <span class="counter-tag">Haze</span> <span class="counter-tag">Fire Rate Carries</span></div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Return Fire → Metal Skin</span>
+                </div>
+                <div class="item-effect">Return Fire: reflect bullets | Metal Skin: 5 seconds bullet immunity</div>
+                <div class="counters-list"><strong>Counters:</strong> <span class="counter-tag">Haze</span> <span class="counter-tag">Gun-Heavy Teams</span></div>
+            </div>
+
+            <div class="item-card">
+                <div class="item-header">
+                    <span class="item-name">Rescue Beam</span>
+                </div>
+                <div class="item-effect">Support utility for saving teammates</div>
+                <div class="counters-list"><strong>Counters:</strong> <span class="counter-tag">Various Threats</span></div>
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> For support builds
+                </div>
+            </div>
+        </div>
+
+        <h2>📊 Quick Reference Cheatsheet</h2>
+        <div class="category-section">
+            <table class="cheatsheet-table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Cost</th>
+                        <th>Category</th>
+                        <th>Primary Use</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Reactive Barrier</strong></td>
+                        <td>1600</td>
+                        <td>Passive</td>
+                        <td>Auto-barrier on CC</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Counterspell</strong></td>
+                        <td>—</td>
+                        <td>Active</td>
+                        <td>Parry abilities</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Heelsbane</strong></td>
+                        <td>1600</td>
+                        <td>Anti-Heal</td>
+                        <td>35% heal reduction (early game)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Spellbreaker</strong></td>
+                        <td>6400</td>
+                        <td>Passive</td>
+                        <td>Best spirit resist</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Knockdown</strong></td>
+                        <td>—</td>
+                        <td>Active</td>
+                        <td>Cancel ults/flying heroes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Slowing Hex</strong></td>
+                        <td>—</td>
+                        <td>Active</td>
+                        <td>Prevent escapes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Spirit Burn</strong></td>
+                        <td>—</td>
+                        <td>Anti-Heal</td>
+                        <td>70% heal reduction (late game)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Curse</strong></td>
+                        <td>—</td>
+                        <td>Active</td>
+                        <td>Shut down fed carries</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Debuff Remover</strong></td>
+                        <td>—</td>
+                        <td>Active</td>
+                        <td>Cleanse debuffs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Metal Skin</strong></td>
+                        <td>—</td>
+                        <td>Active</td>
+                        <td>5s bullet immunity</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="summary-box" style="margin-top: 40px;">
+            <h3>🎯 Final Thoughts</h3>
+            <p>By now you're not just memorizing what to build against each matchup—you understand how these items work and what might give you the most value each game. Remember to press Tab frequently to assess enemy team composition and adapt your build accordingly.</p>
+            <p>The key is building items that counter <strong>multiple threats at once</strong> rather than hyper-focusing on a single hero counter.</p>
+        </div>
+
+        <p style="text-align: center; color: var(--text-secondary); margin: 40px 0;">
+            Guide transcribed and structured from <a href="https://youtu.be/Kdm-3hhR9SA" target="_blank" style="color: var(--accent-orange); text-decoration: none;">this YouTube video</a>
+        </p>
+    </div>
+</body>
+</html>
