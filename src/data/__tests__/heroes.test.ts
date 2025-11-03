@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { HEROES } from './heroes';
+import { HEROES } from '../heroes';
 
 describe('HEROES data', () => {
   it('should have 32 heroes', () => {

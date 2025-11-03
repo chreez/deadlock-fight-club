@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { HERO_COUNTERS } from './counterData';
-import { HEROES } from './heroes';
+import { HERO_COUNTERS } from '../counterData';
+import { HEROES } from '../heroes';
 
 describe('HERO_COUNTERS data', () => {
   it('should be an object', () => {

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
-import AbilityIcon from './AbilityIcon';
+import AbilityIcon from '../AbilityIcon';
 
 describe('AbilityIcon component', () => {
   it('should render ability image', () => {

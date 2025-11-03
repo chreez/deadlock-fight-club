@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getRandomElement, shuffle, randomInt } from './random';
+import { getRandomElement, shuffle, randomInt } from '../random';
 
 describe('random utilities', () => {
   describe('getRandomElement', () => {

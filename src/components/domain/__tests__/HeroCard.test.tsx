@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import HeroCard from './HeroCard';
+import HeroCard from '../HeroCard';
 import type { Hero } from '../../data/types';
 
 describe('HeroCard component', () => {

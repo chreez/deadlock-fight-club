@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { ITEMS, FAIR_ITEM_COMBOS } from './items';
+import { ITEMS, FAIR_ITEM_COMBOS } from '../items';
 
 describe('ITEMS data', () => {
   it('should have 132 items', () => {

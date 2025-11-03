@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import FooterNav from './FooterNav';
+import FooterNav from '../FooterNav';
 
 describe('FooterNav component', () => {
   it('should render all navigation links', () => {

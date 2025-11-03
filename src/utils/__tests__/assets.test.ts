@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { toAssetName, getHeroPortrait, getItemIcon, getAbilityIcon, getHeroAbilities, handleImageError } from './assets';
+import { toAssetName, getHeroPortrait, getItemIcon, getAbilityIcon, getHeroAbilities, handleImageError } from '../assets';
 
 describe('asset utilities', () => {
   describe('toAssetName', () => {
