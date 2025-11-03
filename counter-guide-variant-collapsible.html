@@ -65,6 +65,20 @@
             margin-bottom: 20px;
         }
 
+        .back-link {
+            display: inline-block;
+            color: var(--accent-orange);
+            text-decoration: none;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-purple);
+            transform: translateX(-3px);
+        }
+
         .accordion-item {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 4px;
@@ -229,6 +243,7 @@
 </head>
 <body>
     <div class="container">
+        <a href="index.html" class="back-link">← Back to Fight Club</a>
         <span class="variant-badge">VARIATION 1: Collapsible Sections</span>
 
         <h1>Counter Items Guide</h1>
