@@ -1,16 +1,27 @@
 ---
-
+import FightClub from '../components/FightClub';
+import FooterNav from '../components/core/FooterNav';
+import '../styles/global.css';
 ---
 
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>Deadlock Fight Club Generator</title>
+    <meta
+      name="description"
+      content="Generate random 1v1 Fight Club matches for Deadlock with fair item loadouts. Practice and improve your skills!"
+    />
+  </head>
+  <body>
+    <main>
+      <FightClub client:load />
+    </main>
+    <footer>
+      <FooterNav currentPage="fight-club" client:load />
+    </footer>
+  </body>
 </html>
