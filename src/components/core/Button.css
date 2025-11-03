@@ -1,0 +1,66 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-default);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Primary variant - orange accent */
+.btn--primary {
+  background: var(--accent-orange);
+  color: var(--bg-dark);
+  border-color: var(--accent-orange);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: transparent;
+  color: var(--accent-orange);
+  box-shadow: var(--shadow-glow-orange);
+}
+
+/* Secondary variant - purple accent */
+.btn--secondary {
+  background: var(--accent-purple);
+  color: var(--text-primary);
+  border-color: var(--accent-purple);
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background: transparent;
+  color: var(--accent-purple);
+  box-shadow: var(--shadow-glow-purple);
+}
+
+/* Copy variant - outlined */
+.btn--copy {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+.btn--copy:hover:not(:disabled) {
+  border-color: var(--accent-orange);
+  color: var(--accent-orange);
+}
+
+.btn__icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn__content {
+  display: inline-flex;
+  align-items: center;
+}
