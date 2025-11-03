@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Deadlock Counter Items Guide - Collapsible View</title>
+    <meta property="og:title" content="Deadlock Counter Items Guide - Counter Every Hero">
+    <meta property="og:description" content="Complete guide to countering every hero in Deadlock with smart item builds.">
+    <meta property="og:image" content="https://i.ytimg.com/vi/Kdm-3hhR9SA/maxresdefault.jpg">
+    <style>
+        :root {
+            --bg-dark: #0a0a0b;
+            --bg-secondary: #1a1a1f;
+            --accent-orange: #ff8c42;
+            --accent-purple: #7c4dff;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .variant-badge {
+            display: inline-block;
+            background: var(--accent-purple);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .accordion-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item:hover {
+            border-color: var(--accent-orange);
+        }
+
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: rgba(255, 140, 66, 0.1);
+        }
+
+        .accordion-header.active {
+            background: rgba(255, 140, 66, 0.15);
+        }
+
+        .accordion-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .item-count {
+            background: var(--accent-orange);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-icon.active {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .accordion-content.active {
+            max-height: 5000px;
+        }
+
+        .accordion-inner {
+            padding: 20px;
+        }
+
+        .item-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+            border-left: 4px solid var(--accent-orange);
+            transition: all 0.3s ease;
+        }
+
+        .item-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .item-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .item-cost {
+            background: var(--accent-orange);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 16px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .item-effect {
+            color: var(--text-secondary);
+            margin: 8px 0;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        .counter-tag {
+            display: inline-block;
+            background: rgba(255, 140, 66, 0.2);
+            color: var(--accent-orange);
+            padding: 3px 8px;
+            border-radius: 10px;
+            margin: 3px;
+            font-size: 0.85rem;
+        }
+
+        .tip-box {
+            background: rgba(124, 77, 255, 0.1);
+            border-left: 3px solid var(--accent-purple);
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .expand-all-btn {
+            background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-purple) 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .expand-all-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 140, 66, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .accordion-title {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="variant-badge">VARIATION 1: Collapsible Sections</span>
+
+        <h1>Counter Items Guide</h1>
+        <p class="subtitle">Click to expand categories and explore counter options</p>
+
+        <button class="expand-all-btn" onclick="toggleAll()">Expand All</button>
+
+        <!-- Passive Items -->
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="accordion-title">
+                    <span>🛡️ Passive Items</span>
+                    <span class="item-count">8 items</span>
+                </div>
+                <span class="accordion-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-inner">
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Reactive Barrier</span>
+                            <span class="item-cost">1600 souls</span>
+                        </div>
+                        <div class="item-effect">Auto-activates on any CC, creating a barrier</div>
+                        <div>
+                            <span class="counter-tag">Bebop (Hook)</span>
+                            <span class="counter-tag">Abrams (Charge)</span>
+                            <span class="counter-tag">Doorman</span>
+                        </div>
+                        <div class="tip-box">💡 No-brainer buy as early as laning phase vs CC-heavy teams</div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Debuff Reducer</span>
+                        </div>
+                        <div class="item-effect">Reduces duration of stuns, slows, and CC ults</div>
+                        <div>
+                            <span class="counter-tag">Abrams</span>
+                            <span class="counter-tag">Holiday</span>
+                            <span class="counter-tag">Moe</span>
+                        </div>
+                        <div class="tip-box">💡 Builds into Debuff Remover (active)</div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Spirit Shielding</span>
+                            <span class="item-cost">1600 souls</span>
+                        </div>
+                        <div class="item-effect">Heavily increases spirit survivability</div>
+                        <div>
+                            <span class="counter-tag">Double Spirit Lanes</span>
+                            <span class="counter-tag">Spirit Comps</span>
+                        </div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Spirit/Bullet Resilience</span>
+                        </div>
+                        <div class="item-effect">Fine-tune defense based on enemy damage type</div>
+                        <div class="tip-box">💡 Not early game! Buy after core damage items. Press Tab to check enemy builds.</div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Battle Vest</span>
+                        </div>
+                        <div class="item-effect">Bullet resistance + fire rate</div>
+                        <div>
+                            <span class="counter-tag">Weapon Teams</span>
+                        </div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Plated Armor</span>
+                        </div>
+                        <div class="item-effect">Deflects bullets and on-hit effects</div>
+                        <div>
+                            <span class="counter-tag">Infernus</span>
+                            <span class="counter-tag">On-hit Heroes</span>
+                        </div>
+                        <div class="tip-box">💡 Double the price of Battle Vest but very noticeable difference</div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Spellbreaker</span>
+                            <span class="item-cost">6400 souls</span>
+                        </div>
+                        <div class="item-effect">Insane spirit resist + debuff resist</div>
+                        <div>
+                            <span class="counter-tag">Grey Talon</span>
+                            <span class="counter-tag">Vindicta</span>
+                        </div>
+                        <div class="tip-box">💡 Best spirit resist in the game. Can make Grey Talon useless!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Items -->
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="accordion-title">
+                    <span>⚡ Active Items</span>
+                    <span class="item-count">11 items</span>
+                </div>
+                <span class="accordion-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-inner">
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Counterspell</span>
+                        </div>
+                        <div class="item-effect">Parry to negate damaging effects of abilities/items</div>
+                        <div>
+                            <span class="counter-tag">Bebop</span>
+                            <span class="counter-tag">Lash</span>
+                            <span class="counter-tag">Grey Talon</span>
+                            <span class="counter-tag">Holiday</span>
+                            <span class="counter-tag">Calico</span>
+                        </div>
+                        <div class="tip-box">💡 Buy every game on any hero. WARNING: Bebop still gains stack even if you counterspell bomb!</div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Rebuttal</span>
+                            <span class="item-cost">800 souls</span>
+                        </div>
+                        <div class="item-effect">Successful parry = heal + return damage + 30% bonus damage for 6s</div>
+                        <div class="tip-box">💡 Land one parry and they're as good as dead</div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Knockdown</span>
+                        </div>
+                        <div class="item-effect">Drop anvil = stun + cancel ultimates</div>
+                        <div>
+                            <span class="counter-tag">Bebop (Ult)</span>
+                            <span class="counter-tag">Moe (Ult)</span>
+                            <span class="counter-tag">Flying Heroes</span>
+                            <span class="counter-tag">Moe Burrowing</span>
+                        </div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Slowing Hex</span>
+                        </div>
+                        <div class="item-effect">Massive slow + silence movement abilities for 3+ seconds</div>
+                        <div>
+                            <span class="counter-tag">Mirage</span>
+                            <span class="counter-tag">Abrams</span>
+                            <span class="counter-tag">Ivy</span>
+                        </div>
+                        <div class="tip-box">💡 Alternative: Warpstone for escaping (teleport + bullet resist)</div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Disarming Hex</span>
+                        </div>
+                        <div class="item-effect">Disarm 4s + reduce bullet resist</div>
+                        <div>
+                            <span class="counter-tag">Weapon Teams</span>
+                            <span class="counter-tag">Gun Builds</span>
+                        </div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Silence Glyph</span>
+                        </div>
+                        <div class="item-effect">Projectile that suppresses everyone in path</div>
+                        <div>
+                            <span class="counter-tag">Calico</span>
+                            <span class="counter-tag">Lady Geist (Low HP)</span>
+                            <span class="counter-tag">Yamato (Low HP)</span>
+                        </div>
+                        <div class="tip-box">💡 Hilarious when Geist tries to health swap at low HP and gets suppressed</div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Unstoppable</span>
+                        </div>
+                        <div class="item-effect">5.5s of deflecting all CC</div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Curse</span>
+                        </div>
+                        <div class="item-effect">Silence + disarm + prevent items + interrupt channels</div>
+                        <div>
+                            <span class="counter-tag">Fed Enemies</span>
+                            <span class="counter-tag">Dynamo (Ult)</span>
+                        </div>
+                        <div class="tip-box">💡 Best item vs fed carries</div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Debuff Remover</span>
+                        </div>
+                        <div class="item-effect">Purge all non-ultimate debuffs</div>
+                        <div>
+                            <span class="counter-tag">Multiple Debuffs</span>
+                            <span class="counter-tag">Slowing Hex</span>
+                            <span class="counter-tag">Knockdown</span>
+                        </div>
+                        <div class="tip-box">💡 Makes annoying actives irrelevant</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Anti-Heal Items -->
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="accordion-title">
+                    <span>💉 Anti-Heal Items</span>
+                    <span class="item-count">5 items</span>
+                </div>
+                <span class="accordion-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-inner">
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Heelsbane</span>
+                            <span class="item-cost">1600 souls</span>
+                        </div>
+                        <div class="item-effect">35% healing reduction on spirit damage + heal 275 on kills</div>
+                        <div>
+                            <span class="counter-tag">Victor</span>
+                            <span class="counter-tag">Shiv</span>
+                            <span class="counter-tag">Yamato</span>
+                            <span class="counter-tag">Abrams</span>
+                            <span class="counter-tag">Lady Geist</span>
+                        </div>
+                        <div class="tip-box">💡 Fantastic early game anti-heal. Good on all heroes.</div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Toxic Bullet</span>
+                            <span class="item-cost">3200 souls</span>
+                        </div>
+                        <div class="item-effect">Bleed (% max HP) + 30% healing reduction</div>
+                        <div>
+                            <span class="counter-tag">Moe & Krill</span>
+                            <span class="counter-tag">Tanks</span>
+                        </div>
+                        <div class="tip-box">💡 Great vs beefy heroes due to % max health damage</div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Inhibitor</span>
+                            <span class="item-cost">6400 souls</span>
+                        </div>
+                        <div class="item-effect">35% heal reduction + 35% damage reduction</div>
+                        <div class="tip-box">💡 Dual-purpose shutdown for high damage + healing heroes</div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Spirit Burn</span>
+                        </div>
+                        <div class="item-effect">Massive spirit damage + 70% healing reduction burn</div>
+                        <div>
+                            <span class="counter-tag">Mirage (Spirit)</span>
+                            <span class="counter-tag">Spirit Builders</span>
+                        </div>
+                        <div class="tip-box">💡 Highest heal reduction in game (70%!)</div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Crippling Headshot</span>
+                        </div>
+                        <div class="item-effect">Headshot = -18% resists for 12s + 30% heal reduction</div>
+                        <div>
+                            <span class="counter-tag">Fed Victor</span>
+                            <span class="counter-tag">Weapon Builds</span>
+                        </div>
+                        <div class="tip-box">💡 Go-to for shutting down fed Victor</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bonus Items -->
+        <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="accordion-title">
+                    <span>🎁 Bonus Items</span>
+                    <span class="item-count">7 items</span>
+                </div>
+                <span class="accordion-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <div class="accordion-inner">
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Enduring Speed</span>
+                        </div>
+                        <div class="item-effect">Move speed + 30% slow resist</div>
+                        <div><span class="counter-tag">Kelvin</span></div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Close Quarters</span>
+                        </div>
+                        <div class="item-effect">20% melee resist + 20% weapon damage close range</div>
+                        <div><span class="counter-tag">Melee Lanes</span></div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Capacitor</span>
+                        </div>
+                        <div class="item-effect">Remove non-ultimate buffs</div>
+                        <div>
+                            <span class="counter-tag">Seven</span>
+                            <span class="counter-tag">Paige</span>
+                            <span class="counter-tag">Viscous</span>
+                        </div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Divine Barrier</span>
+                        </div>
+                        <div class="item-effect">Team Debuff Remover that can cleanse ults</div>
+                        <div><span class="counter-tag">Drifter</span> <span class="counter-tag">Pocket</span></div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Suppressor</span>
+                        </div>
+                        <div class="item-effect">-30% fire rate</div>
+                        <div><span class="counter-tag">Wraith</span> <span class="counter-tag">Haze</span></div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Return Fire → Metal Skin</span>
+                        </div>
+                        <div class="item-effect">Reflect bullets → Upgrade to 5s bullet immunity</div>
+                        <div><span class="counter-tag">Gun Teams</span></div>
+                    </div>
+
+                    <div class="item-card">
+                        <div class="item-header">
+                            <span class="item-name">Rescue Beam</span>
+                        </div>
+                        <div class="item-effect">Support utility for saving allies</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.accordion-icon');
+
+            header.classList.toggle('active');
+            content.classList.toggle('active');
+            icon.classList.toggle('active');
+        }
+
+        let allExpanded = false;
+        function toggleAll() {
+            const btn = document.querySelector('.expand-all-btn');
+            const headers = document.querySelectorAll('.accordion-header');
+            const contents = document.querySelectorAll('.accordion-content');
+            const icons = document.querySelectorAll('.accordion-icon');
+
+            allExpanded = !allExpanded;
+            btn.textContent = allExpanded ? 'Collapse All' : 'Expand All';
+
+            headers.forEach((header, i) => {
+                if (allExpanded) {
+                    header.classList.add('active');
+                    contents[i].classList.add('active');
+                    icons[i].classList.add('active');
+                } else {
+                    header.classList.remove('active');
+                    contents[i].classList.remove('active');
+                    icons[i].classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
