@@ -1,6 +1,6 @@
 ---
+import SiteHeader from '../components/layout/SiteHeader';
 import FightClub from '../components/FightClub';
-import FooterNav from '../components/core/FooterNav';
 import '../styles/global.css';
 ---
 
@@ -17,11 +17,9 @@ import '../styles/global.css';
     />
   </head>
   <body>
+    <SiteHeader client:load />
     <main>
       <FightClub client:load />
     </main>
-    <footer>
-      <FooterNav currentPage="fight-club" client:load />
-    </footer>
   </body>
 </html>

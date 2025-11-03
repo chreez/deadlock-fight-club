@@ -1,7 +1,6 @@
 ---
+import SiteHeader from '../components/layout/SiteHeader';
 import CounterCheatsheet from '../components/CounterCheatsheet';
-import Header from '../components/core/Header';
-import FooterNav from '../components/core/FooterNav';
 import '../styles/global.css';
 ---
 
@@ -20,12 +19,9 @@ import '../styles/global.css';
     <meta property="og:description" content="Fast hero-based counter lookup. Type any hero name to see all counter items instantly." />
   </head>
   <body>
-    <Header title="Counter Cheatsheet" showBackLink={true} backHref="/" client:load />
+    <SiteHeader client:load />
     <main>
       <CounterCheatsheet client:load />
     </main>
-    <footer>
-      <FooterNav currentPage="counter-cheatsheet" client:load />
-    </footer>
   </body>
 </html>

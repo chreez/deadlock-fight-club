@@ -1,0 +1,100 @@
+---
+import SiteHeader from '../components/layout/SiteHeader';
+import Container from '../components/layout/Container';
+import Section from '../components/layout/Section';
+import '../styles/global.css';
+
+const guides = [
+  {
+    title: "Complete Counter Items Guide",
+    description: "Learn which items counter multiple heroes and entire team compositions at once. Build smarter, not harder.",
+    url: "/counter-guide",
+    category: "Strategy",
+    readTime: "10 min read"
+  },
+  {
+    title: "Counter Items Cheatsheet",
+    description: "Quick hero-by-hero counter lookup. Search any hero to see recommended counter items instantly.",
+    url: "/counter-cheatsheet",
+    category: "Reference",
+    readTime: "2 min lookup"
+  }
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <title>Deadlock Guides - Strategy & Reference</title>
+    <meta
+      name="description"
+      content="Comprehensive guides for Deadlock. Learn counter-building strategies, hero matchups, and advanced tactics."
+    />
+  </head>
+  <body>
+    <SiteHeader client:load />
+    <main>
+      <Container maxWidth="lg">
+        <Section>
+          <div style="text-align: center; margin-bottom: var(--spacing-xl);">
+            <h1 style="font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-purple) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 0 0 var(--spacing-md);">
+              Deadlock Guides
+            </h1>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+              Strategy guides, counter-building references, and advanced tactics for Deadlock
+            </p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-lg);">
+            {guides.map(guide => (
+              <a
+                href={guide.url}
+                style="text-decoration: none; color: inherit; display: block;"
+              >
+                <article style="background: var(--bg-secondary); padding: var(--spacing-lg); border-radius: var(--border-radius-lg); border: 2px solid var(--bg-secondary); transition: all var(--transition-default); height: 100%; display: flex; flex-direction: column; gap: var(--spacing-md);">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="color: var(--accent-orange); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
+                      {guide.category}
+                    </span>
+                    <span style="color: var(--text-secondary); font-size: 0.85rem;">
+                      {guide.readTime}
+                    </span>
+                  </div>
+
+                  <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin: 0;">
+                    {guide.title}
+                  </h2>
+
+                  <p style="color: var(--text-secondary); line-height: 1.6; margin: 0; flex: 1;">
+                    {guide.description}
+                  </p>
+
+                  <div style="margin-top: auto;">
+                    <span style="color: var(--accent-purple); font-weight: 500; display: inline-flex; align-items: center; gap: var(--spacing-xs);">
+                      Read guide
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </span>
+                  </div>
+                </article>
+              </a>
+            ))}
+          </div>
+        </Section>
+      </Container>
+    </main>
+
+    <style>
+      article:hover {
+        border-color: var(--accent-orange);
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-glow-orange);
+      }
+    </style>
+  </body>
+</html>

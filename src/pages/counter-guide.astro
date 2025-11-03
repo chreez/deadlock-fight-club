@@ -1,6 +1,5 @@
 ---
-import Header from '../components/core/Header';
-import FooterNav from '../components/core/FooterNav';
+import SiteHeader from '../components/layout/SiteHeader';
 import Container from '../components/layout/Container';
 import Section from '../components/layout/Section';
 import TipBox from '../components/layout/TipBox';
@@ -22,7 +21,7 @@ import '../styles/global.css';
     <meta property="og:description" content="Complete guide to countering every hero in Deadlock with smart item builds." />
   </head>
   <body>
-    <Header title="Counter Items Guide" showBackLink={true} backHref="/" client:load />
+    <SiteHeader client:load />
     <main>
       <Container maxWidth="md">
         <Section id="overview">
@@ -151,8 +150,5 @@ import '../styles/global.css';
         </TipBox>
       </Container>
     </main>
-    <footer>
-      <FooterNav currentPage="counter-guide" client:load />
-    </footer>
   </body>
 </html>
