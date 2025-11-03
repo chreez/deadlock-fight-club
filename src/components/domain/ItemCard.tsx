@@ -2,7 +2,6 @@ import React from 'react';
 import type { Item } from '../../data/types';
 import { getItemIcon } from '../../utils/assets';
 import Badge from '../core/Badge';
-import './ItemCard.css';
 
 export interface ItemCardProps {
   item: Item;

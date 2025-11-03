@@ -3,8 +3,6 @@ import { HERO_COUNTERS } from '../data/counterData';
 import SearchBar from './core/SearchBar';
 import CounterList from './domain/CounterList';
 import Container from './layout/Container';
-import Grid from './layout/Grid';
-import './CounterCheatsheet.css';
 
 export default function CounterCheatsheet() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -44,7 +42,7 @@ export default function CounterCheatsheet() {
         <div className="counter-cheatsheet__list">
           {filteredHeroes.length === 0 ? (
             <div className="counter-cheatsheet__no-results">
-              <p>No heroes found matching "{searchTerm}"</p>
+              <p>No heroes found matching &ldquo;{searchTerm}&rdquo;</p>
             </div>
           ) : (
             filteredHeroes.map(heroName => (

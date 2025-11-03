@@ -1,7 +1,6 @@
 import React from 'react';
 import type { Item } from '../../data/types';
 import ItemCard from './ItemCard';
-import './LoadoutDisplay.css';
 
 export interface LoadoutDisplayProps {
   items: Item[];

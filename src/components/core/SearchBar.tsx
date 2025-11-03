@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './SearchBar.css';
 
 export interface SearchBarProps {
   placeholder?: string;

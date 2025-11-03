@@ -1,5 +1,4 @@
 import React from 'react';
-import './TipBox.css';
 
 export interface TipBoxProps {
   title?: string;

@@ -3,7 +3,6 @@ import type { CounterItem } from '../../data/types';
 import { ITEMS } from '../../data/items';
 import { getItemIcon } from '../../utils/assets';
 import Badge from '../core/Badge';
-import './CounterList.css';
 
 export interface CounterListProps {
   counters: CounterItem[];

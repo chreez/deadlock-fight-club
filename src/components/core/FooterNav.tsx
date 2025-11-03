@@ -1,5 +1,4 @@
 import React from 'react';
-import './FooterNav.css';
 
 export interface FooterNavProps {
   currentPage?: 'fight-club' | 'counter-guide' | 'counter-cheatsheet';

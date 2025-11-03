@@ -1,5 +1,4 @@
 import React from 'react';
-import './Section.css';
 
 export interface SectionProps {
   id?: string;

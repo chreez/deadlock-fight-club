@@ -1,5 +1,4 @@
 import React from 'react';
-import './SiteHeader.css';
 
 export default function SiteHeader() {
   return (

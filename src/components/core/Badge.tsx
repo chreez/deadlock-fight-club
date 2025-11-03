@@ -1,6 +1,5 @@
 import React from 'react';
 import { getTierColor, getCategoryColor } from '../../styles/theme';
-import './Badge.css';
 
 export interface BadgeProps {
   type: 'tier' | 'cost' | 'category';

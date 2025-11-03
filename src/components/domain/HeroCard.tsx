@@ -1,7 +1,6 @@
 import React from 'react';
 import type { Hero } from '../../data/types';
 import { getHeroPortrait } from '../../utils/assets';
-import './HeroCard.css';
 
 export interface HeroCardProps {
   hero: Hero;

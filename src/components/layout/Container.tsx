@@ -1,5 +1,4 @@
 import React from 'react';
-import './Container.css';
 
 export interface ContainerProps {
   maxWidth?: 'sm' | 'md' | 'lg' | 'full';

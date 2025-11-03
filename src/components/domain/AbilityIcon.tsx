@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { getAbilityIcon } from '../../utils/assets';
-import './AbilityIcon.css';
 
 export interface AbilityIconProps {
   heroName: string;

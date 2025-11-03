@@ -1,5 +1,4 @@
 import React from 'react';
-import './Grid.css';
 
 export interface GridProps {
   columns?: 2 | 3 | 4 | 'auto';

@@ -8,5 +8,11 @@ import netlify from '@astrojs/netlify';
 // https://astro.build/config
 export default defineConfig({
   integrations: [react()],
-  adapter: netlify()
+  adapter: netlify(),
+  vite: {
+    define: {
+      __DEFINES__: JSON.stringify({}),
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+    },
+  },
 });

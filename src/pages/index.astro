@@ -2,6 +2,7 @@
 import SiteHeader from '../components/layout/SiteHeader';
 import FightClub from '../components/FightClub';
 import '../styles/global.css';
+import '../styles/components.css';
 ---
 
 <!DOCTYPE html>
@@ -15,6 +16,7 @@ import '../styles/global.css';
       name="description"
       content="Generate random 1v1 Fight Club matches for Deadlock with fair item loadouts. Practice and improve your skills!"
     />
+    <script is:inline>window.__DEFINES__ = {};</script>
   </head>
   <body>
     <SiteHeader client:load />

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { HEROES } from '../data/heroes';
 import { ITEMS, FAIR_ITEM_COMBOS } from '../data/items';
-import type { Hero, Item, FairItemCombo } from '../data/types';
+import type { Hero, Item } from '../data/types';
 import { getRandomElement, shuffle } from '../utils/random';
 import HeroCard from './domain/HeroCard';
 import LoadoutDisplay from './domain/LoadoutDisplay';
 import Button from './core/Button';
-import './FightClub.css';
 
 interface MatchData {
   hero1: Hero;
@@ -91,6 +90,7 @@ Total Cost per Player: ${matchData.totalCost.toLocaleString()} souls`;
   // Generate initial match on mount
   useEffect(() => {
     generateMatch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!matchData) {
