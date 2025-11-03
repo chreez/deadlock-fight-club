@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { toAssetName, getHeroPortrait, getItemIcon, getAbilityIcon } from './assets';
+import { toAssetName, getHeroPortrait, getItemIcon, getAbilityIcon, getHeroAbilities, handleImageError } from './assets';
 
 describe('asset utilities', () => {
   describe('toAssetName', () => {
@@ -79,6 +79,44 @@ describe('asset utilities', () => {
     it('should handle ability names with special characters', () => {
       const path = getAbilityIcon('Bebop', 'Hook (Q)');
       expect(path).toBe('/assets/abilities/bebop/hook-q.png');
+    });
+  });
+
+  describe('getHeroAbilities', () => {
+    it('should generate array of ability icon paths', () => {
+      const abilities = ['Hook', 'Bomb', 'Uppercut', 'Hyper Beam'];
+      const paths = getHeroAbilities('Bebop', abilities);
+
+      expect(paths).toHaveLength(4);
+      expect(paths[0]).toBe('/assets/abilities/bebop/hook.png');
+      expect(paths[1]).toBe('/assets/abilities/bebop/bomb.png');
+      expect(paths[2]).toBe('/assets/abilities/bebop/uppercut.png');
+      expect(paths[3]).toBe('/assets/abilities/bebop/hyper-beam.png');
+    });
+
+    it('should handle empty array', () => {
+      const paths = getHeroAbilities('Bebop', []);
+      expect(paths).toEqual([]);
+    });
+
+    it('should handle hero with special characters', () => {
+      const abilities = ['Burrow', 'Scurry'];
+      const paths = getHeroAbilities('Mo & Krill', abilities);
+
+      expect(paths[0]).toBe('/assets/abilities/mo-and-krill/burrow.png');
+      expect(paths[1]).toBe('/assets/abilities/mo-and-krill/scurry.png');
+    });
+  });
+
+  describe('handleImageError', () => {
+    it('should hide image element on error', () => {
+      const img = document.createElement('img');
+      const event = new Event('error');
+      Object.defineProperty(event, 'target', { value: img, writable: false });
+
+      handleImageError(event);
+
+      expect(img.style.display).toBe('none');
     });
   });
 });

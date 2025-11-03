@@ -13,6 +13,7 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html', 'lcov'],
+      include: ['src/**/*.{ts,tsx}'],
       exclude: [
         'node_modules/',
         'dist/',
@@ -26,6 +27,8 @@ export default defineConfig({
         '*.config.js',
         'src/env.d.ts',
       ],
+      // Report on all files, not just tested ones
+      all: true,
       // Required coverage thresholds
       thresholds: {
         statements: 50,
