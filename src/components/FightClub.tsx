@@ -87,31 +87,25 @@ Total Cost per Player: ${matchData.totalCost.toLocaleString()} souls`;
     });
   };
 
-  // Generate initial match on mount
-  useEffect(() => {
-    generateMatch();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   if (!matchData) {
     return (
       <div className="fight-club">
-        <Button variant="primary" onClick={generateMatch}>
-          Generate Fight Club Match
-        </Button>
+        <div className="fight-club__intro">
+          <h1 className="fight-club__title">Deadlock Fight Club</h1>
+          <p className="fight-club__description">
+            Generate balanced 1v1 matchups with randomized heroes and fair item builds.
+            Perfect for settling disputes or practicing specific scenarios.
+          </p>
+          <Button variant="primary" onClick={generateMatch}>
+            Generate Fight Club Match
+          </Button>
+        </div>
       </div>
     );
   }
 
   return (
     <div className="fight-club">
-      <div className="fight-club__header">
-        <h1 className="fight-club__title">Deadlock Fight Club</h1>
-        <Button variant="primary" onClick={generateMatch}>
-          Randomize Match
-        </Button>
-      </div>
-
       <div className="fight-club__match">
         <div className="fight-club__player">
           <div className="fight-club__player-label">PLAYER 1</div>
@@ -136,7 +130,10 @@ Total Cost per Player: ${matchData.totalCost.toLocaleString()} souls`;
         </div>
       </div>
 
-      <div className="fight-club__copy">
+      <div className="fight-club__actions">
+        <Button variant="primary" onClick={generateMatch}>
+          Generate a New Match
+        </Button>
         <Button variant="copy" onClick={copyToClipboard}>
           {copied ? '✓ Copied!' : 'Copy to Clipboard'}
         </Button>
