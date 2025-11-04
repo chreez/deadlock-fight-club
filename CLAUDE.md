@@ -1,198 +1,262 @@
-# Claude Code Instructions - V2
+# Claude Code Instructions
+
+## Project Overview
+
+**Site:** Deadlock Fight Club - Random hero/item generator + strategy guides
+**Stack:** React + Vite + TypeScript + Netlify
+**Owner:** chreez (Bebop Main)
+**Philosophy:** Solo project pragmatism, ship working features fast
+
+**Key Documents:**
+- `spec.md` - Full project specification (READ for feature requirements)
+- `docs/CONTENT-GUIDELINES.md` - Writing voice, Bebop bias
+- `docs/GUIDE-WORKFLOW.md` - YouTube → article pipeline
 
 ## Core Principles
 
-- **Simplicity > Perfection**: Ship working guides over perfect architecture
-- **Manual > Automated**: Chrome DevTools MCP testing over test frameworks
-- **Incremental > Ambitious**: Small commits, validate often, deploy early
-- **Essential > Comprehensive**: 5 docs max, lean context, clear decisions
+1. **Simplicity > Perfection** - Ship working features over perfect architecture
+2. **Manual > Automated** - Browser testing over test frameworks
+3. **Incremental > Ambitious** - Small commits, deploy often
+4. **Essential > Comprehensive** - Minimal dependencies, lean docs
 
-## Critical Files
+## Framework Choice
 
-- `docs/LESSONS-LEARNED.md` - V1 failures, V2 approach (READ FIRST before major decisions)
-- `docs/CONTENT-GUIDELINES.md` - Writing voice, Bebop bias, design patterns
-- `docs/GUIDE-WORKFLOW.md` - YouTube → article → page pipeline
-- `docs/guides/` - Source transcripts and structured data
+**React + Vite** (migrating from Astro)
 
-## Project Context
+**Why:**
+- Astro dev server unreliable (hydration errors, requires restarts)
+- Site is functionally a React SPA
+- Vite is fast, simple, works reliably
+- Better DX for React development
 
-**Site:** Deadlock Fight Club - Random hero/item generator + strategy guides
-**Stack:** Astro + React + TypeScript + Netlify (minimal dependencies only)
-**Owner:** chreez (Bebop Main)
-**Philosophy:** Solo project pragmatism, optimize for iteration speed
-
-## Commit Guidelines
-
-- Create logical commits between each step
-- If 2+ "fix" commits in a row: STOP and reassess
-- Commit messages: clear, semantic (feat/fix/docs/refactor)
-- Keep commits small and focused
+**Stack:**
+- React 19 + React Router
+- Vite (build tool)
+- TypeScript
+- Vitest (minimal smoke tests only)
 
 ## CSS and Design System
 
 **CRITICAL: Use the design system, don't override it**
 
-- `src/styles/tokens.css` - Design tokens (colors, spacing, shadows, etc.)
-- `src/styles/global.css` - Global base styles
-- `src/styles/components.css` - Component style imports
-- `src/components/layout/` - Layout utilities (Container, Grid, Section)
+**Files:**
+- `src/styles/tokens.css` - Design tokens (colors, spacing, shadows)
+- `src/styles/global.css` - Base styles
+- `src/styles/components.css` - Component imports
+- `src/components/layout/` - Container, Grid, Section
 
 **Rules:**
-1. **ALWAYS use design system tokens** (`var(--spacing-md)`, `var(--accent-orange)`, etc.)
-2. **NEVER hardcode values** that exist in tokens (12px → `var(--spacing-md)`)
-3. **Keep component CSS minimal** - only styles specific to that component
-4. **Use layout components** - Container, Grid, Section instead of custom flexbox
-5. **No duplicate spacing/color definitions** - if it's in tokens, use tokens
+1. ALWAYS use tokens: `var(--spacing-md)`, `var(--accent-orange)`
+2. NEVER hardcode values that exist in tokens
+3. Keep component CSS minimal
+4. Use layout components instead of custom flexbox
 
-**Before writing CSS:**
-- Check tokens.css for available values
-- Check layout components for existing patterns
-- Ask: "Can I use design system classes instead?"
-
-**Bad:**
+**Example:**
 ```css
+/* Bad */
 .my-component {
-  padding: 16px;
+  padding: 12px;
   color: #ff8c42;
-  gap: 12px;
-  max-width: 1200px;
 }
-```
 
-**Good:**
-```css
+/* Good */
 .my-component {
   padding: var(--spacing-md);
   color: var(--accent-orange);
-  gap: var(--spacing-md);
-  max-width: var(--container-max-width);
 }
 ```
 
-## MCP Server Usage
+## Documentation Tools
 
-### Ref MCP Server (Documentation Search)
+### Ref MCP Server (Primary Documentation Tool)
 
-**Purpose:** Search and retrieve framework/library documentation
-
-**When to use:**
-- Looking up Astro, React, TypeScript API docs
-- Finding best practices for web technologies
-- JavaScript/TypeScript patterns
-- CSS/HTML standards
+**ALWAYS use Ref MCP for documentation lookups:**
 
 **Tools:**
-- `mcp__Ref__ref_search_documentation` - Search by query (include framework names)
-- `mcp__Ref__ref_read_url` - Read full content (use EXACT url with #hash)
+- `mcp__Ref__ref_search_documentation` - Search docs by query
+- `mcp__Ref__ref_read_url` - Read full content from URL
 
-**Example:** Search "Astro React integration client directives" → Read specific URLs
-
-### Chrome DevTools MCP Server (Browser Automation)
-
-**Purpose:** Manual testing, UI validation, debugging (PRIMARY TESTING METHOD)
+**Usage:**
+```
+Search: "React Router lazy loading routes"
+Read: Exact URL with #hash from search results
+```
 
 **When to use:**
-- Testing live site during development
-- Verifying responsive design (375px mobile, 768px tablet, 1200px desktop)
-- Debugging rendering/layout issues
-- Checking console errors
-- Taking screenshots for documentation
-
-**Key tools:**
-- `list_pages` - See all open browser tabs
-- `navigate_page` - Go to URL (http://localhost:4321 for dev)
-- `take_snapshot` - Get accessibility tree (PREFER over screenshots)
-- `take_screenshot` - Visual state (when appearance matters)
-- `resize_page` - Test responsive layouts
-- `list_network_requests` - Debug API calls
-- `list_console_messages` - Check JavaScript errors
-- `evaluate_script` - Run custom JS in page
-- `click`, `fill`, `hover` - Interact with elements (use uid from snapshot)
-
-**Workflow for testing:**
-1. Start dev: `npm run dev`
-2. Navigate: http://localhost:4321
-3. Snapshot for structure
-4. Test interactions
-5. Check console for errors
-6. Test responsive: 375px, 768px, 1200px
-7. Fix issues and repeat
-
-**Efficiency tips:**
-- Snapshot > screenshot (faster, less context)
-- Screenshots only when visuals matter
-- Use evaluate_script for complex checks
-- Check console + network when debugging
-
-## Failure Indicators (STOP if you see these)
-
-- 🚩 2+ "fix" commits in a row
-- 🚩 Dependencies > 20 packages
-- 🚩 node_modules > 150MB
-- 🚩 Single file > 500 lines (except data)
-- 🚩 Build > 30 seconds
-- 🚩 More than 1 day without deploying
-- 🚩 Fighting with config files
-- 🚩 Vague commit messages
+- React, Vite, TypeScript API docs
+- Best practices and patterns
+- Library usage questions
 
 ## Testing Strategy
 
-**Primary:** Chrome DevTools MCP for manual validation
-**Secondary:** Minimal smoke tests (2-3 Playwright tests for critical paths)
-**Never:** Unit tests for every function, 50%+ coverage goals, test artifacts in git
+### Primary: Manual Testing via Browser Tools
+
+**Use:** https://browsertools.agentdesk.ai/
+
+**Process:**
+1. Open deployed URL or `http://localhost:5173`
+2. Test responsive layouts: 375px (mobile), 768px (tablet), 1200px (desktop)
+3. Verify all interactions work (buttons, search, navigation)
+4. Check browser console for errors
+5. Take screenshots for visual regression
+
+**Benefits:**
+- No test infrastructure overhead
+- Real browser testing
+- Fast iteration cycles
+- Visual confirmation
+
+### Secondary: Minimal Smoke Tests
+
+**Maximum 2-3 Vitest tests:**
+- Fight Club generator renders
+- Counter cheatsheet search works
+- All routes load without errors
+
+**Never:**
+- Unit tests for every function
+- Coverage goals (50%+)
+- Test artifacts in git
 
 ## Dependencies Policy
 
-**Keep minimal:**
-- `astro` (framework)
-- `@astrojs/react` (interactive components)
-- `react` + `react-dom`
-- `@astrojs/netlify` (deployment)
-- `typescript` (type checking)
-- `playwright` (smoke tests only, 2-3 tests max)
+**Target:** ~10 packages, ~50-100MB node_modules
 
-**Target:** ~10 dependencies, ~50-100MB node_modules
+**Core Dependencies:**
+- `react` + `react-dom` + `react-router-dom`
+- `vite`
+- `typescript`
+- `vitest` (minimal tests only)
 
 **Avoid:**
-- Testing frameworks (vitest, jest, etc.)
-- Linters (ESLint, etc.)
-- Formatters (Prettier, etc.)
+- Testing frameworks (jest, @testing-library)
+- Linters (ESLint)
+- Formatters (Prettier)
 - Git hooks (Husky, lint-staged)
 - Coverage tools
-- Any "enterprise" tooling
+- Enterprise tooling
+
+## Commit Guidelines
+
+- **Semantic prefixes:** feat/fix/docs/refactor/chore
+- **Keep commits small** and focused on one thing
+- **Clear messages:** "feat: Add sticky footer for action buttons"
+- **Stop if 2+ "fix" commits in a row** - reassess approach
+
+**Examples:**
+- ✅ `feat: Add hero counter search functionality`
+- ✅ `fix: Update item costs to current patch`
+- ✅ `refactor: Simplify Fight Club layout to horizontal`
+- ❌ `fix stuff` (vague)
+- ❌ `fix: various issues` (too broad)
+
+## Failure Indicators
+
+🚩 **STOP and reassess if you see:**
+
+- 2+ "fix" commits in a row
+- Dependencies growing beyond 20 packages
+- node_modules > 150MB
+- Fighting with config files for > 30 minutes
+- Build time > 30 seconds
+- Vague commit messages
+- More than 1 day without deploying
 
 ## Decision Framework
 
-Before adding anything, ask:
+**Before adding anything, ask:**
 
-1. **Does this ship the guides faster?**
+1. **Does this ship features faster?**
    - Yes → Do it minimally
    - No → Defer or skip
 
-2. **Can Chrome DevTools MCP handle this?**
-   - Yes → Use that instead
-   - No → Consider minimal alternative
+2. **Can manual testing handle this?**
+   - Yes → Use browsertools.agentdesk.ai
+   - No → Consider minimal automation
 
 3. **Is this needed now or later?**
    - Now → Implement
-   - Later → Note in LESSONS-LEARNED.md and skip
+   - Later → Document and skip
 
-## V2 Success Criteria
+## Development Workflow
+
+### Local Development
+
+```bash
+npm install
+npm run dev        # Starts Vite dev server on :5173
+npm run build      # Production build
+npm run preview    # Preview production build
+```
+
+### Testing
+
+```bash
+# Manual testing (PRIMARY)
+# 1. Open https://browsertools.agentdesk.ai/
+# 2. Navigate to http://localhost:5173
+# 3. Test responsive layouts
+# 4. Verify functionality
+# 5. Check console
+
+# Automated tests (MINIMAL)
+npm run test       # Run 2-3 smoke tests
+```
+
+### Deployment
+
+```bash
+git add -A
+git commit -m "feat: descriptive message"
+git push origin mainline
+# Netlify auto-deploys
+```
+
+## V1 Lessons Learned
+
+**What Failed (28-commit Astro sprint):**
+- 174 test files for static site
+- ESLint + Prettier + Husky overhead
+- 30KB single-file components
+- 13 documentation files
+- 397MB node_modules
+- Multiple build failures
+
+**V2 Success Formula:**
+- React + Vite for simplicity
+- Manual testing with browsertools
+- ~10 dependencies
+- 5 documentation files max
+- ~100MB node_modules
+- Incremental progress
+
+## Known Issues
+
+### Item Database
+
+- Some item names outdated (e.g., "Greater Expansion" → "Mystic Reach")
+- Costs need updating: 500/1250/3000/6200 → 800/1600/3200/6400
+- Missing assets handled with placeholder fallback
+
+### Astro Dev Server (Legacy Issue)
+
+- Dev mode breaks with hydration errors
+- Production builds work fine
+- Solution: Migrate to React + Vite
+
+## Success Criteria
 
 - ✅ All 4 guides render correctly
 - ✅ Fight Club generator works
 - ✅ Design system intact
-- ✅ All assets load (250+ images)
+- ✅ All assets load (placeholder fallback)
 - ✅ Production build succeeds
 - ✅ Deploys to Netlify
 - ✅ < 20 dependencies
 - ✅ < 150MB node_modules
-- ✅ < 10 test files
-- ✅ 5 documentation files
 - ✅ Clean commit history
 
 ---
 
-**Last Updated:** 2025-11-03 (V2 Fresh Start)
-**Status:** Active - V2 approach
-**Reference:** See docs/LESSONS-LEARNED.md for V1 failures
+**Last Updated:** 2025-11-04
+**Status:** Active - React + Vite migration in progress
