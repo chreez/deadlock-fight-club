@@ -7,5 +7,13 @@ import netlify from '@astrojs/netlify';
 // https://astro.build/config
 export default defineConfig({
   integrations: [react()],
-  adapter: netlify()
+  adapter: netlify(),
+  vite: {
+    optimizeDeps: {
+      include: ['html-escaper'],
+    },
+    ssr: {
+      noExternal: ['html-escaper'],
+    },
+  },
 });
