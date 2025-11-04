@@ -13,10 +13,4 @@ export default defineConfig({
   server: {
     port: 4323,
   },
-  vite: {
-    define: {
-      __DEFINES__: JSON.stringify({}),
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-    },
-  },
 });
