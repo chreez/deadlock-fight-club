@@ -25,6 +25,8 @@
 
 .hero-card__image-container {
   width: 100%;
+  max-width: 180px;
+  margin: 0 auto;
   aspect-ratio: 1;
   overflow: hidden;
   border-radius: var(--border-radius);
