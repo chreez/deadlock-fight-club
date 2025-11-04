@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function SiteHeader() {
   return (
     <header className="site-header">

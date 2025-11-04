@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { HEROES } from '../data/heroes';
 import { ITEMS, FAIR_ITEM_COMBOS } from '../data/items';
 import type { Hero, Item } from '../data/types';

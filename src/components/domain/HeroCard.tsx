@@ -1,4 +1,3 @@
-import React from 'react';
 import type { Hero } from '../../data/types';
 import { getHeroPortrait } from '../../utils/assets';
 

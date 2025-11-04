@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { HERO_COUNTERS } from '../data/counterData';
 import SearchBar from './core/SearchBar';
 import CounterList from './domain/CounterList';
