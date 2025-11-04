@@ -1,0 +1,119 @@
+.autocomplete {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+.autocomplete__input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--bg-secondary);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-large);
+  padding: var(--spacing-sm) var(--spacing-md);
+  transition: border-color 0.2s ease;
+}
+
+.autocomplete__input-wrapper:focus-within {
+  border-color: var(--accent-orange);
+}
+
+.autocomplete__icon {
+  color: var(--text-secondary);
+  margin-right: var(--spacing-sm);
+  flex-shrink: 0;
+}
+
+.autocomplete__input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.autocomplete__input::placeholder {
+  color: var(--text-secondary);
+}
+
+.autocomplete__clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xs);
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-radius: var(--radius-small);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.autocomplete__clear:hover {
+  color: var(--accent-orange);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.autocomplete__suggestions {
+  position: absolute;
+  top: calc(100% + var(--spacing-xs));
+  left: 0;
+  right: 0;
+  background: var(--bg-secondary);
+  border: 2px solid var(--accent-orange);
+  border-radius: var(--radius-large);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: var(--shadow-lg);
+  list-style: none;
+  margin: 0;
+  padding: var(--spacing-xs);
+}
+
+.autocomplete__suggestion {
+  padding: var(--spacing-sm) var(--spacing-md);
+  cursor: pointer;
+  color: var(--text-primary);
+  border-radius: var(--radius-standard);
+  transition: all 0.15s ease;
+}
+
+.autocomplete__suggestion:hover,
+.autocomplete__suggestion--active {
+  background: rgba(255, 140, 66, 0.2);
+  color: var(--accent-orange);
+}
+
+/* Custom scrollbar */
+.autocomplete__suggestions::-webkit-scrollbar {
+  width: 8px;
+}
+
+.autocomplete__suggestions::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+  border-radius: var(--radius-standard);
+}
+
+.autocomplete__suggestions::-webkit-scrollbar-thumb {
+  background: var(--accent-orange);
+  border-radius: var(--radius-standard);
+}
+
+.autocomplete__suggestions::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-purple);
+}
+
+@media (max-width: 768px) {
+  .autocomplete {
+    max-width: 100%;
+  }
+
+  .autocomplete__suggestions {
+    max-height: 200px;
+  }
+}

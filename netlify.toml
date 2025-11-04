@@ -1,64 +1,26 @@
-# Netlify Configuration for Deadlock Randomizer
-# https://docs.netlify.com/configure-builds/file-based-configuration/
+# Netlify Configuration for Deadlock Fight Club v2
 
 [build]
-  # No build command needed - static HTML site
-  publish = "."
-  
+  command = "npm run build"
+  publish = "dist"
+
 [build.environment]
-  # No environment variables needed
+  NODE_VERSION = "20"
 
-# Headers for better security and performance
-[[headers]]
-  for = "/*"
-  [headers.values]
-    # Security headers
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    
-    # Performance headers
-    Cache-Control = "public, max-age=31536000, immutable"
-    
-[[headers]]
-  for = "*.html"
-  [headers.values]
-    # HTML files should not be cached as aggressively
-    Cache-Control = "public, max-age=3600"
+# Production deployment (main branch only)
+[context.production]
+  command = "npm run build"
 
-[[headers]]
-  for = "*.css"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+# Branch deploys (non-main branches get preview URLs)
+[context.branch-deploy]
+  command = "npm run build"
 
-[[headers]]
-  for = "*.js"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+# Deploy previews for pull requests
+[context.deploy-preview]
+  command = "npm run build"
 
-# Redirects and URL handling
+# SPA routing
 [[redirects]]
-  # Redirect old randomizer page to main page
-  from = "/deadlock-randomizer.html"
-  to = "/"
-  status = 301
-
-[[redirects]]
-  # Handle SPA routing - redirect all non-file requests to index.html
   from = "/*"
   to = "/index.html"
   status = 200
-
-# Force HTTPS
-[[redirects]]
-  from = "http://deadlock-randomizer.netlify.app/*"
-  to = "https://deadlock-randomizer.netlify.app/:splat"
-  status = 301
-  force = true
-
-# Custom 404 page (will use index.html as fallback)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 404

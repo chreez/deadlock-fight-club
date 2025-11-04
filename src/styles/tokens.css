@@ -1,0 +1,57 @@
+/**
+ * Design tokens for Deadlock Fight Club
+ * CSS custom properties (variables) for consistent theming
+ */
+
+:root {
+  /* Background colors */
+  --bg-dark: #0a0a0b;
+  --bg-secondary: #1a1a1f;
+
+  /* Accent colors */
+  --accent-orange: #ff8c42;
+  --accent-purple: #7c4dff;
+
+  /* Text colors */
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+
+  /* Category colors */
+  --weapon-color: #ff8c00;
+  --vitality-color: #4caf50;
+  --spirit-color: #9c27b0;
+
+  /* Tier colors */
+  --tier1-color: #4caf50; /* Green */
+  --tier2-color: #2196f3; /* Blue */
+  --tier3-color: #9c27b0; /* Purple */
+  --tier4-color: #ff9800; /* Orange */
+
+  /* Border radius */
+  --radius-standard: 4px;
+  --radius-large: 8px;
+  --radius-small: 2px;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 20px;
+  --spacing-xl: 30px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-default: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.4);
+  --shadow-glow-orange: 0 4px 15px rgba(255, 140, 66, 0.3);
+  --shadow-glow-purple: 0 4px 15px rgba(124, 77, 255, 0.3);
+
+  /* Layout */
+  --container-max-width: 1200px;
+  --header-height: 80px;
+}

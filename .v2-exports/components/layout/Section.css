@@ -1,0 +1,38 @@
+.section {
+  padding: var(--spacing-xl) 0;
+}
+
+.section__title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-lg);
+}
+
+.section__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--spacing-lg) 0;
+  }
+
+  .section__title {
+    font-size: 1.5rem;
+    margin: 0 0 var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: var(--spacing-md) 0;
+  }
+
+  .section__title {
+    font-size: 1.25rem;
+    margin: 0 0 var(--spacing-sm);
+  }
+}

@@ -1,0 +1,135 @@
+.guide-page {
+  padding: var(--spacing-xl) 0;
+}
+
+.item-entry {
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.item-entry:last-child {
+  border-bottom: none;
+}
+
+.item-entry h3 {
+  margin-bottom: var(--spacing-xs);
+  color: var(--accent-orange);
+}
+
+.item-cost {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0 0 var(--spacing-sm) 0;
+  font-style: italic;
+}
+
+.item-counters {
+  color: var(--text-secondary);
+  margin-top: var(--spacing-sm);
+}
+
+.guide-lead {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-lg);
+}
+
+.guide-closing {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  background: rgba(255, 140, 66, 0.1);
+  border-left: 4px solid var(--accent-orange);
+  border-radius: var(--radius-standard);
+}
+
+.stat-box {
+  background: var(--bg-secondary);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-large);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: var(--spacing-lg) 0;
+}
+
+.stat-box h3 {
+  color: var(--accent-orange);
+  margin-bottom: var(--spacing-md);
+}
+
+.stat-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.stat-box li {
+  padding: var(--spacing-xs) 0;
+  color: var(--text-primary);
+}
+
+.timeline {
+  background: var(--bg-secondary);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-large);
+  border-left: 4px solid var(--accent-purple);
+  margin: var(--spacing-lg) 0;
+}
+
+.timeline h3 {
+  color: var(--accent-purple);
+  margin-bottom: var(--spacing-md);
+}
+
+.timeline p {
+  color: var(--text-primary);
+  margin: var(--spacing-sm) 0;
+}
+
+.example-box {
+  background: rgba(124, 77, 255, 0.1);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-large);
+  border: 1px solid var(--accent-purple);
+  margin: var(--spacing-lg) 0;
+}
+
+.example-box h3 {
+  color: var(--accent-purple);
+  margin-bottom: var(--spacing-md);
+}
+
+.example-box p {
+  margin: var(--spacing-sm) 0;
+  color: var(--text-primary);
+}
+
+.principles-list {
+  background: var(--bg-secondary);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-large);
+  margin: var(--spacing-lg) 0;
+}
+
+.principles-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.principles-list li {
+  padding: var(--spacing-sm) 0;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .guide-lead {
+    font-size: 1.1rem;
+  }
+
+  .guide-closing {
+    font-size: 1rem;
+  }
+}
