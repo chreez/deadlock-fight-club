@@ -1,0 +1,29 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: var(--border-radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  background-color: var(--badge-color);
+  color: var(--bg-dark);
+}
+
+.badge--tier {
+  min-width: 32px;
+}
+
+.badge--cost {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--text-secondary);
+}
+
+.badge--category {
+  font-size: 0.7rem;
+  padding: var(--spacing-xs) var(--spacing-md);
+}
