@@ -7,6 +7,19 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Production deployment (main branch only)
+[context.production]
+  command = "npm run build"
+
+# Branch deploys (non-main branches get preview URLs)
+[context.branch-deploy]
+  command = "npm run build"
+
+# Deploy previews for pull requests
+[context.deploy-preview]
+  command = "npm run build"
+
+# SPA routing
 [[redirects]]
   from = "/*"
   to = "/index.html"

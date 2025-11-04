@@ -20,31 +20,24 @@ export default function CounterGuide() {
         <Section>
           <h2>Universal Counter Items</h2>
 
-          <h3>Reactive Barrier (1,600 souls)</h3>
-          <p>
-            <strong>Automatically activates when you get hit by any form of crowd control.</strong>
-            This is a no-brainer to buy as early as laning phase into teams with lots of CC.
-            Insanely good against heroes that rely on locking you down before finishing the job.
-          </p>
-          <p><strong>Counters:</strong> Bebop (Hook), Abrams (Shoulder Charge), Doorman (Cart Combo)</p>
+          <div className="item-entry">
+            <h3>Reactive Barrier</h3>
+            <p className="item-cost">1,600 souls • Tier 2</p>
+            <p>Automatically activates when you get hit by any form of crowd control. No-brainer to buy early into teams with lots of CC.</p>
+            <p className="item-counters"><strong>Counters:</strong> Bebop (Hook), Abrams (Shoulder Charge), Doorman (Cart Combo)</p>
+          </div>
 
-          <h3>Debuff Reducer → Debuff Remover</h3>
-          <p>
-            Reduces the duration of stuns, slows and even ultimates that apply CC effects.
-            Perfect if you're tired of being stunlocked each fight. Builds into Debuff Remover,
-            a fantastic active item.
-          </p>
-          <p><strong>Counters:</strong> Abrams (Stun), Holiday (Lasso), Moe (Ultimate)</p>
+          <div className="item-entry">
+            <h3>Debuff Reducer</h3>
+            <p>Reduces duration of stuns, slows and ultimates that apply CC. Builds into Debuff Remover.</p>
+            <p className="item-counters"><strong>Counters:</strong> Abrams (Stun), Holiday (Lasso), Moe (Ultimate)</p>
+          </div>
 
-          <h3>Counterspell</h3>
-          <p>
-            <strong>One of the few items that can be bought every game on any hero.</strong>
-            Transforms your parry to protect you from damaging effects of enemy abilities and items.
-            Time the parry just before an ability reaches you. Almost every ability in the game becomes
-            useless against someone who has mastered counterspell.
-          </p>
-          <p><strong>Counters:</strong> Bebop (Hook, Bomb, Uppercut), Lash (Slam), Grey Talon (Ult),
-            Holiday (Lasso), Paige (Ult), Calico (Bombs)</p>
+          <div className="item-entry">
+            <h3>Counterspell</h3>
+            <p>Can be bought every game on any hero. Transforms your parry to protect from enemy abilities. Time it just before an ability reaches you.</p>
+            <p className="item-counters"><strong>Counters:</strong> Bebop (Hook, Bomb, Uppercut), Lash (Slam), Grey Talon (Ult), Holiday (Lasso)</p>
+          </div>
         </Section>
 
         <Section>

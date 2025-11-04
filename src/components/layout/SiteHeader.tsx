@@ -3,6 +3,11 @@ export default function SiteHeader() {
     <header className="site-header">
       <div className="site-header__container">
         <a href="/" className="site-header__logo" aria-label="Deadlock Fight Club">
+          <img
+            src="/assets/heroes/bebop.png"
+            alt="Bebop"
+            className="site-header__logo-icon"
+          />
           <span className="site-header__logo-text" aria-hidden="true">
             Deadlock Fight Club
           </span>
