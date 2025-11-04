@@ -107,13 +107,19 @@ Total Cost per Player: ${matchData.totalCost.toLocaleString()} souls`;
   return (
     <div className="fight-club">
       <div className="fight-club__match">
-        <div className="fight-club__player-row">
+        <div className="fight-club__player-section">
           <span className="fight-club__player-label">PLAYER 1</span>
           <div className="fight-club__hero">
             <img
-              src={getHeroPortrait(matchData.hero1.name)}
+              src={getHeroPortrait(matchData.hero1.name, matchData.hero1.asset)}
               alt={matchData.hero1.name}
               className="fight-club__hero-image"
+              onError={(e) => {
+                const img = e.currentTarget;
+                if (!img.src.endsWith('generic.png')) {
+                  img.src = '/assets/heroes/generic.png';
+                }
+              }}
             />
             <span className="fight-club__hero-name">{matchData.hero1.name}</span>
           </div>
@@ -137,13 +143,19 @@ Total Cost per Player: ${matchData.totalCost.toLocaleString()} souls`;
 
         <div className="fight-club__vs">VS</div>
 
-        <div className="fight-club__player-row">
+        <div className="fight-club__player-section">
           <span className="fight-club__player-label">PLAYER 2</span>
           <div className="fight-club__hero">
             <img
-              src={getHeroPortrait(matchData.hero2.name)}
+              src={getHeroPortrait(matchData.hero2.name, matchData.hero2.asset)}
               alt={matchData.hero2.name}
               className="fight-club__hero-image"
+              onError={(e) => {
+                const img = e.currentTarget;
+                if (!img.src.endsWith('generic.png')) {
+                  img.src = '/assets/heroes/generic.png';
+                }
+              }}
             />
             <span className="fight-club__hero-name">{matchData.hero2.name}</span>
           </div>
