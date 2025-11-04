@@ -13,4 +13,12 @@ export default defineConfig({
   server: {
     port: 4323,
   },
+  vite: {
+    optimizeDeps: {
+      include: ['html-escaper'],
+    },
+    ssr: {
+      noExternal: ['html-escaper'],
+    },
+  },
 });
