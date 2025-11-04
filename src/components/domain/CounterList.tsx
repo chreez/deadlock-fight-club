@@ -52,6 +52,10 @@ export default function CounterList({ counters, heroName }: CounterListProps) {
                       alt={counter.name}
                       className="counter-item__icon"
                       loading="lazy"
+                      onError={(e) => {
+                        const img = e.currentTarget;
+                        img.src = '/assets/items/placeholder.png';
+                      }}
                     />
                     <div className="counter-item__info">
                       <div className="counter-item__name">{counter.name}</div>

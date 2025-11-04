@@ -28,6 +28,47 @@
 - Commit messages: clear, semantic (feat/fix/docs/refactor)
 - Keep commits small and focused
 
+## CSS and Design System
+
+**CRITICAL: Use the design system, don't override it**
+
+- `src/styles/tokens.css` - Design tokens (colors, spacing, shadows, etc.)
+- `src/styles/global.css` - Global base styles
+- `src/styles/components.css` - Component style imports
+- `src/components/layout/` - Layout utilities (Container, Grid, Section)
+
+**Rules:**
+1. **ALWAYS use design system tokens** (`var(--spacing-md)`, `var(--accent-orange)`, etc.)
+2. **NEVER hardcode values** that exist in tokens (12px → `var(--spacing-md)`)
+3. **Keep component CSS minimal** - only styles specific to that component
+4. **Use layout components** - Container, Grid, Section instead of custom flexbox
+5. **No duplicate spacing/color definitions** - if it's in tokens, use tokens
+
+**Before writing CSS:**
+- Check tokens.css for available values
+- Check layout components for existing patterns
+- Ask: "Can I use design system classes instead?"
+
+**Bad:**
+```css
+.my-component {
+  padding: 16px;
+  color: #ff8c42;
+  gap: 12px;
+  max-width: 1200px;
+}
+```
+
+**Good:**
+```css
+.my-component {
+  padding: var(--spacing-md);
+  color: var(--accent-orange);
+  gap: var(--spacing-md);
+  max-width: var(--container-max-width);
+}
+```
+
 ## MCP Server Usage
 
 ### Ref MCP Server (Documentation Search)
