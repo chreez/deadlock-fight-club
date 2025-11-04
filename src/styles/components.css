@@ -4,6 +4,7 @@
 @import '../components/core/Header.css';
 @import '../components/core/FooterNav.css';
 @import '../components/core/SearchBar.css';
+@import '../components/core/Autocomplete.css';
 
 /* Layout Components */
 @import '../components/layout/SiteHeader.css';

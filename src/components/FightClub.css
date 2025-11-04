@@ -69,20 +69,60 @@
 }
 
 .fight-club__items {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-  gap: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
   padding: var(--spacing-md);
   background: var(--bg-secondary);
   border-radius: var(--radius-large);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.fight-club__category-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.fight-club__category-label {
+  font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-small);
+  width: fit-content;
+}
+
+.fight-club__category-label--weapon {
+  background: rgba(255, 140, 0, 0.2);
+  color: var(--weapon-color);
+  border: 1px solid var(--weapon-color);
+}
+
+.fight-club__category-label--vitality {
+  background: rgba(76, 175, 80, 0.2);
+  color: var(--vitality-color);
+  border: 1px solid var(--vitality-color);
+}
+
+.fight-club__category-label--spirit {
+  background: rgba(156, 39, 176, 0.2);
+  color: var(--spirit-color);
+  border: 1px solid var(--spirit-color);
+}
+
+.fight-club__category-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(60px, 10vw, 80px), 1fr));
+  gap: var(--spacing-sm);
+}
+
 .fight-club__item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-xs);
+  gap: 2px;
 }
 
 .fight-club__item-image {
@@ -102,12 +142,22 @@
   border-color: var(--accent-orange);
 }
 
+.fight-club__item-cost {
+  font-size: clamp(0.65rem, 1vw, 0.8rem);
+  font-weight: 700;
+  color: var(--accent-orange);
+  background: rgba(255, 140, 66, 0.15);
+  padding: 2px var(--spacing-xs);
+  border-radius: var(--radius-small);
+}
+
 .fight-club__item-name {
-  font-size: clamp(0.6rem, 1vw, 0.75rem);
+  font-size: clamp(0.6rem, 0.9vw, 0.7rem);
   color: var(--text-secondary);
   text-align: center;
   line-height: 1.2;
   word-wrap: break-word;
+  max-width: 100%;
 }
 
 .fight-club__vs {

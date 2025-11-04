@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { HERO_COUNTERS } from '../data/counterData';
-import SearchBar from './core/SearchBar';
+import Autocomplete from './core/Autocomplete';
 import CounterList from './domain/CounterList';
 import Container from './layout/Container';
 
@@ -21,15 +21,16 @@ export default function CounterCheatsheet() {
         <div className="counter-cheatsheet__header">
           <h1 className="counter-cheatsheet__title">Deadlock Counter Cheatsheet</h1>
           <p className="counter-cheatsheet__subtitle">
-            Quick hero-based counter lookup. Search for any hero to see recommended counter items.
+            Quick hero-based counter lookup. Select a hero to see recommended counter items.
           </p>
         </div>
 
         <div className="counter-cheatsheet__search">
-          <SearchBar
-            placeholder="Search heroes..."
+          <Autocomplete
+            placeholder="Type a hero name..."
             value={searchTerm}
             onChange={setSearchTerm}
+            suggestions={heroes}
             onClear={() => setSearchTerm('')}
           />
           <div className="counter-cheatsheet__results-info">
