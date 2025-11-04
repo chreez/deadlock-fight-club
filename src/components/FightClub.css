@@ -89,11 +89,17 @@
   border-radius: var(--border-radius-lg);
 }
 
-.fight-club__actions {
+.fight-club__footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: center;
   gap: var(--spacing-md);
-  margin-top: var(--spacing-lg);
-  padding-top: var(--spacing-lg);
-  border-top: 1px solid var(--bg-secondary);
+  padding: var(--spacing-md);
+  background: var(--bg-dark);
+  border-top: 2px solid var(--accent-orange);
+  box-shadow: var(--shadow-lg);
+  z-index: 100;
 }

@@ -166,14 +166,14 @@ Total Cost per Player: ${matchData.totalCost.toLocaleString()} souls`;
         </div>
       </div>
 
-      <div className="fight-club__actions">
+      <footer className="fight-club__footer">
         <Button variant="primary" onClick={generateMatch}>
           Generate a New Match
         </Button>
         <Button variant="copy" onClick={copyToClipboard}>
           {copied ? '✓ Copied!' : 'Copy to Clipboard'}
         </Button>
-      </div>
+      </footer>
     </div>
   );
 }
