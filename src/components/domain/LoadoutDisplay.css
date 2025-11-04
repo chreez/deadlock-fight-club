@@ -1,8 +1,8 @@
 .loadout-display {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
-  padding: var(--spacing-lg);
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
   background: var(--bg-dark);
   border-radius: var(--border-radius-lg);
   border: 2px solid var(--bg-secondary);
@@ -18,8 +18,8 @@
 
 .loadout-display__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-md);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-sm);
 }
 
 .loadout-display__stats {
@@ -56,11 +56,13 @@
   color: var(--text-primary);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .loadout-display__grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
 
+@media (max-width: 768px) {
   .loadout-display__stat {
     flex-direction: column;
     align-items: flex-start;

@@ -2,10 +2,10 @@
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: var(--spacing-xl);
+  padding: var(--spacing-lg);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xl);
+  gap: var(--spacing-lg);
 }
 
 .fight-club__header {
@@ -29,14 +29,14 @@
 .fight-club__match {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  gap: var(--spacing-xl);
+  gap: var(--spacing-lg);
   align-items: start;
 }
 
 .fight-club__player {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
 }
 
 .fight-club__player-label {
