@@ -19,6 +19,17 @@
 
 .site-header__logo {
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.site-header__logo-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-standard);
+  border: 2px solid var(--accent-orange);
+  object-fit: cover;
 }
 
 .site-header__logo-text {

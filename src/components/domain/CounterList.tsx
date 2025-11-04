@@ -1,4 +1,3 @@
-import React from 'react';
 import type { CounterItem } from '../../data/types';
 import { ITEMS } from '../../data/items';
 import { getItemIcon } from '../../utils/assets';

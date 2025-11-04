@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { HEROES } from '../data/heroes';
 import { ITEMS, FAIR_ITEM_COMBOS } from '../data/items';
 import type { Hero, Item } from '../data/types';
@@ -107,61 +107,109 @@ Total Cost per Player: ${matchData.totalCost.toLocaleString()} souls`;
   return (
     <div className="fight-club">
       <div className="fight-club__match">
-        <div className="fight-club__player-row">
+        <div className="fight-club__player-section">
           <span className="fight-club__player-label">PLAYER 1</span>
           <div className="fight-club__hero">
             <img
-              src={getHeroPortrait(matchData.hero1.name)}
+              src={getHeroPortrait(matchData.hero1.name, matchData.hero1.asset)}
               alt={matchData.hero1.name}
               className="fight-club__hero-image"
+              onError={(e) => {
+                const img = e.currentTarget;
+                if (!img.src.endsWith('generic.png')) {
+                  img.src = '/assets/heroes/generic.png';
+                }
+              }}
             />
             <span className="fight-club__hero-name">{matchData.hero1.name}</span>
           </div>
           <div className="fight-club__items">
-            {matchData.player1Items.map((item, index) => (
-              <div key={index} className="fight-club__item">
-                <img
-                  src={getItemIcon(item.name, item.category)}
-                  alt={item.name}
-                  className="fight-club__item-image"
-                  onError={(e) => {
-                    const img = e.currentTarget;
-                    img.src = '/assets/items/placeholder.png';
-                  }}
-                />
-                <span className="fight-club__item-name">{item.name}</span>
-              </div>
-            ))}
+            {['weapon', 'vitality', 'spirit'].map(category => {
+              const categoryItems = matchData.player1Items
+                .filter(item => item.category === category)
+                .sort((a, b) => a.cost - b.cost);
+
+              if (categoryItems.length === 0) return null;
+
+              return (
+                <div key={category} className="fight-club__category-group">
+                  <div className={`fight-club__category-label fight-club__category-label--${category}`}>
+                    {category}
+                  </div>
+                  <div className="fight-club__category-items">
+                    {categoryItems.map((item, index) => (
+                      <div key={index} className="fight-club__item">
+                        <img
+                          src={getItemIcon(item.name, item.category)}
+                          alt={item.name}
+                          className="fight-club__item-image"
+                          onError={(e) => {
+                            const img = e.currentTarget;
+                            img.src = '/assets/items/placeholder.png';
+                          }}
+                        />
+                        <span className="fight-club__item-cost">{item.cost}s</span>
+                        <span className="fight-club__item-name">{item.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
         <div className="fight-club__vs">VS</div>
 
-        <div className="fight-club__player-row">
+        <div className="fight-club__player-section">
           <span className="fight-club__player-label">PLAYER 2</span>
           <div className="fight-club__hero">
             <img
-              src={getHeroPortrait(matchData.hero2.name)}
+              src={getHeroPortrait(matchData.hero2.name, matchData.hero2.asset)}
               alt={matchData.hero2.name}
               className="fight-club__hero-image"
+              onError={(e) => {
+                const img = e.currentTarget;
+                if (!img.src.endsWith('generic.png')) {
+                  img.src = '/assets/heroes/generic.png';
+                }
+              }}
             />
             <span className="fight-club__hero-name">{matchData.hero2.name}</span>
           </div>
           <div className="fight-club__items">
-            {matchData.player2Items.map((item, index) => (
-              <div key={index} className="fight-club__item">
-                <img
-                  src={getItemIcon(item.name, item.category)}
-                  alt={item.name}
-                  className="fight-club__item-image"
-                  onError={(e) => {
-                    const img = e.currentTarget;
-                    img.src = '/assets/items/placeholder.png';
-                  }}
-                />
-                <span className="fight-club__item-name">{item.name}</span>
-              </div>
-            ))}
+            {['weapon', 'vitality', 'spirit'].map(category => {
+              const categoryItems = matchData.player2Items
+                .filter(item => item.category === category)
+                .sort((a, b) => a.cost - b.cost);
+
+              if (categoryItems.length === 0) return null;
+
+              return (
+                <div key={category} className="fight-club__category-group">
+                  <div className={`fight-club__category-label fight-club__category-label--${category}`}>
+                    {category}
+                  </div>
+                  <div className="fight-club__category-items">
+                    {categoryItems.map((item, index) => (
+                      <div key={index} className="fight-club__item">
+                        <img
+                          src={getItemIcon(item.name, item.category)}
+                          alt={item.name}
+                          className="fight-club__item-image"
+                          onError={(e) => {
+                            const img = e.currentTarget;
+                            img.src = '/assets/items/placeholder.png';
+                          }}
+                        />
+                        <span className="fight-club__item-cost">{item.cost}s</span>
+                        <span className="fight-club__item-name">{item.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
