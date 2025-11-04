@@ -1,59 +1,34 @@
 .fight-club {
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  padding: var(--spacing-md);
 }
 
 .fight-club__intro {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-md);
   text-align: center;
   max-width: 600px;
-  margin: 0 auto;
-  padding: var(--spacing-xl) 0;
+  margin: 0 auto var(--spacing-xl);
 }
 
 .fight-club__description {
   color: var(--text-secondary);
-  font-size: 1rem;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.fight-club__title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-align: center;
-  background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-purple) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 0;
+  margin: var(--spacing-md) 0;
 }
 
 .fight-club__match {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--spacing-md);
   align-items: center;
 }
 
 .fight-club__player-row {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--spacing-md);
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--container-max-width);
 }
 
 .fight-club__player-label {
-  font-size: 0.9rem;
   font-weight: 700;
   color: var(--accent-orange);
   letter-spacing: 1.5px;
@@ -63,63 +38,53 @@
 .fight-club__hero {
   display: flex;
   align-items: center;
-  gap: 12px;
-  min-width: 200px;
+  gap: var(--spacing-sm);
+  min-width: 180px;
 }
 
 .fight-club__hero-image {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: var(--border-radius);
   object-fit: cover;
   border: 2px solid var(--bg-secondary);
 }
 
-.fight-club__hero-name {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--text-primary);
-}
-
 .fight-club__items {
   display: flex;
-  gap: 12px;
-  flex: 1;
+  gap: var(--spacing-sm);
 }
 
 .fight-club__item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  flex: 1;
-  max-width: 120px;
+  gap: var(--spacing-xs);
+  width: 80px;
 }
 
 .fight-club__item-image {
-  width: 100%;
-  max-width: 80px;
-  aspect-ratio: 1;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
   border-radius: var(--border-radius);
-  background: var(--bg-dark);
-  padding: 8px;
-  border: 2px solid var(--bg-secondary);
+  background: var(--bg-secondary);
+  padding: var(--spacing-xs);
+  border: 2px solid var(--bg-dark);
 }
 
 .fight-club__item-name {
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--text-primary);
+  font-size: 0.7rem;
+  color: var(--text-secondary);
   text-align: center;
   line-height: 1.2;
 }
 
 .fight-club__vs {
-  font-size: 1.5rem;
-  font-weight: 900;
+  font-size: 1.25rem;
+  font-weight: 700;
   color: var(--accent-purple);
-  padding: 12px 24px;
+  padding: var(--spacing-sm) var(--spacing-lg);
   background: var(--bg-secondary);
   border-radius: var(--border-radius-lg);
 }
@@ -127,56 +92,8 @@
 .fight-club__actions {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  padding-top: 16px;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
   border-top: 1px solid var(--bg-secondary);
-  flex-wrap: wrap;
-}
-
-@media (max-width: 1024px) {
-  .fight-club__player-row {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .fight-club__player-label {
-    width: 100%;
-    text-align: center;
-  }
-
-  .fight-club__hero {
-    justify-content: center;
-  }
-
-  .fight-club__items {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-}
-
-@media (max-width: 768px) {
-  .fight-club {
-    padding: var(--spacing-sm);
-  }
-
-  .fight-club__title {
-    font-size: 1.25rem;
-  }
-
-  .fight-club__player-row {
-    gap: 12px;
-  }
-
-  .fight-club__hero-image {
-    width: 50px;
-    height: 50px;
-  }
-
-  .fight-club__item-image {
-    max-width: 60px;
-  }
-
-  .fight-club__item-name {
-    font-size: 0.7rem;
-  }
 }

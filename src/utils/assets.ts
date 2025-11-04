@@ -31,10 +31,10 @@ export function getHeroPortrait(heroName: string, assetName?: string): string {
 }
 
 /**
- * Get the path to an item icon
+ * Get the path to an item icon with fallback to placeholder
  * @param itemName - Item name (e.g., "Reactive Barrier")
  * @param category - Item category ("weapon", "vitality", or "spirit")
- * @returns Absolute path to item icon
+ * @returns Absolute path to item icon (falls back to placeholder if not found)
  */
 export function getItemIcon(itemName: string, category: 'weapon' | 'vitality' | 'spirit'): string {
   const filename = `${toAssetName(itemName)}.png`;
@@ -42,15 +42,31 @@ export function getItemIcon(itemName: string, category: 'weapon' | 'vitality' | 
 }
 
 /**
- * Get the path to an ability icon
+ * Get fallback placeholder for missing item icons
+ * @returns Path to placeholder image
+ */
+export function getItemPlaceholder(): string {
+  return '/assets/items/placeholder.png';
+}
+
+/**
+ * Get the path to an ability icon with fallback
  * @param heroName - Hero name (e.g., "Bebop")
  * @param abilityName - Ability name (e.g., "Hook", "Hyper Beam")
- * @returns Absolute path to ability icon
+ * @returns Absolute path to ability icon (falls back to placeholder if not found)
  */
 export function getAbilityIcon(heroName: string, abilityName: string): string {
   const heroFolder = toAssetName(heroName);
   const abilityFile = toAssetName(abilityName);
   return `/assets/abilities/${heroFolder}/${abilityFile}.png`;
+}
+
+/**
+ * Get fallback placeholder for missing ability icons
+ * @returns Path to placeholder image
+ */
+export function getAbilityPlaceholder(): string {
+  return '/assets/items/placeholder.png';
 }
 
 /**
