@@ -75,12 +75,31 @@
   }
 }
 
+@media (max-width: 768px) {
+  .loadout-display {
+    padding: var(--spacing-sm);
+    gap: var(--spacing-xs);
+  }
+
+  .loadout-display__title {
+    font-size: 1.1rem;
+  }
+
+  .loadout-display__stats {
+    padding-top: var(--spacing-xs);
+  }
+}
+
 @media (max-width: 480px) {
   .loadout-display {
-    padding: var(--spacing-md);
+    padding: var(--spacing-xs);
   }
 
   .loadout-display__grid {
-    gap: var(--spacing-sm);
+    gap: var(--spacing-xs);
+  }
+
+  .loadout-display__title {
+    font-size: 1rem;
   }
 }

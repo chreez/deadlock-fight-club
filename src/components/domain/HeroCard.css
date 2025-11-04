@@ -50,3 +50,17 @@
   font-size: 0.9rem;
   color: var(--text-primary);
 }
+
+@media (max-width: 768px) {
+  .hero-card {
+    padding: var(--spacing-xs);
+  }
+
+  .hero-card__image-container {
+    max-width: 120px;
+  }
+
+  .hero-card__name {
+    font-size: 0.8rem;
+  }
+}

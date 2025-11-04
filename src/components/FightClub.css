@@ -84,15 +84,24 @@
 
 @media (max-width: 768px) {
   .fight-club {
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm);
+    gap: var(--spacing-md);
   }
 
   .fight-club__title {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .fight-club__header {
+    gap: var(--spacing-sm);
+  }
+
+  .fight-club__match {
     gap: var(--spacing-md);
+  }
+
+  .fight-club__player {
+    gap: var(--spacing-xs);
   }
 }
 
