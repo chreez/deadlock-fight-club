@@ -43,9 +43,12 @@ export default function ItemCard({
           alt={item.name}
           className="item-card__image"
           loading="lazy"
+          onError={(e) => {
+            const img = e.currentTarget;
+            img.src = '/assets/items/placeholder.png';
+          }}
         />
-      </div>
-      <div className="item-card__footer">
+      </div>      <div className="item-card__footer">
         <div className="item-card__name">{item.name}</div>
         {showCategory && <Badge type="category" value={item.category} />}
       </div>

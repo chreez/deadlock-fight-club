@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { HEROES } from '../data/heroes';
 import { ITEMS, FAIR_ITEM_COMBOS } from '../data/items';
 import type { Hero, Item } from '../data/types';
 import { getRandomElement, shuffle } from '../utils/random';
-import HeroCard from './domain/HeroCard';
-import LoadoutDisplay from './domain/LoadoutDisplay';
+import { getHeroPortrait, getItemIcon } from '../utils/assets';
 import Button from './core/Button';
+import './FightClub.css';
 
 interface MatchData {
   hero1: Hero;
@@ -107,26 +107,62 @@ Total Cost per Player: ${matchData.totalCost.toLocaleString()} souls`;
   return (
     <div className="fight-club">
       <div className="fight-club__match">
-        <div className="fight-club__player">
-          <div className="fight-club__player-label">PLAYER 1</div>
-          <HeroCard hero={matchData.hero1} />
-          <LoadoutDisplay
-            items={matchData.player1Items}
-            totalCost={matchData.totalCost}
-            title="Loadout"
-          />
+        <div className="fight-club__player-row">
+          <span className="fight-club__player-label">PLAYER 1</span>
+          <div className="fight-club__hero">
+            <img
+              src={getHeroPortrait(matchData.hero1.name)}
+              alt={matchData.hero1.name}
+              className="fight-club__hero-image"
+            />
+            <span className="fight-club__hero-name">{matchData.hero1.name}</span>
+          </div>
+          <div className="fight-club__items">
+            {matchData.player1Items.map((item, index) => (
+              <div key={index} className="fight-club__item">
+                <img
+                  src={getItemIcon(item.name, item.category)}
+                  alt={item.name}
+                  className="fight-club__item-image"
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    img.src = '/assets/items/placeholder.png';
+                  }}
+                />
+                <span className="fight-club__item-name">{item.name}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="fight-club__vs">VS</div>
 
-        <div className="fight-club__player">
-          <div className="fight-club__player-label">PLAYER 2</div>
-          <HeroCard hero={matchData.hero2} />
-          <LoadoutDisplay
-            items={matchData.player2Items}
-            totalCost={matchData.totalCost}
-            title="Loadout"
-          />
+        <div className="fight-club__player-row">
+          <span className="fight-club__player-label">PLAYER 2</span>
+          <div className="fight-club__hero">
+            <img
+              src={getHeroPortrait(matchData.hero2.name)}
+              alt={matchData.hero2.name}
+              className="fight-club__hero-image"
+            />
+            <span className="fight-club__hero-name">{matchData.hero2.name}</span>
+          </div>
+          <div className="fight-club__items">
+            {matchData.player2Items.map((item, index) => (
+              <div key={index} className="fight-club__item">
+                <img
+                  src={getItemIcon(item.name, item.category)}
+                  alt={item.name}
+                  className="fight-club__item-image"
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    img.src = '/assets/items/placeholder.png';
+                  }}
+                />
+                <span className="fight-club__item-name">{item.name}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
