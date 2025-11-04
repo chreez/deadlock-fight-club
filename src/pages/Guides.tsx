@@ -7,21 +7,21 @@ export default function Guides() {
   const guides = [
     {
       title: 'Counter-Building Guide',
-      description: 'Learn how to build effective counters against any hero in Deadlock.',
+      description: 'Learn which items counter entire team compositions, not just individual heroes.',
       path: '/counter-guide',
-      status: 'Coming Soon'
+      status: 'Available'
     },
     {
       title: 'Counter Cheatsheet',
-      description: 'Quick hero-based counter lookup with search functionality.',
+      description: 'Quick hero-based counter lookup with autocomplete search.',
       path: '/counter-cheatsheet',
       status: 'Available'
     },
     {
       title: 'Midgame Guide',
-      description: 'Master the critical midgame transition phase.',
+      description: 'Understand the 5-minute combat cycle, power spikes, and when MOBA mechanics take over.',
       path: '/midgame-guide',
-      status: 'Coming Soon'
+      status: 'Available'
     }
   ]
 
