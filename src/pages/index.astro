@@ -1,16 +1,44 @@
 ---
-
+import FightClub from '../components/FightClub';
 ---
 
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deadlock Fight Club - Random 1v1 Generator</title>
+    <meta
+      name="description"
+      content="Generate random fair 1v1 matchups for Deadlock with balanced item loadouts"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://deadlock-randomizer.netlify.app/" />
+    <meta property="og:title" content="Deadlock Fight Club - Random 1v1 Generator" />
+    <meta
+      property="og:description"
+      content="Generate random fair 1v1 matchups for Deadlock with balanced item loadouts"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://deadlock-randomizer.netlify.app/" />
+    <meta property="twitter:title" content="Deadlock Fight Club" />
+    <meta
+      property="twitter:description"
+      content="Generate random fair 1v1 matchups for Deadlock"
+    />
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+  </head>
+  <body>
+    <FightClub client:load />
+
+    <style is:global>
+      @import '../styles/tokens.css';
+      @import '../styles/global.css';
+    </style>
+  </body>
 </html>
