@@ -12,15 +12,10 @@ test.describe('Fight Club Generator', () => {
   test('should generate a random match', async ({ page }) => {
     await page.goto('/');
 
-    // Initial state - should show generate button
-    const generateButton = page.getByRole('button', { name: /generate fight club match/i });
-    await expect(generateButton).toBeVisible();
-
-    // Click to generate match
-    await generateButton.click();
-
-    // Wait for match to be generated
-    await page.waitForTimeout(500);
+    // Match should auto-generate on page load
+    // Wait for the randomize button to appear (indicates match is generated)
+    const randomizeButton = page.getByRole('button', { name: /randomize match/i });
+    await expect(randomizeButton).toBeVisible();
 
     // Should show player labels
     await expect(page.getByText('PLAYER 1')).toBeVisible();
@@ -41,9 +36,8 @@ test.describe('Fight Club Generator', () => {
   test('should randomize match on button click', async ({ page }) => {
     await page.goto('/');
 
-    // Generate first match
-    await page.getByRole('button', { name: /generate fight club match/i }).click();
-    await page.waitForTimeout(500);
+    // Wait for auto-generated match
+    await expect(page.getByRole('button', { name: /randomize match/i })).toBeVisible();
 
     // Click randomize
     await page.getByRole('button', { name: /randomize match/i }).click();
@@ -57,9 +51,8 @@ test.describe('Fight Club Generator', () => {
   test('should show copy to clipboard button', async ({ page }) => {
     await page.goto('/');
 
-    // Generate match first
-    await page.getByRole('button', { name: /generate fight club match/i }).click();
-    await page.waitForTimeout(500);
+    // Wait for auto-generated match
+    await expect(page.getByRole('button', { name: /randomize match/i })).toBeVisible();
 
     // Check for copy button
     const copyButton = page.getByRole('button', { name: /copy to clipboard/i });
@@ -69,8 +62,8 @@ test.describe('Fight Club Generator', () => {
   test('should display hero cards', async ({ page }) => {
     await page.goto('/');
 
-    await page.getByRole('button', { name: /generate fight club match/i }).click();
-    await page.waitForTimeout(500);
+    // Wait for auto-generated match
+    await expect(page.getByRole('button', { name: /randomize match/i })).toBeVisible();
 
     // Should have 2 hero cards
     const heroCards = page.locator('.hero-card');
@@ -84,8 +77,8 @@ test.describe('Fight Club Generator', () => {
   test('should display item loadouts', async ({ page }) => {
     await page.goto('/');
 
-    await page.getByRole('button', { name: /generate fight club match/i }).click();
-    await page.waitForTimeout(500);
+    // Wait for auto-generated match
+    await expect(page.getByRole('button', { name: /randomize match/i })).toBeVisible();
 
     // Should have 2 loadout displays
     const loadouts = page.locator('.loadout-display');
@@ -112,9 +105,8 @@ test.describe('Fight Club Generator', () => {
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto('/');
 
-    // Generate match
-    await page.getByRole('button', { name: /generate fight club match/i }).click();
-    await page.waitForTimeout(500);
+    // Wait for auto-generated match
+    await expect(page.getByRole('button', { name: /randomize match/i })).toBeVisible();
 
     // Should still show all elements
     await expect(page.getByText('PLAYER 1')).toBeVisible();

@@ -41,7 +41,7 @@ export default defineConfig({
   ],
 
   webServer: {
-    command: 'npm run dev',
+    command: 'npm run build && npx serve dist -l 4323 -n',
     url: 'http://localhost:4323',
     reuseExistingServer: !process.env.CI,
     timeout: 120000,

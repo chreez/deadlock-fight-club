@@ -1,0 +1,1235 @@
+
+Running 90 tests using 6 workers
+
+[1A[2K[1/90] [chromium] › e2e/counter-cheatsheet.spec.ts:40:3 › Counter Cheatsheet Page › should filter heroes by search
+[1A[2K[2/90] [chromium] › e2e/counter-cheatsheet.spec.ts:57:3 › Counter Cheatsheet Page › should clear search with clear button
+[1A[2K[3/90] [chromium] › e2e/counter-cheatsheet.spec.ts:11:3 › Counter Cheatsheet Page › should display page title and description
+[1A[2K[4/90] [chromium] › e2e/counter-cheatsheet.spec.ts:18:3 › Counter Cheatsheet Page › should show search bar
+[1A[2K[5/90] [chromium] › e2e/counter-cheatsheet.spec.ts:4:3 › Counter Cheatsheet Page › should load cheatsheet page
+[1A[2K[6/90] [chromium] › e2e/counter-cheatsheet.spec.ts:25:3 › Counter Cheatsheet Page › should display all heroes by default
+[1A[2K[7/90] [chromium] › e2e/counter-cheatsheet.spec.ts:76:3 › Counter Cheatsheet Page › should show no results message for invalid search
+[1A[2K[8/90] [chromium] › e2e/counter-cheatsheet.spec.ts:90:3 › Counter Cheatsheet Page › should display counter items for heroes
+[1A[2K[9/90] [chromium] › e2e/counter-cheatsheet.spec.ts:107:3 › Counter Cheatsheet Page › should show category badges
+[1A[2K[10/90] [chromium] › e2e/counter-cheatsheet.spec.ts:120:3 › Counter Cheatsheet Page › should navigate via site header
+[1A[2K  1) [chromium] › e2e/counter-cheatsheet.spec.ts:120:3 › Counter Cheatsheet Page › should navigate via site header 
+
+    Error: locator.click: Error: strict mode violation: getByRole('link', { name: 'Fight Club' }) resolved to 2 elements:
+        1) <a href="/" class="site-header__logo">…</a> aka getByRole('link', { name: 'Deadlock Fight Club' })
+        2) <a href="/" class="site-header__nav-link">Fight Club</a> aka getByRole('link', { name: 'Fight Club', exact: true })
+
+    Call log:
+    [2m  - waiting for getByRole('link', { name: 'Fight Club' })[22m
+
+
+      126 |
+      127 |     // Navigate to Fight Club via header
+    > 128 |     await page.getByRole('link', { name: 'Fight Club' }).click();
+          |                                                          ^
+      129 |     await expect(page).toHaveURL('/');
+      130 |   });
+      131 |
+        at /Users/chris/workspace/deadlock-fight-club/e2e/counter-cheatsheet.spec.ts:128:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/counter-cheatsheet-Counter-88ef0-ld-navigate-via-site-header-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/counter-cheatsheet-Counter-88ef0-ld-navigate-via-site-header-chromium/error-context.md
+
+
+[1A[2K[11/90] [chromium] › e2e/counter-cheatsheet.spec.ts:132:3 › Counter Cheatsheet Page › should be responsive on mobile
+[1A[2K[12/90] [chromium] › e2e/counter-cheatsheet.spec.ts:141:3 › Counter Cheatsheet Page › should have search functionality work on mobile
+[1A[2K[13/90] [chromium] › e2e/counter-guide.spec.ts:4:3 › Counter Guide Page › should load counter guide page
+[1A[2K[14/90] [chromium] › e2e/counter-guide.spec.ts:11:3 › Counter Guide Page › should display guide overview
+[1A[2K[15/90] [chromium] › e2e/counter-guide.spec.ts:19:3 › Counter Guide Page › should display item sections
+[1A[2K[16/90] [chromium] › e2e/counter-guide.spec.ts:28:3 › Counter Guide Page › should show item details
+[1A[2K[17/90] [chromium] › e2e/counter-guide.spec.ts:37:3 › Counter Guide Page › should show pro tips
+[1A[2K  2) [chromium] › e2e/counter-guide.spec.ts:28:3 › Counter Guide Page › should show item details ───
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText(/1600 souls/)
+    Expected: visible
+    Error: strict mode violation: getByText(/1600 souls/) resolved to 3 elements:
+        1) <p data-astro-source-loc="72:16" data-astro-source-file="/Users/chris/workspace/deadlock-fight-club/src/pages/counter-guide.astro">…</p> aka locator('#passive-items').getByText('Cost: 1600 souls | Tier:')
+        2) <p data-astro-source-loc="124:16" data-astro-source-file="/Users/chris/workspace/deadlock-fight-club/src/pages/counter-guide.astro">…</p> aka locator('#active-items').getByText('Cost: 1600 souls | Tier:')
+        3) <p data-astro-source-loc="170:16" data-astro-source-file="/Users/chris/workspace/deadlock-fight-club/src/pages/counter-guide.astro">…</p> aka locator('#anti-heal').getByText('Cost: 1600 souls | Tier:')
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText(/1600 souls/)[22m
+
+
+      31 |     // Check for Reactive Barrier item
+      32 |     await expect(page.getByText('Reactive Barrier')).toBeVisible();
+    > 33 |     await expect(page.getByText(/1600 souls/)).toBeVisible();
+         |                                                ^
+      34 |     await expect(page.getByText(/Tier.*2/)).toBeVisible();
+      35 |   });
+      36 |
+        at /Users/chris/workspace/deadlock-fight-club/e2e/counter-guide.spec.ts:33:48
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/counter-guide-Counter-Guide-Page-should-show-item-details-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/counter-guide-Counter-Guide-Page-should-show-item-details-chromium/error-context.md
+
+
+[1A[2K[18/90] [chromium] › e2e/counter-guide.spec.ts:57:3 › Counter Guide Page › should navigate back via site header
+[1A[2K[19/90] [chromium] › e2e/counter-guide.spec.ts:65:3 › Counter Guide Page › should be responsive on mobile
+[1A[2K[20/90] [chromium] › e2e/counter-guide.spec.ts:45:3 › Counter Guide Page › should have link to cheatsheet
+[1A[2K[21/90] [chromium] › e2e/counter-guide.spec.ts:73:3 › Counter Guide Page › should have proper scroll buffer
+[1A[2K[22/90] [chromium] › e2e/fight-club.spec.ts:4:3 › Fight Club Generator › should load homepage with site header
+[1A[2K[23/90] [chromium] › e2e/fight-club.spec.ts:12:3 › Fight Club Generator › should generate a random match
+[1A[2K[24/90] [chromium] › e2e/fight-club.spec.ts:41:3 › Fight Club Generator › should randomize match on button click
+[1A[2K[25/90] [chromium] › e2e/fight-club.spec.ts:57:3 › Fight Club Generator › should show copy to clipboard button
+[1A[2K  3) [chromium] › e2e/counter-cheatsheet.spec.ts:40:3 › Counter Cheatsheet Page › should filter heroes by search 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText(/found.*of.*heroes/i)
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText(/found.*of.*heroes/i)[22m
+
+
+      49 |
+      50 |     // Should show filtered results
+    > 51 |     await expect(page.getByText(/found.*of.*heroes/i)).toBeVisible();
+         |                                                        ^
+      52 |
+      53 |     // Should show Bebop's counters
+      54 |     await expect(page.getByText(/Counter Items for Bebop/i)).toBeVisible();
+        at /Users/chris/workspace/deadlock-fight-club/e2e/counter-cheatsheet.spec.ts:51:56
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/counter-cheatsheet-Counter-7159a-uld-filter-heroes-by-search-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/counter-cheatsheet-Counter-7159a-uld-filter-heroes-by-search-chromium/error-context.md
+
+
+[1A[2K[26/90] [chromium] › e2e/fight-club.spec.ts:69:3 › Fight Club Generator › should display hero cards
+[1A[2K  4) [chromium] › e2e/counter-cheatsheet.spec.ts:76:3 › Counter Cheatsheet Page › should show no results message for invalid search 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText(/no heroes found/i)
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText(/no heroes found/i)[22m
+
+
+      85 |
+      86 |     // Should show no results message
+    > 87 |     await expect(page.getByText(/no heroes found/i)).toBeVisible();
+         |                                                      ^
+      88 |   });
+      89 |
+      90 |   test('should display counter items for heroes', async ({ page }) => {
+        at /Users/chris/workspace/deadlock-fight-club/e2e/counter-cheatsheet.spec.ts:87:54
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/counter-cheatsheet-Counter-ef169--message-for-invalid-search-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/counter-cheatsheet-Counter-ef169--message-for-invalid-search-chromium/error-context.md
+
+
+[1A[2K[27/90] [chromium] › e2e/fight-club.spec.ts:84:3 › Fight Club Generator › should display item loadouts
+[1A[2K  5) [chromium] › e2e/fight-club.spec.ts:12:3 › Fight Club Generator › should generate a random match 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('PLAYER 1')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText('PLAYER 1')[22m
+
+
+      24 |
+      25 |     // Should show player labels
+    > 26 |     await expect(page.getByText('PLAYER 1')).toBeVisible();
+         |                                              ^
+      27 |     await expect(page.getByText('PLAYER 2')).toBeVisible();
+      28 |
+      29 |     // Should show VS divider
+        at /Users/chris/workspace/deadlock-fight-club/e2e/fight-club.spec.ts:26:46
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/fight-club-Fight-Club-Gene-ae218-uld-generate-a-random-match-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/fight-club-Fight-Club-Gene-ae218-uld-generate-a-random-match-chromium/error-context.md
+
+
+[1A[2K  6) [chromium] › e2e/fight-club.spec.ts:57:3 › Fight Club Generator › should show copy to clipboard button 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: /copy to clipboard/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('button', { name: /copy to clipboard/i })[22m
+
+
+      64 |     // Check for copy button
+      65 |     const copyButton = page.getByRole('button', { name: /copy to clipboard/i });
+    > 66 |     await expect(copyButton).toBeVisible();
+         |                              ^
+      67 |   });
+      68 |
+      69 |   test('should display hero cards', async ({ page }) => {
+        at /Users/chris/workspace/deadlock-fight-club/e2e/fight-club.spec.ts:66:30
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/fight-club-Fight-Club-Gene-79625-ow-copy-to-clipboard-button-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/fight-club-Fight-Club-Gene-79625-ow-copy-to-clipboard-button-chromium/error-context.md
+
+
+[1A[2K[28/90] [chromium] › e2e/fight-club.spec.ts:99:3 › Fight Club Generator › should have working navigation
+[1A[2K[29/90] [chromium] › e2e/fight-club.spec.ts:111:3 › Fight Club Generator › should be responsive on mobile
+[1A[2K[30/90] [chromium] › e2e/guides.spec.ts:4:3 › Guides Homepage › should load guides page with header
+[1A[2K[31/90] [chromium] › e2e/guides.spec.ts:11:3 › Guides Homepage › should display guide cards
+[1A[2K  7) [chromium] › e2e/fight-club.spec.ts:69:3 › Fight Club Generator › should display hero cards ───
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveCount[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  locator('.hero-card')
+    Expected: [32m2[39m
+    Received: [31m0[39m
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toHaveCount" with timeout 5000ms[22m
+    [2m  - waiting for locator('.hero-card')[22m
+    [2m    9 × locator resolved to 0 elements[22m
+    [2m      - unexpected value "0"[22m
+
+
+      75 |     // Should have 2 hero cards
+      76 |     const heroCards = page.locator('.hero-card');
+    > 77 |     await expect(heroCards).toHaveCount(2);
+         |                             ^
+      78 |
+      79 |     // Each hero card should have a name
+      80 |     const heroNames = page.locator('.hero-card__name');
+        at /Users/chris/workspace/deadlock-fight-club/e2e/fight-club.spec.ts:77:29
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/fight-club-Fight-Club-Generator-should-display-hero-cards-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/fight-club-Fight-Club-Generator-should-display-hero-cards-chromium/error-context.md
+
+
+[1A[2K[32/90] [chromium] › e2e/guides.spec.ts:19:3 › Guides Homepage › should show guide metadata
+[1A[2K  8) [chromium] › e2e/fight-club.spec.ts:84:3 › Fight Club Generator › should display item loadouts 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveCount[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  locator('.loadout-display')
+    Expected: [32m2[39m
+    Received: [31m0[39m
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toHaveCount" with timeout 5000ms[22m
+    [2m  - waiting for locator('.loadout-display')[22m
+    [2m    9 × locator resolved to 0 elements[22m
+    [2m      - unexpected value "0"[22m
+
+
+      90 |     // Should have 2 loadout displays
+      91 |     const loadouts = page.locator('.loadout-display');
+    > 92 |     await expect(loadouts).toHaveCount(2);
+         |                            ^
+      93 |
+      94 |     // Each loadout should show items
+      95 |     const itemCards = page.locator('.item-card');
+        at /Users/chris/workspace/deadlock-fight-club/e2e/fight-club.spec.ts:92:28
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/fight-club-Fight-Club-Generator-should-display-item-loadouts-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/fight-club-Fight-Club-Generator-should-display-item-loadouts-chromium/error-context.md
+
+
+[1A[2K  9) [chromium] › e2e/guides.spec.ts:19:3 › Guides Homepage › should show guide metadata ───────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Strategy')
+    Expected: visible
+    Error: strict mode violation: getByText('Strategy') resolved to 3 elements:
+        1) <p data-astro-cid-aza7rbfb="" data-astro-source-loc="71:14" data-astro-source-file="/Users/chris/workspace/deadlock-fight-club/src/pages/guides.astro">↵Strategy guides, counter-building references, an…</p> aka getByText('Strategy guides, counter-')
+        2) <span data-astro-cid-aza7rbfb="" data-astro-source-loc="84:154" data-astro-source-file="/Users/chris/workspace/deadlock-fight-club/src/pages/guides.astro"> Strategy </span> aka getByRole('link').filter({ hasText: 'Strategy 10 min read Complete' })
+        3) <span data-astro-cid-aza7rbfb="" data-astro-source-loc="84:154" data-astro-source-file="/Users/chris/workspace/deadlock-fight-club/src/pages/guides.astro"> Strategy </span> aka getByRole('link').filter({ hasText: 'Strategy 8 min read What the' })
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText('Strategy')[22m
+
+
+      21 |
+      22 |     // Check for category tags
+    > 23 |     await expect(page.getByText('Strategy')).toBeVisible();
+         |                                              ^
+      24 |     await expect(page.getByText('Reference')).toBeVisible();
+      25 |
+      26 |     // Check for read time
+        at /Users/chris/workspace/deadlock-fight-club/e2e/guides.spec.ts:23:46
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/guides-Guides-Homepage-should-show-guide-metadata-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/guides-Guides-Homepage-should-show-guide-metadata-chromium/error-context.md
+
+
+[1A[2K[33/90] [chromium] › e2e/guides.spec.ts:30:3 › Guides Homepage › should navigate to counter guide
+[1A[2K[34/90] [chromium] › e2e/guides.spec.ts:38:3 › Guides Homepage › should navigate to cheatsheet
+[1A[2K  10) [chromium] › e2e/guides.spec.ts:11:3 › Guides Homepage › should display guide cards ──────────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveCount[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  locator('article')
+    Expected: [32m2[39m
+    Received: [31m3[39m
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toHaveCount" with timeout 5000ms[22m
+    [2m  - waiting for locator('article')[22m
+    [2m    9 × locator resolved to 3 elements[22m
+    [2m      - unexpected value "3"[22m
+
+
+      14 |     // Should show at least 2 guide cards (Counter Guide & Cheatsheet)
+      15 |     const guideCards = page.locator('article');
+    > 16 |     await expect(guideCards).toHaveCount(2);
+         |                              ^
+      17 |   });
+      18 |
+      19 |   test('should show guide metadata', async ({ page }) => {
+        at /Users/chris/workspace/deadlock-fight-club/e2e/guides.spec.ts:16:30
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/guides-Guides-Homepage-should-display-guide-cards-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/guides-Guides-Homepage-should-display-guide-cards-chromium/error-context.md
+
+
+[1A[2K  11) [chromium] › e2e/fight-club.spec.ts:111:3 › Fight Club Generator › should be responsive on mobile 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('PLAYER 1')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText('PLAYER 1')[22m
+
+
+      118 |
+      119 |     // Should still show all elements
+    > 120 |     await expect(page.getByText('PLAYER 1')).toBeVisible();
+          |                                              ^
+      121 |     await expect(page.getByText('PLAYER 2')).toBeVisible();
+      122 |     await expect(page.getByText('VS')).toBeVisible();
+      123 |   });
+        at /Users/chris/workspace/deadlock-fight-club/e2e/fight-club.spec.ts:120:46
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/fight-club-Fight-Club-Gene-55bb6-uld-be-responsive-on-mobile-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/fight-club-Fight-Club-Gene-55bb6-uld-be-responsive-on-mobile-chromium/error-context.md
+
+
+[1A[2K[35/90] [chromium] › e2e/guides.spec.ts:46:3 › Guides Homepage › should have hover effects on cards
+[1A[2K[36/90] [chromium] › e2e/guides.spec.ts:62:3 › Guides Homepage › should be responsive on mobile
+[1A[2K[37/90] [chromium] › e2e/navigation.spec.ts:4:3 › Site Navigation › should navigate between all pages via header
+[1A[2K  12) [chromium] › e2e/navigation.spec.ts:4:3 › Site Navigation › should navigate between all pages via header 
+
+    Error: locator.click: Error: strict mode violation: getByRole('link', { name: 'Fight Club' }) resolved to 2 elements:
+        1) <a href="/" class="site-header__logo">…</a> aka getByRole('link', { name: 'Deadlock Fight Club' })
+        2) <a href="/" class="site-header__nav-link">Fight Club</a> aka getByRole('link', { name: 'Fight Club', exact: true })
+
+    Call log:
+    [2m  - waiting for getByRole('link', { name: 'Fight Club' })[22m
+
+
+      12 |
+      13 |     // Navigate back to Fight Club
+    > 14 |     await page.getByRole('link', { name: 'Fight Club' }).click();
+         |                                                          ^
+      15 |     await expect(page).toHaveURL('/');
+      16 |
+      17 |     // Navigate to Guides again
+        at /Users/chris/workspace/deadlock-fight-club/e2e/navigation.spec.ts:14:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/navigation-Site-Navigation-f5574-etween-all-pages-via-header-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/navigation-Site-Navigation-f5574-etween-all-pages-via-header-chromium/error-context.md
+
+
+[1A[2K[38/90] [chromium] › e2e/navigation.spec.ts:22:3 › Site Navigation › should navigate via logo to homepage
+[1A[2K[39/90] [chromium] › e2e/navigation.spec.ts:40:3 › Site Navigation › should navigate from guides page to guide details
+[1A[2K  13) [chromium] › e2e/guides.spec.ts:62:3 › Guides Homepage › should be responsive on mobile ──────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveCount[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  locator('article')
+    Expected: [32m2[39m
+    Received: [31m3[39m
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toHaveCount" with timeout 5000ms[22m
+    [2m  - waiting for locator('article')[22m
+    [2m    9 × locator resolved to 3 elements[22m
+    [2m      - unexpected value "3"[22m
+
+
+      65 |
+      66 |     await expect(page.locator('h1')).toBeVisible();
+    > 67 |     await expect(page.locator('article')).toHaveCount(2);
+         |                                           ^
+      68 |   });
+      69 | });
+      70 |
+        at /Users/chris/workspace/deadlock-fight-club/e2e/guides.spec.ts:67:43
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/guides-Guides-Homepage-should-be-responsive-on-mobile-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/guides-Guides-Homepage-should-be-responsive-on-mobile-chromium/error-context.md
+
+
+[1A[2K[40/90] [chromium] › e2e/navigation.spec.ts:55:3 › Site Navigation › should have consistent header across all pages
+[1A[2K  14) [chromium] › e2e/navigation.spec.ts:55:3 › Site Navigation › should have consistent header across all pages 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('link', { name: 'Fight Club' })
+    Expected: visible
+    Error: strict mode violation: getByRole('link', { name: 'Fight Club' }) resolved to 2 elements:
+        1) <a href="/" class="site-header__logo">…</a> aka getByRole('link', { name: 'Deadlock Fight Club' })
+        2) <a href="/" class="site-header__nav-link">Fight Club</a> aka getByRole('link', { name: 'Fight Club', exact: true })
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('link', { name: 'Fight Club' })[22m
+
+
+      64 |
+      65 |       // Check navigation links exist
+    > 66 |       await expect(page.getByRole('link', { name: 'Fight Club' })).toBeVisible();
+         |                                                                    ^
+      67 |       await expect(page.getByRole('link', { name: 'Guides' })).toBeVisible();
+      68 |     }
+      69 |   });
+        at /Users/chris/workspace/deadlock-fight-club/e2e/navigation.spec.ts:66:68
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/navigation-Site-Navigation-c6af6-ent-header-across-all-pages-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/navigation-Site-Navigation-c6af6-ent-header-across-all-pages-chromium/error-context.md
+
+
+[1A[2K[41/90] [chromium] › e2e/navigation.spec.ts:71:3 › Site Navigation › should have working internal links in counter-guide
+[1A[2K[42/90] [chromium] › e2e/navigation.spec.ts:80:3 › Site Navigation › should maintain scroll position on same page
+[1A[2K[43/90] [chromium] › e2e/navigation.spec.ts:92:3 › Site Navigation › should handle browser back/forward
+[1A[2K[44/90] [chromium] › e2e/navigation.spec.ts:108:3 › Site Navigation › should have correct page titles
+[1A[2K[45/90] [chromium] › e2e/navigation.spec.ts:122:3 › Site Navigation › should have favicon on all pages
+[1A[2K[46/90] [mobile-chrome] › e2e/counter-cheatsheet.spec.ts:4:3 › Counter Cheatsheet Page › should load cheatsheet page
+[1A[2K[47/90] [mobile-chrome] › e2e/counter-cheatsheet.spec.ts:11:3 › Counter Cheatsheet Page › should display page title and description
+[1A[2K[48/90] [mobile-chrome] › e2e/counter-cheatsheet.spec.ts:18:3 › Counter Cheatsheet Page › should show search bar
+[1A[2K[49/90] [mobile-chrome] › e2e/counter-cheatsheet.spec.ts:25:3 › Counter Cheatsheet Page › should display all heroes by default
+[1A[2K[50/90] [mobile-chrome] › e2e/counter-cheatsheet.spec.ts:40:3 › Counter Cheatsheet Page › should filter heroes by search
+[1A[2K  15) [chromium] › e2e/counter-cheatsheet.spec.ts:57:3 › Counter Cheatsheet Page › should clear search with clear button 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('.search-bar__clear')[22m
+
+
+      67 |     // Click clear button (X icon)
+      68 |     const clearButton = page.locator('.search-bar__clear');
+    > 69 |     await clearButton.click();
+         |                       ^
+      70 |     await page.waitForTimeout(300);
+      71 |
+      72 |     // Should show all heroes again
+        at /Users/chris/workspace/deadlock-fight-club/e2e/counter-cheatsheet.spec.ts:69:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/counter-cheatsheet-Counter-35af6-ar-search-with-clear-button-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/counter-cheatsheet-Counter-35af6-ar-search-with-clear-button-chromium/error-context.md
+
+
+[1A[2K[51/90] [mobile-chrome] › e2e/counter-cheatsheet.spec.ts:57:3 › Counter Cheatsheet Page › should clear search with clear button
+[1A[2K  16) [mobile-chrome] › e2e/counter-cheatsheet.spec.ts:40:3 › Counter Cheatsheet Page › should filter heroes by search 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText(/found.*of.*heroes/i)
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText(/found.*of.*heroes/i)[22m
+
+
+      49 |
+      50 |     // Should show filtered results
+    > 51 |     await expect(page.getByText(/found.*of.*heroes/i)).toBeVisible();
+         |                                                        ^
+      52 |
+      53 |     // Should show Bebop's counters
+      54 |     await expect(page.getByText(/Counter Items for Bebop/i)).toBeVisible();
+        at /Users/chris/workspace/deadlock-fight-club/e2e/counter-cheatsheet.spec.ts:51:56
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/counter-cheatsheet-Counter-7159a-uld-filter-heroes-by-search-mobile-chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/counter-cheatsheet-Counter-7159a-uld-filter-heroes-by-search-mobile-chrome/error-context.md
+
+
+[1A[2K[52/90] [mobile-chrome] › e2e/counter-cheatsheet.spec.ts:76:3 › Counter Cheatsheet Page › should show no results message for invalid search
+[1A[2K  17) [chromium] › e2e/fight-club.spec.ts:41:3 › Fight Club Generator › should randomize match on button click 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: /randomize match/i })[22m
+
+
+      47 |
+      48 |     // Click randomize
+    > 49 |     await page.getByRole('button', { name: /randomize match/i }).click();
+         |                                                                  ^
+      50 |     await page.waitForTimeout(500);
+      51 |
+      52 |     // Verify page still shows match structure
+        at /Users/chris/workspace/deadlock-fight-club/e2e/fight-club.spec.ts:49:66
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/fight-club-Fight-Club-Gene-05992-omize-match-on-button-click-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/fight-club-Fight-Club-Gene-05992-omize-match-on-button-click-chromium/error-context.md
+
+
+[1A[2K[53/90] [mobile-chrome] › e2e/counter-cheatsheet.spec.ts:90:3 › Counter Cheatsheet Page › should display counter items for heroes
+[1A[2K[54/90] [mobile-chrome] › e2e/counter-cheatsheet.spec.ts:107:3 › Counter Cheatsheet Page › should show category badges
+[1A[2K[55/90] [mobile-chrome] › e2e/counter-cheatsheet.spec.ts:120:3 › Counter Cheatsheet Page › should navigate via site header
+[1A[2K  18) [mobile-chrome] › e2e/counter-cheatsheet.spec.ts:120:3 › Counter Cheatsheet Page › should navigate via site header 
+
+    Error: locator.click: Error: strict mode violation: getByRole('link', { name: 'Fight Club' }) resolved to 2 elements:
+        1) <a href="/" class="site-header__logo">…</a> aka getByRole('link', { name: 'Deadlock Fight Club' })
+        2) <a href="/" class="site-header__nav-link">Fight Club</a> aka getByRole('link', { name: 'Fight Club', exact: true })
+
+    Call log:
+    [2m  - waiting for getByRole('link', { name: 'Fight Club' })[22m
+
+
+      126 |
+      127 |     // Navigate to Fight Club via header
+    > 128 |     await page.getByRole('link', { name: 'Fight Club' }).click();
+          |                                                          ^
+      129 |     await expect(page).toHaveURL('/');
+      130 |   });
+      131 |
+        at /Users/chris/workspace/deadlock-fight-club/e2e/counter-cheatsheet.spec.ts:128:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/counter-cheatsheet-Counter-88ef0-ld-navigate-via-site-header-mobile-chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/counter-cheatsheet-Counter-88ef0-ld-navigate-via-site-header-mobile-chrome/error-context.md
+
+
+[1A[2K[56/90] [mobile-chrome] › e2e/counter-cheatsheet.spec.ts:132:3 › Counter Cheatsheet Page › should be responsive on mobile
+[1A[2K  19) [mobile-chrome] › e2e/counter-cheatsheet.spec.ts:76:3 › Counter Cheatsheet Page › should show no results message for invalid search 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText(/no heroes found/i)
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText(/no heroes found/i)[22m
+
+
+      85 |
+      86 |     // Should show no results message
+    > 87 |     await expect(page.getByText(/no heroes found/i)).toBeVisible();
+         |                                                      ^
+      88 |   });
+      89 |
+      90 |   test('should display counter items for heroes', async ({ page }) => {
+        at /Users/chris/workspace/deadlock-fight-club/e2e/counter-cheatsheet.spec.ts:87:54
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/counter-cheatsheet-Counter-ef169--message-for-invalid-search-mobile-chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/counter-cheatsheet-Counter-ef169--message-for-invalid-search-mobile-chrome/error-context.md
+
+
+[1A[2K[57/90] [mobile-chrome] › e2e/counter-cheatsheet.spec.ts:141:3 › Counter Cheatsheet Page › should have search functionality work on mobile
+[1A[2K[58/90] [mobile-chrome] › e2e/counter-guide.spec.ts:4:3 › Counter Guide Page › should load counter guide page
+[1A[2K[59/90] [mobile-chrome] › e2e/counter-guide.spec.ts:11:3 › Counter Guide Page › should display guide overview
+[1A[2K[60/90] [mobile-chrome] › e2e/counter-guide.spec.ts:19:3 › Counter Guide Page › should display item sections
+[1A[2K[61/90] [mobile-chrome] › e2e/counter-guide.spec.ts:28:3 › Counter Guide Page › should show item details
+[1A[2K  20) [mobile-chrome] › e2e/counter-guide.spec.ts:28:3 › Counter Guide Page › should show item details 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText(/1600 souls/)
+    Expected: visible
+    Error: strict mode violation: getByText(/1600 souls/) resolved to 3 elements:
+        1) <p data-astro-source-loc="72:16" data-astro-source-file="/Users/chris/workspace/deadlock-fight-club/src/pages/counter-guide.astro">…</p> aka locator('#passive-items').getByText('Cost: 1600 souls | Tier:')
+        2) <p data-astro-source-loc="124:16" data-astro-source-file="/Users/chris/workspace/deadlock-fight-club/src/pages/counter-guide.astro">…</p> aka locator('#active-items').getByText('Cost: 1600 souls | Tier:')
+        3) <p data-astro-source-loc="170:16" data-astro-source-file="/Users/chris/workspace/deadlock-fight-club/src/pages/counter-guide.astro">…</p> aka locator('#anti-heal').getByText('Cost: 1600 souls | Tier:')
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText(/1600 souls/)[22m
+
+
+      31 |     // Check for Reactive Barrier item
+      32 |     await expect(page.getByText('Reactive Barrier')).toBeVisible();
+    > 33 |     await expect(page.getByText(/1600 souls/)).toBeVisible();
+         |                                                ^
+      34 |     await expect(page.getByText(/Tier.*2/)).toBeVisible();
+      35 |   });
+      36 |
+        at /Users/chris/workspace/deadlock-fight-club/e2e/counter-guide.spec.ts:33:48
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/counter-guide-Counter-Guide-Page-should-show-item-details-mobile-chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/counter-guide-Counter-Guide-Page-should-show-item-details-mobile-chrome/error-context.md
+
+
+[1A[2K[62/90] [mobile-chrome] › e2e/counter-guide.spec.ts:37:3 › Counter Guide Page › should show pro tips
+[1A[2K[63/90] [mobile-chrome] › e2e/counter-guide.spec.ts:45:3 › Counter Guide Page › should have link to cheatsheet
+[1A[2K[64/90] [mobile-chrome] › e2e/counter-guide.spec.ts:57:3 › Counter Guide Page › should navigate back via site header
+[1A[2K[65/90] [mobile-chrome] › e2e/counter-guide.spec.ts:65:3 › Counter Guide Page › should be responsive on mobile
+[1A[2K[66/90] [mobile-chrome] › e2e/counter-guide.spec.ts:73:3 › Counter Guide Page › should have proper scroll buffer
+[1A[2K[67/90] [mobile-chrome] › e2e/fight-club.spec.ts:4:3 › Fight Club Generator › should load homepage with site header
+[1A[2K[68/90] [mobile-chrome] › e2e/fight-club.spec.ts:12:3 › Fight Club Generator › should generate a random match
+[1A[2K[69/90] [mobile-chrome] › e2e/fight-club.spec.ts:41:3 › Fight Club Generator › should randomize match on button click
+[1A[2K  21) [chromium] › e2e/guides.spec.ts:30:3 › Guides Homepage › should navigate to counter guide ────
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('link', { name: /complete counter items guide/i })[22m
+
+
+      32 |
+      33 |     // Click on Counter Guide card
+    > 34 |     await page.getByRole('link', { name: /complete counter items guide/i }).click();
+         |                                                                             ^
+      35 |     await expect(page).toHaveURL('/counter-guide');
+      36 |   });
+      37 |
+        at /Users/chris/workspace/deadlock-fight-club/e2e/guides.spec.ts:34:77
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/guides-Guides-Homepage-should-navigate-to-counter-guide-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/guides-Guides-Homepage-should-navigate-to-counter-guide-chromium/error-context.md
+
+
+[1A[2K  22) [chromium] › e2e/guides.spec.ts:38:3 › Guides Homepage › should navigate to cheatsheet ───────
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('link', { name: /counter items cheatsheet/i })[22m
+
+
+      40 |
+      41 |     // Click on Cheatsheet card
+    > 42 |     await page.getByRole('link', { name: /counter items cheatsheet/i }).click();
+         |                                                                         ^
+      43 |     await expect(page).toHaveURL('/counter-cheatsheet');
+      44 |   });
+      45 |
+        at /Users/chris/workspace/deadlock-fight-club/e2e/guides.spec.ts:42:73
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/guides-Guides-Homepage-should-navigate-to-cheatsheet-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/guides-Guides-Homepage-should-navigate-to-cheatsheet-chromium/error-context.md
+
+
+[1A[2K[70/90] [mobile-chrome] › e2e/fight-club.spec.ts:57:3 › Fight Club Generator › should show copy to clipboard button
+[1A[2K[71/90] [mobile-chrome] › e2e/fight-club.spec.ts:69:3 › Fight Club Generator › should display hero cards
+[1A[2K  23) [mobile-chrome] › e2e/fight-club.spec.ts:12:3 › Fight Club Generator › should generate a random match 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('PLAYER 1')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText('PLAYER 1')[22m
+
+
+      24 |
+      25 |     // Should show player labels
+    > 26 |     await expect(page.getByText('PLAYER 1')).toBeVisible();
+         |                                              ^
+      27 |     await expect(page.getByText('PLAYER 2')).toBeVisible();
+      28 |
+      29 |     // Should show VS divider
+        at /Users/chris/workspace/deadlock-fight-club/e2e/fight-club.spec.ts:26:46
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/fight-club-Fight-Club-Gene-ae218-uld-generate-a-random-match-mobile-chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/fight-club-Fight-Club-Gene-ae218-uld-generate-a-random-match-mobile-chrome/error-context.md
+
+
+[1A[2K[72/90] [mobile-chrome] › e2e/fight-club.spec.ts:84:3 › Fight Club Generator › should display item loadouts
+[1A[2K  24) [chromium] › e2e/navigation.spec.ts:40:3 › Site Navigation › should navigate from guides page to guide details 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('link', { name: /complete counter items guide/i })[22m
+
+
+      42 |
+      43 |     // Click Counter Guide card
+    > 44 |     await page.getByRole('link', { name: /complete counter items guide/i }).click();
+         |                                                                             ^
+      45 |     await expect(page).toHaveURL('/counter-guide');
+      46 |
+      47 |     // Go back to guides
+        at /Users/chris/workspace/deadlock-fight-club/e2e/navigation.spec.ts:44:77
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/navigation-Site-Navigation-8ba03-uides-page-to-guide-details-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/navigation-Site-Navigation-8ba03-uides-page-to-guide-details-chromium/error-context.md
+
+
+[1A[2K[73/90] [mobile-chrome] › e2e/fight-club.spec.ts:99:3 › Fight Club Generator › should have working navigation
+[1A[2K[74/90] [mobile-chrome] › e2e/fight-club.spec.ts:111:3 › Fight Club Generator › should be responsive on mobile
+[1A[2K  25) [mobile-chrome] › e2e/fight-club.spec.ts:57:3 › Fight Club Generator › should show copy to clipboard button 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: /copy to clipboard/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('button', { name: /copy to clipboard/i })[22m
+
+
+      64 |     // Check for copy button
+      65 |     const copyButton = page.getByRole('button', { name: /copy to clipboard/i });
+    > 66 |     await expect(copyButton).toBeVisible();
+         |                              ^
+      67 |   });
+      68 |
+      69 |   test('should display hero cards', async ({ page }) => {
+        at /Users/chris/workspace/deadlock-fight-club/e2e/fight-club.spec.ts:66:30
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/fight-club-Fight-Club-Gene-79625-ow-copy-to-clipboard-button-mobile-chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/fight-club-Fight-Club-Gene-79625-ow-copy-to-clipboard-button-mobile-chrome/error-context.md
+
+
+[1A[2K  26) [mobile-chrome] › e2e/fight-club.spec.ts:69:3 › Fight Club Generator › should display hero cards 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveCount[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  locator('.hero-card')
+    Expected: [32m2[39m
+    Received: [31m0[39m
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toHaveCount" with timeout 5000ms[22m
+    [2m  - waiting for locator('.hero-card')[22m
+    [2m    9 × locator resolved to 0 elements[22m
+    [2m      - unexpected value "0"[22m
+
+
+      75 |     // Should have 2 hero cards
+      76 |     const heroCards = page.locator('.hero-card');
+    > 77 |     await expect(heroCards).toHaveCount(2);
+         |                             ^
+      78 |
+      79 |     // Each hero card should have a name
+      80 |     const heroNames = page.locator('.hero-card__name');
+        at /Users/chris/workspace/deadlock-fight-club/e2e/fight-club.spec.ts:77:29
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/fight-club-Fight-Club-Generator-should-display-hero-cards-mobile-chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/fight-club-Fight-Club-Generator-should-display-hero-cards-mobile-chrome/error-context.md
+
+
+[1A[2K[75/90] [mobile-chrome] › e2e/guides.spec.ts:4:3 › Guides Homepage › should load guides page with header
+[1A[2K[76/90] [mobile-chrome] › e2e/guides.spec.ts:11:3 › Guides Homepage › should display guide cards
+[1A[2K[77/90] [mobile-chrome] › e2e/guides.spec.ts:19:3 › Guides Homepage › should show guide metadata
+[1A[2K  27) [mobile-chrome] › e2e/guides.spec.ts:19:3 › Guides Homepage › should show guide metadata ─────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('Strategy')
+    Expected: visible
+    Error: strict mode violation: getByText('Strategy') resolved to 3 elements:
+        1) <p data-astro-cid-aza7rbfb="" data-astro-source-loc="71:14" data-astro-source-file="/Users/chris/workspace/deadlock-fight-club/src/pages/guides.astro">↵Strategy guides, counter-building references, an…</p> aka getByText('Strategy guides, counter-')
+        2) <span data-astro-cid-aza7rbfb="" data-astro-source-loc="84:154" data-astro-source-file="/Users/chris/workspace/deadlock-fight-club/src/pages/guides.astro"> Strategy </span> aka getByRole('link').filter({ hasText: 'Strategy 10 min read Complete' })
+        3) <span data-astro-cid-aza7rbfb="" data-astro-source-loc="84:154" data-astro-source-file="/Users/chris/workspace/deadlock-fight-club/src/pages/guides.astro"> Strategy </span> aka getByRole('link').filter({ hasText: 'Strategy 8 min read What the' })
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText('Strategy')[22m
+
+
+      21 |
+      22 |     // Check for category tags
+    > 23 |     await expect(page.getByText('Strategy')).toBeVisible();
+         |                                              ^
+      24 |     await expect(page.getByText('Reference')).toBeVisible();
+      25 |
+      26 |     // Check for read time
+        at /Users/chris/workspace/deadlock-fight-club/e2e/guides.spec.ts:23:46
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/guides-Guides-Homepage-should-show-guide-metadata-mobile-chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/guides-Guides-Homepage-should-show-guide-metadata-mobile-chrome/error-context.md
+
+
+[1A[2K[78/90] [mobile-chrome] › e2e/guides.spec.ts:30:3 › Guides Homepage › should navigate to counter guide
+[1A[2K  28) [mobile-chrome] › e2e/fight-club.spec.ts:84:3 › Fight Club Generator › should display item loadouts 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveCount[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  locator('.loadout-display')
+    Expected: [32m2[39m
+    Received: [31m0[39m
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toHaveCount" with timeout 5000ms[22m
+    [2m  - waiting for locator('.loadout-display')[22m
+    [2m    9 × locator resolved to 0 elements[22m
+    [2m      - unexpected value "0"[22m
+
+
+      90 |     // Should have 2 loadout displays
+      91 |     const loadouts = page.locator('.loadout-display');
+    > 92 |     await expect(loadouts).toHaveCount(2);
+         |                            ^
+      93 |
+      94 |     // Each loadout should show items
+      95 |     const itemCards = page.locator('.item-card');
+        at /Users/chris/workspace/deadlock-fight-club/e2e/fight-club.spec.ts:92:28
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/fight-club-Fight-Club-Generator-should-display-item-loadouts-mobile-chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/fight-club-Fight-Club-Generator-should-display-item-loadouts-mobile-chrome/error-context.md
+
+
+[1A[2K[79/90] [mobile-chrome] › e2e/guides.spec.ts:38:3 › Guides Homepage › should navigate to cheatsheet
+[1A[2K  29) [mobile-chrome] › e2e/fight-club.spec.ts:111:3 › Fight Club Generator › should be responsive on mobile 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText('PLAYER 1')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText('PLAYER 1')[22m
+
+
+      118 |
+      119 |     // Should still show all elements
+    > 120 |     await expect(page.getByText('PLAYER 1')).toBeVisible();
+          |                                              ^
+      121 |     await expect(page.getByText('PLAYER 2')).toBeVisible();
+      122 |     await expect(page.getByText('VS')).toBeVisible();
+      123 |   });
+        at /Users/chris/workspace/deadlock-fight-club/e2e/fight-club.spec.ts:120:46
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/fight-club-Fight-Club-Gene-55bb6-uld-be-responsive-on-mobile-mobile-chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/fight-club-Fight-Club-Gene-55bb6-uld-be-responsive-on-mobile-mobile-chrome/error-context.md
+
+
+[1A[2K[80/90] [mobile-chrome] › e2e/guides.spec.ts:46:3 › Guides Homepage › should have hover effects on cards
+[1A[2K[81/90] [mobile-chrome] › e2e/guides.spec.ts:62:3 › Guides Homepage › should be responsive on mobile
+[1A[2K  30) [mobile-chrome] › e2e/guides.spec.ts:11:3 › Guides Homepage › should display guide cards ─────
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveCount[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  locator('article')
+    Expected: [32m2[39m
+    Received: [31m3[39m
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toHaveCount" with timeout 5000ms[22m
+    [2m  - waiting for locator('article')[22m
+    [2m    9 × locator resolved to 3 elements[22m
+    [2m      - unexpected value "3"[22m
+
+
+      14 |     // Should show at least 2 guide cards (Counter Guide & Cheatsheet)
+      15 |     const guideCards = page.locator('article');
+    > 16 |     await expect(guideCards).toHaveCount(2);
+         |                              ^
+      17 |   });
+      18 |
+      19 |   test('should show guide metadata', async ({ page }) => {
+        at /Users/chris/workspace/deadlock-fight-club/e2e/guides.spec.ts:16:30
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/guides-Guides-Homepage-should-display-guide-cards-mobile-chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/guides-Guides-Homepage-should-display-guide-cards-mobile-chrome/error-context.md
+
+
+[1A[2K[82/90] [mobile-chrome] › e2e/navigation.spec.ts:4:3 › Site Navigation › should navigate between all pages via header
+[1A[2K  31) [mobile-chrome] › e2e/navigation.spec.ts:4:3 › Site Navigation › should navigate between all pages via header 
+
+    Error: locator.click: Error: strict mode violation: getByRole('link', { name: 'Fight Club' }) resolved to 2 elements:
+        1) <a href="/" class="site-header__logo">…</a> aka getByRole('link', { name: 'Deadlock Fight Club' })
+        2) <a href="/" class="site-header__nav-link">Fight Club</a> aka getByRole('link', { name: 'Fight Club', exact: true })
+
+    Call log:
+    [2m  - waiting for getByRole('link', { name: 'Fight Club' })[22m
+
+
+      12 |
+      13 |     // Navigate back to Fight Club
+    > 14 |     await page.getByRole('link', { name: 'Fight Club' }).click();
+         |                                                          ^
+      15 |     await expect(page).toHaveURL('/');
+      16 |
+      17 |     // Navigate to Guides again
+        at /Users/chris/workspace/deadlock-fight-club/e2e/navigation.spec.ts:14:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/navigation-Site-Navigation-f5574-etween-all-pages-via-header-mobile-chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/navigation-Site-Navigation-f5574-etween-all-pages-via-header-mobile-chrome/error-context.md
+
+
+[1A[2K[83/90] [mobile-chrome] › e2e/navigation.spec.ts:22:3 › Site Navigation › should navigate via logo to homepage
+[1A[2K[84/90] [mobile-chrome] › e2e/navigation.spec.ts:40:3 › Site Navigation › should navigate from guides page to guide details
+[1A[2K  32) [mobile-chrome] › e2e/guides.spec.ts:62:3 › Guides Homepage › should be responsive on mobile ─
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveCount[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  locator('article')
+    Expected: [32m2[39m
+    Received: [31m3[39m
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toHaveCount" with timeout 5000ms[22m
+    [2m  - waiting for locator('article')[22m
+    [2m    9 × locator resolved to 3 elements[22m
+    [2m      - unexpected value "3"[22m
+
+
+      65 |
+      66 |     await expect(page.locator('h1')).toBeVisible();
+    > 67 |     await expect(page.locator('article')).toHaveCount(2);
+         |                                           ^
+      68 |   });
+      69 | });
+      70 |
+        at /Users/chris/workspace/deadlock-fight-club/e2e/guides.spec.ts:67:43
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/guides-Guides-Homepage-should-be-responsive-on-mobile-mobile-chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/guides-Guides-Homepage-should-be-responsive-on-mobile-mobile-chrome/error-context.md
+
+
+[1A[2K[85/90] [mobile-chrome] › e2e/navigation.spec.ts:55:3 › Site Navigation › should have consistent header across all pages
+[1A[2K  33) [mobile-chrome] › e2e/navigation.spec.ts:55:3 › Site Navigation › should have consistent header across all pages 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('link', { name: 'Fight Club' })
+    Expected: visible
+    Error: strict mode violation: getByRole('link', { name: 'Fight Club' }) resolved to 2 elements:
+        1) <a href="/" class="site-header__logo">…</a> aka getByRole('link', { name: 'Deadlock Fight Club' })
+        2) <a href="/" class="site-header__nav-link">Fight Club</a> aka getByRole('link', { name: 'Fight Club', exact: true })
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('link', { name: 'Fight Club' })[22m
+
+
+      64 |
+      65 |       // Check navigation links exist
+    > 66 |       await expect(page.getByRole('link', { name: 'Fight Club' })).toBeVisible();
+         |                                                                    ^
+      67 |       await expect(page.getByRole('link', { name: 'Guides' })).toBeVisible();
+      68 |     }
+      69 |   });
+        at /Users/chris/workspace/deadlock-fight-club/e2e/navigation.spec.ts:66:68
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/navigation-Site-Navigation-c6af6-ent-header-across-all-pages-mobile-chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/navigation-Site-Navigation-c6af6-ent-header-across-all-pages-mobile-chrome/error-context.md
+
+
+[1A[2K  34) [mobile-chrome] › e2e/counter-cheatsheet.spec.ts:57:3 › Counter Cheatsheet Page › should clear search with clear button 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('.search-bar__clear')[22m
+
+
+      67 |     // Click clear button (X icon)
+      68 |     const clearButton = page.locator('.search-bar__clear');
+    > 69 |     await clearButton.click();
+         |                       ^
+      70 |     await page.waitForTimeout(300);
+      71 |
+      72 |     // Should show all heroes again
+        at /Users/chris/workspace/deadlock-fight-club/e2e/counter-cheatsheet.spec.ts:69:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/counter-cheatsheet-Counter-35af6-ar-search-with-clear-button-mobile-chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/counter-cheatsheet-Counter-35af6-ar-search-with-clear-button-mobile-chrome/error-context.md
+
+
+[1A[2K[86/90] [mobile-chrome] › e2e/navigation.spec.ts:71:3 › Site Navigation › should have working internal links in counter-guide
+[1A[2K[87/90] [mobile-chrome] › e2e/navigation.spec.ts:80:3 › Site Navigation › should maintain scroll position on same page
+[1A[2K[88/90] [mobile-chrome] › e2e/navigation.spec.ts:92:3 › Site Navigation › should handle browser back/forward
+[1A[2K[89/90] [mobile-chrome] › e2e/navigation.spec.ts:108:3 › Site Navigation › should have correct page titles
+[1A[2K[90/90] [mobile-chrome] › e2e/navigation.spec.ts:122:3 › Site Navigation › should have favicon on all pages
+[1A[2K  35) [mobile-chrome] › e2e/fight-club.spec.ts:41:3 › Fight Club Generator › should randomize match on button click 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: /randomize match/i })[22m
+
+
+      47 |
+      48 |     // Click randomize
+    > 49 |     await page.getByRole('button', { name: /randomize match/i }).click();
+         |                                                                  ^
+      50 |     await page.waitForTimeout(500);
+      51 |
+      52 |     // Verify page still shows match structure
+        at /Users/chris/workspace/deadlock-fight-club/e2e/fight-club.spec.ts:49:66
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/fight-club-Fight-Club-Gene-05992-omize-match-on-button-click-mobile-chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/fight-club-Fight-Club-Gene-05992-omize-match-on-button-click-mobile-chrome/error-context.md
+
+
+[1A[2K  36) [mobile-chrome] › e2e/guides.spec.ts:30:3 › Guides Homepage › should navigate to counter guide 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('link', { name: /complete counter items guide/i })[22m
+
+
+      32 |
+      33 |     // Click on Counter Guide card
+    > 34 |     await page.getByRole('link', { name: /complete counter items guide/i }).click();
+         |                                                                             ^
+      35 |     await expect(page).toHaveURL('/counter-guide');
+      36 |   });
+      37 |
+        at /Users/chris/workspace/deadlock-fight-club/e2e/guides.spec.ts:34:77
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/guides-Guides-Homepage-should-navigate-to-counter-guide-mobile-chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/guides-Guides-Homepage-should-navigate-to-counter-guide-mobile-chrome/error-context.md
+
+
+[1A[2K  37) [mobile-chrome] › e2e/guides.spec.ts:38:3 › Guides Homepage › should navigate to cheatsheet ──
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('link', { name: /counter items cheatsheet/i })[22m
+
+
+      40 |
+      41 |     // Click on Cheatsheet card
+    > 42 |     await page.getByRole('link', { name: /counter items cheatsheet/i }).click();
+         |                                                                         ^
+      43 |     await expect(page).toHaveURL('/counter-cheatsheet');
+      44 |   });
+      45 |
+        at /Users/chris/workspace/deadlock-fight-club/e2e/guides.spec.ts:42:73
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/guides-Guides-Homepage-should-navigate-to-cheatsheet-mobile-chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/guides-Guides-Homepage-should-navigate-to-cheatsheet-mobile-chrome/error-context.md
+
+
+[1A[2K  38) [mobile-chrome] › e2e/navigation.spec.ts:40:3 › Site Navigation › should navigate from guides page to guide details 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('link', { name: /complete counter items guide/i })[22m
+
+
+      42 |
+      43 |     // Click Counter Guide card
+    > 44 |     await page.getByRole('link', { name: /complete counter items guide/i }).click();
+         |                                                                             ^
+      45 |     await expect(page).toHaveURL('/counter-guide');
+      46 |
+      47 |     // Go back to guides
+        at /Users/chris/workspace/deadlock-fight-club/e2e/navigation.spec.ts:44:77
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/navigation-Site-Navigation-8ba03-uides-page-to-guide-details-mobile-chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/navigation-Site-Navigation-8ba03-uides-page-to-guide-details-mobile-chrome/error-context.md
+
+
+[1A[2K  38 failed
+    [chromium] › e2e/counter-cheatsheet.spec.ts:40:3 › Counter Cheatsheet Page › should filter heroes by search 
+    [chromium] › e2e/counter-cheatsheet.spec.ts:57:3 › Counter Cheatsheet Page › should clear search with clear button 
+    [chromium] › e2e/counter-cheatsheet.spec.ts:76:3 › Counter Cheatsheet Page › should show no results message for invalid search 
+    [chromium] › e2e/counter-cheatsheet.spec.ts:120:3 › Counter Cheatsheet Page › should navigate via site header 
+    [chromium] › e2e/counter-guide.spec.ts:28:3 › Counter Guide Page › should show item details ────
+    [chromium] › e2e/fight-club.spec.ts:12:3 › Fight Club Generator › should generate a random match 
+    [chromium] › e2e/fight-club.spec.ts:41:3 › Fight Club Generator › should randomize match on button click 
+    [chromium] › e2e/fight-club.spec.ts:57:3 › Fight Club Generator › should show copy to clipboard button 
+    [chromium] › e2e/fight-club.spec.ts:69:3 › Fight Club Generator › should display hero cards ────
+    [chromium] › e2e/fight-club.spec.ts:84:3 › Fight Club Generator › should display item loadouts ─
+    [chromium] › e2e/fight-club.spec.ts:111:3 › Fight Club Generator › should be responsive on mobile 
+    [chromium] › e2e/guides.spec.ts:11:3 › Guides Homepage › should display guide cards ────────────
+    [chromium] › e2e/guides.spec.ts:19:3 › Guides Homepage › should show guide metadata ────────────
+    [chromium] › e2e/guides.spec.ts:30:3 › Guides Homepage › should navigate to counter guide ──────
+    [chromium] › e2e/guides.spec.ts:38:3 › Guides Homepage › should navigate to cheatsheet ─────────
+    [chromium] › e2e/guides.spec.ts:62:3 › Guides Homepage › should be responsive on mobile ────────
+    [chromium] › e2e/navigation.spec.ts:4:3 › Site Navigation › should navigate between all pages via header 
+    [chromium] › e2e/navigation.spec.ts:40:3 › Site Navigation › should navigate from guides page to guide details 
+    [chromium] › e2e/navigation.spec.ts:55:3 › Site Navigation › should have consistent header across all pages 
+    [mobile-chrome] › e2e/counter-cheatsheet.spec.ts:40:3 › Counter Cheatsheet Page › should filter heroes by search 
+    [mobile-chrome] › e2e/counter-cheatsheet.spec.ts:57:3 › Counter Cheatsheet Page › should clear search with clear button 
+    [mobile-chrome] › e2e/counter-cheatsheet.spec.ts:76:3 › Counter Cheatsheet Page › should show no results message for invalid search 
+    [mobile-chrome] › e2e/counter-cheatsheet.spec.ts:120:3 › Counter Cheatsheet Page › should navigate via site header 
+    [mobile-chrome] › e2e/counter-guide.spec.ts:28:3 › Counter Guide Page › should show item details 
+    [mobile-chrome] › e2e/fight-club.spec.ts:12:3 › Fight Club Generator › should generate a random match 
+    [mobile-chrome] › e2e/fight-club.spec.ts:41:3 › Fight Club Generator › should randomize match on button click 
+    [mobile-chrome] › e2e/fight-club.spec.ts:57:3 › Fight Club Generator › should show copy to clipboard button 
+    [mobile-chrome] › e2e/fight-club.spec.ts:69:3 › Fight Club Generator › should display hero cards 
+    [mobile-chrome] › e2e/fight-club.spec.ts:84:3 › Fight Club Generator › should display item loadouts 
+    [mobile-chrome] › e2e/fight-club.spec.ts:111:3 › Fight Club Generator › should be responsive on mobile 
+    [mobile-chrome] › e2e/guides.spec.ts:11:3 › Guides Homepage › should display guide cards ───────
+    [mobile-chrome] › e2e/guides.spec.ts:19:3 › Guides Homepage › should show guide metadata ───────
+    [mobile-chrome] › e2e/guides.spec.ts:30:3 › Guides Homepage › should navigate to counter guide ─
+    [mobile-chrome] › e2e/guides.spec.ts:38:3 › Guides Homepage › should navigate to cheatsheet ────
+    [mobile-chrome] › e2e/guides.spec.ts:62:3 › Guides Homepage › should be responsive on mobile ───
+    [mobile-chrome] › e2e/navigation.spec.ts:4:3 › Site Navigation › should navigate between all pages via header 
+    [mobile-chrome] › e2e/navigation.spec.ts:40:3 › Site Navigation › should navigate from guides page to guide details 
+    [mobile-chrome] › e2e/navigation.spec.ts:55:3 › Site Navigation › should have consistent header across all pages 
+  52 passed (1.5m)
+
+[36m  Serving HTML report at http://localhost:9323. Press Ctrl+C to quit.[39m
