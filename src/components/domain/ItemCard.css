@@ -1,8 +1,8 @@
 .item-card {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 6px;
+  gap: 2px;
+  padding: 4px;
   background: var(--bg-secondary);
   border: 2px solid var(--bg-secondary);
   border-radius: var(--border-radius);
@@ -35,7 +35,7 @@
   background: var(--bg-dark);
   border-radius: var(--border-radius);
   overflow: hidden;
-  padding: var(--spacing-sm);
+  padding: 4px;
 }
 
 .item-card__image {
@@ -59,10 +59,10 @@
 .item-card__name {
   text-align: center;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   color: var(--text-primary);
-  line-height: 1.3;
-  min-height: 2.6em;
+  line-height: 1.1;
+  min-height: 2.2em;
   display: flex;
   align-items: center;
   justify-content: center;

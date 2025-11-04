@@ -11,7 +11,7 @@
 .site-header__container {
   max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: var(--spacing-lg) var(--spacing-xl);
+  padding: var(--spacing-md) var(--spacing-xl);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,7 +51,7 @@
 
 @media (max-width: 768px) {
   .site-header__container {
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-md);
   }
 
   .site-header__logo-text {
