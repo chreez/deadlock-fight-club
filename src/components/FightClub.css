@@ -103,3 +103,66 @@
   box-shadow: var(--shadow-lg);
   z-index: 100;
 }
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .fight-club__player-row {
+    flex-wrap: wrap;
+  }
+
+  .fight-club__player-label {
+    width: 100%;
+    text-align: center;
+  }
+
+  .fight-club__hero {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .fight-club__items {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .fight-club__hero-image {
+    width: 40px;
+    height: 40px;
+  }
+
+  .fight-club__item {
+    width: 60px;
+  }
+
+  .fight-club__item-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .fight-club__item-name {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .fight-club__item {
+    width: 50px;
+  }
+
+  .fight-club__item-image {
+    width: 40px;
+    height: 40px;
+  }
+
+  .fight-club__item-name {
+    font-size: 0.6rem;
+  }
+
+  .fight-club__footer {
+    flex-direction: column;
+    padding: var(--spacing-sm);
+  }
+}
