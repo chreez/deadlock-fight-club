@@ -69,15 +69,31 @@ export default function FightClub() {
     setCopied(false);
   };
 
+  const formatItemsByCategory = (items: Array<{ name: string; category: string; cost: number }>) => {
+    const categories = ['weapon', 'vitality', 'spirit'] as const;
+    return categories.map(category => {
+      const categoryItems = items
+        .filter(item => item.category === category)
+        .sort((a, b) => a.cost - b.cost);
+
+      if (categoryItems.length === 0) return '';
+
+      const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
+      const itemList = categoryItems.map(i => `  ${i.name} (${i.cost}s)`).join('\n');
+      return `${categoryName}:\n${itemList}`;
+    }).filter(Boolean).join('\n\n');
+  };
+
   const copyToClipboard = () => {
     if (!matchData) return;
 
     const text = `FIGHT CLUB MATCH
+
 Player 1: ${matchData.hero1.name}
-Items: ${matchData.player1Items.map(i => `${i.name} (${i.cost}s)`).join(', ')}
+${formatItemsByCategory(matchData.player1Items)}
 
 Player 2: ${matchData.hero2.name}
-Items: ${matchData.player2Items.map(i => `${i.name} (${i.cost}s)`).join(', ')}
+${formatItemsByCategory(matchData.player2Items)}
 
 Total Cost per Player: ${matchData.totalCost.toLocaleString()} souls`;
 
