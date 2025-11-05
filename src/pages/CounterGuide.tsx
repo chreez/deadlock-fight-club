@@ -1,9 +1,17 @@
 import Container from '../components/layout/Container'
 import Section from '../components/layout/Section'
 import TipBox from '../components/layout/TipBox'
+import { useMetaTags } from '../hooks/useMetaTags'
 import './GuidePages.css'
 
 export default function CounterGuide() {
+  useMetaTags({
+    title: 'Counter-Building Guide - Deadlock Fight Club',
+    description: 'Learn which items counter entire team compositions in Deadlock, not just individual heroes. Essential counter-building strategies from Bebop mains.',
+    url: 'https://deadlock-fights.netlify.app/counter-guide',
+    image: 'https://deadlock-fights.netlify.app/assets/heroes/bebop.png'
+  });
+
   return (
     <Container maxWidth="md">
       <div className="guide-page">

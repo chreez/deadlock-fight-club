@@ -1,9 +1,17 @@
 import Container from '../components/layout/Container'
 import Section from '../components/layout/Section'
 import TipBox from '../components/layout/TipBox'
+import { useMetaTags } from '../hooks/useMetaTags'
 import './GuidePages.css'
 
 export default function MidgameGuide() {
+  useMetaTags({
+    title: 'Midgame Guide - Deadlock Fight Club',
+    description: 'Understand the 5-minute combat cycle, power spikes, and when MOBA mechanics take over. Master Deadlock\'s midgame transition.',
+    url: 'https://deadlock-fights.netlify.app/midgame-guide',
+    image: 'https://deadlock-fights.netlify.app/assets/heroes/bebop.png'
+  });
+
   return (
     <Container maxWidth="md">
       <div className="guide-page">

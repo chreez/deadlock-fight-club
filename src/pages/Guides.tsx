@@ -1,9 +1,17 @@
 import { Link } from 'react-router-dom'
 import Container from '../components/layout/Container'
 import Section from '../components/layout/Section'
+import { useMetaTags } from '../hooks/useMetaTags'
 import './Guides.css'
 
 export default function Guides() {
+  useMetaTags({
+    title: 'Strategy Guides - Deadlock Fight Club',
+    description: 'Educational content for Deadlock players. Counter-building, midgame strategies, and hero matchup guides from Bebop mains.',
+    url: 'https://deadlock-fights.netlify.app/guides',
+    image: 'https://deadlock-fights.netlify.app/assets/heroes/bebop.png'
+  });
+
   const guides = [
     {
       title: 'Counter-Building Guide',
