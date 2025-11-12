@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Container from '../components/layout/Container'
 import Section from '../components/layout/Section'
 import TipBox from '../components/layout/TipBox'
@@ -5,6 +6,52 @@ import { useMetaTags } from '../hooks/useMetaTags'
 import './GuidePages.css'
 
 export default function MacroGuide() {
+  const [quizAnswers, setQuizAnswers] = useState<Record<number, string>>({})
+  const [showResults, setShowResults] = useState(false)
+
+  const quiz = [
+    {
+      question: "You're even in souls at 10 minutes. What split should you use?",
+      options: ["1-1-4", "2-2-2", "5-0-1", "6-0-0"],
+      correct: "2-2-2",
+      explanation: "Even souls with resources on map = 2-2-2 default split"
+    },
+    {
+      question: "Urn spawns in 30 seconds and you have a Wraith with TP. Best split?",
+      options: ["2-2-2", "1-3-2", "1-1-4", "5-0-1"],
+      correct: "1-3-2",
+      explanation: "Objective spawning + self-sufficient carry = 1-3-2 pressure split"
+    },
+    {
+      question: "You're 20%+ behind in souls. Enemies have 3 rejuvenators. What now?",
+      options: ["Keep farming 2-2-2", "1-1-4 emergency", "6-0-0 rejuve hunt", "Surrender"],
+      correct: "6-0-0 rejuve hunt",
+      explanation: "Massive deficit + rejuves = extreme 6-0-0 comeback play"
+    },
+    {
+      question: "Your solo Ivy is alone on lane. Enemies know it. What's the space situation?",
+      options: ["Your space", "Their space", "Neutral space", "No space"],
+      correct: "Their space",
+      explanation: "Enemies know you're alone = their space. Play cautious near walker."
+    },
+    {
+      question: "You win a 5v2 fight. What should you do?",
+      options: ["Split 2-2-2 to farm", "Stay as 5, take objectives", "Recall to shop", "Chase kills"],
+      correct: "Stay as 5, take objectives",
+      explanation: "Stay together after won fights. Splitting is too slow—maximize resource gains as a unit."
+    }
+  ]
+
+  const handleAnswer = (questionIndex: number, answer: string) => {
+    setQuizAnswers(prev => ({ ...prev, [questionIndex]: answer }))
+  }
+
+  const calculateScore = () => {
+    return quiz.filter((q, i) => quizAnswers[i] === q.correct).length
+  }
+
+  const allAnswered = quiz.every((_, i) => quizAnswers[i] !== undefined)
+
   useMetaTags({
     title: 'Advanced Macro Guide - Deadlock Fight Club',
     description: 'Master lane splitting, resource control, and comeback strategies. Learn 2-2-2, 1-3-2, 1-1-4 splits and how to tip the resource meter in your favor.',
@@ -214,6 +261,128 @@ export default function MacroGuide() {
           <p className="guide-closing">
             Macro isn't about memorizing splits—read game state, adapt positioning, control resources.
           </p>
+        </Section>
+
+        <Section>
+          <h2>Test Your Knowledge</h2>
+          <p>Quick quiz to check your understanding of macro concepts:</p>
+
+          {quiz.map((q, qIndex) => (
+            <div key={qIndex} style={{
+              marginTop: 'var(--spacing-xl)',
+              padding: 'var(--spacing-lg)',
+              background: 'var(--bg-secondary)',
+              borderRadius: 'var(--radius-large)',
+              border: showResults && quizAnswers[qIndex] === q.correct
+                ? '2px solid #4caf50'
+                : showResults && quizAnswers[qIndex] !== q.correct
+                ? '2px solid #f44336'
+                : '1px solid rgba(255, 255, 255, 0.1)'
+            }}>
+              <p style={{ fontWeight: 'bold', marginBottom: 'var(--spacing-md)', color: 'var(--text-primary)' }}>
+                {qIndex + 1}. {q.question}
+              </p>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-sm)' }}>
+                {q.options.map((option) => (
+                  <button
+                    key={option}
+                    onClick={() => handleAnswer(qIndex, option)}
+                    disabled={showResults}
+                    style={{
+                      padding: 'var(--spacing-md)',
+                      background: quizAnswers[qIndex] === option
+                        ? 'rgba(255, 140, 66, 0.2)'
+                        : 'rgba(255, 255, 255, 0.05)',
+                      border: quizAnswers[qIndex] === option
+                        ? '2px solid var(--accent-orange)'
+                        : '1px solid rgba(255, 255, 255, 0.1)',
+                      borderRadius: 'var(--radius-standard)',
+                      color: 'var(--text-primary)',
+                      textAlign: 'left',
+                      cursor: showResults ? 'default' : 'pointer',
+                      transition: 'all var(--transition-fast)',
+                      opacity: showResults && option !== q.correct ? 0.5 : 1
+                    }}
+                  >
+                    {option}
+                    {showResults && option === q.correct && ' ✓'}
+                  </button>
+                ))}
+              </div>
+
+              {showResults && (
+                <div style={{
+                  marginTop: 'var(--spacing-md)',
+                  padding: 'var(--spacing-md)',
+                  background: 'rgba(255, 140, 66, 0.1)',
+                  borderRadius: 'var(--radius-standard)',
+                  fontSize: '0.9rem',
+                  color: 'var(--text-secondary)'
+                }}>
+                  <strong style={{ color: 'var(--accent-orange)' }}>Explanation:</strong> {q.explanation}
+                </div>
+              )}
+            </div>
+          ))}
+
+          <div style={{ marginTop: 'var(--spacing-xl)', textAlign: 'center' }}>
+            {!showResults ? (
+              <button
+                onClick={() => setShowResults(true)}
+                disabled={!allAnswered}
+                style={{
+                  padding: 'var(--spacing-md) var(--spacing-xl)',
+                  background: allAnswered ? 'var(--accent-orange)' : 'rgba(255, 255, 255, 0.1)',
+                  border: 'none',
+                  borderRadius: 'var(--radius-standard)',
+                  color: allAnswered ? '#000' : 'var(--text-secondary)',
+                  fontWeight: 'bold',
+                  fontSize: '1rem',
+                  cursor: allAnswered ? 'pointer' : 'not-allowed',
+                  transition: 'all var(--transition-default)'
+                }}
+              >
+                {allAnswered ? 'Show Results' : `Answer All Questions (${Object.keys(quizAnswers).length}/${quiz.length})`}
+              </button>
+            ) : (
+              <div>
+                <div style={{
+                  padding: 'var(--spacing-lg)',
+                  background: calculateScore() >= 4 ? 'rgba(76, 175, 80, 0.1)' : 'rgba(255, 140, 66, 0.1)',
+                  borderRadius: 'var(--radius-large)',
+                  marginBottom: 'var(--spacing-lg)'
+                }}>
+                  <p style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--accent-orange)', margin: 0 }}>
+                    {calculateScore()}/{quiz.length}
+                  </p>
+                  <p style={{ color: 'var(--text-secondary)', marginTop: 'var(--spacing-sm)' }}>
+                    {calculateScore() === 5 && "Perfect! You've mastered macro."}
+                    {calculateScore() === 4 && "Great work! Solid macro understanding."}
+                    {calculateScore() === 3 && "Good start. Review the splits again."}
+                    {calculateScore() < 3 && "Keep studying! Re-read the guide."}
+                  </p>
+                </div>
+                <button
+                  onClick={() => {
+                    setQuizAnswers({})
+                    setShowResults(false)
+                  }}
+                  style={{
+                    padding: 'var(--spacing-md) var(--spacing-xl)',
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    border: '1px solid var(--accent-orange)',
+                    borderRadius: 'var(--radius-standard)',
+                    color: 'var(--text-primary)',
+                    fontWeight: 'bold',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Retake Quiz
+                </button>
+              </div>
+            )}
+          </div>
         </Section>
 
         <Section>
