@@ -7,7 +7,7 @@ import './Guides.css'
 export default function Guides() {
   useMetaTags({
     title: 'Strategy Guides - Deadlock Fight Club',
-    description: 'Educational content for Deadlock players. Counter-building, midgame strategies, and hero matchup guides from Bebop mains.',
+    description: 'In-depth Deadlock strategy guides: counter-building, macro play, midgame transitions, and quick counter lookups. Skip the fluff, learn what actually wins games.',
     url: 'https://deadlock-fights.netlify.app/guides',
     image: 'https://deadlock-fights.netlify.app/assets/heroes/bebop.png'
   });

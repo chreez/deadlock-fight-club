@@ -7,7 +7,7 @@ import './GuidePages.css'
 export default function MidgameGuide() {
   useMetaTags({
     title: 'Midgame Guide - Deadlock Fight Club',
-    description: 'Understand the 5-minute combat cycle, power spikes, and when MOBA mechanics take over. Master Deadlock\'s midgame transition.',
+    description: 'Lane phase ends. Towers fall. Chaos begins. Master the 5-minute combat cycle, understand power spikes, and learn when Deadlock stops being a shooter and becomes a MOBA.',
     url: 'https://deadlock-fights.netlify.app/midgame-guide',
     image: 'https://deadlock-fights.netlify.app/assets/heroes/bebop.png'
   });

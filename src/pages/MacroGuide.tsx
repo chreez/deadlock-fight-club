@@ -80,9 +80,9 @@ export default function MacroGuide() {
 
   useMetaTags({
     title: 'Advanced Macro Guide - Deadlock Fight Club',
-    description: 'Master lane splitting, resource control, and comeback strategies. Learn 2-2-2, 1-3-2, 1-1-4 splits and how to tip the resource meter in your favor.',
+    description: 'Their jungle. Your souls. Master lane splitting strategies that starve enemies of resources. Learn when to use 2-2-2, 1-3-2, 1-1-4, and extreme comeback plays when behind.',
     url: 'https://deadlock-fights.netlify.app/macro-guide',
-    image: 'https://deadlock-fights.netlify.app/assets/heroes/bebop.png'
+    image: 'https://img.youtube.com/vi/1r9tIZ3IYYk/maxresdefault.jpg'
   });
 
   return (
