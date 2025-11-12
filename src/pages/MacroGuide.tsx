@@ -17,10 +17,10 @@ export default function MacroGuide() {
       explanation: "Even souls with resources on map = 2-2-2 default split"
     },
     {
-      question: "Urn spawns in 30 seconds and you have a Wraith with TP. Best split?",
-      options: ["2-2-2", "1-3-2", "1-1-4", "5-0-1"],
+      question: "You need to contest urn and have a self-sufficient Wraith. Best split?",
+      options: ["2-2-2", "1-3-2", "1-1-4", "6-0-0"],
       correct: "1-3-2",
-      explanation: "Objective spawning + self-sufficient carry = 1-3-2 pressure split"
+      explanation: "Contesting objectives + carry with escapes = 1-3-2 to get +1 advantage"
     },
     {
       question: "You're 20%+ behind in souls. Enemies have 3 rejuvenators. What now?",
