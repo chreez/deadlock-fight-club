@@ -35,7 +35,7 @@ export default function Guides() {
       title: 'Advanced Macro Guide',
       description: 'Master lane splitting strategies, resource control, and comeback mechanics when behind.',
       path: '/macro-guide',
-      status: 'Coming Soon'
+      status: 'Available'
     }
   ]
 

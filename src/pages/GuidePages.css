@@ -2,6 +2,22 @@
   padding: var(--spacing-xl) 0;
 }
 
+.guide-tagline {
+  font-size: 1.3rem;
+  color: var(--accent-orange);
+  font-weight: bold;
+  margin-bottom: var(--spacing-lg);
+}
+
+.split-strategy {
+  padding: var(--spacing-lg) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.split-strategy:first-child {
+  border-top: none;
+}
+
 .item-entry {
   margin-bottom: var(--spacing-lg);
   padding-bottom: var(--spacing-lg);

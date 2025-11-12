@@ -18,12 +18,7 @@ export default function MacroGuide() {
         <header>
           <Section>
             <h1>Advanced Macro: Lane Splitting & Resource Control</h1>
-            <p style={{
-              fontSize: '1.3rem',
-              color: 'var(--accent-orange)',
-              fontWeight: 'bold',
-              marginBottom: 'var(--spacing-lg)'
-            }}>
+            <p className="guide-tagline">
               Their Jungle. Your Souls.
             </p>
             <p className="guide-lead">
@@ -60,45 +55,47 @@ export default function MacroGuide() {
         <Section>
           <h2>Lane Splitting Fundamentals</h2>
 
-          <h3>The 2-2-2 Default Split</h3>
-          <div className="stat-box">
-            <h3>2-2-2 Split Overview</h3>
-            <ul>
-              <li><strong>Structure:</strong> Two players on each lane</li>
-              <li><strong>When to use:</strong> Even soul count, resources available on map</li>
-              <li><strong>Purpose:</strong> Efficient farming, maintain pressure across all lanes</li>
-            </ul>
-          </div>
+          <div className="split-strategy">
+            <h3>The 2-2-2 Default Split</h3>
+            <div className="stat-box">
+              <ul>
+                <li><strong>Structure:</strong> Two players on each lane</li>
+                <li><strong>When to use:</strong> Even soul count, resources available on map</li>
+                <li><strong>Purpose:</strong> Efficient farming, maintain pressure across all lanes</li>
+              </ul>
+            </div>
 
-          <p>
-            Your baseline. Two people farm lane creeps plus closed jungle efficiently. When enemies
-            leave a lane understaffed, punish by taking their jungle and objectives.
-          </p>
-
-          <p>
-            <strong>Constraint:</strong> If you're behind in souls, one rich enemy can stall your
-            two-person push while their team takes objectives elsewhere.
-          </p>
-
-          <h3>Objective-Focused Splits: 1-3-2 and 1-2-3</h3>
-          <p>
-            Three players one side, solo carry other side. Use when contesting urn/bridge buffs or
-            when carry needs solo farm (Wraith, Infernus, Ivy with escape tools).
-          </p>
-
-          <div className="example-box">
-            <h3>Urn Contest Example</h3>
             <p>
-              <strong>Setup:</strong> 1 solo left, 2 mid, 3 right at urn = +1 advantage at objective
+              Your baseline. Two people farm lane creeps plus closed jungle efficiently. When enemies
+              leave a lane understaffed, punish by taking their jungle and objectives.
             </p>
+
             <p>
-              <strong>Result:</strong> Forces enemy rotation (freeing other lanes) or free objective
+              <strong>Constraint:</strong> If you're behind in souls, one rich enemy can stall your
+              two-person push while their team takes objectives elsewhere.
             </p>
           </div>
 
-          <TipBox variant="warning">
-            <strong>Risk:</strong> Solo carry dies = fed souls + lost map presence. Requires escape tools.
-          </TipBox>
+          <div className="split-strategy">
+            <h3>Objective-Focused Splits: 1-3-2 and 1-2-3</h3>
+            <p>
+              Three players one side, solo carry other side. Use when contesting urn/bridge buffs or
+              when carry needs solo farm (Wraith, Infernus, Ivy with escape tools).
+            </p>
+
+            <div className="example-box">
+              <p>
+                <strong>Setup:</strong> 1 solo left, 2 mid, 3 right at urn = +1 advantage at objective
+              </p>
+              <p>
+                <strong>Result:</strong> Forces enemy rotation (freeing other lanes) or free objective
+              </p>
+            </div>
+
+            <TipBox variant="warning">
+              <strong>Risk:</strong> Solo carry dies = fed souls + lost map presence. Requires escape tools.
+            </TipBox>
+          </div>
         </Section>
 
         <Section>
@@ -107,53 +104,56 @@ export default function MacroGuide() {
             Behind in souls? Force numerical advantages to win resource pushes.
           </p>
 
-          <h3>The 1-1-4 Emergency Split</h3>
-          <div className="stat-box">
-            <h3>1-1-4 Split Mechanics</h3>
-            <ul>
-              <li><strong>Structure:</strong> One player each on two lanes, four on one lane</li>
-              <li><strong>When to use:</strong> Behind in souls, need to force favorable fights</li>
-              <li><strong>Goal:</strong> Create 4v3 or 4v2 scenarios to secure kills and resources</li>
-            </ul>
+          <div className="split-strategy">
+            <h3>The 1-1-4 Emergency Split</h3>
+            <div className="stat-box">
+              <ul>
+                <li><strong>Structure:</strong> One player each on two lanes, four on one lane</li>
+                <li><strong>When to use:</strong> Behind in souls, need to force favorable fights</li>
+                <li><strong>Goal:</strong> Create 4v3 or 4v2 scenarios to secure kills and resources</li>
+              </ul>
+            </div>
+
+            <p>
+              Maintains lane stability (solos catch waves) while concentrating firepower. Push waves
+              2-2-2, then over-rotate four players before enemies notice.
+            </p>
           </div>
 
-          <p>
-            Maintains lane stability (solos catch waves) while concentrating firepower. Push waves
-            2-2-2, then over-rotate four players before enemies notice.
-          </p>
+          <div className="split-strategy">
+            <h3>Desperate Rotations: 5-0-1 and 6-0-0</h3>
+            <TipBox variant="warning">
+              <strong>High-risk:</strong> Use only when 20%+ behind. Abandons lane stability.
+            </TipBox>
 
-          <h3>Desperate Rotations: 5-0-1 and 6-0-0</h3>
-          <TipBox variant="warning">
-            <strong>High-risk:</strong> Use only when 20%+ behind. Abandons lane stability.
-          </TipBox>
+            <div className="stat-box">
+              <strong>5-0-1 Five-Man Rotation</strong>
+              <ul>
+                <li><strong>Setup:</strong> Leave one farming carry on lane, rotate five to an objective</li>
+                <li><strong>Execution:</strong> Must be fast—get the kill/objective and leave immediately</li>
+                <li><strong>Risk:</strong> If stalled, enemies take walkers, mid boss, or urn on opposite side</li>
+              </ul>
+            </div>
 
-          <div className="stat-box">
-            <h3>5-0-1 Five-Man Rotation</h3>
-            <ul>
-              <li><strong>Setup:</strong> Leave one farming carry on lane, rotate five to an objective</li>
-              <li><strong>Execution:</strong> Must be fast—get the kill/objective and leave immediately</li>
-              <li><strong>Risk:</strong> If stalled, enemies take walkers, mid boss, or urn on opposite side</li>
-            </ul>
+            <p>
+              Show in lane, push wave, disappear as five. Force 5v2, execute fast, take their resources.
+              <strong> Stay together</strong>—splitting after is too slow.
+            </p>
+
+            <div className="stat-box">
+              <strong>6-0-0 Rejuvenator Denial (Extreme)</strong>
+              <ul>
+                <li><strong>Scenario:</strong> Enemies have 3+ rejuvenators, you're massively behind</li>
+                <li><strong>Strategy:</strong> All six players hunt for picks to remove rejuvenators</li>
+                <li><strong>Target:</strong> Isolated enemies farming your side of the map</li>
+              </ul>
+            </div>
+
+            <p>
+              Most extreme comeback. Scout isolated enemies (Calico/Haze vision), collapse as six.
+              Kill, burn rejuve, execute again if possible. Creates comeback window.
+            </p>
           </div>
-
-          <p>
-            Show in lane, push wave, disappear as five. Force 5v2, execute fast, take their resources.
-            <strong>Stay together</strong>—splitting after is too slow.
-          </p>
-
-          <div className="stat-box">
-            <h3>6-0-0 Rejuvenator Denial (Extreme)</h3>
-            <ul>
-              <li><strong>Scenario:</strong> Enemies have 3+ rejuvenators, you're massively behind</li>
-              <li><strong>Strategy:</strong> All six players hunt for picks to remove rejuvenators</li>
-              <li><strong>Target:</strong> Isolated enemies farming your side of the map</li>
-            </ul>
-          </div>
-
-          <p>
-            Most extreme comeback. Scout isolated enemies (Calico/Haze vision), collapse as six.
-            Kill, burn rejuve, execute again if possible. Creates comeback window.
-          </p>
         </Section>
 
         <Section>
