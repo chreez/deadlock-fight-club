@@ -30,6 +30,12 @@ export default function Guides() {
       description: 'Understand the 5-minute combat cycle, power spikes, and when MOBA mechanics take over.',
       path: '/midgame-guide',
       status: 'Available'
+    },
+    {
+      title: 'Advanced Macro Guide',
+      description: 'Master lane splitting strategies, resource control, and comeback mechanics when behind.',
+      path: '/macro-guide',
+      status: 'Coming Soon'
     }
   ]
 
