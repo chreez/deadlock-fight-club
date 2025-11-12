@@ -6,6 +6,7 @@ import { useMetaTags } from '../hooks/useMetaTags'
 import './GuidePages.css'
 
 export default function MacroGuide() {
+  const [showQuiz, setShowQuiz] = useState(false)
   const [quizAnswers, setQuizAnswers] = useState<Record<number, string>>({})
   const [showResults, setShowResults] = useState(false)
 
@@ -265,9 +266,47 @@ export default function MacroGuide() {
 
         <Section>
           <h2>Test Your Knowledge</h2>
-          <p>Quick quiz to check your understanding of macro concepts:</p>
 
-          {quiz.map((q, qIndex) => (
+          {!showQuiz ? (
+            <div style={{ textAlign: 'center', marginTop: 'var(--spacing-xl)' }}>
+              <button
+                onClick={() => setShowQuiz(true)}
+                style={{
+                  padding: 'var(--spacing-lg) var(--spacing-xl)',
+                  background: 'var(--accent-orange)',
+                  border: 'none',
+                  borderRadius: 'var(--radius-standard)',
+                  color: '#000',
+                  fontWeight: 'bold',
+                  fontSize: '1.1rem',
+                  cursor: 'pointer',
+                  transition: 'all var(--transition-default)',
+                  boxShadow: 'var(--shadow-glow-orange)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.05)'
+                  e.currentTarget.style.boxShadow = '0 6px 25px rgba(255, 140, 66, 0.6)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)'
+                  e.currentTarget.style.boxShadow = 'var(--shadow-glow-orange)'
+                }}
+              >
+                Skill Check
+              </button>
+              <p style={{
+                marginTop: 'var(--spacing-md)',
+                color: 'var(--text-secondary)',
+                fontSize: '0.9rem'
+              }}>
+                5 questions to test your macro understanding
+              </p>
+            </div>
+          ) : (
+            <>
+              <p>Quick quiz to check your understanding of macro concepts:</p>
+
+              {quiz.map((q, qIndex) => (
             <div key={qIndex} style={{
               marginTop: 'var(--spacing-xl)',
               padding: 'var(--spacing-lg)',
@@ -383,6 +422,8 @@ export default function MacroGuide() {
               </div>
             )}
           </div>
+            </>
+          )}
         </Section>
 
         <Section>
