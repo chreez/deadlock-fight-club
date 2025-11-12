@@ -392,47 +392,68 @@ export default function MacroGuide() {
             Watch the full breakdown:
           </p>
 
-          <div style={{
-            position: 'relative',
-            paddingBottom: '56.25%',
-            height: 0,
-            overflow: 'hidden',
-            maxWidth: '100%',
-            marginTop: 'var(--spacing-lg)',
-            borderRadius: 'var(--radius-large)'
-          }}>
-            <iframe
+          <a
+            href="https://youtu.be/1r9tIZ3IYYk"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'block',
+              position: 'relative',
+              marginTop: 'var(--spacing-lg)',
+              borderRadius: 'var(--radius-large)',
+              overflow: 'hidden',
+              cursor: 'pointer',
+              transition: 'transform var(--transition-default)',
+              textDecoration: 'none'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'scale(1.02)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'scale(1)'
+            }}
+          >
+            <img
+              src="https://img.youtube.com/vi/1r9tIZ3IYYk/maxresdefault.jpg"
+              alt="Advanced Deadlock Macro Guide Video"
               style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
                 width: '100%',
-                height: '100%',
-                border: 0
+                display: 'block',
+                borderRadius: 'var(--radius-large)'
               }}
-              src="https://www.youtube.com/embed/1r9tIZ3IYYk"
-              title="Deadlock Advanced Macro Guide"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
             />
-          </div>
+            <div style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '80px',
+              height: '80px',
+              background: 'rgba(255, 0, 0, 0.9)',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              <div style={{
+                width: 0,
+                height: 0,
+                borderLeft: '25px solid white',
+                borderTop: '15px solid transparent',
+                borderBottom: '15px solid transparent',
+                marginLeft: '8px'
+              }} />
+            </div>
+          </a>
 
           <p style={{
             marginTop: 'var(--spacing-md)',
             fontSize: '0.9rem',
             color: 'var(--text-secondary)',
-            fontStyle: 'italic'
+            fontStyle: 'italic',
+            textAlign: 'center'
           }}>
             Video: Advanced Deadlock Macro &amp; Lane Splitting Strategies
-            <br />
-            <a
-              href="https://youtu.be/1r9tIZ3IYYk"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: 'var(--accent-orange)' }}
-            >
-              Watch on YouTube →
-            </a>
           </p>
         </Section>
       </article>
