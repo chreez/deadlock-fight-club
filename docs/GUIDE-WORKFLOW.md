@@ -1,5 +1,13 @@
 # Guide Publishing Workflow
 
+> **⚠️ DEPRECATED - Astro-specific workflow**
+>
+> **Current process:** See [NEW-GUIDE-PROCESS.md](./NEW-GUIDE-PROCESS.md) for React + Vite workflow
+>
+> This document is kept for historical reference only.
+
+---
+
 ## Overview
 
 Transform YouTube transcripts into production-ready guide pages.
