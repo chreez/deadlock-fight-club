@@ -14,28 +14,30 @@ export default function MacroGuide() {
 
   return (
     <Container maxWidth="md">
-      <div className="guide-page">
-        <Section>
-          <h1>Advanced Macro: Lane Splitting & Resource Control</h1>
-          <p style={{
-            fontSize: '1.3rem',
-            color: 'var(--accent-orange)',
-            fontWeight: 'bold',
-            marginBottom: 'var(--spacing-lg)'
-          }}>
-            Their Jungle. Your Souls.
-          </p>
-          <p className="guide-lead">
-            Understanding macro play in Deadlock is the difference between random fights and
-            strategic resource control. This guide covers lane splitting strategies, the resource
-            meter concept, and how to execute comeback plays when you're behind.
-          </p>
+      <article className="guide-page">
+        <header>
+          <Section>
+            <h1>Advanced Macro: Lane Splitting & Resource Control</h1>
+            <p style={{
+              fontSize: '1.3rem',
+              color: 'var(--accent-orange)',
+              fontWeight: 'bold',
+              marginBottom: 'var(--spacing-lg)'
+            }}>
+              Their Jungle. Your Souls.
+            </p>
+            <p className="guide-lead">
+              Understanding macro play in Deadlock is the difference between random fights and
+              strategic resource control. This guide covers lane splitting strategies, the resource
+              meter concept, and how to execute comeback plays when you're behind.
+            </p>
 
-          <p style={{ fontStyle: 'italic', color: 'var(--text-secondary)' }}>
-            While everyone knows Bebop is superior to all other heroes, macro still wins games.
-            Resource control beats raw mechanics every time.
-          </p>
-        </Section>
+            <p style={{ fontStyle: 'italic', color: 'var(--text-secondary)' }}>
+              While everyone knows Bebop is superior to all other heroes, macro still wins games.
+              Resource control beats raw mechanics every time.
+            </p>
+          </Section>
+        </header>
 
         <Section>
           <h2>The Resource Meter Philosophy</h2>
@@ -212,7 +214,7 @@ export default function MacroGuide() {
             Macro isn't about memorizing splits—read game state, adapt positioning, control resources.
           </p>
         </Section>
-      </div>
+      </article>
     </Container>
   )
 }

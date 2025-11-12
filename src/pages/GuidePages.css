@@ -137,11 +137,32 @@
 }
 
 @media (max-width: 768px) {
+  .guide-page {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
   .guide-lead {
-    font-size: 1.1rem;
+    font-size: 1.2rem; /* Keep larger on mobile */
+    line-height: 1.8;
+    margin-bottom: var(--spacing-xl);
   }
 
   .guide-closing {
-    font-size: 1rem;
+    font-size: 1.1rem; /* Keep larger on mobile */
+    padding: var(--spacing-md);
+  }
+
+  /* More generous mobile spacing for boxes */
+  .stat-box,
+  .example-box,
+  .timeline,
+  .principles-list {
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+  }
+
+  /* Better mobile touch targets for lists */
+  .principles-list li {
+    padding: var(--spacing-md) 0;
   }
 }
