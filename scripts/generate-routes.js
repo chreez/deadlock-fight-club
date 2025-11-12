@@ -4,6 +4,21 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// Extract script and link tags from built index.html
+function extractAssetTags(indexHtmlPath) {
+  const html = fs.readFileSync(indexHtmlPath, 'utf-8');
+
+  // Extract script tag: <script type="module" crossorigin src="/assets/index-[hash].js"></script>
+  const scriptMatch = html.match(/<script[^>]*src="\/assets\/[^"]+\.js"[^>]*><\/script>/);
+  const scriptTag = scriptMatch ? scriptMatch[0] : '<script type="module" src="/src/main.tsx"></script>';
+
+  // Extract CSS link: <link rel="stylesheet" crossorigin href="/assets/index-[hash].css">
+  const cssMatch = html.match(/<link[^>]*href="\/assets\/[^"]+\.css"[^>]*>/);
+  const cssTag = cssMatch ? cssMatch[0] : '';
+
+  return { scriptTag, cssTag };
+}
+
 // Route configurations with meta tags
 const routes = {
   'macro-guide': {
@@ -39,7 +54,7 @@ const routes = {
 };
 
 // HTML template generator
-function generateHTML(route, config) {
+function generateHTML(route, config, scriptTag, cssTag) {
   return `<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -63,22 +78,28 @@ function generateHTML(route, config) {
 
     <link rel="icon" type="image/png" href="/assets/heroes/bebop.png" />
     <title>${config.title}</title>
+    ${scriptTag}
+    ${cssTag}
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
 `;
 }
 
 // Generate HTML files for each route
-const publicDir = path.join(__dirname, '..', 'public');
+const distDir = path.join(__dirname, '..', 'dist');
+const indexHtmlPath = path.join(distDir, 'index.html');
 
 console.log('🚀 Generating static HTML files for routes...\n');
 
+// Extract asset tags from built index.html
+const { scriptTag, cssTag } = extractAssetTags(indexHtmlPath);
+console.log('📦 Extracted asset references from build\n');
+
 Object.entries(routes).forEach(([route, config]) => {
-  const routeDir = path.join(publicDir, route);
+  const routeDir = path.join(distDir, route);
   const htmlPath = path.join(routeDir, 'index.html');
 
   // Create directory if it doesn't exist
@@ -86,8 +107,8 @@ Object.entries(routes).forEach(([route, config]) => {
     fs.mkdirSync(routeDir, { recursive: true });
   }
 
-  // Write HTML file
-  fs.writeFileSync(htmlPath, generateHTML(route, config));
+  // Write HTML file with correct asset references
+  fs.writeFileSync(htmlPath, generateHTML(route, config, scriptTag, cssTag));
   console.log(`✅ Generated /${route}/index.html`);
 });
 
