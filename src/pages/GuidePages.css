@@ -152,6 +152,18 @@
   font-size: 1.1rem;
 }
 
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 768px) {
   .guide-page {
     padding: var(--spacing-lg) var(--spacing-md);

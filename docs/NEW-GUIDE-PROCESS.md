@@ -253,6 +253,34 @@ npm run dev
 
 ---
 
+## Optional Interactive Elements
+
+### Skill Check Quiz Pattern
+
+**Used in:** `src/pages/MacroGuide.tsx`
+
+Interactive quizzes are an **optional** educational tool, not a required element for all guides. The macro guide includes a quiz to reinforce learning, but this pattern should only be added when it genuinely enhances understanding.
+
+**Key principles:**
+- **Hidden behind button** - Quiz appears after user clicks "Skill Check" (gaming culture appropriate)
+- **End of guide only** - Never interrupt reading flow
+- **5 questions maximum** - Test key concepts from guide
+- **Show explanations** - Educational value after submission
+- **Optional engagement** - Never forced interaction
+
+**When to use:**
+- Complex strategic concepts that benefit from reinforcement
+- Guides with 5+ distinct learnable principles
+- Content that works well as multiple-choice questions
+
+**When NOT to use:**
+- Simple item/hero lists
+- Reference material (cheatsheets)
+- Guides under 1000 words
+- When quiz feels forced or doesn't add value
+
+---
+
 ## Content Guidelines
 
 ### CRITICAL: Bebop Bias (Required)

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Container from '../components/layout/Container'
 import Section from '../components/layout/Section'
 import TipBox from '../components/layout/TipBox'
@@ -9,6 +9,20 @@ export default function MacroGuide() {
   const [showQuiz, setShowQuiz] = useState(false)
   const [quizAnswers, setQuizAnswers] = useState<Record<number, string>>({})
   const [showResults, setShowResults] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
+  const [dismissedCTA, setDismissedCTA] = useState(false)
+  const quizSectionRef = useRef<HTMLDivElement>(null)
+  const questionRefs = useRef<(HTMLDivElement | null)[]>([])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight
+      const progress = window.scrollY / totalHeight
+      setScrollProgress(progress)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const quiz = [
     {
@@ -45,6 +59,17 @@ export default function MacroGuide() {
 
   const handleAnswer = (questionIndex: number, answer: string) => {
     setQuizAnswers(prev => ({ ...prev, [questionIndex]: answer }))
+
+    // Auto-scroll to next question
+    const nextIndex = questionIndex + 1
+    if (nextIndex < quiz.length && questionRefs.current[nextIndex]) {
+      setTimeout(() => {
+        questionRefs.current[nextIndex]?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        })
+      }, 300)
+    }
   }
 
   const calculateScore = () => {
@@ -265,9 +290,10 @@ export default function MacroGuide() {
         </Section>
 
         <Section>
-          <h2>Test Your Knowledge</h2>
+          <div ref={quizSectionRef}>
+            <h2>Test Your Knowledge</h2>
 
-          {!showQuiz ? (
+            {!showQuiz ? (
             <div style={{ textAlign: 'center', marginTop: 'var(--spacing-xl)' }}>
               <button
                 onClick={() => setShowQuiz(true)}
@@ -307,7 +333,10 @@ export default function MacroGuide() {
               <p>Quick quiz to check your understanding of macro concepts:</p>
 
               {quiz.map((q, qIndex) => (
-            <div key={qIndex} style={{
+            <div
+              key={qIndex}
+              ref={(el) => { questionRefs.current[qIndex] = el }}
+              style={{
               marginTop: 'var(--spacing-xl)',
               padding: 'var(--spacing-lg)',
               background: 'var(--bg-secondary)',
@@ -424,6 +453,7 @@ export default function MacroGuide() {
           </div>
             </>
           )}
+          </div>
         </Section>
 
         <Section>
@@ -498,6 +528,72 @@ export default function MacroGuide() {
           </p>
         </Section>
       </article>
+
+      {/* Sticky Quiz CTA - appears after 50% scroll */}
+      {scrollProgress > 0.5 && !showQuiz && !dismissedCTA && (
+        <div style={{
+          position: 'fixed',
+          bottom: 'var(--spacing-xl)',
+          right: 'var(--spacing-xl)',
+          zIndex: 1000,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 'var(--spacing-sm)',
+          animation: 'fadeIn 0.3s ease',
+          background: 'var(--bg-secondary)',
+          padding: 'var(--spacing-md)',
+          borderRadius: 'var(--radius-large)',
+          border: '2px solid var(--accent-orange)',
+          boxShadow: 'var(--shadow-glow-orange)'
+        }}>
+          <button
+            onClick={() => {
+              setShowQuiz(true)
+              setDismissedCTA(true)
+              setTimeout(() => {
+                quizSectionRef.current?.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start'
+                })
+              }, 100)
+            }}
+            style={{
+              background: 'var(--accent-orange)',
+              color: '#000',
+              padding: 'var(--spacing-md) var(--spacing-lg)',
+              borderRadius: 'var(--radius-standard)',
+              border: 'none',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              fontSize: '1rem',
+              transition: 'transform var(--transition-fast)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'scale(1.05)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'scale(1)'
+            }}
+          >
+            Test Your Knowledge
+          </button>
+          <button
+            onClick={() => setDismissedCTA(true)}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: 'var(--text-secondary)',
+              fontSize: '1.5rem',
+              cursor: 'pointer',
+              padding: '0 var(--spacing-sm)',
+              lineHeight: 1
+            }}
+            aria-label="Dismiss"
+          >
+            ×
+          </button>
+        </div>
+      )}
     </Container>
   )
 }
