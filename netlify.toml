@@ -19,8 +19,9 @@
 [context.deploy-preview]
   command = "npm run build"
 
-# SPA routing
+# SPA routing - but NOT for routes with their own HTML files
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = false
