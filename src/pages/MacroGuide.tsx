@@ -37,8 +37,9 @@ export default function MacroGuide() {
         <Section>
           <h2>The Resource Meter Philosophy</h2>
           <p>
-            <strong>Everything below a line is yours, everything above is theirs.</strong> Your goal:
-            tip this meter by taking enemy resources they can't reclaim—camps, jungle, objectives.
+            <strong>Look at your minimap:</strong> everything below the horizon is yours, everything
+            above is theirs. Your goal: tip this resource meter by crossing that line—take their camps,
+            jungle, objectives. Resources they can't reclaim.
           </p>
 
           <TipBox variant="info">
