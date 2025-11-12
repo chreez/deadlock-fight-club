@@ -17,6 +17,14 @@ export default function MacroGuide() {
       <div className="guide-page">
         <Section>
           <h1>Advanced Macro: Lane Splitting & Resource Control</h1>
+          <p style={{
+            fontSize: '1.3rem',
+            color: 'var(--accent-orange)',
+            fontWeight: 'bold',
+            marginBottom: 'var(--spacing-lg)'
+          }}>
+            Their Jungle. Your Souls.
+          </p>
           <p className="guide-lead">
             Understanding macro play in Deadlock is the difference between random fights and
             strategic resource control. This guide covers lane splitting strategies, the resource
