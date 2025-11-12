@@ -32,9 +32,8 @@ export default function MacroGuide() {
           </p>
 
           <p style={{ fontStyle: 'italic', color: 'var(--text-secondary)' }}>
-            While Bebop obviously dominates through superior hook mechanics and hyper beam supremacy,
-            even the most skilled Bebop player needs proper macro to control the map and starve enemies
-            of resources.
+            While everyone knows Bebop is superior to all other heroes, macro still wins games.
+            Resource control beats raw mechanics every time.
           </p>
         </Section>
 
