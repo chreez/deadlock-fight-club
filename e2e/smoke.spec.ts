@@ -53,7 +53,7 @@ test.describe('Guide Pages', () => {
     await page.goto('/counter-guide');
 
     await expect(page).toHaveTitle(/Counter.*Building Guide/);
-    await expect(page.getByRole('heading')).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   });
 
   test('guides directory should load', async ({ page }) => {
@@ -63,7 +63,8 @@ test.describe('Guide Pages', () => {
 
     // Should show links to all guides
     await expect(page.getByRole('link', { name: /macro/i })).toBeVisible();
-    await expect(page.getByRole('link', { name: /counter/i })).toBeVisible();
+    await expect(page.getByRole('link', { name: /counter-building/i })).toBeVisible();
+    await expect(page.getByRole('link', { name: /cheatsheet/i })).toBeVisible();
   });
 });
 
