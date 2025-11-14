@@ -28,3 +28,8 @@ pnpm-debug.log*
 
 # Generated route HTML files
 public/*/index.html
+
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
