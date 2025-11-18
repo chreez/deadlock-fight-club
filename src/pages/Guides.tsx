@@ -16,32 +16,27 @@ export default function Guides() {
     {
       title: 'Laning Mistakes Guide',
       description: 'Stop losing lanes. Learn the 6 biggest laning mistakes players make every match.',
-      path: '/laning-guide',
-      status: 'Available'
+      path: '/laning-guide'
     },
     {
       title: 'Counter-Building Guide',
       description: 'Learn which items counter entire team compositions, not just individual heroes.',
-      path: '/counter-guide',
-      status: 'Available'
+      path: '/counter-guide'
     },
     {
       title: 'Counter Cheatsheet',
       description: 'Quick hero-based counter lookup with autocomplete search.',
-      path: '/counter-cheatsheet',
-      status: 'Available'
+      path: '/counter-cheatsheet'
     },
     {
       title: 'Midgame Guide',
       description: 'Understand the 5-minute combat cycle, power spikes, and when MOBA mechanics take over.',
-      path: '/midgame-guide',
-      status: 'Available'
+      path: '/midgame-guide'
     },
     {
       title: 'Advanced Macro Guide',
       description: 'Master lane splitting strategies, resource control, and comeback mechanics when behind.',
-      path: '/macro-guide',
-      status: 'Available'
+      path: '/macro-guide'
     }
   ]
 
@@ -61,12 +56,7 @@ export default function Guides() {
                 to={guide.path}
                 className="guide-card"
               >
-                <div className="guide-card__header">
-                  <h2 className="guide-card__title">{guide.title}</h2>
-                  <span className={`guide-card__status guide-card__status--${guide.status.toLowerCase().replace(' ', '-')}`}>
-                    {guide.status}
-                  </span>
-                </div>
+                <h2 className="guide-card__title">{guide.title}</h2>
                 <p className="guide-card__description">{guide.description}</p>
               </Link>
             ))}
