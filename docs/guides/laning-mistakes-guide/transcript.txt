@@ -1,0 +1,200 @@
+[00:00:00,000]  We've all had that lane which falls apart for no reason, you're farming, trading, building
+[00:00:06,920]  your items and then suddenly the enemy is destroying your guardian with more souls.
+[00:00:12,300]  The truth is that's not bad luck, that's laning mistakes, and almost everyone makes
+[00:00:16,680]  the same ones over and over.
+[00:00:19,480]  That's why in this video we're breaking down the 6 biggest laning mistakes you're making
+[00:00:23,260]  every single game, from wasting time and pressure to buying the wrong items and ignoring enemy
+[00:00:27,880]  cooldowns.
+[00:00:28,880]  Practice these and you'll never lose a lane again.
+[00:00:31,520]  Now not understanding matchups might be the biggest reason you're losing lanes.
+[00:00:35,760]  Some heroes in deadlock are naturally much stronger early into the game than others,
+[00:00:39,640]  and players still force disadvantageous fights because they don't know any better.
+[00:00:43,840]  Take Holliday for example, her kegs and crack shot deal significant damage as soon as the
+[00:00:47,720]  game starts.
+[00:00:48,720]  A hero such as Vendictor might try keep chipping away at your health waiting to unlock her
+[00:00:52,760]  ultimate and just like that you're dead to a sniper.
+[00:00:55,540]  By understanding where your strengths lie, even a losing lane on paper can be winning.
+[00:01:00,100]  Let's first start by looking at how to play melee heroes like Abrams.
+[00:01:04,060]  The worst thing you can do is try trade with heroes like Holliday at range, as when you
+[00:01:08,060]  finally get up close to deal real damage, you have no health.
+[00:01:12,000]  That's why it's important for melee heroes to preserve their health pool until they find
+[00:01:15,220]  the perfect moment to get close up and strike.
+[00:01:18,420]  Luckily to help with this, Valve implemented veils into each lane to give melee heroes
+[00:01:21,900]  a chance.
+[00:01:23,400]  Take the mid lane for example, there are veils on either side allowing you to move in and
+[00:01:26,740]  out when hitting troops.
+[00:01:28,800]  By sitting on the enemy side of the veil, they have no choice but to respect that.
+[00:01:32,700]  If they try push you, that's a free kill, and if not you have immense lane pressure.
+[00:01:37,320]  In lower ranks especially, players get impatient and try force you out, but they don't understand
+[00:01:42,200]  the matchup enough to realise by doing so, they're giving up the lane.
+[00:01:45,700]  To deal with this as a ranged hero, punish them as they come out.
+[00:01:49,240]  It can kill troopers and secure souls from the veil which sounds broken, but they can't
+[00:01:53,060]  damage your guardian or buy items.
+[00:01:55,280]  So take those windows where they move out and lower their health as much as possible.
+[00:02:00,220]  Once low enough, even the veil won't save them.
+[00:02:03,000]  The thing is, you don't need to be a genius and learn every hero's power spike.
+[00:02:07,340]  Just knowing what the character does and adapting your playstyle accordingly will be enough
+[00:02:10,680]  to start climbing the ranks.
+[00:02:12,900]  And when all heroes are ranged or prefer distance, without knowing their exact power spike, some
+[00:02:17,060]  other factors can really help like items.
+[00:02:20,540]  Too many players open up their build browser, find their top daily build and go left to
+[00:02:24,060]  right each game.
+[00:02:25,780]  Now this isn't exactly bad, however some items will seriously make your lane 10x easier.
+[00:02:31,280]  And if this is you, don't worry, I've been there but I'm here to help so listen up.
+[00:02:35,600]  It's important to get into the habit of building to counter your enemies each laning phase.
+[00:02:40,380]  For example, when you're against two heroes such as Kalako and Mina that build spirit
+[00:02:44,060]  damage, a fantastic response is spirit shielding.
+[00:02:47,100]  The reason being is that spirit shielding provides some out of combat regen, a barrier when you
+[00:02:51,100]  take spirit damage and some movement speed.
+[00:02:54,420]  If you don't know what heroes go spirit, then don't even worry.
+[00:02:58,420]  Even heroes building gun end up dealing spirit damage in lanes such as wraith with her cards.
+[00:03:03,140]  So it's almost always going to have value as you learn the game more.
+[00:03:07,140]  Now to maximise its value, I typically recommend buying this when you're in a double spirit
+[00:03:10,940]  lane.
+[00:03:11,940]  So let's take a look at an item that can save your life almost every lane.
+[00:03:15,100]  And if you haven't already guessed, I'm talking about reactive barrier.
+[00:03:18,140]  I'm not joking when I say, this will literally save you from every bad decision and misplay
+[00:03:22,300]  in lane.
+[00:03:23,300]  If you're stood in the open and get hooked by a bebop, don't worry, you have reactive
+[00:03:26,540]  barrier.
+[00:03:27,540]  This item gives you a barrier every time you get stunned, chained, movement locked and
+[00:03:31,220]  so on.
+[00:03:32,220]  But that's not all, it also restores one stamina to escape with and gives you 6% spirit resist.
+[00:03:38,580]  For more skilled players, I'd even recommend counter spell.
+[00:03:41,420]  Although it's a bit more pricey at $3200, it's one of the best items in the game when
+[00:03:46,320]  used efficiently, by upgrading your parry so that it can ignore most damage sources
+[00:03:50,300]  in the game.
+[00:03:52,180]  That same bebop hook which reactive barrier saved you from, just parry with a counter
+[00:03:56,260]  spell.
+[00:03:57,260]  Even normal abilities like calico's slash or lash's slam can be counter spelled.
+[00:04:01,060]  However, as mentioned, it takes more skill than reactive barrier as you need to time
+[00:04:04,860]  each parry.
+[00:04:05,860]  But when mastered, it's going to save you from even ultimates later into the game.
+[00:04:11,100]  Some other great options are rebuttal and close quarters against melee heavy lanes such as
+[00:04:14,820]  Billy and Abrams.
+[00:04:16,220]  Since their main damage is from punching you, parrying will be a lifesaver.
+[00:04:19,900]  Rebuttal gives you melee resist, bonus health and lowers your parry cooldown.
+[00:04:24,180]  Although that's not all, on a successful parry, you heal, deal the damage back and gain a
+[00:04:28,020]  damage boost to run them down, only for 800 souls.
+[00:04:31,620]  Close quarters on the other hand is a nice item for dealing more weapon damage.
+[00:04:34,980]  It allows you to deal 20% more weapon damage within 15 meters of your opponent.
+[00:04:38,860]  But that's not all either, you also gain a 20% melee resist, a nice 2 in 1 item for this
+[00:04:43,340]  gun build into melee heavy lanes.
+[00:04:46,220]  For more information on items, make sure you check out my previous video where I spent
+[00:04:50,020]  10 minutes diving into the best item counters in the game.
+[00:04:53,820]  Now if you're enjoying the video so far or learned something new, don't forget to like
+[00:04:56,820]  and subscribe.
+[00:04:57,820]  I've got plenty more guides coming that you won't want to miss.
+[00:05:01,300]  I also love chatting about the game in my discord so feel free to join the community.
+[00:05:06,060]  And I stream deadlock every single day over on Twitch, I'd love to see you guys there.
+[00:05:10,580]  Both links are in the description.
+[00:05:12,500]  Moving on, another huge mistake players make is ignoring cooldowns.
+[00:05:15,900]  This goes for your own and the enemies.
+[00:05:18,500]  In lower ranks I've seen many players dash in and get aggressive whilst their biggest
+[00:05:21,860]  damaging ability is on cooldown from the last fight.
+[00:05:24,620]  If you're trying to fight as a lash missing slam whilst the enemy doorman has every cooldown
+[00:05:28,340]  available it's not going to go well.
+[00:05:30,740]  Luckily, keeping an eye out on your own cooldowns is easy, just develop a habit of checking
+[00:05:35,340]  them more often.
+[00:05:36,380]  As for your enemies, their most important ability often has a very large cooldown.
+[00:05:40,020]  You don't need perfect knowledge of what the cooldown timers are exactly, but punishing
+[00:05:44,060]  them when their abilities are on cooldown will make each fight much more advantageous
+[00:05:47,420]  for you.
+[00:05:48,420]  Generally most threatening abilities have cooldowns lasting over 10 seconds.
+[00:05:51,940]  However when they're character defining such as bebop's hook or mirage's tornado, the cooldowns
+[00:05:56,620]  are going to be varying from 20 to even 30 seconds long.
+[00:05:59,460]  That's a long time where you can be pressuring them as they aren't as threatening without
+[00:06:02,940]  disabilities.
+[00:06:04,140]  Even 7's power surge which makes him deal significant damage at max level still has
+[00:06:08,020]  a 33 second cooldown.
+[00:06:10,820]  Whenever you notice heroes like these use their major cooldowns, it's the perfect chance
+[00:06:14,360]  to dominate and punish them.
+[00:06:16,380]  Deal damage, shove in the wave and even damage the guardian.
+[00:06:18,940]  Try and make them lose as much as possible whilst they are helpless and waiting on cooldowns.
+[00:06:23,100]  It's that simple.
+[00:06:24,100]  For the 4th mistake we're going to be looking at how players waste precious time each lane.
+[00:06:28,820]  If you saw my video on snowballing leads you'd know that waves spawn every 30 seconds.
+[00:06:33,220]  Now you can use this to your advantage, instead of sitting waiting for the next wave over
+[00:06:36,500]  and over again, try and gain a lead.
+[00:06:38,660]  Boxes spawn 2 minutes in, if there aren't many good opportunities to deal damage to
+[00:06:41,880]  your opponents after shoving in a wave, go ahead and grab some boxes.
+[00:06:45,080]  For example in mid, you don't need a super optimized path, just see what you can find
+[00:06:48,980]  behind you and in just 20 seconds you could be up over 300 souls.
+[00:06:53,260]  Then when you find some time again, see what you can find to the right side and so on.
+[00:06:57,420]  It's very common for players not to realise how much time they actually have.
+[00:07:01,020]  As long as you keep an eye out for when the wave starts approaching, keep finding boxes.
+[00:07:05,460]  In situations where your teammate stays and starts hitting the troopers immediately, just
+[00:07:09,180]  tell them to wait for you to get back.
+[00:07:10,980]  Additionally, you can try still the enemy's tier 1 camp, take your own, go for bridge
+[00:07:15,060]  buffs every 5 minutes and so on.
+[00:07:17,000]  The important thing is you're not just sat waiting when you can be collecting extra
+[00:07:20,100]  souls to get a lead on your opponent, staying active is key.
+[00:07:23,460]  A little bonus mistake people make is staying in lane on low HP when the zipline boost is
+[00:07:27,620]  available.
+[00:07:28,620]  If you didn't know, when the timer reaches 6 minutes and 5 seconds, boosts become available.
+[00:07:33,500]  So when you're waiting for a wave on low HP, you likely have time to boost back to
+[00:07:36,580]  base and return on full health, instead of sitting there scared for your life.
+[00:07:40,860]  And if you just killed an enemy past the 6 minute and 5 second mark, be aware they can
+[00:07:45,040]  boost back.
+[00:07:46,040]  Over staying and getting caught by this is a very common but avoidable mistake.
+[00:07:50,180]  Now many players out there are greedy with their souls and it's costing them the lane.
+[00:07:54,660]  There are so many fantastic tier 1 options to buy that are completely ignored or skipped
+[00:07:58,380]  for a damage item.
+[00:07:59,820]  Whenever you're over half health, there's still great options.
+[00:08:03,000]  Something players don't realise is that even sprint boots will heal you over time.
+[00:08:06,220]  Whilst they primarily give you sprint speed, you gain +2 out of combat regen.
+[00:08:10,560]  If you haven't noticed, out of combat regen is displayed with this number at the top of
+[00:08:14,220]  your health bar.
+[00:08:15,220]  And if you've been watching pro games like those on Deadlock Night Shift, it's really
+[00:08:18,420]  popular to also buy monster rounds early on.
+[00:08:21,260]  Not only does it help with pushing waves, but you gain +1 out of combat regen.
+[00:08:25,540]  Additionally, remember spirit shielding from before, that's another 2.5 out of combat
+[00:08:29,740]  regen.
+[00:08:30,740]  That's 3 items costing 3200 souls altogether, providing 5.5 extra out of combat regen.
+[00:08:37,060]  So when you're doing those box runs and taking camps with this much regen, you don't even
+[00:08:40,420]  need to buy direct healing items.
+[00:08:42,600]  Sprint boots and monster rounds also upgrade into enduring speed and cultist sacrifice.
+[00:08:46,800]  Many of you are likely buying these items in your builds without even realising their
+[00:08:49,740]  true value.
+[00:08:50,740]  And for heroes like Calico that have melee abilities like Kitu, items such as melee lifesteal
+[00:08:54,900]  treat them equal to landing a punch.
+[00:08:57,420]  That's right, slashing into someone will heal you for the same amount as punching them.
+[00:09:01,140]  It's important to also mention that being greedy and avoiding healing right when you're
+[00:09:04,500]  very weak is a bad idea.
+[00:09:06,320]  If you don't know, it's a heal that can be applied to yourself or a teammate with a 70
+[00:09:10,180]  second cooldown.
+[00:09:11,420]  And whenever you get shot by an enemy, the healing effect cancels.
+[00:09:14,180]  However, it gives you movement speed when active.
+[00:09:17,040]  So when you're barely surviving pushing a wave, use it on yourself and do a box run while
+[00:09:20,540]  zooming around and healing up, with a much lower chance of it being cancelled than sitting
+[00:09:24,680]  in lane.
+[00:09:25,680]  There are other great options like extra regen and resto shot but I'm sure you get the idea
+[00:09:29,020]  by now.
+[00:09:30,020]  I'd recommend always buying at least one of these items each lane.
+[00:09:33,080]  Lastly, we're going to be looking at how often players neglect their map.
+[00:09:37,100]  Whenever you stomp the enemy lane and take their guardian early into the game, don't
+[00:09:39,800]  just sit around.
+[00:09:40,800]  It's still laning phase for others that have both guardians up.
+[00:09:43,580]  Take this as an opportunity to push in your wave and check the map.
+[00:09:46,500]  Typically, I recommend looking at how much health both sides have.
+[00:09:49,420]  If the enemies are weak and your team can't finish the job, go help them.
+[00:09:52,860]  Otherwise just pressure their lane with a numbers advantage and destroy the guardian.
+[00:09:56,340]  However, you don't want to spend too long doing this as sharing souls with 3 players
+[00:09:59,900]  is less than ideal but it's definitely something you should look to be doing.
+[00:10:03,480]  Now sometimes you can double gank which almost guarantees kills and a guardian.
+[00:10:07,220]  But there are a few risks with this play.
+[00:10:09,340]  The enemies in your lane can take the guardian whilst you're helping another lane.
+[00:10:12,460]  No one is there to collect the wave, losing out on important souls.
+[00:10:15,580]  And if somehow the roam goes badly, you're sharing souls between 4 players for a prolonged
+[00:10:19,340]  period of time.
+[00:10:20,340]  Therefore, whenever roaming looks like a bad option, don't be afraid to start pressuring
+[00:10:23,660]  walkers instead.
+[00:10:24,660]  It's unlikely you'll get ganked from another lane, he creates space to steal enemy camps
+[00:10:28,420]  and if others do come, they'll lose their guardian.
+[00:10:31,020]  Just because you win lane early doesn't mean sitting back and collecting waves is the
+[00:10:34,260]  best play.
+[00:10:35,260]  As always, if you enjoyed the video or learned something new, make sure to like and subscribe.
+[00:10:39,300]  I've also got a discord server, if you ever have any questions you can message me there.
+[00:10:43,260]  I stream deadlock every day on twitch, both links can be found in the description.
+[00:10:46,980]  Also, let me know what other big mistakes people make not included in this video down below.
+[00:10:51,820]  Thanks for watching and I'll see you in the next one!

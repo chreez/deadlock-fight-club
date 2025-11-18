@@ -21,6 +21,12 @@ function extractAssetTags(indexHtmlPath) {
 
 // Route configurations with meta tags
 const routes = {
+  'laning-guide': {
+    title: '6 Laning Mistakes You\'re Making Every Game - Deadlock Fight Club',
+    description: 'Stop losing lanes to "bad luck." Learn the 6 biggest laning mistakes players make every match, from ignoring matchups to wasting pressure and buying wrong items.',
+    url: 'https://deadlock-fights.netlify.app/laning-guide',
+    image: 'https://deadlock-fights.netlify.app/assets/heroes/bebop.png'
+  },
   'macro-guide': {
     title: 'Advanced Macro Guide - Deadlock Fight Club',
     description: 'Their jungle. Your souls. Master lane splitting strategies that starve enemies of resources. Learn when to use 2-2-2, 1-3-2, 1-1-4, and extreme comeback plays when behind.',

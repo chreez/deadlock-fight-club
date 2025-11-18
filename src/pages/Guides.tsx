@@ -14,6 +14,12 @@ export default function Guides() {
 
   const guides = [
     {
+      title: 'Laning Mistakes Guide',
+      description: 'Stop losing lanes. Learn the 6 biggest laning mistakes players make every match.',
+      path: '/laning-guide',
+      status: 'Available'
+    },
+    {
       title: 'Counter-Building Guide',
       description: 'Learn which items counter entire team compositions, not just individual heroes.',
       path: '/counter-guide',

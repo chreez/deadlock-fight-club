@@ -5,6 +5,7 @@ import CounterGuide from './pages/CounterGuide'
 import CounterCheatsheet from './pages/CounterCheatsheet'
 import MidgameGuide from './pages/MidgameGuide'
 import MacroGuide from './pages/MacroGuide'
+import LaningGuide from './pages/LaningGuide'
 import Guides from './pages/Guides'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/counter-cheatsheet" element={<CounterCheatsheet />} />
         <Route path="/midgame-guide" element={<MidgameGuide />} />
         <Route path="/macro-guide" element={<MacroGuide />} />
+        <Route path="/laning-guide" element={<LaningGuide />} />
         <Route path="/guides" element={<Guides />} />
       </Routes>
     </BrowserRouter>
