@@ -21,6 +21,12 @@ function extractAssetTags(indexHtmlPath) {
 
 // Route configurations with meta tags
 const routes = {
+  'december-patch': {
+    title: 'December Patch Breakdown - Deadlock Fight Club',
+    description: 'Full breakdown of Deadlock\'s last patch of 2024. Patron defense buffs, hero nerfs, movement reverts, and economy changes explained.',
+    url: 'https://deadlock-fights.netlify.app/december-patch',
+    image: 'https://deadlock-fights.netlify.app/assets/heroes/bebop.png'
+  },
   'laning-guide': {
     title: '6 Laning Mistakes You\'re Making Every Game - Deadlock Fight Club',
     description: 'Stop losing lanes to "bad luck." Learn the 6 biggest laning mistakes players make every match, from ignoring matchups to wasting pressure and buying wrong items.',

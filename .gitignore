@@ -33,3 +33,6 @@ public/*/index.html
 /test-results/
 /playwright-report/
 /playwright/.cache/
+
+# Video scrapes (raw source material)
+scrapes/

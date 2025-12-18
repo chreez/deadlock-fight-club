@@ -152,6 +152,23 @@
   font-size: 1.1rem;
 }
 
+.patch-image {
+  width: 100%;
+  max-width: 600px;
+  border-radius: var(--radius-large);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: var(--spacing-md) 0;
+  display: block;
+}
+
+.patch-image-caption {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: var(--spacing-xs);
+  font-style: italic;
+}
+
 /* Animations */
 @keyframes fadeIn {
   from {

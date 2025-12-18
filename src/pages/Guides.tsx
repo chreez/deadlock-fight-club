@@ -14,6 +14,11 @@ export default function Guides() {
 
   const guides = [
     {
+      title: 'December Patch Breakdown',
+      description: 'Patron defense buffs, hero nerfs, movement reverts, and economy changes explained.',
+      path: '/december-patch'
+    },
+    {
       title: 'Laning Mistakes Guide',
       description: 'Stop losing lanes. Learn the 6 biggest laning mistakes players make every match.',
       path: '/laning-guide'
