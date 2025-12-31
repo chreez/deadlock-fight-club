@@ -14,6 +14,11 @@ export default function Guides() {
 
   const guides = [
     {
+      title: 'New Year Patch: Bebop Bomb Scaling',
+      description: 'Bebop bomb rework, Grey Talon buffs, and 10 heroes buffed for 2026.',
+      path: '/new-year-patch'
+    },
+    {
       title: 'December Patch Breakdown',
       description: 'Patron defense buffs, hero nerfs, movement reverts, and economy changes explained.',
       path: '/december-patch'

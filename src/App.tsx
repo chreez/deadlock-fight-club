@@ -7,6 +7,7 @@ import MidgameGuide from './pages/MidgameGuide'
 import MacroGuide from './pages/MacroGuide'
 import LaningGuide from './pages/LaningGuide'
 import DecemberPatchGuide from './pages/DecemberPatchGuide'
+import NewYearPatchGuide from './pages/NewYearPatchGuide'
 import Guides from './pages/Guides'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/macro-guide" element={<MacroGuide />} />
         <Route path="/laning-guide" element={<LaningGuide />} />
         <Route path="/december-patch" element={<DecemberPatchGuide />} />
+        <Route path="/new-year-patch" element={<NewYearPatchGuide />} />
         <Route path="/guides" element={<Guides />} />
       </Routes>
     </BrowserRouter>

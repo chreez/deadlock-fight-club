@@ -21,6 +21,12 @@ function extractAssetTags(indexHtmlPath) {
 
 // Route configurations with meta tags
 const routes = {
+  'new-year-patch': {
+    title: 'New Year Patch: Bebop Bomb Scaling Goes Crazy - Deadlock Fight Club',
+    description: 'Full breakdown of the 12-29-2025 Deadlock patch. Bebop bomb scaling rework, Grey Talon buffs, and 10 heroes buffed heading into 2026.',
+    url: 'https://deadlock-fights.netlify.app/new-year-patch',
+    image: 'https://deadlock-fights.netlify.app/blog/new-year-patch/hero.jpg'
+  },
   'december-patch': {
     title: 'December Patch Breakdown - Deadlock Fight Club',
     description: 'Full breakdown of Deadlock\'s last patch of 2024. Patron defense buffs, hero nerfs, movement reverts, and economy changes explained.',
