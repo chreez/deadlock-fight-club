@@ -204,6 +204,53 @@ public/blog/december-patch/
 
 Optimized for scannable readability:
 
+### Quick Summary Section (Top of Article)
+
+Always include a Quick Summary after the intro with nested sublists per hero:
+
+```tsx
+<Section>
+  <h2>Quick Summary</h2>
+  <div className="stat-box">
+    <h3>Buffs</h3>
+    <ul className="hero-changes-list">
+      <li><strong>Bebop</strong>
+        <ul>
+          <li>Stamina: 2 → 3</li>
+          <li>Health per Boon: +46 → +52</li>
+          <li>Sticky Bomb Spirit Scaling: 1.1 → 1.5</li>
+        </ul>
+      </li>
+      {/* More heroes... */}
+    </ul>
+  </div>
+
+  <div className="stat-box">
+    <h3>Nerfs / Tradeoffs</h3>
+    <ul className="hero-changes-list">
+      {/* Heroes with nerfs... */}
+    </ul>
+  </div>
+
+  {/* Link to official notes - REQUIRED at top */}
+  <p style={{ marginTop: 'var(--spacing-md)', fontSize: '0.9rem' }}>
+    <a href="[PATCH_NOTES_URL]" style={{ color: 'var(--accent-orange)' }}>
+      See official patch notes →
+    </a>
+  </p>
+
+  {/* Collapsible raw notes drawer */}
+  <details className="raw-notes-drawer">
+    <summary>View Raw Patch Notes</summary>
+    <div className="raw-notes-content">
+      <table className="patch-table">
+        {/* Full data table */}
+      </table>
+    </div>
+  </details>
+</Section>
+```
+
 ### Hero/Topic Sections
 
 ```tsx
@@ -227,16 +274,16 @@ Optimized for scannable readability:
     </ul>
   </div>
 
-  {/* Analysis paragraph */}
+  {/* Brief factual note - NO speculation */}
   <p>
-    The bomb scaling changes are the real story here. Spirit-heavy builds
-    can now reach 1,500+ damage early with proper stack farming.
+    The bomb scaling changes are the headline. Base damage dropped but
+    spirit scaling increased from 1.1 to 1.5.
   </p>
 
-  {/* Tactical callout */}
+  {/* Tactical callout - only if from video source */}
   <TipBox variant="warning">
-    <strong>Counter Play:</strong> Debuff Remover and Reactive Barrier
-    are essential against Bebop this patch.
+    <strong>Counter Play:</strong> Per the video, Debuff Remover and
+    Reactive Barrier are essential against Bebop this patch.
   </TipBox>
 </Section>
 ```
@@ -246,10 +293,30 @@ Optimized for scannable readability:
 1. **Hero/Topic Header** (h2)
 2. **Visual** (screenshot if relevant)
 3. **Changes Box** (stat-box with bullet points)
-4. **Analysis** (1-2 paragraphs, what it means)
-5. **Tactical Note** (TipBox if applicable)
+4. **Brief factual note** (1-2 sentences, no speculation)
+5. **Tactical Note** (TipBox - only if sourced from video)
 
 Repeat for each hero/topic.
+
+### Footer Section
+
+```tsx
+<Section>
+  <p className="guide-closing">
+    [Brief factual summary of patch scope]
+  </p>
+  <p style={{ marginTop: 'var(--spacing-md)', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+    Based on <a href="[VIDEO_URL]">"[Video Title]"</a> by [Channel].
+    Official patch notes: <a href="[PATCH_NOTES_URL]">[Patch Date] Update</a>
+  </p>
+</Section>
+```
+
+**Key Rules:**
+- Patch notes link at TOP (under summary) AND bottom (footer)
+- Video link at bottom only
+- No speculation - stick to facts from video/patch notes
+- Use nested `hero-changes-list` for Quick Summary bullets
 
 ---
 

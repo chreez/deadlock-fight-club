@@ -125,6 +125,10 @@ export default function NewYearPatchGuide() {
             </ul>
           </div>
 
+          <p style={{ marginTop: 'var(--spacing-md)', fontSize: '0.9rem' }}>
+            <a href="https://forums.playdeadlock.com/threads/12-29-2025-update.95233/" style={{ color: 'var(--accent-orange)' }}>See official patch notes →</a>
+          </p>
+
           <details className="raw-notes-drawer">
             <summary>View Raw Patch Notes</summary>
             <div className="raw-notes-content">
