@@ -36,3 +36,4 @@ public/*/index.html
 
 # Video scrapes (raw source material)
 scrapes/
+*_*/
